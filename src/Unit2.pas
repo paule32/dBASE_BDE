@@ -12,7 +12,8 @@ uses
   JvExExtCtrls, JvExtComponent, JvComponentPanel, JvSplitter, ToolWin,
   JvCoolBar, JvBevel, JvPanel, JvItemsPanel, JvExStdCtrls, JvListBox,
   JvComboListBox, JvXPCore, JvBDELists, SynEdit, JvDesignSurface,
-  JvInspector;
+  JvInspector, JvPageListTreeView, JvCombobox, JvListComb, JvPageList,
+  JvSpeedButton, JvButton, JvCtrls, TeeProcs, TeEngine, Chart, JvDesignUtils;
 
 type
   TForm2 = class(TForm)
@@ -198,33 +199,6 @@ type
     PageControl11: TPageControl;
     TabSheet23: TTabSheet;
     ScrollBox21: TScrollBox;
-    PageControl3: TPageControl;
-    TabSheet1: TTabSheet;
-    Panel5: TPanel;
-    Button3: TButton;
-    Button4: TButton;
-    DBGrid3: TDBGrid;
-    DBNavigator1: TDBNavigator;
-    ScrollBox3: TScrollBox;
-    UserNameLabel: TLabel;
-    UserPasswordLabel: TLabel;
-    UserLocationLabel: TLabel;
-    LastActiveLabel: TLabel;
-    Label4: TLabel;
-    Label20: TLabel;
-    Label21: TLabel;
-    Label22: TLabel;
-    Image1: TImage;
-    DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
-    DBEdit3: TDBEdit;
-    DBEdit4: TDBEdit;
-    DBEdit6: TDBEdit;
-    DBCheckBox1: TDBCheckBox;
-    Panel14: TPanel;
-    DBEdit7: TDBEdit;
-    DBEdit8: TDBEdit;
-    DBEdit9: TDBEdit;
     PageControl9: TPageControl;
     TabSheet22: TTabSheet;
     TabSheet32: TTabSheet;
@@ -233,10 +207,9 @@ type
     JvPanel1: TJvPanel;
     JvArrowButton6: TJvArrowButton;
     JvArrowButton7: TJvArrowButton;
-    JvPanelABC: TJvPanel;
+    BackgroundViewPanel: TJvPanel;
     JvSplitter1: TJvSplitter;
     JvPanel2: TJvPanel;
-    JvComboListBox1: TJvComboListBox;
     data1: TMenuItem;
     dududa1: TMenuItem;
     JvDatabaseItems1: TJvDatabaseItems;
@@ -1023,7 +996,6 @@ type
     TabSheet35: TTabSheet;
     ScrollBox30: TScrollBox;
     Panel1: TPanel;
-    ListBox18: TListBox;
     Panel3: TPanel;
     Panel4: TPanel;
     Splitter1: TSplitter;
@@ -1046,9 +1018,95 @@ type
     Splitter5: TSplitter;
     Panel18: TPanel;
     Panel21: TPanel;
-    JvDesignScrollBox1: TJvDesignScrollBox;
-    JvDesignPanel1: TJvDesignPanel;
     Panel24: TPanel;
+    ListView1: TListView;
+    Panel25: TPanel;
+    JvDesignScrollBox1: TJvDesignScrollBox;
+    DevelopmentDesignerPanel: TJvDesignPanel;
+    Splitter6: TSplitter;
+    ScrollBox32: TScrollBox;
+    Splitter11: TSplitter;
+    PageControl12: TPageControl;
+    TabSheet38: TTabSheet;
+    ScrollBox33: TScrollBox;
+    Panel27: TPanel;
+    Splitter12: TSplitter;
+    Panel30: TPanel;
+    ScrollBox34: TScrollBox;
+    SynEdit2: TSynEdit;
+    ScrollBox35: TScrollBox;
+    JvSettingsTreeView1: TJvSettingsTreeView;
+    Splitter13: TSplitter;
+    JvPageList1: TJvPageList;
+    JvStandardPage1: TJvStandardPage;
+    JvStandardPage2: TJvStandardPage;
+    JvImageComboBox1: TJvImageComboBox;
+    Panel28: TPanel;
+    ListBox20: TListBox;
+    RichEdit1: TRichEdit;
+    ChatSendTextButton: TJvImgBtn;
+    PageControl15: TPageControl;
+    TabSheet39: TTabSheet;
+    ScrollBox36: TScrollBox;
+    ListBox21: TListBox;
+    PageControl3: TPageControl;
+    TabSheet1: TTabSheet;
+    Panel5: TPanel;
+    Button3: TButton;
+    Button4: TButton;
+    DBGrid3: TDBGrid;
+    ScrollBox3: TScrollBox;
+    UserNameLabel: TLabel;
+    UserPasswordLabel: TLabel;
+    UserLocationLabel: TLabel;
+    LastActiveLabel: TLabel;
+    Label4: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Image1: TImage;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBCheckBox1: TDBCheckBox;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    DBEdit9: TDBEdit;
+    ScrollBox37: TScrollBox;
+    Chart1: TChart;
+    DBNavigator1: TDBNavigator;
+    Panel14: TPanel;
+    Splitter14: TSplitter;
+    Panel29: TPanel;
+    Panel31: TPanel;
+    Splitter16: TSplitter;
+    Panel32: TPanel;
+    Splitter17: TSplitter;
+    StringGrid1: TStringGrid;
+    Panel33: TPanel;
+    Splitter18: TSplitter;
+    Panel34: TPanel;
+    Splitter19: TSplitter;
+    JvSettingsTreeView2: TJvSettingsTreeView;
+    JvPageList2: TJvPageList;
+    JvStandardPage3: TJvStandardPage;
+    JvStandardPage4: TJvStandardPage;
+    JvImageComboBox2: TJvImageComboBox;
+    PageControl16: TPageControl;
+    TabSheet40: TTabSheet;
+    PageScroller1: TPageScroller;
+    DevelopmentMenuPanel: TPanel;
+    BackgroundViewButton: TJvImgBtn;
+    JvSpeedButton1: TJvSpeedButton;
+    JvSpeedButton2: TJvSpeedButton;
+    JvSpeedButton3: TJvSpeedButton;
+    JvSpeedButton4: TJvSpeedButton;
+    JvSpeedButton5: TJvSpeedButton;
+    JvSpeedButton6: TJvSpeedButton;
+    TabSheet41: TTabSheet;
+    TabSheet42: TTabSheet;
     procedure FormCreate(Sender: TObject);
     procedure DesktopApplicationOLEActivate(Sender: TObject);
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1172,6 +1230,8 @@ type
     procedure Monday4MeasureItem(Sender: TObject; ACanvas: TCanvas;
       var Width, Height: Integer);
     procedure TasksPageControlChange(Sender: TObject);
+    procedure BackgroundViewButtonClick(Sender: TObject);
+    procedure DevelopmentDesignerPanel_Paint(Sender: TObject);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -1233,14 +1293,21 @@ begin
         ColWidths[2] := 84;
       end;
 
+      with DevelopmentDesignerPanel do
+      begin
+        Surface.Active := true;
+        Color := clBtnFace;
+        DrawRules := false;
+        OnPaint := DevelopmentDesignerPanel_Paint;
+        Invalidate;
+      end;
+      
     except
       ShowMessage('Exception in Unit2 occur.');
       exit;
     end;
   finally
   end;
-
-
 
 
   ConnectionListGrid.ColWidths[0] := 21;
@@ -1286,7 +1353,7 @@ begin
 
   TimeTableGrid.Cells[2,2] := 't';
 
-  LocationListTimer.Enabled := true;
+//  LocationListTimer.Enabled := true;
 end;
 
 procedure TForm2.DesktopApplicationOLEActivate(Sender: TObject);
@@ -1592,7 +1659,7 @@ end;
 
 procedure TForm2.JvArrowButton6Click(Sender: TObject);
 begin
-  if JvComboListBox1.Enabled = true then
+(*  if JvComboListBox1.Enabled = true then
   begin
     JvComboListBox1.Enabled := false;
     JvComboListBox1.Visible := false;
@@ -1602,7 +1669,7 @@ begin
     JvComboListBox1.Visible := true;
     JvComboListBox1.Top := 48;
     JvComboListBox1.Left := 1;
-  end;
+  end;*)
 end;
 
 procedure TForm2.AfterMeridan1MeasureItem(Sender: TObject;
@@ -1893,6 +1960,26 @@ begin
     Splitter2.Visible := true;
     Splitter2.Top := Panel1.Height;
   end;
+end;
+
+procedure TForm2.BackgroundViewButtonClick(Sender: TObject);
+begin
+  if BackgroundViewButton.Color = $008080FF then
+  begin
+    BackgroundViewButton.Color := $0080FF80;
+    BackgroundViewPanel.Height := 20;
+    showmessage('xxxx');
+  end else
+  begin
+    BackgroundViewButton.Color := $008080FF;
+    BackgroundViewPanel.Height := 200;
+  end;
+end;
+
+procedure TForm2.DevelopmentDesignerPanel_Paint(Sender: TObject);
+begin
+  with DevelopmentDesignerPanel do
+    DesignPaintGrid(Canvas, ClientRect, Color);
 end;
 
 end.

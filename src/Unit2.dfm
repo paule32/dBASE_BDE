@@ -1,7 +1,7 @@
 object Form2: TForm2
-  Left = 64
-  Top = 66
-  Width = 1291
+  Left = 80
+  Top = 53
+  Width = 1133
   Height = 740
   Caption = 'DataBase Explorer (c) 2022 Jens Kallup 1.0.0'
   Color = clBtnFace
@@ -18,54 +18,54 @@ object Form2: TForm2
   object StatusBar1: TStatusBar
     Left = 0
     Top = 677
-    Width = 1275
+    Width = 1117
     Height = 24
     Panels = <>
   end
   object ScrollBox2: TScrollBox
     Left = 0
     Top = 0
-    Width = 1275
+    Width = 1117
     Height = 677
     Align = alClient
     TabOrder = 1
     object ScrollView: TScrollBox
       Left = 0
       Top = 0
-      Width = 1271
+      Width = 1113
       Height = 673
       Align = alClient
       TabOrder = 0
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 1267
+        Width = 1109
         Height = 669
         Align = alClient
         Caption = 'Panel2'
         TabOrder = 0
         object JvSplitter1: TJvSplitter
           Left = 1
-          Top = 20
-          Width = 1265
+          Top = 15
+          Width = 1107
           Height = 3
           Cursor = crVSplit
           Align = alTop
         end
-        object JvPanelABC: TJvPanel
+        object BackgroundViewPanel: TJvPanel
           Left = 1
           Top = 1
-          Width = 1265
-          Height = 19
+          Width = 1107
+          Height = 14
           Align = alTop
-          TabOrder = 4
+          TabOrder = 3
         end
         object TasksPageControl: TPageControl
           Left = 1
-          Top = 97
-          Width = 1265
-          Height = 571
-          ActivePage = TabSheet34
+          Top = 124
+          Width = 1107
+          Height = 544
+          ActivePage = TabSheet28
           Align = alClient
           TabOrder = 0
           OnChange = TasksPageControlChange
@@ -75,21 +75,21 @@ object Form2: TForm2
             object ScrollBox23: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 543
+              Width = 1099
+              Height = 516
               Align = alClient
               TabOrder = 0
               object Splitter3: TSplitter
                 Left = 201
                 Top = 0
                 Width = 4
-                Height = 539
+                Height = 512
               end
               object Panel22: TPanel
                 Left = 0
                 Top = 0
                 Width = 201
-                Height = 539
+                Height = 512
                 Align = alLeft
                 Caption = 'Panel3'
                 TabOrder = 0
@@ -97,7 +97,7 @@ object Form2: TForm2
                   Left = 1
                   Top = 1
                   Width = 199
-                  Height = 537
+                  Height = 510
                   ActivePage = TabSheet31
                   Align = alClient
                   TabOrder = 0
@@ -127,7 +127,7 @@ object Form2: TForm2
                       Left = 0
                       Top = 172
                       Width = 191
-                      Height = 337
+                      Height = 310
                       ActivePage = TabSheet30
                       Align = alClient
                       TabOrder = 1
@@ -156,7 +156,7 @@ object Form2: TForm2
                       Left = 0
                       Top = 0
                       Width = 191
-                      Height = 509
+                      Height = 482
                       Align = alClient
                       TabOrder = 0
                       object Splitter10: TSplitter
@@ -266,20 +266,20 @@ object Form2: TForm2
               object ScrollBox1: TScrollBox
                 Left = 205
                 Top = 0
-                Width = 1048
-                Height = 539
+                Width = 890
+                Height = 512
                 Align = alClient
                 TabOrder = 1
                 object Splitter7: TSplitter
                   Left = 0
                   Top = 239
-                  Width = 1044
+                  Width = 886
                   Height = 9
                   Cursor = crVSplit
                   Align = alBottom
                 end
                 object Splitter8: TSplitter
-                  Left = 669
+                  Left = 511
                   Top = 25
                   Height = 214
                   Align = alRight
@@ -287,7 +287,7 @@ object Form2: TForm2
                 object Panel7: TPanel
                   Left = 0
                   Top = 0
-                  Width = 1044
+                  Width = 886
                   Height = 25
                   Align = alTop
                   BevelInner = bvSpace
@@ -305,8 +305,8 @@ object Form2: TForm2
                 object Panel8: TPanel
                   Left = 0
                   Top = 248
-                  Width = 1044
-                  Height = 287
+                  Width = 886
+                  Height = 260
                   Align = alBottom
                   Anchors = [akLeft, akTop, akRight, akBottom]
                   Caption = 'Panel8'
@@ -314,8 +314,8 @@ object Form2: TForm2
                   object PageControl5: TPageControl
                     Left = 1
                     Top = 1
-                    Width = 1042
-                    Height = 285
+                    Width = 884
+                    Height = 258
                     ActivePage = TabSheet3
                     Align = alClient
                     TabOrder = 0
@@ -324,14 +324,14 @@ object Form2: TForm2
                       object ScrollBox7: TScrollBox
                         Left = 0
                         Top = 0
-                        Width = 1034
-                        Height = 257
+                        Width = 876
+                        Height = 230
                         Align = alClient
                         TabOrder = 0
                         object ConnectionListGrid: TStringGrid
                           Left = 0
                           Top = 73
-                          Width = 1030
+                          Width = 872
                           Height = 144
                           Align = alTop
                           ColCount = 6
@@ -356,7 +356,7 @@ object Form2: TForm2
                         object Panel12: TPanel
                           Left = 0
                           Top = 0
-                          Width = 1030
+                          Width = 872
                           Height = 41
                           Align = alTop
                           TabOrder = 1
@@ -429,7 +429,7 @@ object Form2: TForm2
                         object ConnectionFilterPanel: TPanel
                           Left = 0
                           Top = 41
-                          Width = 1030
+                          Width = 872
                           Height = 32
                           Align = alTop
                           BevelInner = bvRaised
@@ -503,7 +503,7 @@ object Form2: TForm2
                   end
                 end
                 object PageControl4: TPageControl
-                  Left = 672
+                  Left = 514
                   Top = 25
                   Width = 372
                   Height = 214
@@ -632,12 +632,12 @@ object Form2: TForm2
                 object ScrollBox22: TScrollBox
                   Left = 0
                   Top = 25
-                  Width = 669
+                  Width = 511
                   Height = 214
                   Align = alClient
                   TabOrder = 3
                   DesignSize = (
-                    665
+                    507
                     210)
                   object SystemViewGrid: TStringGrid
                     Left = 0
@@ -688,7 +688,7 @@ object Form2: TForm2
                   object PageControl9: TPageControl
                     Left = 280
                     Top = 8
-                    Width = 376
+                    Width = 218
                     Height = 185
                     ActivePage = TabSheet22
                     Anchors = [akLeft, akTop, akRight]
@@ -698,7 +698,7 @@ object Form2: TForm2
                       object ScrollBox28: TScrollBox
                         Left = 0
                         Top = 0
-                        Width = 368
+                        Width = 210
                         Height = 157
                         Align = alClient
                         TabOrder = 0
@@ -739,15 +739,15 @@ object Form2: TForm2
             object ScrollBox20: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 543
+              Width = 1099
+              Height = 516
               Align = alClient
               TabOrder = 0
               object PageControl11: TPageControl
                 Left = 0
                 Top = 0
-                Width = 1253
-                Height = 539
+                Width = 1095
+                Height = 512
                 ActivePage = TabSheet23
                 Align = alClient
                 TabOrder = 0
@@ -756,8 +756,8 @@ object Form2: TForm2
                   object ScrollBox21: TScrollBox
                     Left = 0
                     Top = 0
-                    Width = 1245
-                    Height = 511
+                    Width = 1087
+                    Height = 484
                     Align = alClient
                     TabOrder = 0
                   end
@@ -771,15 +771,15 @@ object Form2: TForm2
             object ScrollBox25: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 543
+              Width = 1099
+              Height = 516
               Align = alClient
               TabOrder = 0
               object PageControl1: TPageControl
                 Left = 0
                 Top = 0
-                Width = 1253
-                Height = 539
+                Width = 1095
+                Height = 512
                 ActivePage = TabSheet11
                 Align = alClient
                 TabOrder = 0
@@ -788,8 +788,8 @@ object Form2: TForm2
                   object ScrollBox26: TScrollBox
                     Left = 0
                     Top = 0
-                    Width = 1245
-                    Height = 511
+                    Width = 1087
+                    Height = 484
                     Align = alClient
                     TabOrder = 0
                   end
@@ -803,15 +803,15 @@ object Form2: TForm2
             object ScrollBox19: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 543
+              Width = 1099
+              Height = 516
               Align = alClient
               TabOrder = 0
               object PageControl2: TPageControl
                 Left = 0
                 Top = 0
-                Width = 1253
-                Height = 539
+                Width = 1095
+                Height = 512
                 ActivePage = TabSheet21
                 Align = alClient
                 TabOrder = 0
@@ -820,8 +820,8 @@ object Form2: TForm2
                   object ScrollBox27: TScrollBox
                     Left = 0
                     Top = 0
-                    Width = 1245
-                    Height = 511
+                    Width = 1087
+                    Height = 484
                     Align = alClient
                     TabOrder = 0
                   end
@@ -835,20 +835,39 @@ object Form2: TForm2
             object ScrollBox5: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 543
+              Width = 1099
+              Height = 516
               Align = alClient
               TabOrder = 0
               object PageControl7: TPageControl
                 Left = 0
                 Top = 0
-                Width = 801
-                Height = 539
-                ActivePage = TabSheet8
+                Width = 985
+                Height = 512
+                ActivePage = TabSheet7
                 Align = alLeft
                 TabOrder = 0
                 object TabSheet7: TTabSheet
                   Caption = 'Statistic'#39's'
+                  object ScrollBox37: TScrollBox
+                    Left = 0
+                    Top = 0
+                    Width = 977
+                    Height = 484
+                    Align = alClient
+                    TabOrder = 0
+                    object Chart1: TChart
+                      Left = 32
+                      Top = 24
+                      Width = 400
+                      Height = 250
+                      BackWall.Brush.Color = clWhite
+                      BackWall.Brush.Style = bsClear
+                      Title.Text.Strings = (
+                        'TChart')
+                      TabOrder = 0
+                    end
+                  end
                 end
                 object TabSheet8: TTabSheet
                   Caption = 'Permission'#39's'
@@ -856,8 +875,8 @@ object Form2: TForm2
                   object ScrollBox11: TScrollBox
                     Left = 0
                     Top = 0
-                    Width = 793
-                    Height = 511
+                    Width = 977
+                    Height = 484
                     Align = alClient
                     TabOrder = 0
                     object Label5: TLabel
@@ -1062,548 +1081,19 @@ object Form2: TForm2
                       ItemHeight = 13
                       TabOrder = 10
                     end
-                  end
-                end
-                object TabSheet9: TTabSheet
-                  Caption = 'Help Desk'
-                  ImageIndex = 2
-                  object ScrollBox8: TScrollBox
-                    Left = 0
-                    Top = 0
-                    Width = 793
-                    Height = 511
-                    Align = alClient
-                    TabOrder = 0
-                    DesignSize = (
-                      789
-                      507)
-                    object Panel15: TPanel
-                      Left = 8
-                      Top = 8
-                      Width = 721
-                      Height = 105
-                      Anchors = [akLeft, akTop, akRight]
-                      TabOrder = 0
-                      DesignSize = (
-                        721
-                        105)
-                      object Button6: TButton
-                        Left = 8
-                        Top = 7
-                        Width = 75
-                        Height = 22
-                        Caption = 'Connect'
-                        TabOrder = 0
-                      end
-                      object Edit3: TEdit
-                        Left = 96
-                        Top = 8
-                        Width = 121
-                        Height = 21
-                        TabOrder = 1
-                        Text = 'Edit3'
-                      end
-                      object Button7: TButton
-                        Left = 8
-                        Top = 39
-                        Width = 75
-                        Height = 22
-                        Caption = 'Port'
-                        TabOrder = 2
-                      end
-                      object Edit4: TEdit
-                        Left = 96
-                        Top = 40
-                        Width = 121
-                        Height = 21
-                        TabOrder = 3
-                        Text = 'Edit3'
-                      end
-                      object Button8: TButton
-                        Left = 8
-                        Top = 71
-                        Width = 75
-                        Height = 22
-                        Caption = 'Proxy'
-                        TabOrder = 4
-                      end
-                      object Edit5: TEdit
-                        Left = 96
-                        Top = 72
-                        Width = 121
-                        Height = 21
-                        TabOrder = 5
-                        Text = 'Edit3'
-                      end
-                      object ListBox1: TListBox
-                        Left = 240
-                        Top = 8
-                        Width = 465
-                        Height = 81
-                        Anchors = [akLeft, akTop, akRight]
-                        ItemHeight = 13
-                        TabOrder = 6
-                      end
-                    end
-                  end
-                end
-                object TabSheet12: TTabSheet
-                  Caption = 'Help Chat'
-                  ImageIndex = 3
-                  object ScrollBox9: TScrollBox
-                    Left = 0
-                    Top = 0
-                    Width = 793
-                    Height = 511
-                    Align = alClient
-                    TabOrder = 0
-                    DesignSize = (
-                      789
-                      507)
-                    object Panel19: TPanel
-                      Left = 8
-                      Top = 8
-                      Width = 721
-                      Height = 145
-                      Anchors = [akLeft, akTop, akRight]
-                      TabOrder = 0
-                      DesignSize = (
-                        721
-                        145)
-                      object Button14: TButton
-                        Left = 8
-                        Top = 7
-                        Width = 75
-                        Height = 22
-                        Caption = 'Connect'
-                        TabOrder = 0
-                      end
-                      object Edit6: TEdit
-                        Left = 96
-                        Top = 8
-                        Width = 121
-                        Height = 21
-                        TabOrder = 1
-                        Text = 'Edit3'
-                      end
-                      object Button15: TButton
-                        Left = 8
-                        Top = 39
-                        Width = 75
-                        Height = 22
-                        Caption = 'Port'
-                        TabOrder = 2
-                      end
-                      object Edit7: TEdit
-                        Left = 96
-                        Top = 40
-                        Width = 121
-                        Height = 21
-                        TabOrder = 3
-                        Text = 'Edit3'
-                      end
-                      object Button16: TButton
-                        Left = 8
-                        Top = 71
-                        Width = 75
-                        Height = 22
-                        Caption = 'Proxy'
-                        TabOrder = 4
-                      end
-                      object Edit8: TEdit
-                        Left = 96
-                        Top = 72
-                        Width = 121
-                        Height = 21
-                        TabOrder = 5
-                        Text = 'Edit3'
-                      end
-                      object ListBox2: TListBox
-                        Left = 240
-                        Top = 8
-                        Width = 465
-                        Height = 121
-                        Anchors = [akLeft, akTop, akRight]
-                        ItemHeight = 13
-                        TabOrder = 6
-                      end
-                      object Button17: TButton
-                        Left = 8
-                        Top = 111
-                        Width = 75
-                        Height = 22
-                        Caption = 'User Name'
-                        TabOrder = 7
-                      end
-                      object Edit9: TEdit
-                        Left = 96
-                        Top = 112
-                        Width = 121
-                        Height = 21
-                        TabOrder = 8
-                        Text = 'Edit3'
-                      end
-                    end
-                  end
-                end
-                object TabSheet13: TTabSheet
-                  Caption = 'Voice'
-                  ImageIndex = 4
-                  object ScrollBox10: TScrollBox
-                    Left = 0
-                    Top = 0
-                    Width = 793
-                    Height = 511
-                    Align = alClient
-                    TabOrder = 0
-                    DesignSize = (
-                      789
-                      507)
-                    object Panel20: TPanel
-                      Left = 8
-                      Top = 8
-                      Width = 725
-                      Height = 145
-                      Anchors = [akLeft, akTop, akRight]
-                      TabOrder = 0
-                      DesignSize = (
-                        725
-                        145)
-                      object Button18: TButton
-                        Left = 8
-                        Top = 7
-                        Width = 75
-                        Height = 22
-                        Caption = 'Connect'
-                        TabOrder = 0
-                      end
-                      object Edit10: TEdit
-                        Left = 96
-                        Top = 8
-                        Width = 121
-                        Height = 21
-                        TabOrder = 1
-                        Text = 'Edit3'
-                      end
-                      object Button19: TButton
-                        Left = 8
-                        Top = 39
-                        Width = 75
-                        Height = 22
-                        Caption = 'Port'
-                        TabOrder = 2
-                      end
-                      object Edit11: TEdit
-                        Left = 96
-                        Top = 40
-                        Width = 121
-                        Height = 21
-                        TabOrder = 3
-                        Text = 'Edit3'
-                      end
-                      object Button20: TButton
-                        Left = 8
-                        Top = 71
-                        Width = 75
-                        Height = 22
-                        Caption = 'Proxy'
-                        TabOrder = 4
-                      end
-                      object Edit12: TEdit
-                        Left = 96
-                        Top = 72
-                        Width = 121
-                        Height = 21
-                        TabOrder = 5
-                        Text = 'Edit3'
-                      end
-                      object ListBox3: TListBox
-                        Left = 240
-                        Top = 8
-                        Width = 469
-                        Height = 121
-                        Anchors = [akLeft, akTop, akRight]
-                        ItemHeight = 13
-                        TabOrder = 6
-                      end
-                      object Button21: TButton
-                        Left = 8
-                        Top = 111
-                        Width = 75
-                        Height = 22
-                        Caption = 'User Name'
-                        TabOrder = 7
-                      end
-                      object Edit13: TEdit
-                        Left = 96
-                        Top = 112
-                        Width = 121
-                        Height = 21
-                        TabOrder = 8
-                        Text = 'Edit3'
-                      end
-                    end
-                  end
-                end
-                object TabSheet20: TTabSheet
-                  Caption = 'Message'#39's'
-                  ImageIndex = 5
-                  object ScrollBox18: TScrollBox
-                    Left = 0
-                    Top = 0
-                    Width = 793
-                    Height = 511
-                    Align = alClient
-                    TabOrder = 0
-                    object Label11: TLabel
-                      Left = 8
-                      Top = 10
-                      Width = 83
-                      Height = 13
-                      Caption = 'Message Type'#39's :'
-                    end
-                    object PageControl8: TPageControl
-                      Left = 8
-                      Top = 33
-                      Width = 449
-                      Height = 384
-                      ActivePage = TabSheet14
-                      TabOrder = 0
-                      object TabSheet14: TTabSheet
-                        Caption = 'System Wide'
-                        object ScrollBox12: TScrollBox
-                          Left = 0
-                          Top = 0
-                          Width = 441
-                          Height = 356
-                          Align = alClient
-                          TabOrder = 0
-                          object Memo1: TMemo
-                            Left = 8
-                            Top = 8
-                            Width = 289
-                            Height = 145
-                            Lines.Strings = (
-                              'Memo1')
-                            TabOrder = 0
-                          end
-                          object ListBox16: TListBox
-                            Left = 176
-                            Top = 176
-                            Width = 121
-                            Height = 153
-                            ItemHeight = 13
-                            TabOrder = 1
-                          end
-                          object ListBox17: TListBox
-                            Left = 8
-                            Top = 176
-                            Width = 121
-                            Height = 153
-                            ItemHeight = 13
-                            TabOrder = 2
-                          end
-                        end
-                      end
-                      object TabSheet15: TTabSheet
-                        Caption = 'Login'
-                        ImageIndex = 1
-                        object ScrollBox13: TScrollBox
-                          Left = 0
-                          Top = 0
-                          Width = 441
-                          Height = 356
-                          Align = alClient
-                          TabOrder = 0
-                          object Memo2: TMemo
-                            Left = 8
-                            Top = 8
-                            Width = 289
-                            Height = 145
-                            Lines.Strings = (
-                              'Memo1')
-                            TabOrder = 0
-                          end
-                          object ListBox14: TListBox
-                            Left = 176
-                            Top = 176
-                            Width = 121
-                            Height = 153
-                            ItemHeight = 13
-                            TabOrder = 1
-                          end
-                          object ListBox15: TListBox
-                            Left = 8
-                            Top = 176
-                            Width = 121
-                            Height = 153
-                            ItemHeight = 13
-                            TabOrder = 2
-                          end
-                        end
-                      end
-                      object TabSheet16: TTabSheet
-                        Caption = 'Info'
-                        ImageIndex = 2
-                        object ScrollBox14: TScrollBox
-                          Left = 0
-                          Top = 0
-                          Width = 441
-                          Height = 356
-                          Align = alClient
-                          TabOrder = 0
-                          object Memo3: TMemo
-                            Left = 8
-                            Top = 8
-                            Width = 289
-                            Height = 145
-                            Lines.Strings = (
-                              'Memo1')
-                            TabOrder = 0
-                          end
-                          object ListBox12: TListBox
-                            Left = 176
-                            Top = 176
-                            Width = 121
-                            Height = 153
-                            ItemHeight = 13
-                            TabOrder = 1
-                          end
-                          object ListBox13: TListBox
-                            Left = 8
-                            Top = 176
-                            Width = 121
-                            Height = 153
-                            ItemHeight = 13
-                            TabOrder = 2
-                          end
-                        end
-                      end
-                      object TabSheet17: TTabSheet
-                        Caption = 'Warning'
-                        ImageIndex = 3
-                        object ScrollBox15: TScrollBox
-                          Left = 0
-                          Top = 0
-                          Width = 441
-                          Height = 356
-                          Align = alClient
-                          TabOrder = 0
-                          object Memo4: TMemo
-                            Left = 8
-                            Top = 8
-                            Width = 289
-                            Height = 145
-                            Lines.Strings = (
-                              'Memo1')
-                            TabOrder = 0
-                          end
-                          object ListBox10: TListBox
-                            Left = 176
-                            Top = 176
-                            Width = 121
-                            Height = 153
-                            ItemHeight = 13
-                            TabOrder = 1
-                          end
-                          object ListBox11: TListBox
-                            Left = 8
-                            Top = 176
-                            Width = 121
-                            Height = 153
-                            ItemHeight = 13
-                            TabOrder = 2
-                          end
-                        end
-                      end
-                      object TabSheet18: TTabSheet
-                        Caption = 'Kick'
-                        ImageIndex = 4
-                        object ScrollBox16: TScrollBox
-                          Left = 0
-                          Top = 0
-                          Width = 441
-                          Height = 356
-                          Align = alClient
-                          TabOrder = 0
-                          object Memo5: TMemo
-                            Left = 8
-                            Top = 8
-                            Width = 289
-                            Height = 145
-                            Lines.Strings = (
-                              'Memo1')
-                            TabOrder = 0
-                          end
-                          object ListBox8: TListBox
-                            Left = 176
-                            Top = 176
-                            Width = 121
-                            Height = 153
-                            ItemHeight = 13
-                            TabOrder = 1
-                          end
-                          object ListBox9: TListBox
-                            Left = 8
-                            Top = 176
-                            Width = 121
-                            Height = 153
-                            ItemHeight = 13
-                            TabOrder = 2
-                          end
-                        end
-                      end
-                      object TabSheet19: TTabSheet
-                        Caption = 'Banned'
-                        ImageIndex = 5
-                        object ScrollBox17: TScrollBox
-                          Left = 0
-                          Top = 0
-                          Width = 441
-                          Height = 356
-                          Align = alClient
-                          TabOrder = 0
-                          object Memo6: TMemo
-                            Left = 8
-                            Top = 8
-                            Width = 289
-                            Height = 145
-                            Lines.Strings = (
-                              'Memo1')
-                            TabOrder = 0
-                          end
-                          object ListBox6: TListBox
-                            Left = 8
-                            Top = 176
-                            Width = 121
-                            Height = 153
-                            ItemHeight = 13
-                            TabOrder = 1
-                          end
-                          object ListBox7: TListBox
-                            Left = 176
-                            Top = 176
-                            Width = 121
-                            Height = 153
-                            ItemHeight = 13
-                            TabOrder = 2
-                          end
-                        end
-                      end
-                    end
                     object PageControl3: TPageControl
-                      Left = 528
-                      Top = 0
-                      Width = 244
-                      Height = 193
+                      Left = 440
+                      Top = 5
+                      Width = 401
+                      Height = 209
                       ActivePage = TabSheet1
-                      TabOrder = 1
+                      TabOrder = 11
                       object TabSheet1: TTabSheet
                         Caption = 'User/Login DataBase'
                         object Panel5: TPanel
                           Left = 0
                           Top = 0
-                          Width = 236
+                          Width = 393
                           Height = 41
                           Align = alTop
                           TabOrder = 0
@@ -1627,8 +1117,8 @@ object Form2: TForm2
                         object DBGrid3: TDBGrid
                           Left = 0
                           Top = 41
-                          Width = 236
-                          Height = 124
+                          Width = 393
+                          Height = 140
                           Align = alClient
                           TabOrder = 1
                           TitleFont.Charset = DEFAULT_CHARSET
@@ -1662,20 +1152,12 @@ object Form2: TForm2
                         end
                       end
                     end
-                    object DBNavigator1: TDBNavigator
-                      Left = 0
-                      Top = 0
-                      Width = 789
-                      Height = 24
-                      Align = alTop
-                      TabOrder = 2
-                    end
                     object ScrollBox3: TScrollBox
-                      Left = 280
-                      Top = 120
-                      Width = 428
-                      Height = 241
-                      TabOrder = 3
+                      Left = 440
+                      Top = 248
+                      Width = 233
+                      Height = 249
+                      TabOrder = 12
                       object UserNameLabel: TLabel
                         Left = 8
                         Top = 8
@@ -1922,33 +1404,631 @@ object Form2: TForm2
                         ValueChecked = 'True'
                         ValueUnchecked = 'False'
                       end
-                      object Panel14: TPanel
-                        Left = 160
-                        Top = 152
-                        Width = 67
-                        Height = 145
-                        TabOrder = 6
-                      end
                       object DBEdit7: TDBEdit
                         Left = 72
                         Top = 160
                         Width = 121
                         Height = 21
-                        TabOrder = 7
+                        TabOrder = 6
                       end
                       object DBEdit8: TDBEdit
                         Left = 72
                         Top = 184
                         Width = 121
                         Height = 21
-                        TabOrder = 8
+                        TabOrder = 7
                       end
                       object DBEdit9: TDBEdit
                         Left = 72
                         Top = 208
                         Width = 121
                         Height = 21
+                        TabOrder = 8
+                      end
+                    end
+                    object DBNavigator1: TDBNavigator
+                      Left = 440
+                      Top = 219
+                      Width = 400
+                      Height = 24
+                      TabOrder = 13
+                    end
+                  end
+                end
+                object TabSheet9: TTabSheet
+                  Caption = 'Help Desk'
+                  ImageIndex = 2
+                  object ScrollBox8: TScrollBox
+                    Left = 0
+                    Top = 0
+                    Width = 977
+                    Height = 484
+                    Align = alClient
+                    TabOrder = 0
+                    DesignSize = (
+                      973
+                      480)
+                    object Panel15: TPanel
+                      Left = 8
+                      Top = 8
+                      Width = 953
+                      Height = 105
+                      Anchors = [akLeft, akTop, akRight]
+                      TabOrder = 0
+                      DesignSize = (
+                        953
+                        105)
+                      object Button6: TButton
+                        Left = 8
+                        Top = 7
+                        Width = 75
+                        Height = 22
+                        Caption = 'Connect'
+                        TabOrder = 0
+                      end
+                      object Edit3: TEdit
+                        Left = 96
+                        Top = 8
+                        Width = 121
+                        Height = 21
+                        TabOrder = 1
+                        Text = 'Edit3'
+                      end
+                      object Button7: TButton
+                        Left = 8
+                        Top = 39
+                        Width = 75
+                        Height = 22
+                        Caption = 'Port'
+                        TabOrder = 2
+                      end
+                      object Edit4: TEdit
+                        Left = 96
+                        Top = 40
+                        Width = 121
+                        Height = 21
+                        TabOrder = 3
+                        Text = 'Edit3'
+                      end
+                      object Button8: TButton
+                        Left = 8
+                        Top = 71
+                        Width = 75
+                        Height = 22
+                        Caption = 'Proxy'
+                        TabOrder = 4
+                      end
+                      object Edit5: TEdit
+                        Left = 96
+                        Top = 72
+                        Width = 121
+                        Height = 21
+                        TabOrder = 5
+                        Text = 'Edit3'
+                      end
+                      object ListBox1: TListBox
+                        Left = 240
+                        Top = 8
+                        Width = 697
+                        Height = 81
+                        Anchors = [akLeft, akTop, akRight]
+                        ItemHeight = 13
+                        TabOrder = 6
+                      end
+                    end
+                    object PageControl15: TPageControl
+                      Left = 8
+                      Top = 128
+                      Width = 753
+                      Height = 337
+                      ActivePage = TabSheet39
+                      Anchors = [akLeft, akTop, akBottom]
+                      TabOrder = 1
+                      object TabSheet39: TTabSheet
+                        Caption = 'Desktops'
+                        object ScrollBox36: TScrollBox
+                          Left = 0
+                          Top = 0
+                          Width = 745
+                          Height = 309
+                          Align = alClient
+                          TabOrder = 0
+                        end
+                      end
+                    end
+                    object ListBox21: TListBox
+                      Left = 784
+                      Top = 149
+                      Width = 177
+                      Height = 316
+                      Anchors = [akLeft, akTop, akBottom]
+                      ItemHeight = 13
+                      TabOrder = 2
+                    end
+                  end
+                end
+                object TabSheet12: TTabSheet
+                  Caption = 'Help Chat'
+                  ImageIndex = 3
+                  object ScrollBox9: TScrollBox
+                    Left = 0
+                    Top = 0
+                    Width = 977
+                    Height = 484
+                    Align = alClient
+                    TabOrder = 0
+                    DesignSize = (
+                      973
+                      480)
+                    object Panel19: TPanel
+                      Left = 8
+                      Top = 8
+                      Width = 893
+                      Height = 401
+                      Anchors = [akLeft, akTop, akRight]
+                      TabOrder = 0
+                      DesignSize = (
+                        893
+                        401)
+                      object Button14: TButton
+                        Left = 8
+                        Top = 7
+                        Width = 75
+                        Height = 22
+                        Caption = 'Connect'
+                        TabOrder = 0
+                      end
+                      object Edit6: TEdit
+                        Left = 96
+                        Top = 8
+                        Width = 121
+                        Height = 21
+                        TabOrder = 1
+                        Text = 'Edit3'
+                      end
+                      object Button15: TButton
+                        Left = 8
+                        Top = 39
+                        Width = 75
+                        Height = 22
+                        Caption = 'Port'
+                        TabOrder = 2
+                      end
+                      object Edit7: TEdit
+                        Left = 96
+                        Top = 40
+                        Width = 121
+                        Height = 21
+                        TabOrder = 3
+                        Text = 'Edit3'
+                      end
+                      object Button16: TButton
+                        Left = 8
+                        Top = 71
+                        Width = 75
+                        Height = 22
+                        Caption = 'Proxy'
+                        TabOrder = 4
+                      end
+                      object Edit8: TEdit
+                        Left = 96
+                        Top = 72
+                        Width = 121
+                        Height = 21
+                        TabOrder = 5
+                        Text = 'Edit3'
+                      end
+                      object ListBox2: TListBox
+                        Left = 240
+                        Top = 8
+                        Width = 637
+                        Height = 321
+                        Anchors = [akLeft, akTop, akRight]
+                        ItemHeight = 13
+                        TabOrder = 6
+                      end
+                      object Button17: TButton
+                        Left = 8
+                        Top = 111
+                        Width = 75
+                        Height = 22
+                        Caption = 'User Name'
+                        TabOrder = 7
+                      end
+                      object Edit9: TEdit
+                        Left = 96
+                        Top = 112
+                        Width = 121
+                        Height = 21
+                        TabOrder = 8
+                        Text = 'Edit3'
+                      end
+                      object ListBox20: TListBox
+                        Left = 8
+                        Top = 168
+                        Width = 209
+                        Height = 161
+                        ItemHeight = 13
                         TabOrder = 9
+                      end
+                      object RichEdit1: TRichEdit
+                        Left = 240
+                        Top = 336
+                        Width = 633
+                        Height = 49
+                        Lines.Strings = (
+                          'RichEdit1')
+                        TabOrder = 10
+                      end
+                      object ChatSendTextButton: TJvImgBtn
+                        Left = 120
+                        Top = 336
+                        Width = 95
+                        Height = 49
+                        Caption = 'Send'
+                        Font.Charset = DEFAULT_CHARSET
+                        Font.Color = clWindowText
+                        Font.Height = -11
+                        Font.Name = 'MS Sans Serif'
+                        Font.Style = [fsBold]
+                        ParentFont = False
+                        TabOrder = 11
+                        OnClick = BackgroundViewButtonClick
+                        Color = 8454016
+                        HotTrackFont.Charset = DEFAULT_CHARSET
+                        HotTrackFont.Color = clWindowText
+                        HotTrackFont.Height = -11
+                        HotTrackFont.Name = 'MS Sans Serif'
+                        HotTrackFont.Style = []
+                        Images = ImageList1
+                        ImageIndex = 9
+                      end
+                    end
+                  end
+                end
+                object TabSheet13: TTabSheet
+                  Caption = 'Voice'
+                  ImageIndex = 4
+                  object ScrollBox10: TScrollBox
+                    Left = 0
+                    Top = 0
+                    Width = 977
+                    Height = 484
+                    Align = alClient
+                    TabOrder = 0
+                    DesignSize = (
+                      973
+                      480)
+                    object Panel20: TPanel
+                      Left = 8
+                      Top = 8
+                      Width = 881
+                      Height = 145
+                      Anchors = [akLeft, akTop, akRight]
+                      TabOrder = 0
+                      DesignSize = (
+                        881
+                        145)
+                      object Button18: TButton
+                        Left = 8
+                        Top = 7
+                        Width = 75
+                        Height = 22
+                        Caption = 'Connect'
+                        TabOrder = 0
+                      end
+                      object Edit10: TEdit
+                        Left = 96
+                        Top = 8
+                        Width = 121
+                        Height = 21
+                        TabOrder = 1
+                        Text = 'Edit3'
+                      end
+                      object Button19: TButton
+                        Left = 8
+                        Top = 39
+                        Width = 75
+                        Height = 22
+                        Caption = 'Port'
+                        TabOrder = 2
+                      end
+                      object Edit11: TEdit
+                        Left = 96
+                        Top = 40
+                        Width = 121
+                        Height = 21
+                        TabOrder = 3
+                        Text = 'Edit3'
+                      end
+                      object Button20: TButton
+                        Left = 8
+                        Top = 71
+                        Width = 75
+                        Height = 22
+                        Caption = 'Proxy'
+                        TabOrder = 4
+                      end
+                      object Edit12: TEdit
+                        Left = 96
+                        Top = 72
+                        Width = 121
+                        Height = 21
+                        TabOrder = 5
+                        Text = 'Edit3'
+                      end
+                      object ListBox3: TListBox
+                        Left = 240
+                        Top = 8
+                        Width = 625
+                        Height = 121
+                        Anchors = [akLeft, akTop, akRight]
+                        ItemHeight = 13
+                        TabOrder = 6
+                      end
+                      object Button21: TButton
+                        Left = 8
+                        Top = 111
+                        Width = 75
+                        Height = 22
+                        Caption = 'User Name'
+                        TabOrder = 7
+                      end
+                      object Edit13: TEdit
+                        Left = 96
+                        Top = 112
+                        Width = 121
+                        Height = 21
+                        TabOrder = 8
+                        Text = 'Edit3'
+                      end
+                    end
+                  end
+                end
+                object TabSheet20: TTabSheet
+                  Caption = 'Message'#39's'
+                  ImageIndex = 5
+                  object ScrollBox18: TScrollBox
+                    Left = 0
+                    Top = 0
+                    Width = 977
+                    Height = 484
+                    Align = alClient
+                    TabOrder = 0
+                    object Label11: TLabel
+                      Left = 8
+                      Top = 10
+                      Width = 83
+                      Height = 13
+                      Caption = 'Message Type'#39's :'
+                    end
+                    object PageControl8: TPageControl
+                      Left = 8
+                      Top = 33
+                      Width = 449
+                      Height = 384
+                      ActivePage = TabSheet14
+                      TabOrder = 0
+                      object TabSheet14: TTabSheet
+                        Caption = 'System Wide'
+                        object ScrollBox12: TScrollBox
+                          Left = 0
+                          Top = 0
+                          Width = 441
+                          Height = 356
+                          Align = alClient
+                          TabOrder = 0
+                          object Memo1: TMemo
+                            Left = 8
+                            Top = 8
+                            Width = 289
+                            Height = 145
+                            Lines.Strings = (
+                              'Memo1')
+                            TabOrder = 0
+                          end
+                          object ListBox16: TListBox
+                            Left = 176
+                            Top = 176
+                            Width = 121
+                            Height = 153
+                            ItemHeight = 13
+                            TabOrder = 1
+                          end
+                          object ListBox17: TListBox
+                            Left = 8
+                            Top = 176
+                            Width = 121
+                            Height = 153
+                            ItemHeight = 13
+                            TabOrder = 2
+                          end
+                        end
+                      end
+                      object TabSheet15: TTabSheet
+                        Caption = 'Login'
+                        ImageIndex = 1
+                        object ScrollBox13: TScrollBox
+                          Left = 0
+                          Top = 0
+                          Width = 441
+                          Height = 356
+                          Align = alClient
+                          TabOrder = 0
+                          object Memo2: TMemo
+                            Left = 8
+                            Top = 8
+                            Width = 289
+                            Height = 145
+                            Lines.Strings = (
+                              'Memo1')
+                            TabOrder = 0
+                          end
+                          object ListBox14: TListBox
+                            Left = 176
+                            Top = 176
+                            Width = 121
+                            Height = 153
+                            ItemHeight = 13
+                            TabOrder = 1
+                          end
+                          object ListBox15: TListBox
+                            Left = 8
+                            Top = 176
+                            Width = 121
+                            Height = 153
+                            ItemHeight = 13
+                            TabOrder = 2
+                          end
+                        end
+                      end
+                      object TabSheet16: TTabSheet
+                        Caption = 'Info'
+                        ImageIndex = 2
+                        object ScrollBox14: TScrollBox
+                          Left = 0
+                          Top = 0
+                          Width = 441
+                          Height = 356
+                          Align = alClient
+                          TabOrder = 0
+                          object Memo3: TMemo
+                            Left = 8
+                            Top = 8
+                            Width = 289
+                            Height = 145
+                            Lines.Strings = (
+                              'Memo1')
+                            TabOrder = 0
+                          end
+                          object ListBox12: TListBox
+                            Left = 176
+                            Top = 176
+                            Width = 121
+                            Height = 153
+                            ItemHeight = 13
+                            TabOrder = 1
+                          end
+                          object ListBox13: TListBox
+                            Left = 8
+                            Top = 176
+                            Width = 121
+                            Height = 153
+                            ItemHeight = 13
+                            TabOrder = 2
+                          end
+                        end
+                      end
+                      object TabSheet17: TTabSheet
+                        Caption = 'Warning'
+                        ImageIndex = 3
+                        object ScrollBox15: TScrollBox
+                          Left = 0
+                          Top = 0
+                          Width = 441
+                          Height = 356
+                          Align = alClient
+                          TabOrder = 0
+                          object Memo4: TMemo
+                            Left = 8
+                            Top = 8
+                            Width = 289
+                            Height = 145
+                            Lines.Strings = (
+                              'Memo1')
+                            TabOrder = 0
+                          end
+                          object ListBox10: TListBox
+                            Left = 176
+                            Top = 176
+                            Width = 121
+                            Height = 153
+                            ItemHeight = 13
+                            TabOrder = 1
+                          end
+                          object ListBox11: TListBox
+                            Left = 8
+                            Top = 176
+                            Width = 121
+                            Height = 153
+                            ItemHeight = 13
+                            TabOrder = 2
+                          end
+                        end
+                      end
+                      object TabSheet18: TTabSheet
+                        Caption = 'Kick'
+                        ImageIndex = 4
+                        object ScrollBox16: TScrollBox
+                          Left = 0
+                          Top = 0
+                          Width = 441
+                          Height = 356
+                          Align = alClient
+                          TabOrder = 0
+                          object Memo5: TMemo
+                            Left = 8
+                            Top = 8
+                            Width = 289
+                            Height = 145
+                            Lines.Strings = (
+                              'Memo1')
+                            TabOrder = 0
+                          end
+                          object ListBox8: TListBox
+                            Left = 176
+                            Top = 176
+                            Width = 121
+                            Height = 153
+                            ItemHeight = 13
+                            TabOrder = 1
+                          end
+                          object ListBox9: TListBox
+                            Left = 8
+                            Top = 176
+                            Width = 121
+                            Height = 153
+                            ItemHeight = 13
+                            TabOrder = 2
+                          end
+                        end
+                      end
+                      object TabSheet19: TTabSheet
+                        Caption = 'Banned'
+                        ImageIndex = 5
+                        object ScrollBox17: TScrollBox
+                          Left = 0
+                          Top = 0
+                          Width = 441
+                          Height = 356
+                          Align = alClient
+                          TabOrder = 0
+                          object Memo6: TMemo
+                            Left = 8
+                            Top = 8
+                            Width = 289
+                            Height = 145
+                            Lines.Strings = (
+                              'Memo1')
+                            TabOrder = 0
+                          end
+                          object ListBox6: TListBox
+                            Left = 8
+                            Top = 176
+                            Width = 121
+                            Height = 153
+                            ItemHeight = 13
+                            TabOrder = 1
+                          end
+                          object ListBox7: TListBox
+                            Left = 176
+                            Top = 176
+                            Width = 121
+                            Height = 153
+                            ItemHeight = 13
+                            TabOrder = 2
+                          end
+                        end
                       end
                     end
                   end
@@ -1962,10 +2042,168 @@ object Form2: TForm2
             object ScrollBox6: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 543
+              Width = 1099
+              Height = 516
               Align = alClient
               TabOrder = 0
+              object Splitter14: TSplitter
+                Left = 185
+                Top = 0
+                Height = 512
+              end
+              object Panel14: TPanel
+                Left = 0
+                Top = 0
+                Width = 185
+                Height = 512
+                Align = alLeft
+                TabOrder = 0
+                object Splitter19: TSplitter
+                  Left = 1
+                  Top = 377
+                  Width = 183
+                  Height = 3
+                  Cursor = crVSplit
+                  Align = alTop
+                end
+                object Panel34: TPanel
+                  Left = 1
+                  Top = 1
+                  Width = 183
+                  Height = 41
+                  Align = alTop
+                  Caption = 'Screens'
+                  TabOrder = 0
+                end
+                object JvSettingsTreeView2: TJvSettingsTreeView
+                  Left = 1
+                  Top = 42
+                  Width = 183
+                  Height = 138
+                  PageDefault = 0
+                  PageList = JvPageList1
+                  Align = alTop
+                  Indent = 19
+                  TabOrder = 1
+                  Items.Data = {
+                    040000001D000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000000000000
+                    047A7A7A7A220000000100000001000000FFFFFFFFFFFFFFFF01000000020000
+                    00097A7A7A7A7A676767671E000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01
+                    0000000000000005687A6868681D000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FF000000000000000004363736371C0000000100000001000000FFFFFFFFFFFF
+                    FFFF01000000010000000367676723000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFF01000000000000000A393938393839383938391F00000001000000010000
+                    00FFFFFFFFFFFFFFFF0000000001000000066868686868681F000000FFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFFFFFF000000000000000006303030303939}
+                  Items.Links = {
+                    0800000001000000010000000100000000000000010000000100000000000000
+                    00000000}
+                end
+                object JvPageList2: TJvPageList
+                  Left = 1
+                  Top = 180
+                  Width = 183
+                  Height = 197
+                  ActivePage = JvStandardPage4
+                  PropagateEnable = False
+                  Align = alTop
+                  object JvStandardPage3: TJvStandardPage
+                    Left = 0
+                    Top = 0
+                    Width = 183
+                    Height = 197
+                    Caption = 'JvStandardPage1'
+                  end
+                  object JvStandardPage4: TJvStandardPage
+                    Left = 0
+                    Top = 0
+                    Width = 183
+                    Height = 197
+                    Caption = 'JvStandardPage2'
+                    object JvImageComboBox2: TJvImageComboBox
+                      Left = 120
+                      Top = 16
+                      Width = 145
+                      Height = 23
+                      Style = csOwnerDrawVariable
+                      ButtonStyle = fsLighter
+                      DroppedWidth = 145
+                      ImageHeight = 0
+                      ImageWidth = 0
+                      ItemHeight = 17
+                      ItemIndex = -1
+                      TabOrder = 0
+                      Items = <>
+                    end
+                  end
+                end
+              end
+              object Panel29: TPanel
+                Left = 188
+                Top = 0
+                Width = 907
+                Height = 512
+                Align = alClient
+                Caption = 'Panel29'
+                TabOrder = 1
+                object Splitter16: TSplitter
+                  Left = 1
+                  Top = 389
+                  Width = 905
+                  Height = 3
+                  Cursor = crVSplit
+                  Align = alBottom
+                end
+                object Splitter17: TSplitter
+                  Left = 1
+                  Top = 42
+                  Width = 905
+                  Height = 3
+                  Cursor = crVSplit
+                  Align = alTop
+                end
+                object Splitter18: TSplitter
+                  Left = 693
+                  Top = 45
+                  Height = 344
+                  Align = alRight
+                end
+                object Panel31: TPanel
+                  Left = 1
+                  Top = 392
+                  Width = 905
+                  Height = 119
+                  Align = alBottom
+                  Caption = 'Panel31'
+                  TabOrder = 0
+                end
+                object Panel32: TPanel
+                  Left = 1
+                  Top = 1
+                  Width = 905
+                  Height = 41
+                  Align = alTop
+                  Caption = 'Panel32'
+                  TabOrder = 1
+                end
+                object StringGrid1: TStringGrid
+                  Left = 1
+                  Top = 45
+                  Width = 692
+                  Height = 344
+                  Align = alClient
+                  TabOrder = 2
+                end
+                object Panel33: TPanel
+                  Left = 696
+                  Top = 45
+                  Width = 210
+                  Height = 344
+                  Align = alRight
+                  Caption = 'Panel33'
+                  TabOrder = 3
+                end
+              end
             end
           end
           object TabSheet34: TTabSheet
@@ -1974,15 +2212,15 @@ object Form2: TForm2
             object ScrollBox29: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 543
+              Width = 1099
+              Height = 516
               Align = alClient
               TabOrder = 0
               object PageControl6: TPageControl
                 Left = 0
                 Top = 0
-                Width = 1253
-                Height = 539
+                Width = 1095
+                Height = 512
                 ActivePage = TabSheet6
                 Align = alClient
                 Font.Charset = ANSI_CHARSET
@@ -1999,20 +2237,20 @@ object Form2: TForm2
                   object ScrollBox31: TScrollBox
                     Left = 0
                     Top = 0
-                    Width = 1224
-                    Height = 531
+                    Width = 1066
+                    Height = 504
                     Align = alClient
                     TabOrder = 0
                     object Splitter4: TSplitter
                       Left = 193
                       Top = 0
-                      Height = 527
+                      Height = 500
                     end
                     object Panel16: TPanel
                       Left = 0
                       Top = 0
                       Width = 193
-                      Height = 527
+                      Height = 500
                       Align = alLeft
                       TabOrder = 0
                       object Splitter5: TSplitter
@@ -2077,38 +2315,68 @@ object Form2: TForm2
                         Caption = 'Panel24'
                         TabOrder = 2
                       end
+                      object ListView1: TListView
+                        Left = 1
+                        Top = 393
+                        Width = 191
+                        Height = 106
+                        Align = alClient
+                        Columns = <>
+                        TabOrder = 3
+                      end
                     end
                     object Panel18: TPanel
                       Left = 196
                       Top = 0
-                      Width = 1024
-                      Height = 527
+                      Width = 866
+                      Height = 500
                       Align = alClient
                       Caption = 'Panel18'
                       TabOrder = 1
+                      object Splitter6: TSplitter
+                        Left = 705
+                        Top = 33
+                        Height = 466
+                      end
                       object Panel21: TPanel
                         Left = 1
                         Top = 1
-                        Width = 1022
+                        Width = 864
                         Height = 32
                         Align = alTop
                         Caption = 'Panel17'
                         TabOrder = 0
                       end
-                      object JvDesignScrollBox1: TJvDesignScrollBox
+                      object Panel25: TPanel
                         Left = 1
                         Top = 33
-                        Width = 1022
-                        Height = 493
-                        Align = alClient
+                        Width = 704
+                        Height = 466
+                        Align = alLeft
+                        Caption = 'Panel25'
                         TabOrder = 1
+                        object JvDesignScrollBox1: TJvDesignScrollBox
+                          Left = 1
+                          Top = 1
+                          Width = 702
+                          Height = 464
+                          Align = alClient
+                          TabOrder = 0
+                          object DevelopmentDesignerPanel: TJvDesignPanel
+                            Left = 0
+                            Top = -1
+                            Width = 793
+                            Height = 530
+                            TabOrder = 0
+                          end
+                        end
                       end
-                      object JvDesignPanel1: TJvDesignPanel
-                        Left = 8
-                        Top = 40
-                        Width = 793
-                        Height = 481
-                        Caption = 'JvDesignPanel1'
+                      object ScrollBox32: TScrollBox
+                        Left = 708
+                        Top = 33
+                        Width = 157
+                        Height = 466
+                        Align = alClient
                         TabOrder = 2
                       end
                     end
@@ -2127,15 +2395,15 @@ object Form2: TForm2
                   object ScrollBox30: TScrollBox
                     Left = 0
                     Top = 0
-                    Width = 1224
-                    Height = 531
+                    Width = 1066
+                    Height = 504
                     Align = alClient
                     TabOrder = 0
                     object Panel1: TPanel
                       Left = 0
                       Top = 0
                       Width = 169
-                      Height = 527
+                      Height = 500
                       Align = alLeft
                       TabOrder = 0
                       object Splitter1: TSplitter
@@ -2146,14 +2414,16 @@ object Form2: TForm2
                         Cursor = crVSplit
                         Align = alTop
                       end
-                      object ListBox18: TListBox
+                      object ListBox18: TJvSettingsTreeView
                         Left = 1
                         Top = 25
                         Width = 167
                         Height = 320
+                        PageDefault = 0
                         Align = alTop
-                        ItemHeight = 13
+                        Indent = 19
                         TabOrder = 0
+                        Items.Links = {00000000}
                       end
                       object Panel3: TPanel
                         Left = 1
@@ -2177,7 +2447,7 @@ object Form2: TForm2
                         Left = 1
                         Top = 369
                         Width = 167
-                        Height = 157
+                        Height = 130
                         Align = alClient
                         ItemHeight = 13
                         TabOrder = 3
@@ -2186,21 +2456,26 @@ object Form2: TForm2
                     object Panel4: TPanel
                       Left = 169
                       Top = 0
-                      Width = 1051
-                      Height = 527
+                      Width = 893
+                      Height = 500
                       Align = alClient
                       TabOrder = 1
+                      object Splitter11: TSplitter
+                        Left = 673
+                        Top = 1
+                        Height = 498
+                      end
                       object Panel6: TPanel
                         Left = 1
                         Top = 1
-                        Width = 608
-                        Height = 525
+                        Width = 672
+                        Height = 498
                         Align = alLeft
                         TabOrder = 0
                         object Splitter2: TSplitter
                           Left = 1
                           Top = 345
-                          Width = 606
+                          Width = 670
                           Height = 3
                           Cursor = crVSplit
                           Align = alTop
@@ -2208,7 +2483,7 @@ object Form2: TForm2
                         object SynEdit1: TSynEdit
                           Left = 1
                           Top = 1
-                          Width = 606
+                          Width = 670
                           Height = 344
                           Align = alTop
                           Font.Charset = DEFAULT_CHARSET
@@ -2226,6 +2501,163 @@ object Form2: TForm2
                           FontSmoothing = fsmNone
                         end
                       end
+                      object PageControl12: TPageControl
+                        Left = 676
+                        Top = 1
+                        Width = 216
+                        Height = 498
+                        ActivePage = TabSheet38
+                        Align = alClient
+                        TabOrder = 1
+                        object TabSheet38: TTabSheet
+                          Caption = 'Git'
+                          object ScrollBox33: TScrollBox
+                            Left = 0
+                            Top = 0
+                            Width = 208
+                            Height = 470
+                            Align = alClient
+                            TabOrder = 0
+                            object Splitter12: TSplitter
+                              Left = 0
+                              Top = 193
+                              Width = 204
+                              Height = 3
+                              Cursor = crVSplit
+                              Align = alTop
+                            end
+                            object Panel27: TPanel
+                              Left = 0
+                              Top = 0
+                              Width = 204
+                              Height = 193
+                              Align = alTop
+                              Caption = 'Reprosities'
+                              TabOrder = 0
+                              object ScrollBox35: TScrollBox
+                                Left = 1
+                                Top = 1
+                                Width = 202
+                                Height = 191
+                                Align = alClient
+                                TabOrder = 0
+                                object Splitter13: TSplitter
+                                  Left = 0
+                                  Top = 33
+                                  Height = 137
+                                end
+                                object JvSettingsTreeView1: TJvSettingsTreeView
+                                  Left = 0
+                                  Top = 32
+                                  Width = 169
+                                  Height = 138
+                                  PageDefault = 0
+                                  PageList = JvPageList1
+                                  Indent = 19
+                                  TabOrder = 0
+                                  Items.Data = {
+                                    040000001D000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000000000000
+                                    047A7A7A7A220000000000000000000000FFFFFFFFFFFFFFFF01000000020000
+                                    00097A7A7A7A7A676767671E000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01
+                                    0000000000000005687A6868681D000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                                    FF000000000000000004363736371C0000000000000000000000FFFFFFFFFFFF
+                                    FFFF01000000010000000367676723000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                                    FFFF01000000000000000A393938393839383938391F00000000000000000000
+                                    00FFFFFFFFFFFFFFFF0000000001000000066868686868681F00000002000000
+                                    02000000FFFFFFFFFFFFFFFF000000000000000006303030303939}
+                                  Items.Links = {
+                                    0800000001000000010000000100000000000000010000000100000000000000
+                                    00000000}
+                                end
+                                object JvPageList1: TJvPageList
+                                  Left = 173
+                                  Top = 33
+                                  Width = 340
+                                  Height = 136
+                                  ActivePage = JvStandardPage2
+                                  PropagateEnable = False
+                                  object JvStandardPage1: TJvStandardPage
+                                    Left = 0
+                                    Top = 0
+                                    Width = 340
+                                    Height = 136
+                                    Caption = 'JvStandardPage1'
+                                  end
+                                  object JvStandardPage2: TJvStandardPage
+                                    Left = 0
+                                    Top = 0
+                                    Width = 340
+                                    Height = 136
+                                    Caption = 'JvStandardPage2'
+                                    object JvImageComboBox1: TJvImageComboBox
+                                      Left = 120
+                                      Top = 16
+                                      Width = 145
+                                      Height = 23
+                                      Style = csOwnerDrawVariable
+                                      ButtonStyle = fsLighter
+                                      DroppedWidth = 145
+                                      ImageHeight = 0
+                                      ImageWidth = 0
+                                      ItemHeight = 17
+                                      ItemIndex = -1
+                                      TabOrder = 0
+                                      Items = <>
+                                    end
+                                  end
+                                end
+                                object Panel28: TPanel
+                                  Left = 0
+                                  Top = 0
+                                  Width = 513
+                                  Height = 33
+                                  Align = alTop
+                                  Alignment = taLeftJustify
+                                  Caption = ' Reprositories'
+                                  TabOrder = 2
+                                end
+                              end
+                            end
+                            object Panel30: TPanel
+                              Left = 0
+                              Top = 196
+                              Width = 204
+                              Height = 41
+                              Align = alTop
+                              Caption = 'Panel29'
+                              TabOrder = 1
+                            end
+                            object ScrollBox34: TScrollBox
+                              Left = 0
+                              Top = 237
+                              Width = 204
+                              Height = 229
+                              Align = alClient
+                              TabOrder = 2
+                              object SynEdit2: TSynEdit
+                                Left = 0
+                                Top = 0
+                                Width = 200
+                                Height = 129
+                                Align = alTop
+                                Font.Charset = DEFAULT_CHARSET
+                                Font.Color = clWindowText
+                                Font.Height = -13
+                                Font.Name = 'Courier New'
+                                Font.Style = []
+                                TabOrder = 0
+                                Gutter.Font.Charset = DEFAULT_CHARSET
+                                Gutter.Font.Color = clWindowText
+                                Gutter.Font.Height = -11
+                                Gutter.Font.Name = 'Courier New'
+                                Gutter.Font.Style = []
+                                Lines.UnicodeStrings = 'SynEdit1'
+                                FontSmoothing = fsmNone
+                              end
+                            end
+                          end
+                        end
+                      end
                     end
                   end
                 end
@@ -2235,8 +2667,8 @@ object Form2: TForm2
         end
         object JvPanel1: TJvPanel
           Left = 1
-          Top = 23
-          Width = 1265
+          Top = 18
+          Width = 1107
           Height = 25
           Align = alTop
           Font.Charset = DEFAULT_CHARSET
@@ -2290,56 +2722,576 @@ object Form2: TForm2
         end
         object JvPanel2: TJvPanel
           Left = 1
-          Top = 48
-          Width = 1265
-          Height = 49
+          Top = 43
+          Width = 1107
+          Height = 81
           Align = alTop
           TabOrder = 2
-        end
-        object JvComboListBox1: TJvComboListBox
-          Left = 992
-          Top = 232
-          Width = 129
-          Height = 177
-          DropdownMenu = LocationPopupMenu
-          DrawStyle = dsProportional
-          ScrollBars = ssVertical
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          Items.Strings = (
-            'Januar'
-            'Februar'
-            'M'#228'rz'
-            'April'
-            'Mai'
-            'Juni'
-            'July'
-            'August'
-            'September'
-            'Oktober'
-            'November'
-            'Dezember'
-            '')
-          ParentFont = False
-          TabOrder = 3
-          Visible = False
-          OnMeasureItem = JvComboListBox1MeasureItem
+          object PageControl16: TPageControl
+            Left = 1
+            Top = 1
+            Width = 1105
+            Height = 79
+            ActivePage = TabSheet40
+            Align = alClient
+            TabOrder = 0
+            object TabSheet40: TTabSheet
+              Caption = 'Standard'
+              object PageScroller1: TPageScroller
+                Left = 0
+                Top = 0
+                Width = 510
+                Height = 51
+                Control = DevelopmentMenuPanel
+                TabOrder = 0
+                object DevelopmentMenuPanel: TPanel
+                  Left = 0
+                  Top = 0
+                  Width = 630
+                  Height = 51
+                  Align = alLeft
+                  TabOrder = 0
+                  object JvSpeedButton1: TJvSpeedButton
+                    Left = 88
+                    Top = 5
+                    Width = 40
+                    Height = 40
+                    GroupIndex = 1
+                    Down = True
+                    Glyph.Data = {
+                      46090000424D4609000000000000360400002800000024000000240000000100
+                      0800000000001005000025160000251600000001000000000000000000000000
+                      80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                      A6000020400000206000002080000020A0000020C0000020E000004000000040
+                      20000040400000406000004080000040A0000040C0000040E000006000000060
+                      20000060400000606000006080000060A0000060C0000060E000008000000080
+                      20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                      200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                      200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                      200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                      20004000400040006000400080004000A0004000C0004000E000402000004020
+                      20004020400040206000402080004020A0004020C0004020E000404000004040
+                      20004040400040406000404080004040A0004040C0004040E000406000004060
+                      20004060400040606000406080004060A0004060C0004060E000408000004080
+                      20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                      200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                      200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                      200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                      20008000400080006000800080008000A0008000C0008000E000802000008020
+                      20008020400080206000802080008020A0008020C0008020E000804000008040
+                      20008040400080406000804080008040A0008040C0008040E000806000008060
+                      20008060400080606000806080008060A0008060C0008060E000808000008080
+                      20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                      200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                      200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                      200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                      2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                      2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                      2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                      2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                      2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                      2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                      2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFF00FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFF00FFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFF00FFFFFF00FFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFF00FFFFFFFF00FFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FF00FFFF00FFFFFF00FF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFF0000FFFF
+                      FFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFF
+                      FF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFF00FFFFFFFFFFFF000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFF00FFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFF
+                      00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFF
+                      FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FF00FFFFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFF00FFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFF00FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFF}
+                  end
+                  object JvSpeedButton2: TJvSpeedButton
+                    Left = 122
+                    Top = 5
+                    Width = 40
+                    Height = 40
+                    GroupIndex = 1
+                    Flat = True
+                    Glyph.Data = {
+                      46090000424D4609000000000000360400002800000024000000240000000100
+                      0800000000001005000025160000251600000001000000000000000000000000
+                      80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                      A6000020400000206000002080000020A0000020C0000020E000004000000040
+                      20000040400000406000004080000040A0000040C0000040E000006000000060
+                      20000060400000606000006080000060A0000060C0000060E000008000000080
+                      20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                      200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                      200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                      200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                      20004000400040006000400080004000A0004000C0004000E000402000004020
+                      20004020400040206000402080004020A0004020C0004020E000404000004040
+                      20004040400040406000404080004040A0004040C0004040E000406000004060
+                      20004060400040606000406080004060A0004060C0004060E000408000004080
+                      20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                      200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                      200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                      200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                      20008000400080006000800080008000A0008000C0008000E000802000008020
+                      20008020400080206000802080008020A0008020C0008020E000804000008040
+                      20008040400080406000804080008040A0008040C0008040E000806000008060
+                      20008060400080606000806080008060A0008060C0008060E000808000008080
+                      20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                      200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                      200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                      200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                      2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                      2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                      2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                      2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                      2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                      2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                      2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFF525252525252525252525252525252525252FFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      52FFFF00000000000000FFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFF52525252525252525252525252529BFFFF52FFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFF0000000000
+                      000000FFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFF52FFFF000000000000FFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFF00000000000000000000FFFFFF
+                      FF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFF00
+                      00000000000000FFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFF525252525252525252525252525252525252525252525252
+                      525252529BF6FFFFFFFFFFFF52F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6
+                      F6F6F6F6F6F6F6F6F79BF6FFFFFFFFFF52F60707070707070707070707070708
+                      F6F6F6F6F6F6F6F6F6F6F6F6F6F75BF6FFFFFFFF52F607000000000000000000
+                      0000F708000000000000F6F60000000000F6075B08FFFFFF52F6070707070707
+                      0707070707070708F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6075B08FFFF52F6F6F6
+                      F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F75B08FFFF
+                      52525252525252525252525252525252525252525252525252525252525252A4
+                      F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFF}
+                  end
+                  object JvSpeedButton3: TJvSpeedButton
+                    Left = 158
+                    Top = 5
+                    Width = 40
+                    Height = 40
+                    GroupIndex = 1
+                    Flat = True
+                    Glyph.Data = {
+                      46090000424D4609000000000000360400002800000024000000240000000100
+                      0800000000001005000025160000251600000001000000000000000000000000
+                      80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                      A6000020400000206000002080000020A0000020C0000020E000004000000040
+                      20000040400000406000004080000040A0000040C0000040E000006000000060
+                      20000060400000606000006080000060A0000060C0000060E000008000000080
+                      20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                      200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                      200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                      200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                      20004000400040006000400080004000A0004000C0004000E000402000004020
+                      20004020400040206000402080004020A0004020C0004020E000404000004040
+                      20004040400040406000404080004040A0004040C0004040E000406000004060
+                      20004060400040606000406080004060A0004060C0004060E000408000004080
+                      20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                      200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                      200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                      200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                      20008000400080006000800080008000A0008000C0008000E000802000008020
+                      20008020400080206000802080008020A0008020C0008020E000804000008040
+                      20008040400080406000804080008040A0008040C0008040E000806000008060
+                      20008060400080606000806080008060A0008060C0008060E000808000008080
+                      20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                      200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                      200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                      200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                      2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                      2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                      2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                      2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                      2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                      2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                      2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7A4F6FFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5252005B
+                      07FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF07
+                      49FFF6F74952FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFF5BA4FFFFFFA49BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFF708FFFFF600F6FFFFFF4907FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFF52005207A49BFFFFFFF752FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFF5207F7520008FFFFFF52F7FFFFFFFFFFFFFFFFFFFFFF
+                      FF525252525252525252525252524908FFFF08FFFFFF0849FFFFFFFFFFFFFFFF
+                      FFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFF4908FFFFFFFFFFFFA400A4F6FFFF
+                      FFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFF4908FFFFFFFFFFFFFF07
+                      9B005BF6FFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFF4908FFFFFFFF
+                      FFFFFFFFF6529BFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFF4908
+                      FFFFFFFFFFFFFFF6529BFFFFFFFFFFFFFFFFFFFFFF52FFFF000000000000009B
+                      FFFF49F6FFFFFFFFFFFFF6529BFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFF
+                      FFFFFFFFFFFF49F6FFFFFFFFFFF6529BFFFFFFFFFFFFFFFFFFFFFFFFFF52F6F6
+                      F6F6F6F6F6F6F6F6F6F600F6FFFFFFFFF6529BFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FF5252525252525252525252525200F6FFFFFFF6525BFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFF00F6FFFFFF525BFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFF00F6FFFF525BFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFF52FFFF000000000000009BFFFF00F6FF5249FF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFF00F6
+                      525B52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFF
+                      FFFF00525BFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFF00000000
+                      0000F6FFFFFF005BFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFF
+                      FFFFFFFFFFFFFFFFFFFF52FFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFF52FFFF000000000000000000F6FFFFFFFF52FFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFF000000000000009BFFFFFFFF
+                      FFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF525252
+                      525252525252525252525252525252FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFF}
+                  end
+                  object JvSpeedButton4: TJvSpeedButton
+                    Left = 199
+                    Top = 5
+                    Width = 40
+                    Height = 40
+                    GroupIndex = 1
+                    Flat = True
+                    Glyph.Data = {
+                      46090000424D4609000000000000360400002800000024000000240000000100
+                      0800000000001005000025160000251600000001000000000000000000000000
+                      80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                      A6000020400000206000002080000020A0000020C0000020E000004000000040
+                      20000040400000406000004080000040A0000040C0000040E000006000000060
+                      20000060400000606000006080000060A0000060C0000060E000008000000080
+                      20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                      200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                      200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                      200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                      20004000400040006000400080004000A0004000C0004000E000402000004020
+                      20004020400040206000402080004020A0004020C0004020E000404000004040
+                      20004040400040406000404080004040A0004040C0004040E000406000004060
+                      20004060400040606000406080004060A0004060C0004060E000408000004080
+                      20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                      200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                      200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                      200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                      20008000400080006000800080008000A0008000C0008000E000802000008020
+                      20008020400080206000802080008020A0008020C0008020E000804000008040
+                      20008040400080406000804080008040A0008040C0008040E000806000008060
+                      20008060400080606000806080008060A0008060C0008060E000808000008080
+                      20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                      200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                      200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                      200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                      2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                      2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                      2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                      2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                      2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                      2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                      2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFDADADADADADADADADADADADAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFF609FFFFFFFFFFFFFFFF0909FF0909FF09ECF5F6FFFFFF
+                      FFFFF6F5ECED09FFFFFFFFFFFFF6DA09FFFFFFFFFFFF09DA09FFECE3E3E3ECE3
+                      DA09FFFFFF09DAE3ECECE2FFFFFFFFFFFFFFE3E3FFFFFFFFFFFFECE2FFFFECDA
+                      09FFFFFFECE2FFFFF6DAECFFFFFFFFFFFFFFFFFFFFFF09DAF6FFFFFFFFFFE2EC
+                      FFFFECE2FFFFFFFFF6DA09FFF5DAFFFFFFFFFFFFFFFFFFFFFFFFFFE2E2E2E2E2
+                      E2E2DAF6FFFFECE3FFFFFFFFFFE2ECFFECE2FFFFFFFFFFFFFFFFFFFFFFFFFFEC
+                      DA09090909E2E3FFFFFFECE3FFFFFFFFFFE3ECFFECE2FFFFFFFFFFFFFFFFFFFF
+                      FFFFFF09DA09FFFFF6DA09FFFFFFECE2FFFFFFFFFFDAF5FF09DAF6FFFFFFFFFF
+                      FFFFFFFFFFFFFFFFE3ECFFFFF5DAFFFFFFFFECDAF5FFFFFF09DA09FFFFE2ECFF
+                      FFFFFFFFFFFFFFFFFFFFFFFF09E2FFFFE3ECFFFFFFFFECE3EBECF5ECDAECFFFF
+                      FF09E2E3F5F5E3FFFFFFFFFFFFFFFFFFFFDA0909DA09FFFFFFFFECE3FF09EBEB
+                      09FFFFFFFFFFF6EDEBEBF5FFFFFFFFFFFFFFFFFFFFECEBECE2FFFFFFFFFFECE3
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF09DAE2F5FFFFFF
+                      FFFFECE3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE2DA
+                      F6FFFFFFFFFFECE3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFF6FFFFFFFFFFFFEDECFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFF}
+                  end
+                  object JvSpeedButton5: TJvSpeedButton
+                    Left = 242
+                    Top = 5
+                    Width = 40
+                    Height = 40
+                    GroupIndex = 1
+                    Flat = True
+                    Glyph.Data = {
+                      46090000424D4609000000000000360400002800000024000000240000000100
+                      0800000000001005000025160000251600000001000000000000000000000000
+                      80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                      A6000020400000206000002080000020A0000020C0000020E000004000000040
+                      20000040400000406000004080000040A0000040C0000040E000006000000060
+                      20000060400000606000006080000060A0000060C0000060E000008000000080
+                      20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                      200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                      200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                      200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                      20004000400040006000400080004000A0004000C0004000E000402000004020
+                      20004020400040206000402080004020A0004020C0004020E000404000004040
+                      20004040400040406000404080004040A0004040C0004040E000406000004060
+                      20004060400040606000406080004060A0004060C0004060E000408000004080
+                      20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                      200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                      200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                      200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                      20008000400080006000800080008000A0008000C0008000E000802000008020
+                      20008020400080206000802080008020A0008020C0008020E000804000008040
+                      20008040400080406000804080008040A0008040C0008040E000806000008060
+                      20008060400080606000806080008060A0008060C0008060E000808000008080
+                      20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                      200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                      200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                      200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                      2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                      2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                      2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                      2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                      2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                      2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                      2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF09E2E2E2E2E2
+                      E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E209E2F5
+                      F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6
+                      F5E2E2F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6
+                      F6F6F6F6F6E2E2F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6
+                      F6F6F6F6F6F6F6F6F6E2E2F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6
+                      F6F6F6F6F6F6F6F6F6F6F6F6F6E2E2F6F6F6F6F6F6F6F6F6F6F6F607F707F6F6
+                      F6F607F6F60707F6F6F6F6F6F6F6F6F6F6E2E2F6F6F6F6F6F6F6F6F6F6074952
+                      5B495BF6F60752F6074907F6F6F6F6F6F6F6F6F6F6E2E2F6F6F6F6F6F6F6F6F6
+                      0800F7F6F6F65B5BF60752074907F6F6F6F6F6F6F6F6F6F6F6E2E2F6F6F6F6F6
+                      F6F6F6F6A45BF6F6F6F608000807494907F6F6F6F6F6F6F6F6F6F6F6F6E2E2F6
+                      F6F6F6F6F6F6F6F65BA4F6F6F6F6F64907074952F7F6F6F6F6F6F6F6F6F6F6F6
+                      F6E2E2F6F6F6F6F6F6F6F6F65BA4F6F6F6F6F6490707520849F7F6F6F6F6F6F6
+                      F6F6F6F6F6E2E2F6F6F6F6F6F6F6F6F6A45BF6F6F6F6F600080752F6085207F6
+                      F6F6F6F6F6F6F6F6F6E2E2F6F6F6F6F6F6F6F6F60800F7F6F6F69B52F60752F6
+                      F6F6F6F6F6F6F6F6F6F6F6F6F6E2E2F6F6F6F6F6F6F6F6F6F60749529B525208
+                      F60752F6F6F6F6F6F6F6F6F6F6F6F6F6F6E2E2F6F6F6F6F6F6F6F6F6F6F6F6F7
+                      F707F6F6F6079BF6F6F6F6F6F6F6F6F6F6F6F6F6F6E2E2F6F6F6F6F6F6F6F6F6
+                      F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6E2E2F6F6F6F6F6
+                      F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6E2E2F6
+                      F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6
+                      F6E2E2F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6
+                      F6F6F6F6F6E2E2F5F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6
+                      F6F6F6F6F6F6F6F6F5E209E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2E2
+                      E2E2E2E2E2E2E2E2E2E2E2E2E209FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFF}
+                    Margin = 0
+                  end
+                  object JvSpeedButton6: TJvSpeedButton
+                    Left = 285
+                    Top = 5
+                    Width = 40
+                    Height = 40
+                    GroupIndex = 1
+                    Flat = True
+                    Glyph.Data = {
+                      46090000424D4609000000000000360400002800000024000000240000000100
+                      0800000000001005000025160000251600000001000000000000000000000000
+                      80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                      A6000020400000206000002080000020A0000020C0000020E000004000000040
+                      20000040400000406000004080000040A0000040C0000040E000006000000060
+                      20000060400000606000006080000060A0000060C0000060E000008000000080
+                      20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                      200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                      200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                      200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                      20004000400040006000400080004000A0004000C0004000E000402000004020
+                      20004020400040206000402080004020A0004020C0004020E000404000004040
+                      20004040400040406000404080004040A0004040C0004040E000406000004060
+                      20004060400040606000406080004060A0004060C0004060E000408000004080
+                      20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                      200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                      200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                      200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                      20008000400080006000800080008000A0008000C0008000E000802000008020
+                      20008020400080206000802080008020A0008020C0008020E000804000008040
+                      20008040400080406000804080008040A0008040C0008040E000806000008060
+                      20008060400080606000806080008060A0008060C0008060E000808000008080
+                      20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                      200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                      200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                      200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                      2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                      2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                      2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                      2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                      2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                      2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                      2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFECECECECECECECEC
+                      ECECECECECECECECECECECECECECECECECECECECECECECECFFFFFFFFECFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFECFFFFFFFF
+                      ECFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEC
+                      FFFFFFFFECFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FF0000
+                      00FFFFECFFFFFFFFECFFFFFFF79BA40708A4F6FFF6A408079B9BF7FFFFFFFFFF
+                      FF00FFFFFFFFFFECFFFFFFFFECFFFFA400525B499B00F6FF08005B005B520052
+                      F6FFFFFFFF00FFFFFFFFFFECFFFFFFFFECFFFF005BFFFFF64900F6FF080049F6
+                      FFFF0700A4FFFFFFFF00FFFFFFFFFFECFFFFFFFFECFFFF00A4FFFFFFA400F6FF
+                      0800F7FFFFFFFF5B49FFFFFFFF00FFFFFFFFFFECFFFFFFFFECFFFFA400A407F6
+                      F700F6FF080007FFFFFFFFA400F6FFFFFF00FFFFFFFFFFECFFFFFFFFECFFFFFF
+                      F75200000000F6FF080007FFFFFFFFF700F6FFFFFF00FFFFFFFFFFECFFFFFFFF
+                      ECFFFFFFFFFFFFF6A400F6FF0800A4FFFFFFFFA400FFFFFFFF00FFFFFFFFFFEC
+                      FFFFFFFFECFFFFF607FFFFFF9B00FFFF080049F6FFFFF64952FFFFFFFF00FFFF
+                      FFFFFFECFFFFFFFFECFFFFF6005BA49B00A4FFFF08009B49A4A4490007FFFFFF
+                      FF00FFFFFFFFFFECFFFFFFFFECFFFFFF079B5252F7FFFFFF080007075B529B08
+                      FFFFFFFFFF00FFFFFFFFFFECFFFFFFFFECFFFFFFFFFFFFFFFFFFFFFF080007FF
+                      FFFFFFFFFFFFFFFFFF00FFFFFFFFFFECFFFFFFFFECFFFFFFFFFFFFFFFFFFFFFF
+                      080007FFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFECFFFFFFFFECFFFFFFFFFFFFFF
+                      FFFFFFFF080007FFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFECFFFFFFFFECFFFFFF
+                      FFFFFFFFFFFFFFFF084907FFFFFFFFFFFFFF000000FF000000FFFFECFFFFFFFF
+                      ECFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEC
+                      FFFFFFFFECFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFECFFFFFFFFECECECECECECECECECECECECECECECECECECECECECECECEC
+                      ECECECECECECECECFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                      FFFFFFFFFFFFFFFFFFFF}
+                  end
+                  object BackgroundViewButton: TJvImgBtn
+                    Left = 5
+                    Top = 5
+                    Width = 78
+                    Height = 40
+                    Caption = 'View'
+                    TabOrder = 0
+                    OnClick = BackgroundViewButtonClick
+                    Color = 8454016
+                    Images = ImageList1
+                    ImageIndex = 8
+                  end
+                end
+              end
+            end
+            object TabSheet41: TTabSheet
+              Caption = 'Database Control'#39's'
+              ImageIndex = 1
+            end
+            object TabSheet42: TTabSheet
+              Caption = 'Database Source'#39's'
+              ImageIndex = 2
+            end
+          end
         end
       end
     end
   end
   object DataSource1: TDataSource
     DataSet = Table1
-    Left = 916
-    Top = 316
+    Left = 780
+    Top = 308
   end
   object Table1: TTable
-    Left = 916
-    Top = 284
+    Left = 756
+    Top = 252
   end
   object IdTCPClient1: TIdTCPClient
     MaxLineAction = maException
@@ -2354,7 +3306,7 @@ object Form2: TForm2
   object LocationPopupMenu: TPopupMenu
     AutoPopup = False
     OwnerDraw = True
-    Left = 208
+    Left = 312
     Top = 44
     object data1: TMenuItem
       Caption = 'Date'
@@ -4740,8 +5692,7 @@ object Form2: TForm2
     Top = 148
   end
   object ImageList1: TImageList
-    BlendColor = clWhite
-    BkColor = clWhite
+    BlendColor = clBlack
     DrawingStyle = dsTransparent
     Height = 24
     Masked = False
@@ -4749,8 +5700,8 @@ object Form2: TForm2
     Left = 321
     Top = 244
     Bitmap = {
-      494C010108000900040018001800FFFFFF00FF10FFFFFFFFFFFFFFFF424D3600
-      000000000000360000002800000060000000480000000100200000000000006C
+      494C01010A000E00040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      0000000000003600000028000000600000006000000001002000000000000090
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5034,6 +5985,294 @@ object Form2: TForm2
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000F7F7F700B5B5B5006363
+      630063636300BDBDBD00F7F7F700000000000000000000000000000000000000
+      0000000000000000000000000000F7F7F700FCFCFCFFFCFCFCFFF8F8F8FF6969
+      69FF383838FF0A0B0AFF000000FF000000FF141414FF5D5D5DFFBFBFBFFFFAFA
+      FAFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000009C9C9C00292929009C9C9C00D6D6
+      D600CECECE009C9C9C0021212100A5A5A5000000000000000000000000000000
+      0000000000000000000000000000F7F7F700FBFBFBFF3F3F3FFF01150BFF169F
+      69FF1AB57FFF1BB986FF1CBB89FF1CBA87FF1BB884FF17AB73FF055133FF0100
+      01FFF0F0F0FFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000C6C6
+      C600BDBDBD00BDBDBD00BDBDBD0063636300635A5A00C6C6BD00C6BDBD00C6BD
+      BD00C6BDBD00C6BDBD00C6C6BD00525252006B6B6B00B5B5B500B5B5B500B5B5
+      B500B5B5B5000000000000000000F7F7F7001F1F1FFF118254FF1CBA88FF21C6
+      A0FF23CBAAFF24CEAFFF25CFB1FF25CFB1FF24CDADFF22C8A2FF14B487FF1BB7
+      81FF000000FFF8F8F8FFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000EFEFEF0000000000524A
+      4200524A4200524A4200524A420052524200948C7B00948C7B00948C7B00948C
+      7B00948C7B00948C7B00948C7B00948C7B006363520063635200636352006B63
+      5A006363520000000000F7F7F700F7F7F70014945DFF1FBC8AFF23C7A2FF29D3
+      BAFF2BD6C1FF2BD7C1FF2BD8C1FF2BD8C1FF2BD7C1FF2AD4BCFF19C1A0FF22C4
+      9CFF19AD71FF2A2A2AFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000009C948400A59C
+      8C00A59C8C00A59C8C00A59C8C00A59C8C00A59C8C00A59C8C00A59C8C00A59C
+      8C00A59C8C00A59C8C00A59C8C00A59C8C00A59C8C00A59C8C00A59C8C00DECE
+      8C00A5948C00948C7B0008080800F7F7F700179C5FFF20B884FF26C59DFF2CD0
+      B2FF28CDAFFF2BD0B3FF2CD1B4FF2CD1B4FF25CBACFF2CD0B3FF22C5A1FF25C1
+      96FF1BAB6CFF111111FFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000F7F7F70008080800ADA59400E7DE
+      DE00D6C68C00D6C68400D6C68400DEC68400DEC68400DECE8C00DECE8C00DECE
+      8C00DECE8C00DECE8C00DECE8C00DEC68400D6C68400D6C68400D6C68400D6C6
+      8C00DEDEDE00ADA5940000000000F7F7F700000C03FF1EA35EFF25AF74FF2CBC
+      89FFCEE2D9FFE2E9E4FF30C198FF3FB58AFFEEEDEAFF28BB8AFF29B680FF24AC
+      6FFF083E20FFB4B4B4FFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000F7F7F70010101000ADA59C00E7DE
+      BD00C69C3100CEB54A00D6BD6300DEC67300DECE8400E7D69C00E7DEAD00E7DE
+      B500E7DEB500E7D6A500DED69400DECE8400D6C67300D6BD6300CEAD4200BD9C
+      2900E7DEBD00B5AD9C0000000000F7F7F700919191FF062E13FF21974CFF32A4
+      62FF8BB8E8FF94CCFFFFBEE2FFFFB1DBFFFF81C4FFFF69AB81FF259E56FF1F93
+      48FF222222FFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000F7F7F70021211800B5ADA500DED6
+      B500CEAD3900D6BD5A00DEC67300DECE8400E7D69400E7DEAD00EFDEBD00EFE7
+      C600EFE7C600EFDEB500E7DEA500E7D68C00DECE7B00DEC66B00D6BD5200C6A5
+      3100DED6B500B5ADA50000000000F7F7F700FCFCFCFFA3A3A3FF000000FF5AB3
+      F6FFA1D4FFFFABD9FFFFB1DCFFFFAFDBFFFFA8D8FFFF75C0FFFF165A38FF0000
+      00FF5F5F5FFF939393FFF5F5F5FFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000F7F7F70029292100BDB5A500DECE
+      AD00CEAD3900D6BD5200DEC66B00DECE7B00DED68C00E7D69C00E7DEAD00E7DE
+      B500E7DEB500E7DEA500E7D69C00DECE8400DECE7300DEC66B00D6BD5200C6A5
+      3100DECEAD00BDB5AD0000000000F7F7F700FAFAFAFF000000FF245A85FF89CA
+      FFFF9FD4FFFFAFDBFFFFB9DFFFFFB6DEFFFFABD9FFFF8ECCFFFF70BFFFFF030E
+      19FF000000FF7A7561FF706B59FF000000FFDFDFDFFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000F7F7F70031313100BDBDAD00DECE
+      A500CEAD3900D6BD4A00DEC66300DEC67300DECE8400E7D69400E7D69C00E7D6
+      A500E7D69C00E7D69C00DED68C00DECE7B00DEC66B00D6C66300D6BD4A00C6A5
+      3100DECEA500BDBDAD0000000000F7F7F7003D3D3DFF3E9AE3FF53B1FEFF8DCB
+      FFFFA6D7FFFFB8DFFFFFC2E3FFFFBFE2FFFFB3DCFFFF93CEFFFF75C1FFFF63B7
+      FCFF000000FF201F19FF7D7965FF787360FF000000FFF8F8F8FFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000F7F7F7004A4A4200C6C6B500CEBD
+      9C00C6A52900D6B54200D6BD5200DEC66300DEC66B00DECE7B00DECE8400DECE
+      8400DECE8400DECE8400DECE7B00DEC66B00D6BD6300D6BD5200D6B54200C6A5
+      2900D6C69C00C6C6B50010101000EFEFEF00000000FF56B2FCFF59B5FFFF8FCC
+      FFFFAAD8FFFFBCE1FFFFC0E3FFFFC0E3FFFFB8DFFFFF95CFFFFF76C1FFFF4394
+      D6FF213446FF474539FF847F6CFF84806CFF686454FF0F0E0BFF5D5D5DFFF8F8
+      F8FFFCFCFCFFFCFCFCFFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000F7F7F7005A525200CEC6BD00CEBD
+      9400C6A52900CEB53900D6BD4A00D6BD5200D6C66300DEC66B00DEC67300DEC6
+      7300DEC67300DEC67300DEC66B00D6BD5A00D6BD5200D6B54A00CEB53900C6A5
+      2100CEBD9400CEC6BD0029292900EFEFEF009C9C9CFF192734FF3570A2FF5489
+      B6FF6CA5DCFF91C6F9FFBDE1FFFFBCE0FFFFB0DBFFFF8CCBFFFF6CBCFDFF2A5D
+      89FF979483FFA19E8EFFA6A394FFA9A697FFA6A394FFA29F90FF8C8977FF524F
+      43FF0C0C0CFFFCFCFCFFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000EFEFEF0063636300D6CEC600C6B5
+      8C00C6A52100CEB53100D6B54200D6BD4A00D6BD5200D6BD5A00DEC66300DEC6
+      6300DEC66300DEC66300D6BD5A00D6BD5200D6B54A00D6B53900CEAD2900C69C
+      1800C6B58C00D6CEC60042424200EFEFEF00F8F8F8FF030A13FF1C3D5AFF1C3D
+      5AFF1C3D5AFF1C3D5AFF20415EFF6296C9FF99D0FFFF3C70A1FF1C3D5AFF1C3D
+      5AFFAAA799FFB2B0A2FFB6B4A7FFB7B5A8FFB4B1A4FFAEAC9EFFA29E8FFF9692
+      82FF797564FF989898FFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000EFEFEF0073736B00D6D6CE00BDA5
+      8400C69C1800CEAD2900CEB53100D6B53900D6B54200D6BD4A00D6BD5200D6BD
+      5200D6BD5200D6BD5200D6BD4A00D6B54200D6B53900CEB53100CEAD2100BD9C
+      1000BDAD8400D6D6CE0052524A00EFEFEF00FCFCFCFF333333FF193751FF1C3D
+      5AFF1C3D5AFF1C3D5AFF1C3D5AFF1C3D5AFF1C3D5AFF1C3D5AFF1C3D5AFF6D77
+      78FFC2C0B6FFC8C6BCFFC9C8BEFFCAC8BEFFC9C7BCFFC5C3B9FFBAB8ABFFAEAB
+      9EFF9F9B8CFF575448FF6C6C6CFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000DEDEDE007B7B7B00DEDED600B59C
+      7300C69C1800CEAD2100CEAD2900CEB53100CEB53900D6B54200D6B54200D6B5
+      4200D6B54200D6B54200D6B54200CEB53900CEB53100CEAD2900CEAD1800C69C
+      1000B59C7300DEDED6006B6B6B00EFEFEF00FCFCFCFFF2F2F2FF000000FF2145
+      66FF214566FF214566FF214566FF214566FF214566FF214566FF334E68FFBEBC
+      B1FFCECCC3FFD3D2C9FFD4D3CBFFD4D3CBFFD2D1C8FFD0CEC5FFC7C6BCFFBDBB
+      AFFFAFAC9EFF918D7DFF020202FFF2F2F2FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000D6D6D60084848400DEDEDE00AD94
+      6B00C6A52100CEAD2900CEB53100D6B53900D6B53900D6B54200D6B54A00D6BD
+      4A00D6B54A00D6B54200D6B54200D6B53900CEB53900CEB53100CEAD2900C6A5
+      2100AD946B00DEDEDE007B737300E7E7E700FCFCFCFFFCFCFCFFD6D6D6FF0F24
+      36FF3B6286FF476B8CFF466A8CFF466A8CFF476B8CFF526575FFB5B3A7FFCBC9
+      BFFFD8D7D0FFDDDCD6FFDFDDD8FFDEDDD7FFDDDCD5FFD9D8D1FFD1D0C8FFC9C7
+      BEFFBAB8ADFF9E9A8BFF434138FFC2C2C2FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000C6C6C6008C8C8C00E7E7DE00AD8C
+      5A00CEB54200D6BD4A00D6BD5200D6BD5200D6BD5200D6BD5A00DEC65A00DEC6
+      5A00DEC65A00D6BD5A00D6BD5A00D6BD5200D6BD5200D6BD4A00D6BD4A00CEB5
+      4200AD946300E7E7DE0084847B00E7E7E700FCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFA8A8A8FF303030FF000000FF000000FF5B5846FFA7A598FFC4C2B8FFD8D7
+      D0FFE6E5E1FFEAEAE6FFEDECE8FFECEBE8FFEAE9E5FFE6E5E1FFDFDDD8FFD7D6
+      CFFFCAC9BFFFABA89AFF888475FF484848FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000BDBDBD0094948C00E7E7E700A584
+      5200DECE8400E7CE8400E7D68400E7D68C00E7D68C00E7D68C00E7D68C00E7D6
+      8C00E7D68C00E7D68C00E7D68C00E7D68C00E7D68C00E7D68400E7CE8400DECE
+      8400A58C5A00E7E7E7008C8C8C00DEDEDE00FCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFDFDFDFFA4A4A4FF454235FFAFAC9FFFCAC8C0FFDEDD
+      D7FFEDEDE9FFF2F1EFFFF3F3F1FFF3F3F0FFF2F1EEFFEEEDEAFFE6E5E0FFDEDE
+      D8FFD2D0C7FFB2B0A4FF878375FF4B4B4BFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000ADADAD009C9C9400EFEFE7009C84
+      4A00E7DEBD00EFDEBD00EFE7BD00EFE7BD00EFE7BD00EFE7BD00EFE7BD00EFE7
+      BD00EFE7BD00EFE7BD00EFE7BD00EFE7BD00EFE7BD00EFE7BD00EFE7BD00E7DE
+      BD009C845200EFEFE70094948C00C6C6C600FCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFF9F9F9FF050503FFB3B1A5FFCFCDC5FFE3E2
+      DCFFF3F3F1FFF8F8F6FFFAF9F8FFF9F9F8FFF7F6F5FFF3F3F0FFECEBE8FFE4E3
+      DDFFD6D5CEFFB5B1A6FF545249FFA6A6A6FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000D6D6D60084848400F7EFEF00F7EF
+      EF00F7EFEF00F7EFEF00F7EFEF00F7EFEF00F7EFEF00F7EFEF00F7EFEF00F7EF
+      EF00F7EFEF00F7EFEF00F7EFEF00F7EFEF00F7EFEF00F7EFEF00F7EFEF00F7EF
+      EF00F7EFEF00F7EFEF006B6B6B00E7E7E700FCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFBBBBBBFF8A8678FFD4D2CBFFE9E8
+      E5FFF7F6F5FFFCFCFBFFFDFDFDFFFDFDFDFFFCFCFCFFF9F9F8FFF0EFEDFFE6E5
+      E1FFD9D7D1FFA6A295FF0D0D0DFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000D6CECE00F7F7
+      EF00F7F7EF00F7F7EF00F7F7EF00F7F7EF00F7F7EF00F7F7EF00F7F7F700F7F7
+      F700F7F7F700F7F7F700F7F7F700F7F7EF00F7F7EF00F7F7EF00F7EFEF00F7EF
+      EF00EFEFEF00B5B5B50018181800F7F7F700FCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFF000000FFAAA69AFFEAE9
+      E6FFF8F8F7FFFBFBFAFFFDFDFCFFFEFEFDFFFCFCFBFFF9F9F7FFEFEEEBFFE5E4
+      E0FFD7D5CFFF1F1E1BFFDADADAFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000F7F7F7006B6B6B004A42
+      4200A59C9400BDB5AD00D6CECE00DEDEDE00E7E7E700F7F7EF00F7F7F700F7F7
+      F700F7F7F700F7F7F700EFEFEF00E7E7E700DED6D600CECEC600B5ADA5009C94
+      8C00292121008C8C8C0000000000F7F7F700FCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFF7A7A7AFF1313
+      11FFDCDAD4FFFDFDFDFFFEFEFDFFFDFDFDFFFCFCFBFFF8F8F7FFE2E1DCFFA9A6
+      9CFF0B0B09FFF7F7F7FFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000ADAD
+      AD00000000006B6363007B7B7300BDB5AD00D6CEC600E7E7E700F7F7EF00F7F7
+      F700F7F7F700EFE7E700DEDED600BDB5B500A59C9400736B6B005A5252000000
+      0000CECECE000000000000000000F7F7F700FCFCFCFFFCFCFCFFFCFCFCFFFCFC
+      FCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFEAEA
+      EAFF020202FF474642FF939089FFCBC7C0FFC6C3BBFF9D9B93FF1D1C1AFF1D1D
+      1DFFECECECFFFCFCFCFFFCFCFCFFF4F4F4FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000F7F7F700DEDEDE00C6C6C600101010000000000000000000080808000808
+      08000808080008080800080808000808080021212100DEDEDE00EFEFEF000000
+      0000000000000000000000000000F7F7F700FBFBFBFFFBFBFBFFFBFBFBFFFBFB
+      FBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFBFBFFFBFB
+      FBFFFAFAFAFFEFEFEFFF8A8A8AFF5E5E5EFF5F5F5FFF7F7F7FFFF7F7F7FFFBFB
+      FBFFFBFBFBFFFBFBFBFFFBFBFBFFF8F8F8FF0000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5327,10 +6566,10 @@ object Form2: TForm2
       F7FF747070FF747070FF74F7F7FF74FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5339,10 +6578,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFF9866266FA57A43FDB9976BFFCCB188FFCEB38AFFD0B084FFBC9B68FFAB8C
       56FFA07E48FFFFFFFFFF1111DAFF1616C4F9FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFF2525BFEF1616AEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5351,10 +6590,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFF8FFFFFFF7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFA7793CFDE2C190FEECD1A8FFEFD6AEFFECD0A4FFE6C696FFD4AD73FFC99E
       5FFFC19350FF39329BFF1111DEFF0000DFFF2020D3F3FFFFFFFFFFFFFFFF0202
       BBFF0000AFFF0303B3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5363,10 +6602,10 @@ object Form2: TForm2
       51FF00DC51FF00DB51FF007919D9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFF8F8F8ABF7F7F7A1FDFDFDE9FEFEFEF3FFFFFFF8FFFFFFFFFFFF
       FFFAFEFEFEF1FDFDFDEBFEFEFEEEFFFFFFFAFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000000FFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFAA7D42FAE5C79AFEF0D7B1FFF1DAB4FFEED3A9FFE7C899FFD5AE76FFCCA2
       65FFC29553FF896434FF38319AFF1616E4FF0101E6FF2A29D2F32828D4F50000
       C7FF0303C2FF2020D2F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5375,10 +6614,10 @@ object Form2: TForm2
       58FF00ED56FF00F85EFF008E23E9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFDFDFDE0C85D18B4BA5111AE9653268A7D5F56548A7C79499F9A97458E85
       824873594A5F8F6C4A8391644579BDBDBC52FFFFFFFBFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF0002B4
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000000000000002B4
       E064139FC4DC1E92B4FF1F92B4FF1F91B4FF1F92B4FF1F93B6FF1E9DC0FF1B9C
       C1FF1F93B5FF1F91B4FF1F91B4FF1F92B4FF1F92B4FF2098BBFF42829FFFFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFAA7E4494BD99
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFAA7E4494BD99
       68FFB98E57FCE8C99EFFF3DBB6FFF4DCB9FFF0D5ADFFE8C99BFFD7B078FFCEA5
       68FFC49857FFA8793AFF7D5729FE3A339BFF0000E8FF1010E4FF0101E8FF0909
       DBFF2121D2F5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBD99
@@ -5387,10 +6626,10 @@ object Form2: TForm2
       43FF00CB41FF00DE4EFF009224E5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFF5F5F596D1682BEFDC6B28F5DE671AEBC8662DC8A7531EA1985C2D8F9F59
       2698D08B55D5E2C899E8C88E67D58E786371FAFAFAC1FFFFFFF7FFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF0000BC
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000000000000000000000BC
       E6CE00BCE7FF00C6F2FF00C7F2FF00C7F2FF00C8F3FF01C6EFFF2488A6FF598F
       ACFF12C4EDFF00C9F4FF00C7F3FF00C7F3FF01C8F3FF01C5F2FF1FBCE3FF5C38
-      3CCAFDFDFDE2FFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFCAA678CFECD7
+      3CCAFDFDFDE2000000000000000000000000FFFFFFFFFFFFFFFFCAA678CFECD7
       B8FAC39C69FFE8CAA2FFF5E1BFFFF8E4C5FFF4DBB7FFECCFA3FFDAB47DFFD2AA
       6FFFCAA062FFB58644FFA27235FF8D6F4FFF3E3EF2FF4343EFFF2B2BEFFF0303
       B3E1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCAA678CFECD7
@@ -5399,10 +6638,10 @@ object Form2: TForm2
       3AFF00B238FF00CA43FF009321E5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFE
       FEECBAB6B553F1BA89FFF4BC8CFFE9A877FFE8A371FFE7A170FFEAA977FEEDB5
       84FFF8E4B3FFF3D8A8FFEAA976FFF4CB9EF98F6E547F81726D4DCECDCC53FDFD
-      FDE8FEFEFEF0FFFFFFFAFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF0000C2
+      FDE8FEFEFEF0FFFFFFFAFFFFFFFFFFFFFFFF00000000000000000000000000C2
       EB9802C5EFFF07DAFEFF01D5FFFF01D5FFFF01D7FFFF03CDE9FF220000FF8742
       50FF39A7C2FF00DCFFFF01D5FFFF01D5FFFF0CDFFFFF06D4FCFF2AB7DCF96707
-      008DFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFC9A575C8F0DE
+      008DFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFC9A575C8F0DE
       C2FCC5A16FFFE6C9A1FFF8E4C6FFFAEACFFFF6DFBFFFEFD3ABFFDCB781FFD5AD
       73FFCDA467FFB38545FF835F3AFF3836D3FF8F8FF9FF6C6CF8FF6262F8FF5D5D
       F5FF2626C2E9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC9A575C8F0DE
@@ -5411,10 +6650,10 @@ object Form2: TForm2
       52FF00D84FFF00E75EFF009029E5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFB
       FBC0A08D875EFBCB98FFFDC691FFFCC898FFFBC996FFF7C28DFFEDB887FFF0BF
       8FFFFAE9B7FFEABF90FFF1B784FFFDD4A2FFE6C3A0E4B1764DA78258406BA19D
-      9B3EDBDBDB5CF9F9F9BAFFFFFFF7FFFFFFFFFFFFFF00FFFFFF00FFFFFF0000C6
+      9B3EDBDBDB5CF9F9F9BAFFFFFFF7FFFFFFFF00000000000000000000000000C6
       EC4900C4EBE90ADAFBFF05DCFFFF00D6FFFF00D8FFFF02D3EDFF0C4A56FF232B
       35FF14BDDBFF00DDFFFF00D6FFFF07DCFFFF14E7FFFF07D3F7FF437A8CE47400
-      003BFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFC09965B1F4E5
+      003BFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFC09965B1F4E5
       CCFDC7A473FFE0C29BFFF8E7CAFFFBEDD6FFF7E3C5FFF1D6B0FFE0BC88FFD8B1
       79FFD1A86DFF8E6D47FF3A37D6FF7575F8FF7A7AF8FF3E3BC8F83534C7E79A9A
       FAFF7777F9FF3636D6E9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC09965B1F4E5
@@ -5423,10 +6662,10 @@ object Form2: TForm2
       6BFF00FE68FF00FF7BFF008E31E5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0F0
       F08691573A73FEC88EFFFE9F49FFFE9336FFFD9345FFFE9D36FFECB889FFF1C5
       93FFFAE0AEFFE6B384FFF6C291FFFFDAAAFFFDE3C2FDF3D6B7F3DB9363DB8F4C
-      1C7C744E4060AA9E9A49F6F6F5A0FFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      1C7C744E4060AA9E9A49F6F6F5A0FFFFFFFF000000000000000000000000FFFF
       FFFF00C7EAAA05D2F4FC0CE4FFFF02DBFFFF00DBFFFF00DEFDFF04D0E6FF05CC
       E1FF00E0FFFF00DBFFFF01DAFFFF12EAFFFF10E7FFFF1FAFCBFD5F3B3F9EFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFF3E2
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFF3E2
       C7FCD9BD93FFD3B58BFFF2DCBDFFFBF0DBFFFAECD2FFF6E0BFFFE7C89AFFE2C0
       8FFFDBB682FF2F2EE8FFA3A3F7FF8E8EF8FF987A5AF7FFFFFFFFFFFFFFFF2C2C
       CBE38181F9FFA4A4FAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3E2
@@ -5435,10 +6674,10 @@ object Form2: TForm2
       7CFF00FF7AFF00FF88FF008C2EE9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC7C6
       C667BE6436C4FEB87BFFFF8C01FFFF7C01FFFF8E00FFFEA729FFF5AD71FFF6CA
       93FFF1CF9EFFE39968FFF4C391FFFEDEB2FFFDE9CBFFF5ECDAFFFDF3E3FFF9BE
-      92FEF79E5AFBED6F1DDFC9BEB66EFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      92FEF79E5AFBED6F1DDFC9BEB66EFFFFFFFF000000000000000000000000FFFF
       FFFF00CFEF5301CDECED09E0FAFF06E3FFFF00DEFFFF00DFFFFF16B9D0FF14A9
       C4FF00E3FEFF00DDFFFF06E3FFFF16F1FFFF08D6F1FF447B8AE26D222139FFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFE5CB
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFE5CB
       A8EFE9D3B1FFD7BC94FFEAD2B0FFFCF0DBFFFCEFD8FFF9E6C9FFEBCDA3FFE5C5
       97FFD9B584FF846C53FF2E2EEBFF3D3CDCFFB4884DDFFFFFFFFFFFFFFFFFFFFF
       FFFF3030CCE52E2EF1FBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE5CB
@@ -5447,10 +6686,10 @@ object Form2: TForm2
       7AFF00E07BFF00DE79FF008C2EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7947
       3554CD865CDEFEA456FFFF8500FFFF7901FFFF9700FFFAAC47FFF5B06FFFFBC8
       8CFFEBBE8EFFE6A06EFFF7CE9FFFF3C89FFFEEE7D3FF8FC3EDFFE1EDEDFFFEF7
-      F1FFFDDEC2FFEE8045E3C9BBB46FFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      F1FFFDDEC2FFEE8045E3C9BBB46FFFFFFFFF000000000000000000000000FFFF
       FFFFFFFFFFFF00CFEBB903D6F1FF09E8FEFF01E3FFFF00E2FBFF2CA5ADFF267E
       94FF01EDFEFF00E1FFFF12F0FFFF0CE9FDFF28B9D1FC6049508EFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFF6E8CFFEE7D1AEFFEAD4B2FFFDF1DDFFFDF1DDFFFAEBD1FFEFD4ACFFE8C9
       9CFFDBB888FFC3A376FFC1A67FFFCAB089FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFCAA5
@@ -5459,10 +6698,10 @@ object Form2: TForm2
       2EFF008C2EFF008C2EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFEF5B14E
       10A3F4C595FBFF8906FFFF7B07FFFE7607FFFFA521FFF2B681FFFAB97CFFFAE0
       ADFFE19362FFF0B582FFF5CCA1FFF3CAA7FF8EC2ECFF00B3FFFF0CD1FEFF5DD0
-      FDFF97D1EDFFD4BB98ACE7E7E76DFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FDFF97D1EDFFD4BB98ACE7E7E76DFFFFFFFF000000000000000000000000FFFF
       FFFFFFFFFFFF00D3EC5201D1EBF608E6F9FF04E9FFFF00E4F7FF478E9AFF4C5E
       6FFF04EFFDFF04E9FFFF15F5FEFF07DEF4FF4992A0E06D0B003AFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFF4E6C9FFFFFCECFFFCF4E0FFFCF2E0FFFCF1DDFFFAECD2FFF5DCB8FFEFD4
       ABFFEACCA0FFE5C594FFD8B483FFBD935BEDFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5471,10 +6710,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFDEAC57E
       52C7F9C897FEFD9F4BFFFE883DFFFF8D3AFFF8B168FFEFB785FFF5D2A0FFFBEE
       BCFFE49D6BFFF8C794FFF5CDA4FFF9D7B4FF60B5F5FF00C0FFFF02D8FFFF0CC2
-      FFFF32ADFCFFBFB09776FBFBFBC3FFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FFFF32ADFCFFBFB09776FBFBFBC3FFFFFFFF000000000000000000000000FFFF
       FFFFFFFFFFFFFCFEFFC000D4EAAC06E1F3FF09F2FFFF01E9EFFF3C5A66FF5837
       46FF08E7F4FF11F6FFFF0EF0FEFF26C3D6FD5A3D3F94FFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFEFDDC0FFFFFDE9FFFFF8E3FFFFF8E1FFFFF3D6FFFCE2BCFFF4D7
       ABFFECCC9EFED7B482F9C0965DE5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5483,10 +6722,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBEBEB7CE8AF
       7FF6EBC8A2FFB4A7BDFFB7A9BBFFB0A3BDFFD2AEA4FFEFB987FFF7DFADFFF5DB
       A9FFF2BA87FFFDD6A4FFFDE1BEFFFCE3C4FF1EB9FEFF01D3FFFF01DBFFFF0BAD
-      FEFF9ABEE1FAF0EFED92FFFFFFFEFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FEFF9ABEE1FAF0EFED92FFFFFFFEFFFFFFFF000000000000000000000000FFFF
       FFFFFFFFFFFFFFFFFFFF00D8EC5102DCEEEF0AF3FCFF06E9EAFF2B1423FF461A
       27FF13BAC8FF13FDFFFF09E8F6FF3F888EE76D000045FFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFD8BE95FFE9D6B4FFD8C5A2FFCEB793FFC8AB81FFCFAE
       7EFED7B380FFB88E57EDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5495,10 +6734,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8B0A9A747F1BB
       87FDC4B5BBFF3757F8FF384DF8FF3556F9FFD9AF9EFFF0BC8BFFFCDBA5FFEEC2
       91FFF7C592FFFFDAAAFFFEE6C3FFFEEBCFFF4BCAFCFF11DDFFFF01D5FFFF34A8
-      FAFEA2BBCCDDFDFDFDE0FFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FAFEA2BBCCDDFDFDFDE0FFFFFFFFFFFFFFFF000000000000000000000000FFFF
       FFFFFFFFFFFFFFFFFFFFF6FDFE8100DCECB006EBF6FF0BE7E8FF1C0000FF3B0C
       13FF239CA5FF0CFBFFFF1CC8D2FD5F44469FFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFA17C4DFEB48E5FFFBD9869FFBA9468FFAC86
       5BFF98744AF7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5507,10 +6746,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3F3F38B9D694F6EEBC8
       9FFF657FF0FF003EFFFF014AFFFF1768FDFFF0B984FFF3BB86FFF6D7A4FEE6A8
       78FFF9CB9AFFF6CA9FFFFAE9CBFFC1D9AAFFF6F9F0FFEEF9FAFFB2DDF3FF8BBA
-      E0F3CDB99282FFFFFFFEFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      E0F3CDB99282FFFFFFFEFFFFFFFFFFFFFFFF000000000000000000000000FFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFF00E0EC5D01E3F0F30BE6EBFF0C5B5CFF1853
       55FF20CCD1FF01F8FEFF468D91E8721A1948FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFC6A171FFCEA977FFD0AB7AFFD2AD80FFCCA8
       7AFFBA9469FF87684090FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5519,10 +6758,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE4E4E465A9653C95C9B9
       BAFF3B6FF8FF003EFFFF0154FFFF3670FAFFF5B073FFF7BF86FEEAC998EEE8AA
       79FBF6C89BFFF6CDA4FFF3EACDFF85C778FFB6F2BDFFF6FCF5FFF5F2E8FFDFD1
-      BAD9D3CCC37BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      BAD9D3CCC37BFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000000FFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFF00E6F01900E3EBBD04ECF3FF08E4E6FF0EDE
       DFFF12FAFDFF21D4D8FF645E60A0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFB39365FFE1C396FFE0C090FFDCBA88FFD6B281FFD4B0
       81FFCDA87AFF98754BD8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5531,10 +6770,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCDBDA6CC67F53C59495
       DAFF3959FAFF3750FBFF416DF6FF8894D3FFECA970E8D4AE8399DDDCDB6CD2A7
       7C9BF6CDA2FFF2C5A0FFBDDAA9FF00BE1BFF2DF65CFF30E853FF37C440FFC6B3
-      988DF7F7F79EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      988DF7F7F79EFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000000FFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00E7EC5F01E8ECF311FBFDFF1FFF
       FFFF07F2F5FF429B9DF06629273DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFAB8F61DCF0DBB7FFF9EDD2FFF7E9CAFFF3DFB8FFE6C48FFFDDB7
       81FFD1A976FFAD8555FF927044B0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5543,10 +6782,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEEEFEF7FCF9C74ACD9BF
       ABFCBCA8C4FEB29EC5FDC9ACACFAE6B690F6CBAA898CEAE7E386FDFDFDDED4CB
       C272F0C59BFDF7D8B5FF7CC970FF10CD31FF2DF55BFF1FD940FF22BB2BFFC2BB
-      B362FEFEFEE8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      B362FEFEFEE8FFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000000FFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6FEFE8101E9ECC124F7F8FF25FE
       FFFF1CDDDEFA525B5BA5FBFAFAA0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFAF9466ECF9EAC9FFFBF2DBFFFAF0D8FFF8E9CBFFEBCD9BFFE2BF
       88FFD7B079FFB28A59FF957446B5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5555,10 +6794,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFDDED8C3B07AE9BE
       94D2F0C496E5E7BA90DADAB18CC6DBB28EB4F6F5F4B0FEFEFEF0FFFFFFFFF8F8
       F8B0F1D2AEEAF7D3B4FE3BBE3BFF1FDA41FF29EC53FF12C92FFF68BF5BFED9D8
-      D75BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      D75BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000000FFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00F3F44B05F8F8F105FE
       FEF62ABCBCA06800002DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFB29767D1F4E1BEFFFBF3DEFFFCF3DEFFFAEED4FFEED2A4FFE5C4
       8EFFDAB57CFFB58D5BFB987649A5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5567,10 +6806,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFEFE
       FEF1FDFDFDF1FDFDFDF0FEFEFEF2FEFEFEF4FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFECEAE789D6C7B28AC5EBC1FA65F37EFF20D039FF42BB3AFFB5C086DFFEFE
-      FEECFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FEECFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000000FFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF06FDFD5B05FF
       FF66F6FAFA81FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFBBA06FF0FDF4DCFFFCF1D9FFFAEED1FFEED3A4FFE6C3
       8DFFDDB57DFEA18150C0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5579,10 +6818,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFEFEFEEDF0EFEE93E7E6DBD1DCF6E1F563CD62FE80BC67FACAC299B0FFFF
-      FFFBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFECD6ACFFFAEACAFFF6E4C1FFEBCD9BFFE0BB
       84FFC8A26BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5591,10 +6830,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFCFCFCDFEBEAEA80DDD1BF9FE4D3B6A7F2EEEAAEFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFB59863DAD3B27CFBE3C28EFFD8B57DFEBF9D
       66F3A68854BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5603,10 +6842,10 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFDFEFEFEF3FBFBFAD8FBFAF8CCFEFEFEF7FFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -5616,7 +6855,7 @@ object Form2: TForm2
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF424D3E000000000000003E000000
-      2800000060000000480000000100010000000000600300000000000000000000
+      2800000060000000600000000100010000000000800400000000000000000000
       000000000000000000000000FFFFFF0000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5626,7 +6865,16 @@ object Form2: TForm2
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000FF81FE000000000000000000FF00FE00
+      0000000000000000E00006000000000000000000800000000000000000000000
+      8000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      800000000000000000000000800002000000000000000000E000060000000000
+      00000000F0001E00000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -5648,11 +6896,11 @@ object Form2: TForm2
       000000000000}
   end
   object JvDatabaseItems1: TJvDatabaseItems
-    Left = 526
-    Top = 202
+    Left = 374
+    Top = 450
   end
   object JvDesignSurface1: TJvDesignSurface
-    Left = 614
+    Left = 894
     Top = 173
   end
   object JvInspectorBorlandPainter1: TJvInspectorBorlandPainter
@@ -5672,7 +6920,7 @@ object Form2: TForm2
     ValueFont.Name = 'MS Sans Serif'
     ValueFont.Style = []
     DrawNameEndEllipsis = False
-    Left = 350
-    Top = 157
+    Left = 374
+    Top = 477
   end
 end
