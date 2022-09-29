@@ -6,105 +6,97 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, DB, DBTables, ComCtrls, DBCtrls, Grids, DBGrids,
   Menus, ExtCtrls, Mask, IdAntiFreezeBase, IdAntiFreeze, IdBaseComponent,
-  IdComponent, IdTCPConnection, IdTCPClient, OleCtnrs, IniFiles, DateUtils;
+  IdComponent, IdTCPConnection, IdTCPClient, OleCtnrs, IniFiles, DateUtils,
+  ImgList, Buttons, JvComponentBase, JvTabBarXPPainter,
+  JvExComCtrls, JvTabBar, JvExControls, JvArrowButton, JvComCtrls,
+  JvExExtCtrls, JvExtComponent, JvComponentPanel, JvSplitter, ToolWin,
+  JvCoolBar, JvBevel, JvPanel, JvItemsPanel, JvExStdCtrls, JvListBox,
+  JvComboListBox, JvXPCore, JvBDELists, SynEdit, JvDesignSurface,
+  JvInspector;
 
 type
   TForm2 = class(TForm)
-    MainMenu1: TMainMenu;
-    File1: TMenuItem;
-    Exit1: TMenuItem;
     StatusBar1: TStatusBar;
     DataSource1: TDataSource;
     Table1: TTable;
     ScrollBox2: TScrollBox;
     ScrollView: TScrollBox;
-    Splitter1: TSplitter;
-    Splitter2: TSplitter;
-    Splitter4: TSplitter;
-    Splitter3: TSplitter;
-    Panel1: TPanel;
+    IdTCPClient1: TIdTCPClient;
+    IdAntiFreeze1: TIdAntiFreeze;
+    LocationPopupMenu: TPopupMenu;
+    LocationListTimer: TTimer;
+    ImageList1: TImageList;
     Panel2: TPanel;
-    Panel4: TPanel;
-    Splitter6: TSplitter;
-    PageControl3: TPageControl;
-    TabSheet1: TTabSheet;
-    Panel5: TPanel;
-    Button3: TButton;
-    Button4: TButton;
-    DBGrid3: TDBGrid;
-    ScrollBox1: TScrollBox;
-    Panel6: TPanel;
-    DBNavigator1: TDBNavigator;
-    Panel7: TPanel;
-    Label1: TLabel;
+    TasksPageControl: TPageControl;
+    TabSheet24: TTabSheet;
+    TabSheet25: TTabSheet;
+    TabSheet26: TTabSheet;
+    TabSheet27: TTabSheet;
+    TabSheet28: TTabSheet;
+    ScrollBox23: TScrollBox;
+    Splitter3: TSplitter;
+    Panel22: TPanel;
+    PageControl13: TPageControl;
+    TabSheet29: TTabSheet;
+    Splitter9: TSplitter;
     TreeView2: TTreeView;
-    Panel8: TPanel;
+    PageControl14: TPageControl;
+    TabSheet30: TTabSheet;
+    DBGrid1: TDBGrid;
+    TabSheet31: TTabSheet;
+    ScrollBox24: TScrollBox;
+    Splitter10: TSplitter;
+    Splitter15: TSplitter;
+    StringGrid6: TStringGrid;
+    Panel23: TPanel;
+    StringGrid7: TStringGrid;
+    Panel26: TPanel;
+    Panel35: TPanel;
+    StringGrid8: TStringGrid;
+    ScrollBox1: TScrollBox;
     Splitter7: TSplitter;
     Splitter8: TSplitter;
+    Panel7: TPanel;
+    Label1: TLabel;
+    Panel8: TPanel;
+    PageControl5: TPageControl;
+    TabSheet3: TTabSheet;
+    ScrollBox7: TScrollBox;
+    ConnectionListGrid: TStringGrid;
+    Panel12: TPanel;
+    Button_SendWarning: TJvArrowButton;
+    JvArrowButton1: TJvArrowButton;
+    JvArrowButton2: TJvArrowButton;
+    JvArrowButton4: TJvArrowButton;
+    JvArrowButton3: TJvArrowButton;
+    ConnectionFilterPanel: TPanel;
+    TabSheet4: TTabSheet;
+    Panel11: TPanel;
+    UserLogGrid: TStringGrid;
+    TabSheet5: TTabSheet;
+    Panel10: TPanel;
+    StringGrid2: TStringGrid;
     PageControl4: TPageControl;
     TabSheet2: TTabSheet;
     Panel9: TPanel;
     CheckBox1: TCheckBox;
     CheckBox2: TCheckBox;
     CheckBox3: TCheckBox;
-    PageControl5: TPageControl;
-    TabSheet3: TTabSheet;
-    TabSheet4: TTabSheet;
-    TabSheet5: TTabSheet;
-    Panel10: TPanel;
-    Panel11: TPanel;
-    UserLogGrid: TStringGrid;
-    StringGrid2: TStringGrid;
-    PageControl6: TPageControl;
-    TabSheet6: TTabSheet;
     TabSheet10: TTabSheet;
     ScrollBox4: TScrollBox;
+    Label2: TLabel;
+    Label3: TLabel;
     Button2: TButton;
     DBEdit5: TDBEdit;
     Button5: TButton;
     TreeView3: TTreeView;
-    Label2: TLabel;
     Edit1: TEdit;
-    Label3: TLabel;
     Edit2: TEdit;
-    IdTCPClient1: TIdTCPClient;
-    IdAntiFreeze1: TIdAntiFreeze;
-    ScrollBox6: TScrollBox;
-    StringGrid1: TStringGrid;
-    ScrollBox7: TScrollBox;
-    ConnectionListGrid: TStringGrid;
-    Panel12: TPanel;
-    Button9: TButton;
-    Button10: TButton;
-    Button11: TButton;
-    Button12: TButton;
-    Button13: TButton;
-    Panel3: TPanel;
-    PageControl1: TPageControl;
-    DataBases: TTabSheet;
-    Splitter5: TSplitter;
-    TreeView1: TTreeView;
-    PageControl2: TPageControl;
-    Definition: TTabSheet;
-    DBGrid2: TDBGrid;
-    TabSheet11: TTabSheet;
-    ScrollBox8: TScrollBox;
-    Splitter12: TSplitter;
-    Splitter13: TSplitter;
-    StringGrid3: TStringGrid;
-    Panel16: TPanel;
-    StringGrid4: TStringGrid;
-    Panel17: TPanel;
-    Panel18: TPanel;
-    StringGrid5: TStringGrid;
     Button22: TButton;
-    LocationPopupMenu: TPopupMenu;
-    LocationListTimer: TTimer;
-    Panel27: TPanel;
-    Label12: TLabel;
-    Panel13: TPanel;
-    MiscToolsPanel: TPanel;
-    Splitter14: TSplitter;
+    ScrollBox22: TScrollBox;
+    SystemViewGrid: TStringGrid;
+    StaticText1: TStaticText;
+    ScrollBox5: TScrollBox;
     PageControl7: TPageControl;
     TabSheet7: TTabSheet;
     TabSheet8: TTabSheet;
@@ -127,7 +119,7 @@ type
     ListBox4: TListBox;
     ListBox5: TListBox;
     TabSheet9: TTabSheet;
-    ScrollBox5: TScrollBox;
+    ScrollBox8: TScrollBox;
     Panel15: TPanel;
     Button6: TButton;
     Edit3: TEdit;
@@ -194,44 +186,35 @@ type
     Memo6: TMemo;
     ListBox6: TListBox;
     ListBox7: TListBox;
-    Panel28: TPanel;
-    Panel29: TPanel;
-    Label13: TLabel;
-    Panel21: TPanel;
-    DNServerPanel: TPanel;
-    Splitter11: TSplitter;
-    Panel30: TPanel;
-    PageControl9: TPageControl;
-    TabSheet21: TTabSheet;
+    ScrollBox25: TScrollBox;
+    PageControl1: TPageControl;
+    TabSheet11: TTabSheet;
+    ScrollBox26: TScrollBox;
     ScrollBox19: TScrollBox;
-    Panel31: TPanel;
-    Label14: TLabel;
-    Panel32: TPanel;
-    ProxyServerPanel: TPanel;
-    Splitter16: TSplitter;
-    Panel24: TPanel;
-    PageControl10: TPageControl;
-    TabSheet22: TTabSheet;
+    PageControl2: TPageControl;
+    TabSheet21: TTabSheet;
+    ScrollBox27: TScrollBox;
     ScrollBox20: TScrollBox;
-    Panel33: TPanel;
-    Label15: TLabel;
-    Panel25: TPanel;
-    HttpServerPanel: TPanel;
-    Splitter18: TSplitter;
-    Panel34: TPanel;
     PageControl11: TPageControl;
     TabSheet23: TTabSheet;
     ScrollBox21: TScrollBox;
-    Label16: TLabel;
-    Label17: TLabel;
-    Label18: TLabel;
-    Label19: TLabel;
+    PageControl3: TPageControl;
+    TabSheet1: TTabSheet;
+    Panel5: TPanel;
+    Button3: TButton;
+    Button4: TButton;
+    DBGrid3: TDBGrid;
+    DBNavigator1: TDBNavigator;
     ScrollBox3: TScrollBox;
     UserNameLabel: TLabel;
     UserPasswordLabel: TLabel;
     UserLocationLabel: TLabel;
     LastActiveLabel: TLabel;
     Label4: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Image1: TImage;
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
@@ -239,12 +222,833 @@ type
     DBEdit6: TDBEdit;
     DBCheckBox1: TDBCheckBox;
     Panel14: TPanel;
-    Label20: TLabel;
     DBEdit7: TDBEdit;
-    Label21: TLabel;
     DBEdit8: TDBEdit;
-    Label22: TLabel;
     DBEdit9: TDBEdit;
+    PageControl9: TPageControl;
+    TabSheet22: TTabSheet;
+    TabSheet32: TTabSheet;
+    ScrollBox28: TScrollBox;
+    StaticText2: TStaticText;
+    JvPanel1: TJvPanel;
+    JvArrowButton6: TJvArrowButton;
+    JvArrowButton7: TJvArrowButton;
+    JvPanelABC: TJvPanel;
+    JvSplitter1: TJvSplitter;
+    JvPanel2: TJvPanel;
+    JvComboListBox1: TJvComboListBox;
+    data1: TMenuItem;
+    dududa1: TMenuItem;
+    JvDatabaseItems1: TJvDatabaseItems;
+    Week14: TMenuItem;
+    Monday4: TMenuItem;
+    N0001AM1: TMenuItem;
+    N0001am2: TMenuItem;
+    N0001am3: TMenuItem;
+    N0001am4: TMenuItem;
+    N0001am5: TMenuItem;
+    N0001am6: TMenuItem;
+    N0001am7: TMenuItem;
+    N0001am8: TMenuItem;
+    N0001am9: TMenuItem;
+    N0001am10: TMenuItem;
+    N0001am11: TMenuItem;
+    N0001am12: TMenuItem;
+    N10001100pm1: TMenuItem;
+    N09001000pm1: TMenuItem;
+    N11001200pm1: TMenuItem;
+    N07000800am1: TMenuItem;
+    N8000900am1: TMenuItem;
+    N09001000am1: TMenuItem;
+    N10001100am1: TMenuItem;
+    N11001200am1: TMenuItem;
+    N07000800pm1: TMenuItem;
+    N10001100pm2: TMenuItem;
+    AfterMeridan1: TMenuItem;
+    PastMeridian1: TMenuItem;
+    N02000300pm1: TMenuItem;
+    N05000600pm1: TMenuItem;
+    Monday5: TMenuItem;
+    PastMeridian2: TMenuItem;
+    N11001200pm2: TMenuItem;
+    N10001100pm3: TMenuItem;
+    N09001000pm2: TMenuItem;
+    N08000900pm1: TMenuItem;
+    N07000800pm2: TMenuItem;
+    N06000700pm1: TMenuItem;
+    N05000600pm2: TMenuItem;
+    N04000500pm1: TMenuItem;
+    N03000400pm1: TMenuItem;
+    N02000300pm2: TMenuItem;
+    N01000200pm1: TMenuItem;
+    N12000100pm1: TMenuItem;
+    AfterMeridan2: TMenuItem;
+    N11001200am2: TMenuItem;
+    N10001100am2: TMenuItem;
+    N09001000am2: TMenuItem;
+    N08000900am1: TMenuItem;
+    N07000800am2: TMenuItem;
+    N06000700am1: TMenuItem;
+    N05000600am1: TMenuItem;
+    N04000500am1: TMenuItem;
+    N03000400am1: TMenuItem;
+    N02000300am1: TMenuItem;
+    N01000200am1: TMenuItem;
+    N00000100am1: TMenuItem;
+    Monday6: TMenuItem;
+    PastMeridian3: TMenuItem;
+    N11001200pm3: TMenuItem;
+    N10001100pm4: TMenuItem;
+    N09001000pm3: TMenuItem;
+    N08000900pm2: TMenuItem;
+    N07000800pm3: TMenuItem;
+    N06000700pm2: TMenuItem;
+    N05000600pm3: TMenuItem;
+    N04000500pm2: TMenuItem;
+    N03000400pm2: TMenuItem;
+    N02000300pm3: TMenuItem;
+    N01000200pm2: TMenuItem;
+    N12000100pm2: TMenuItem;
+    AfterMeridan3: TMenuItem;
+    N11001200am3: TMenuItem;
+    N10001100am3: TMenuItem;
+    N09001000am3: TMenuItem;
+    N08000900am2: TMenuItem;
+    N07000800am3: TMenuItem;
+    N06000700am2: TMenuItem;
+    N05000600am2: TMenuItem;
+    N04000500am2: TMenuItem;
+    N03000400am2: TMenuItem;
+    N02000300am2: TMenuItem;
+    N01000200am2: TMenuItem;
+    N00000100am2: TMenuItem;
+    Monday7: TMenuItem;
+    PastMeridian4: TMenuItem;
+    N11001200pm4: TMenuItem;
+    N10001100pm5: TMenuItem;
+    N09001000pm4: TMenuItem;
+    N08000900pm3: TMenuItem;
+    N07000800pm4: TMenuItem;
+    N06000700pm3: TMenuItem;
+    N05000600pm4: TMenuItem;
+    N04000500pm3: TMenuItem;
+    N03000400pm3: TMenuItem;
+    N02000300pm4: TMenuItem;
+    N01000200pm3: TMenuItem;
+    N12000100pm3: TMenuItem;
+    AfterMeridan4: TMenuItem;
+    N11001200am4: TMenuItem;
+    N10001100am4: TMenuItem;
+    N09001000am4: TMenuItem;
+    N08000900am3: TMenuItem;
+    N07000800am4: TMenuItem;
+    N06000700am3: TMenuItem;
+    N05000600am3: TMenuItem;
+    N04000500am3: TMenuItem;
+    N03000400am3: TMenuItem;
+    N02000300am3: TMenuItem;
+    N01000200am3: TMenuItem;
+    N00000100am3: TMenuItem;
+    Monday8: TMenuItem;
+    PastMeridian5: TMenuItem;
+    N11001200pm5: TMenuItem;
+    N10001100pm6: TMenuItem;
+    N09001000pm5: TMenuItem;
+    N08000900pm4: TMenuItem;
+    N07000800pm5: TMenuItem;
+    N06000700pm4: TMenuItem;
+    N05000600pm5: TMenuItem;
+    N04000500pm4: TMenuItem;
+    N03000400pm4: TMenuItem;
+    N02000300pm5: TMenuItem;
+    N01000200pm4: TMenuItem;
+    N12000100pm4: TMenuItem;
+    AfterMeridan5: TMenuItem;
+    N11001200am5: TMenuItem;
+    N10001100am5: TMenuItem;
+    N09001000am5: TMenuItem;
+    N08000900am4: TMenuItem;
+    N07000800am5: TMenuItem;
+    N06000700am4: TMenuItem;
+    N05000600am4: TMenuItem;
+    N04000500am4: TMenuItem;
+    N03000400am4: TMenuItem;
+    N02000300am4: TMenuItem;
+    N01000200am4: TMenuItem;
+    N00000100am4: TMenuItem;
+    Monday9: TMenuItem;
+    PastMeridian6: TMenuItem;
+    N11001200pm6: TMenuItem;
+    N10001100pm7: TMenuItem;
+    N09001000pm6: TMenuItem;
+    N08000900pm5: TMenuItem;
+    N07000800pm6: TMenuItem;
+    N06000700pm5: TMenuItem;
+    N05000600pm6: TMenuItem;
+    N04000500pm5: TMenuItem;
+    N03000400pm5: TMenuItem;
+    N02000300pm6: TMenuItem;
+    N01000200pm5: TMenuItem;
+    N12000100pm5: TMenuItem;
+    AfterMeridan6: TMenuItem;
+    N11001200am6: TMenuItem;
+    N10001100am6: TMenuItem;
+    N09001000am6: TMenuItem;
+    N08000900am5: TMenuItem;
+    N07000800am6: TMenuItem;
+    N06000700am5: TMenuItem;
+    N05000600am5: TMenuItem;
+    N04000500am5: TMenuItem;
+    N03000400am5: TMenuItem;
+    N02000300am5: TMenuItem;
+    N01000200am5: TMenuItem;
+    N00000100am5: TMenuItem;
+    Monday10: TMenuItem;
+    PastMeridian7: TMenuItem;
+    N11001200pm7: TMenuItem;
+    N10001100pm8: TMenuItem;
+    N09001000pm7: TMenuItem;
+    N08000900pm6: TMenuItem;
+    N07000800pm7: TMenuItem;
+    N06000700pm6: TMenuItem;
+    N05000600pm7: TMenuItem;
+    N04000500pm6: TMenuItem;
+    N03000400pm6: TMenuItem;
+    N02000300pm7: TMenuItem;
+    N01000200pm6: TMenuItem;
+    N12000100pm6: TMenuItem;
+    AfterMeridan7: TMenuItem;
+    N11001200am7: TMenuItem;
+    N10001100am7: TMenuItem;
+    N09001000am7: TMenuItem;
+    N08000900am6: TMenuItem;
+    N07000800am7: TMenuItem;
+    N06000700am6: TMenuItem;
+    N05000600am6: TMenuItem;
+    N04000500am6: TMenuItem;
+    N03000400am6: TMenuItem;
+    N02000300am6: TMenuItem;
+    N01000200am6: TMenuItem;
+    N00000100am6: TMenuItem;
+    Week11: TMenuItem;
+    Sonntag1: TMenuItem;
+    PastMeridian8: TMenuItem;
+    N11001200pm8: TMenuItem;
+    N10001100pm9: TMenuItem;
+    N09001000pm8: TMenuItem;
+    N08000900pm7: TMenuItem;
+    N07000800pm8: TMenuItem;
+    N06000700pm7: TMenuItem;
+    N05000600pm8: TMenuItem;
+    N04000500pm7: TMenuItem;
+    N03000400pm7: TMenuItem;
+    N02000300pm8: TMenuItem;
+    N01000200pm7: TMenuItem;
+    N12000100pm7: TMenuItem;
+    AfterMeridan8: TMenuItem;
+    N11001200am8: TMenuItem;
+    N10001100am8: TMenuItem;
+    N09001000am8: TMenuItem;
+    N08000900am7: TMenuItem;
+    N07000800am8: TMenuItem;
+    N06000700am7: TMenuItem;
+    N05000600am7: TMenuItem;
+    N04000500am7: TMenuItem;
+    N03000400am7: TMenuItem;
+    N02000300am7: TMenuItem;
+    N01000200am7: TMenuItem;
+    N00000100am7: TMenuItem;
+    Samstag1: TMenuItem;
+    PastMeridian9: TMenuItem;
+    N11001200pm9: TMenuItem;
+    N10001100pm10: TMenuItem;
+    N09001000pm9: TMenuItem;
+    N08000900pm8: TMenuItem;
+    N07000800pm9: TMenuItem;
+    N06000700pm8: TMenuItem;
+    N05000600pm9: TMenuItem;
+    N04000500pm8: TMenuItem;
+    N03000400pm8: TMenuItem;
+    N02000300pm9: TMenuItem;
+    N01000200pm8: TMenuItem;
+    N12000100pm8: TMenuItem;
+    AfterMeridan9: TMenuItem;
+    N11001200am9: TMenuItem;
+    N10001100am9: TMenuItem;
+    N09001000am9: TMenuItem;
+    N08000900am8: TMenuItem;
+    N07000800am9: TMenuItem;
+    N06000700am8: TMenuItem;
+    N05000600am8: TMenuItem;
+    N04000500am8: TMenuItem;
+    N03000400am8: TMenuItem;
+    N02000300am8: TMenuItem;
+    N01000200am8: TMenuItem;
+    N00000100am8: TMenuItem;
+    Freitag1: TMenuItem;
+    PastMeridian10: TMenuItem;
+    N11001200pm10: TMenuItem;
+    N10001100pm11: TMenuItem;
+    N09001000pm10: TMenuItem;
+    N08000900pm9: TMenuItem;
+    N07000800pm10: TMenuItem;
+    N06000700pm9: TMenuItem;
+    N05000600pm10: TMenuItem;
+    N04000500pm9: TMenuItem;
+    N03000400pm9: TMenuItem;
+    N02000300pm10: TMenuItem;
+    N01000200pm9: TMenuItem;
+    N12000100pm9: TMenuItem;
+    AfterMeridan10: TMenuItem;
+    N11001200am10: TMenuItem;
+    N10001100am10: TMenuItem;
+    N09001000am10: TMenuItem;
+    N08000900am9: TMenuItem;
+    N07000800am10: TMenuItem;
+    N06000700am9: TMenuItem;
+    N05000600am9: TMenuItem;
+    N04000500am9: TMenuItem;
+    N03000400am9: TMenuItem;
+    N02000300am9: TMenuItem;
+    N01000200am9: TMenuItem;
+    N00000100am9: TMenuItem;
+    Donnerstag1: TMenuItem;
+    PastMeridian11: TMenuItem;
+    N11001200pm11: TMenuItem;
+    N10001100pm12: TMenuItem;
+    N09001000pm11: TMenuItem;
+    N08000900pm10: TMenuItem;
+    N07000800pm11: TMenuItem;
+    N06000700pm10: TMenuItem;
+    N05000600pm11: TMenuItem;
+    N04000500pm10: TMenuItem;
+    N03000400pm10: TMenuItem;
+    N02000300pm11: TMenuItem;
+    N01000200pm10: TMenuItem;
+    N12000100pm10: TMenuItem;
+    AfterMeridan11: TMenuItem;
+    N11001200am11: TMenuItem;
+    N10001100am11: TMenuItem;
+    N09001000am11: TMenuItem;
+    N08000900am10: TMenuItem;
+    N07000800am11: TMenuItem;
+    N06000700am10: TMenuItem;
+    N05000600am10: TMenuItem;
+    N04000500am10: TMenuItem;
+    N03000400am10: TMenuItem;
+    N02000300am10: TMenuItem;
+    N01000200am10: TMenuItem;
+    N00000100am10: TMenuItem;
+    Mittwoch1: TMenuItem;
+    PastMeridian12: TMenuItem;
+    N11001200pm12: TMenuItem;
+    N10001100pm13: TMenuItem;
+    N09001000pm12: TMenuItem;
+    N08000900pm11: TMenuItem;
+    N07000800pm12: TMenuItem;
+    N06000700pm11: TMenuItem;
+    N05000600pm12: TMenuItem;
+    N04000500pm11: TMenuItem;
+    N03000400pm11: TMenuItem;
+    N02000300pm12: TMenuItem;
+    N01000200pm11: TMenuItem;
+    N12000100pm11: TMenuItem;
+    AfterMeridan12: TMenuItem;
+    N11001200am12: TMenuItem;
+    N10001100am12: TMenuItem;
+    N09001000am12: TMenuItem;
+    N08000900am11: TMenuItem;
+    N07000800am12: TMenuItem;
+    N06000700am11: TMenuItem;
+    N05000600am11: TMenuItem;
+    N04000500am11: TMenuItem;
+    N03000400am11: TMenuItem;
+    N02000300am11: TMenuItem;
+    N01000200am11: TMenuItem;
+    N00000100am11: TMenuItem;
+    Dienstag1: TMenuItem;
+    PastMeridian13: TMenuItem;
+    N11001200pm13: TMenuItem;
+    N10001100pm14: TMenuItem;
+    N09001000pm13: TMenuItem;
+    N08000900pm12: TMenuItem;
+    N07000800pm13: TMenuItem;
+    N06000700pm12: TMenuItem;
+    N05000600pm13: TMenuItem;
+    N04000500pm12: TMenuItem;
+    N03000400pm12: TMenuItem;
+    N02000300pm13: TMenuItem;
+    N01000200pm12: TMenuItem;
+    N12000100pm12: TMenuItem;
+    AfterMeridan13: TMenuItem;
+    N11001200am13: TMenuItem;
+    N10001100am13: TMenuItem;
+    N09001000am13: TMenuItem;
+    N08000900am12: TMenuItem;
+    N07000800am13: TMenuItem;
+    N06000700am12: TMenuItem;
+    N05000600am12: TMenuItem;
+    N04000500am12: TMenuItem;
+    N03000400am12: TMenuItem;
+    N02000300am12: TMenuItem;
+    N01000200am12: TMenuItem;
+    N00000100am12: TMenuItem;
+    Monday1: TMenuItem;
+    PastMeridian14: TMenuItem;
+    N11001200pm14: TMenuItem;
+    N10001100pm15: TMenuItem;
+    N09001000pm14: TMenuItem;
+    N08000900pm13: TMenuItem;
+    N07000800pm14: TMenuItem;
+    N06000700pm13: TMenuItem;
+    N05000600pm14: TMenuItem;
+    N04000500pm13: TMenuItem;
+    N03000400pm13: TMenuItem;
+    N02000300pm14: TMenuItem;
+    N01000200pm13: TMenuItem;
+    N12000100pm13: TMenuItem;
+    AfterMeridan14: TMenuItem;
+    N11001200am14: TMenuItem;
+    N10001100am14: TMenuItem;
+    N09001000am14: TMenuItem;
+    N08000900am13: TMenuItem;
+    N07000800am14: TMenuItem;
+    N06000700am13: TMenuItem;
+    N05000600am13: TMenuItem;
+    N04000500am13: TMenuItem;
+    N03000400am13: TMenuItem;
+    N02000300am13: TMenuItem;
+    N01000200am13: TMenuItem;
+    N00000100am13: TMenuItem;
+    Week12: TMenuItem;
+    Sonntag2: TMenuItem;
+    PastMeridian15: TMenuItem;
+    N11001200pm15: TMenuItem;
+    N10001100pm16: TMenuItem;
+    N09001000pm15: TMenuItem;
+    N08000900pm14: TMenuItem;
+    N07000800pm15: TMenuItem;
+    N06000700pm14: TMenuItem;
+    N05000600pm15: TMenuItem;
+    N04000500pm14: TMenuItem;
+    N03000400pm14: TMenuItem;
+    N02000300pm15: TMenuItem;
+    N01000200pm14: TMenuItem;
+    N12000100pm14: TMenuItem;
+    AfterMeridan15: TMenuItem;
+    N11001200am15: TMenuItem;
+    N10001100am15: TMenuItem;
+    N09001000am15: TMenuItem;
+    N08000900am14: TMenuItem;
+    N07000800am15: TMenuItem;
+    N06000700am14: TMenuItem;
+    N05000600am14: TMenuItem;
+    N04000500am14: TMenuItem;
+    N03000400am14: TMenuItem;
+    N02000300am14: TMenuItem;
+    N01000200am14: TMenuItem;
+    N00000100am14: TMenuItem;
+    Samstag2: TMenuItem;
+    PastMeridian16: TMenuItem;
+    N11001200pm16: TMenuItem;
+    N10001100pm17: TMenuItem;
+    N09001000pm16: TMenuItem;
+    N08000900pm15: TMenuItem;
+    N07000800pm16: TMenuItem;
+    N06000700pm15: TMenuItem;
+    N05000600pm16: TMenuItem;
+    N04000500pm15: TMenuItem;
+    N03000400pm15: TMenuItem;
+    N02000300pm16: TMenuItem;
+    N01000200pm15: TMenuItem;
+    N12000100pm15: TMenuItem;
+    AfterMeridan16: TMenuItem;
+    N11001200am16: TMenuItem;
+    N10001100am16: TMenuItem;
+    N09001000am16: TMenuItem;
+    N08000900am15: TMenuItem;
+    N07000800am16: TMenuItem;
+    N06000700am15: TMenuItem;
+    N05000600am15: TMenuItem;
+    N04000500am15: TMenuItem;
+    N03000400am15: TMenuItem;
+    N02000300am15: TMenuItem;
+    N01000200am15: TMenuItem;
+    N00000100am15: TMenuItem;
+    Freitag2: TMenuItem;
+    PastMeridian17: TMenuItem;
+    N11001200pm17: TMenuItem;
+    N10001100pm18: TMenuItem;
+    N09001000pm17: TMenuItem;
+    N08000900pm16: TMenuItem;
+    N07000800pm17: TMenuItem;
+    N06000700pm16: TMenuItem;
+    N05000600pm17: TMenuItem;
+    N04000500pm16: TMenuItem;
+    N03000400pm16: TMenuItem;
+    N02000300pm17: TMenuItem;
+    N01000200pm16: TMenuItem;
+    N12000100pm16: TMenuItem;
+    AfterMeridan17: TMenuItem;
+    N11001200am17: TMenuItem;
+    N10001100am17: TMenuItem;
+    N09001000am17: TMenuItem;
+    N08000900am16: TMenuItem;
+    N07000800am17: TMenuItem;
+    N06000700am16: TMenuItem;
+    N05000600am16: TMenuItem;
+    N04000500am16: TMenuItem;
+    N03000400am16: TMenuItem;
+    N02000300am16: TMenuItem;
+    N01000200am16: TMenuItem;
+    N00000100am16: TMenuItem;
+    Donnerstag2: TMenuItem;
+    PastMeridian18: TMenuItem;
+    N11001200pm18: TMenuItem;
+    N10001100pm19: TMenuItem;
+    N09001000pm18: TMenuItem;
+    N08000900pm17: TMenuItem;
+    N07000800pm18: TMenuItem;
+    N06000700pm17: TMenuItem;
+    N05000600pm18: TMenuItem;
+    N04000500pm17: TMenuItem;
+    N03000400pm17: TMenuItem;
+    N02000300pm18: TMenuItem;
+    N01000200pm17: TMenuItem;
+    N12000100pm17: TMenuItem;
+    AfterMeridan18: TMenuItem;
+    N11001200am18: TMenuItem;
+    N10001100am18: TMenuItem;
+    N09001000am18: TMenuItem;
+    N08000900am17: TMenuItem;
+    N07000800am18: TMenuItem;
+    N06000700am17: TMenuItem;
+    N05000600am17: TMenuItem;
+    N04000500am17: TMenuItem;
+    N03000400am17: TMenuItem;
+    N02000300am17: TMenuItem;
+    N01000200am17: TMenuItem;
+    N00000100am17: TMenuItem;
+    Mittwoch2: TMenuItem;
+    PastMeridian19: TMenuItem;
+    N11001200pm19: TMenuItem;
+    N10001100pm20: TMenuItem;
+    N09001000pm19: TMenuItem;
+    N08000900pm18: TMenuItem;
+    N07000800pm19: TMenuItem;
+    N06000700pm18: TMenuItem;
+    N05000600pm19: TMenuItem;
+    N04000500pm18: TMenuItem;
+    N03000400pm18: TMenuItem;
+    N02000300pm19: TMenuItem;
+    N01000200pm18: TMenuItem;
+    N12000100pm18: TMenuItem;
+    AfterMeridan19: TMenuItem;
+    N11001200am19: TMenuItem;
+    N10001100am19: TMenuItem;
+    N09001000am19: TMenuItem;
+    N08000900am18: TMenuItem;
+    N07000800am19: TMenuItem;
+    N06000700am18: TMenuItem;
+    N05000600am18: TMenuItem;
+    N04000500am18: TMenuItem;
+    N03000400am18: TMenuItem;
+    N02000300am18: TMenuItem;
+    N01000200am18: TMenuItem;
+    N00000100am18: TMenuItem;
+    Dienstag2: TMenuItem;
+    PastMeridian20: TMenuItem;
+    N11001200pm20: TMenuItem;
+    N10001100pm21: TMenuItem;
+    N09001000pm20: TMenuItem;
+    N08000900pm19: TMenuItem;
+    N07000800pm20: TMenuItem;
+    N06000700pm19: TMenuItem;
+    N05000600pm20: TMenuItem;
+    N04000500pm19: TMenuItem;
+    N03000400pm19: TMenuItem;
+    N02000300pm20: TMenuItem;
+    N01000200pm19: TMenuItem;
+    N12000100pm19: TMenuItem;
+    AfterMeridan20: TMenuItem;
+    N11001200am20: TMenuItem;
+    N10001100am20: TMenuItem;
+    N09001000am20: TMenuItem;
+    N08000900am19: TMenuItem;
+    N07000800am20: TMenuItem;
+    N06000700am19: TMenuItem;
+    N05000600am19: TMenuItem;
+    N04000500am19: TMenuItem;
+    N03000400am19: TMenuItem;
+    N02000300am19: TMenuItem;
+    N01000200am19: TMenuItem;
+    N00000100am19: TMenuItem;
+    Monday2: TMenuItem;
+    PastMeridian21: TMenuItem;
+    N11001200pm21: TMenuItem;
+    N10001100pm22: TMenuItem;
+    N09001000pm21: TMenuItem;
+    N08000900pm20: TMenuItem;
+    N07000800pm21: TMenuItem;
+    N06000700pm20: TMenuItem;
+    N05000600pm21: TMenuItem;
+    N04000500pm20: TMenuItem;
+    N03000400pm20: TMenuItem;
+    N02000300pm21: TMenuItem;
+    N01000200pm20: TMenuItem;
+    N12000100pm20: TMenuItem;
+    AfterMeridan21: TMenuItem;
+    N11001200am21: TMenuItem;
+    N10001100am21: TMenuItem;
+    N09001000am21: TMenuItem;
+    N08000900am20: TMenuItem;
+    N07000800am21: TMenuItem;
+    N06000700am20: TMenuItem;
+    N05000600am20: TMenuItem;
+    N04000500am20: TMenuItem;
+    N03000400am20: TMenuItem;
+    N02000300am20: TMenuItem;
+    N01000200am20: TMenuItem;
+    N00000100am20: TMenuItem;
+    Week13: TMenuItem;
+    Sonntag3: TMenuItem;
+    PastMeridian22: TMenuItem;
+    N11001200pm22: TMenuItem;
+    N10001100pm23: TMenuItem;
+    N09001000pm22: TMenuItem;
+    N08000900pm21: TMenuItem;
+    N07000800pm22: TMenuItem;
+    N06000700pm21: TMenuItem;
+    N05000600pm22: TMenuItem;
+    N04000500pm21: TMenuItem;
+    N03000400pm21: TMenuItem;
+    N02000300pm22: TMenuItem;
+    N01000200pm21: TMenuItem;
+    N12000100pm21: TMenuItem;
+    AfterMeridan22: TMenuItem;
+    N11001200am22: TMenuItem;
+    N10001100am22: TMenuItem;
+    N09001000am22: TMenuItem;
+    N08000900am21: TMenuItem;
+    N07000800am22: TMenuItem;
+    N06000700am21: TMenuItem;
+    N05000600am21: TMenuItem;
+    N04000500am21: TMenuItem;
+    N03000400am21: TMenuItem;
+    N02000300am21: TMenuItem;
+    N01000200am21: TMenuItem;
+    N00000100am21: TMenuItem;
+    Samstag3: TMenuItem;
+    PastMeridian23: TMenuItem;
+    N11001200pm23: TMenuItem;
+    N10001100pm24: TMenuItem;
+    N09001000pm23: TMenuItem;
+    N08000900pm22: TMenuItem;
+    N07000800pm23: TMenuItem;
+    N06000700pm22: TMenuItem;
+    N05000600pm23: TMenuItem;
+    N04000500pm22: TMenuItem;
+    N03000400pm22: TMenuItem;
+    N02000300pm23: TMenuItem;
+    N01000200pm22: TMenuItem;
+    N12000100pm22: TMenuItem;
+    AfterMeridan23: TMenuItem;
+    N11001200am23: TMenuItem;
+    N10001100am23: TMenuItem;
+    N09001000am23: TMenuItem;
+    N08000900am22: TMenuItem;
+    N07000800am23: TMenuItem;
+    N06000700am22: TMenuItem;
+    N05000600am22: TMenuItem;
+    N04000500am22: TMenuItem;
+    N03000400am22: TMenuItem;
+    N02000300am22: TMenuItem;
+    N01000200am22: TMenuItem;
+    N00000100am22: TMenuItem;
+    Freitag3: TMenuItem;
+    PastMeridian24: TMenuItem;
+    N11001200pm24: TMenuItem;
+    N10001100pm25: TMenuItem;
+    N09001000pm24: TMenuItem;
+    N08000900pm23: TMenuItem;
+    N07000800pm24: TMenuItem;
+    N06000700pm23: TMenuItem;
+    N05000600pm24: TMenuItem;
+    N04000500pm23: TMenuItem;
+    N03000400pm23: TMenuItem;
+    N02000300pm24: TMenuItem;
+    N01000200pm23: TMenuItem;
+    N12000100pm23: TMenuItem;
+    AfterMeridan24: TMenuItem;
+    N11001200am24: TMenuItem;
+    N10001100am24: TMenuItem;
+    N09001000am24: TMenuItem;
+    N08000900am23: TMenuItem;
+    N07000800am24: TMenuItem;
+    N06000700am23: TMenuItem;
+    N05000600am23: TMenuItem;
+    N04000500am23: TMenuItem;
+    N03000400am23: TMenuItem;
+    N02000300am23: TMenuItem;
+    N01000200am23: TMenuItem;
+    N00000100am23: TMenuItem;
+    Donnerstag3: TMenuItem;
+    PastMeridian25: TMenuItem;
+    N11001200pm25: TMenuItem;
+    N10001100pm26: TMenuItem;
+    N09001000pm25: TMenuItem;
+    N08000900pm24: TMenuItem;
+    N07000800pm25: TMenuItem;
+    N06000700pm24: TMenuItem;
+    N05000600pm25: TMenuItem;
+    N04000500pm24: TMenuItem;
+    N03000400pm24: TMenuItem;
+    N02000300pm25: TMenuItem;
+    N01000200pm24: TMenuItem;
+    N12000100pm24: TMenuItem;
+    AfterMeridan25: TMenuItem;
+    N11001200am25: TMenuItem;
+    N10001100am25: TMenuItem;
+    N09001000am25: TMenuItem;
+    N08000900am24: TMenuItem;
+    N07000800am25: TMenuItem;
+    N06000700am24: TMenuItem;
+    N05000600am24: TMenuItem;
+    N04000500am24: TMenuItem;
+    N03000400am24: TMenuItem;
+    N02000300am24: TMenuItem;
+    N01000200am24: TMenuItem;
+    N00000100am24: TMenuItem;
+    Mittwoch3: TMenuItem;
+    PastMeridian26: TMenuItem;
+    N11001200pm26: TMenuItem;
+    N10001100pm27: TMenuItem;
+    N09001000pm26: TMenuItem;
+    N08000900pm25: TMenuItem;
+    N07000800pm26: TMenuItem;
+    N06000700pm25: TMenuItem;
+    N05000600pm26: TMenuItem;
+    N04000500pm25: TMenuItem;
+    N03000400pm25: TMenuItem;
+    N02000300pm26: TMenuItem;
+    N01000200pm25: TMenuItem;
+    N12000100pm25: TMenuItem;
+    AfterMeridan26: TMenuItem;
+    N11001200am26: TMenuItem;
+    N10001100am26: TMenuItem;
+    N09001000am26: TMenuItem;
+    N08000900am25: TMenuItem;
+    N07000800am26: TMenuItem;
+    N06000700am25: TMenuItem;
+    N05000600am25: TMenuItem;
+    N04000500am25: TMenuItem;
+    N03000400am25: TMenuItem;
+    N02000300am25: TMenuItem;
+    N01000200am25: TMenuItem;
+    N00000100am25: TMenuItem;
+    Dienstag3: TMenuItem;
+    PastMeridian27: TMenuItem;
+    N11001200pm27: TMenuItem;
+    N10001100pm28: TMenuItem;
+    N09001000pm27: TMenuItem;
+    N08000900pm26: TMenuItem;
+    N07000800pm27: TMenuItem;
+    N06000700pm26: TMenuItem;
+    N05000600pm27: TMenuItem;
+    N04000500pm26: TMenuItem;
+    N03000400pm26: TMenuItem;
+    N02000300pm27: TMenuItem;
+    N01000200pm26: TMenuItem;
+    N12000100pm26: TMenuItem;
+    AfterMeridan27: TMenuItem;
+    N11001200am27: TMenuItem;
+    N10001100am27: TMenuItem;
+    N09001000am27: TMenuItem;
+    N08000900am26: TMenuItem;
+    N07000800am27: TMenuItem;
+    N06000700am26: TMenuItem;
+    N05000600am26: TMenuItem;
+    N04000500am26: TMenuItem;
+    N03000400am26: TMenuItem;
+    N02000300am26: TMenuItem;
+    N01000200am26: TMenuItem;
+    N00000100am26: TMenuItem;
+    Monday3: TMenuItem;
+    PastMeridian28: TMenuItem;
+    N11001200pm28: TMenuItem;
+    N10001100pm29: TMenuItem;
+    N09001000pm28: TMenuItem;
+    N08000900pm27: TMenuItem;
+    N07000800pm28: TMenuItem;
+    N06000700pm27: TMenuItem;
+    N05000600pm28: TMenuItem;
+    N04000500pm27: TMenuItem;
+    N03000400pm27: TMenuItem;
+    N02000300pm28: TMenuItem;
+    N01000200pm27: TMenuItem;
+    N12000100pm27: TMenuItem;
+    AfterMeridan28: TMenuItem;
+    N11001200am28: TMenuItem;
+    N10001100am28: TMenuItem;
+    N09001000am28: TMenuItem;
+    N08000900am27: TMenuItem;
+    N07000800am28: TMenuItem;
+    N06000700am27: TMenuItem;
+    N05000600am27: TMenuItem;
+    N04000500am27: TMenuItem;
+    N03000400am27: TMenuItem;
+    N02000300am27: TMenuItem;
+    N01000200am27: TMenuItem;
+    N00000100am27: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    N5: TMenuItem;
+    N6: TMenuItem;
+    N7: TMenuItem;
+    N8: TMenuItem;
+    N9: TMenuItem;
+    N10: TMenuItem;
+    N11: TMenuItem;
+    N12: TMenuItem;
+    N13: TMenuItem;
+    N14: TMenuItem;
+    TabSheet33: TTabSheet;
+    TabSheet34: TTabSheet;
+    ScrollBox29: TScrollBox;
+    ScrollBox6: TScrollBox;
+    PageControl6: TPageControl;
+    TabSheet6: TTabSheet;
+    TabSheet35: TTabSheet;
+    ScrollBox30: TScrollBox;
+    Panel1: TPanel;
+    ListBox18: TListBox;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Splitter1: TSplitter;
+    Panel6: TPanel;
+    SynEdit1: TSynEdit;
+    Splitter2: TSplitter;
+    Panel13: TPanel;
+    ListBox19: TListBox;
+    JvDesignSurface1: TJvDesignSurface;
+    JvInspectorBorlandPainter1: TJvInspectorBorlandPainter;
+    ScrollBox31: TScrollBox;
+    Panel16: TPanel;
+    Splitter4: TSplitter;
+    Panel17: TPanel;
+    PageControl10: TPageControl;
+    TabSheet36: TTabSheet;
+    TabSheet37: TTabSheet;
+    JvInspector1: TJvInspector;
+    JvInspector2: TJvInspector;
+    Splitter5: TSplitter;
+    Panel18: TPanel;
+    Panel21: TPanel;
+    JvDesignScrollBox1: TJvDesignScrollBox;
+    JvDesignPanel1: TJvDesignPanel;
+    Panel24: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure DesktopApplicationOLEActivate(Sender: TObject);
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -261,10 +1065,115 @@ type
       Index: Integer; Rect: TRect; State: TOwnerDrawState);
     procedure TimeTableGrid_Location_ListSelect(Sender: TObject);
     procedure LocationListTimerTimer(Sender: TObject);
-    procedure Panel29DblClick(Sender: TObject);
-    procedure Panel31DblClick(Sender: TObject);
-    procedure Panel27DblClick(Sender: TObject);
-    procedure Panel33DblClick(Sender: TObject);
+    procedure SystemViewGridDrawCell(Sender: TObject; ACol, ARow: Integer;
+      Rect: TRect; State: TGridDrawState);
+    procedure data1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure JvComboListBox1MeasureItem(Control: TWinControl;
+      Index: Integer; var Height: Integer);
+    procedure Week11MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Week21MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Week31MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Week41MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure JvArrowButton6Click(Sender: TObject);
+    procedure AfterMeridan1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Week13MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Donnerstag3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure AfterMeridan25MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure AfterMeridan28MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure AfterMeridan27MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure AfterMeridan26MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Freitag3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Samstag3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Sonntag3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure PastMeridian28MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure PastMeridian27MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure PastMeridian26MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure PastMeridian25MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure AfterMeridan24MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure PastMeridian24MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure AfterMeridan23MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure PastMeridian23MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure AfterMeridan22Click(Sender: TObject);
+    procedure AfterMeridan22MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure PastMeridian22MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Monday3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Dienstag3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Mittwoch3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure dududa1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Monday2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Dienstag2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Mittwoch2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Donnerstag2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Freitag2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Samstag2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Sonntag2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Monday1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Dienstag1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Mittwoch1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Donnerstag1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Freitag1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Samstag1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Sonntag1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Monday10MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Monday9MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Monday8MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Monday7MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Monday6MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Monday5MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure Monday4MeasureItem(Sender: TObject; ACanvas: TCanvas;
+      var Width, Height: Integer);
+    procedure TasksPageControlChange(Sender: TObject);
+  protected
+//    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
     iniFile: TIniFile;
     strList: TStringList;
@@ -316,16 +1225,23 @@ begin
         strList.Values[IntToStr(len)]);
       end;
 
-      MiscToolsPanelWidth   := MiscToolsPanel.Width;
-      DNServerPanelWidth    := DNServerPanel.Width;
-      ProxyServerPanelWidth := ProxyServerPanel.Width;
-      HttpServerPanelWidth  := HttpServerPanel.Width;
+      with SystemViewGrid do
+      begin
+        DefaultRowHeight := 24;
+        ColWidths[0] := 24;
+        ColWidths[1] := 100;
+        ColWidths[2] := 84;
+      end;
+
     except
       ShowMessage('Exception in Unit2 occur.');
       exit;
     end;
   finally
   end;
+
+
+
 
   ConnectionListGrid.ColWidths[0] := 21;
   ConnectionListGrid.ColWidths[5] := 113;
@@ -560,65 +1476,422 @@ begin
   LocationListTimer.Interval := 5000;
 end;
 
-procedure TForm2.Panel29DblClick(Sender: TObject);
+procedure TForm2.SystemViewGridDrawCell(
+  Sender: TObject;
+  ACol,   ARow: Integer;
+  Rect:   TRect;
+  State:  TGridDrawState);
+  procedure drawSymbol(i: Integer);
+  var
+    img: TImage;
+    pic: TGraphic;
+  begin
+    try
+      img := TImage.Create(nil);
+      img.Width          := 24;
+      img.Height         := 24;
+      img.Stretch        := true;
+      img.Proportional   := true;
+      img.Picture.Bitmap := nil;
+      ImageList1.GetBitmap(i,img.Picture.Bitmap);
+      SystemViewGrid.Canvas.Draw(rect.Left,rect.Top,img.Picture.Bitmap);
+    finally
+      img.Free;
+    end;
+  end;
+  procedure drawText(AString: String); begin
+    SystemViewGrid.Canvas.TextOut(rect.Left+2,rect.Top+4,AString);
+  end;
 begin
-  if MiscToolsPanel.Visible  then
+  with SystemViewGrid.Canvas do
   begin
-    MiscToolsPanel.Visible := false;
-    MiscToolsPanel.Width   := 0;
-    Panel28.Width := 0;
-    Panel13.Width := 0;
-  end else
-  begin
-    MiscToolsPanel.Visible := true;
-    MiscToolsPanel.Width   := MiscToolsPanelWidth;
-    Panel28.Width          := MiscToolsPanelWidth;
-    Panel13.Width          := MiscToolsPanelWidth;
+    if (ACol = 0) then
+    begin
+      case ARow of
+      0: begin drawSymbol(0); end;
+      1: begin drawSymbol(4); end;
+      2: begin drawSymbol(5); end;
+      3: begin drawSymbol(7); end;
+      4: begin drawSymbol(6); end;
+      5: begin drawSymbol(3); end;
+      end;
+    end;
+
+    if (ACol = 1) or (ACol = 2) then
+    begin
+      if (gdSelected in State) and (ACol = 1) then
+      begin
+        Brush.Color := clBlue;
+        Font.Color  := clWhite;
+        Font.Style  := [fsBold];
+      end else
+      if (gdSelected in State) and (ACol = 2) then
+      begin
+        Brush.Color := clAqua;
+        Font.Color  := clBlack;
+        Font.Style  := [fsBold];
+      end else
+      begin
+        Brush.Color := clWhite;
+        Font.Color  := clBlack;
+        Font.Style  := [];
+      end;
+      FillRect(Rect);
+      if (ACol = 1) then
+      begin
+        case ARow of
+        0: begin drawText('Warning'     ); end;
+        1: begin drawText('Connection'  ); end;
+        2: begin drawText('User'        ); end;
+        3: begin drawText('SYSTEM TABLE'); end;
+        4: begin drawText('SYSTEM VIEW' ); end;
+        5: begin drawText('Tables'      ); end;
+        end;
+      end;
+    end;
   end;
 end;
 
-procedure TForm2.Panel31DblClick(Sender: TObject);
+procedure TForm2.data1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
 begin
-  if DNServerPanel.Visible then
+  Height := 26;
+  Width  := 110;
+end;
+
+procedure TForm2.JvComboListBox1MeasureItem(Control: TWinControl;
+  Index: Integer; var Height: Integer);
+begin
+  Height := 26;
+  Width  := 110;
+end;
+
+procedure TForm2.Week11MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Width := 64;
+end;
+
+procedure TForm2.Week21MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Width := 64;
+end;
+
+procedure TForm2.Week31MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Width := 64;
+end;
+
+procedure TForm2.Week41MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Width := 64;
+end;
+
+procedure TForm2.JvArrowButton6Click(Sender: TObject);
+begin
+  if JvComboListBox1.Enabled = true then
   begin
-    DNServerPanel.Visible := false;
-    DNServerPanel.Width   := 0;
-    Panel21.Width := 0;
+    JvComboListBox1.Enabled := false;
+    JvComboListBox1.Visible := false;
   end else
   begin
-    DNServerPanel.Visible := true;
-    DNServerPanel.Width   := DNServerPanelWidth;
-    Panel21.Width         := DNServerPanelWidth;
+    JvComboListBox1.Enabled := true;
+    JvComboListBox1.Visible := true;
+    JvComboListBox1.Top := 48;
+    JvComboListBox1.Left := 1;
   end;
 end;
 
-procedure TForm2.Panel27DblClick(Sender: TObject);
+procedure TForm2.AfterMeridan1MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
 begin
-  if ProxyServerPanel.Visible then
-  begin
-    ProxyServerPanel.Visible := false;
-    ProxyServerPanel.Width   := 0;
-    Panel32.Width := 0;
-  end else
-  begin
-    ProxyServerPanel.Visible := true;
-    ProxyServerPanel.Width   := ProxyServerPanelWidth;
-    Panel32.Width            := ProxyServerPanelWidth;
-  end;
+  Width := 84;
 end;
 
-procedure TForm2.Panel33DblClick(Sender: TObject);
+procedure TForm2.Week13MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
 begin
-  if HttpServerPanel.Visible then
+  Width := 74;
+end;
+
+procedure TForm2.Donnerstag3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Width := 100
+end;
+
+procedure TForm2.AfterMeridan25MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.AfterMeridan28MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.AfterMeridan27MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.AfterMeridan26MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.Freitag3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Width := 100;
+end;
+
+procedure TForm2.Samstag3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Width := 100;
+end;
+
+procedure TForm2.Sonntag3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Width := 100;
+end;
+
+procedure TForm2.PastMeridian28MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.PastMeridian27MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.PastMeridian26MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.PastMeridian25MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.AfterMeridan24MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.PastMeridian24MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.AfterMeridan23MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.PastMeridian23MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.AfterMeridan22Click(Sender: TObject);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.AfterMeridan22MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.PastMeridian22MeasureItem(Sender: TObject;
+  ACanvas: TCanvas; var Width, Height: Integer);
+begin
+  Width := 96;
+end;
+
+procedure TForm2.Monday3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Width := 100;
+end;
+
+procedure TForm2.Dienstag3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Width := 100;
+end;
+
+procedure TForm2.Mittwoch3MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Width := 100;
+end;
+
+procedure TForm2.dududa1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Height := 26;
+  Width  := 110;
+end;
+
+procedure TForm2.Monday2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Width  := 100;
+end;
+
+procedure TForm2.Dienstag2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Mittwoch2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Donnerstag2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Freitag2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Samstag2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Sonntag2MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Monday1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Dienstag1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Mittwoch1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Donnerstag1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Freitag1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Samstag1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Sonntag1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Monday10MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Monday9MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Monday8MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Monday7MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Monday6MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Monday5MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.Monday4MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+Width  := 110;
+end;
+
+procedure TForm2.TasksPageControlChange(Sender: TObject);
+begin
+  if TasksPageControl.TabIndex = 6 then
   begin
-    HttpServerPanel.Visible := false;
-    HttpServerPanel.Width   := 0;
-    Panel25.Width := 0;
+    Panel1.Visible    := false;
+    Splitter2.Visible := false;
   end else
   begin
-    HttpServerPanel.Visible := true;
-    HttpServerPanel.Width   := HttpServerPanelWidth;
-    Panel25.Width           := HttpServerPanelWidth;
+    Panel1.Visible := true;
+    Splitter2.Visible := true;
+    Splitter2.Top := Panel1.Height;
   end;
 end;
 
