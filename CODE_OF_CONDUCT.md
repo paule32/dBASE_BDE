@@ -3,37 +3,36 @@
 ## Unser Versprechen
 
 Wir, als Mitglieder, Sponsoren, und Leiter versprechen, dass für die Teilnahme
-in unserer Gemeinschaft eine gegenseitige und einen rücksichtsvollen Umgang,
-der unabhängig vom Alter, Religion, Geschlecht, Bildungsstand, sozialer Herkunft
-oder Status, Nationalität,
-Aussehen oder Rasse oder sexueller Orientierung der jeweiligen Persoon gilt.
+in unserer Gemeinschaft ein gegenseitiges Entgegenkommen sowie einen rücksicht
+vollen Umgang, der unabhängig vom Alter, Religion, Geschlecht, Bildungsstand,
+sozialer Herkunft oder Status, Nationalität, Aussehen, Rasse oder sexueller
+Orientierung der jeweiligen Persoon gilt.
 
 Darüber hinaus dulden wir keine Beleidigungen oder andere Diskremminierungen
 von Minderheiten oder Fremdenhass.
 
 ## Unsere Werte
 
-Examples of behavior that contributes to a positive environment for our
-community include:
+Beispiele für positives Verhalten in unserer Gemeinschaft beinhalten:
 
-* Demonstrating empathy and kindness toward other people
-* Being respectful of differing opinions, viewpoints, and experiences
-* Giving and gracefully accepting constructive feedback
-* Accepting responsibility and apologizing to those affected by our mistakes,
-  and learning from the experience
-* Focusing on what is best not just for us as individuals, but for the
-  overall community
+* Einfühlungsvermögen und Freundlichkeit gegenüber anderen Menschen zeigen
+* Respekt vor unterschiedlichen Meinungen, Standpunkten und Erfahrungen
+* Konstruktive Rückmeldungen geben und dankbar annehmen
+* Übernahmen von Verantwortung und Entschuldigungen aussprechen, bei denjenigen,
+  die von unseren Fehlern betroffen sind, um aus Erfahrungen zu Lernen
+* Konzentrieren auf das Wichtigste, was nicht nur für uns als Einzelne,
+  sondern insgesamt für Alle in der Gemeinschaft am besten ist
 
-Examples of unacceptable behavior include:
+Beispiele für unangebrachtes Verhalten beinhalten:
 
-* The use of sexualized language or imagery, and sexual attention or
-  advances of any kind
-* Trolling, insulting or derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or email
-  address, without their explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
-  professional setting
+* Die Verwendung einer sexuell geprägter Sprache oder das zeigen von nicht
+  jugendfreien Bildern, sexuelle Annäherungsversuche jeglicher Art
+* Beleidigende oder herabsetzende Kommentare und persönliche oder politische
+  Angriffe
+* Öffentliche oder private Belästigung
+* Die Veröffentlichung privater Informationen anderer Personen ohne deren
+  ausdrückliche Erlaubnis
+* Unangemessenes Verhalten im beruflichen Umfeld
 
 ## Enforcement Responsibilities
 
