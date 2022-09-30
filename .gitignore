@@ -1,2 +1,7 @@
 # ignore files
 *.~*
+*.dcu
+*.exe
+*.cpl
+*.dll
+*.com
