@@ -2,13 +2,14 @@
 
 ## Unser Versprechen
 
-Wir, als Mitglieder, Sponsoren, und Leiter versprechen, für die Teilnahme in
-unserer Gemeinschaft eine gegenseitige und rücksichtsvolle Teilnahme, die
-unabhängig vom Alter, Religion, Geschlechts, Bildungsstandes, sozialer Herkunft
-oder Status, Nationalität, Aussehen oder Rasse der jeweiligen Persoon.
-gilt.
+Wir, als Mitglieder, Sponsoren, und Leiter versprechen, dass für die Teilnahme
+in unserer Gemeinschaft eine gegenseitige und einen rücksichtsvollen Umgang,
+der unabhängig vom Alter, Religion, Geschlecht, Bildungsstand, sozialer Herkunft
+oder Status, Nationalität, Aussehen oder Rasse oder sexueller Orientierung
+der jeweiligen Persoon gilt.
+
 Darüber hinaus dulden wir keine Beleidigungen oder andere Diskremminierungen
-oder Fremdenhass.
+von Minderheiten oder Fremdenhass.
 
 ## Unsere Werte
 
