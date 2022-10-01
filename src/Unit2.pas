@@ -7,13 +7,14 @@ uses
   Dialogs, StdCtrls, DB, DBTables, ComCtrls, DBCtrls, Grids, DBGrids,
   Menus, ExtCtrls, Mask, IdAntiFreezeBase, IdAntiFreeze, IdBaseComponent,
   IdComponent, IdTCPConnection, IdTCPClient, OleCtnrs, IniFiles, DateUtils,
-  ImgList, Buttons, JvComponentBase, JvTabBarXPPainter,
+  ImgList, Buttons, TypInfo, JvComponentBase, JvTabBarXPPainter,
   JvExComCtrls, JvTabBar, JvExControls, JvArrowButton, JvComCtrls,
   JvExExtCtrls, JvExtComponent, JvComponentPanel, JvSplitter, ToolWin,
   JvCoolBar, JvBevel, JvPanel, JvItemsPanel, JvExStdCtrls, JvListBox,
   JvComboListBox, JvXPCore, JvBDELists, SynEdit, JvDesignSurface,
   JvInspector, JvPageListTreeView, JvCombobox, JvListComb, JvPageList,
-  JvSpeedButton, JvButton, JvCtrls, TeeProcs, TeEngine, Chart, JvDesignUtils;
+  JvSpeedButton, JvButton, JvCtrls, TeeProcs, TeEngine, Chart, JvDesignUtils,
+  JclRTTI, JvInspExtraEditors;
 
 type
   TForm2 = class(TForm)
@@ -1005,7 +1006,7 @@ type
     Panel13: TPanel;
     ListBox19: TListBox;
     JvDesignSurface1: TJvDesignSurface;
-    JvInspectorBorlandPainter1: TJvInspectorBorlandPainter;
+    BorlandPainter: TJvInspectorBorlandPainter;
     ScrollBox31: TScrollBox;
     Panel16: TPanel;
     Splitter4: TSplitter;
@@ -1107,12 +1108,12 @@ type
     JvSpeedButton6: TJvSpeedButton;
     TabSheet41: TTabSheet;
     TabSheet42: TTabSheet;
+    DotNETPainter: TJvInspectorDotNETPainter;
     procedure FormCreate(Sender: TObject);
     procedure DesktopApplicationOLEActivate(Sender: TObject);
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
     procedure TimeTableGridDblClick(Sender: TObject);
-    procedure FormClick(Sender: TObject);
     procedure TimeTableGrid_deSelectButtonClick(Sender: TObject);
     procedure TimeTableGrid_SelectAllButtonClick(Sender: TObject);
     procedure TimeTableGrid_SelectMarkClick(Sender: TObject);
@@ -1232,6 +1233,17 @@ type
     procedure TasksPageControlChange(Sender: TObject);
     procedure BackgroundViewButtonClick(Sender: TObject);
     procedure DevelopmentDesignerPanel_Paint(Sender: TObject);
+    procedure DevelopmentDesignerPanelGetAddClass(Sender: TObject;
+      var ioClass: String);
+    procedure JvSpeedButton6Click(Sender: TObject);
+    procedure JvSpeedButton5Click(Sender: TObject);
+    procedure JvSpeedButton4Click(Sender: TObject);
+    procedure JvInspector1AfterItemCreate(Sender: TObject;
+      Item: TJvCustomInspectorItem);
+    procedure DevelopmentDesignerPanelSelectionChange(Sender: TObject);
+    procedure JvInspector1DataValueChanged(Sender: TObject;
+      Data: TJvCustomInspectorData);
+    procedure FormDestroy(Sender: TObject);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -1244,8 +1256,19 @@ type
     DNServerPanelWidth    : Integer;
     ProxyServerPanelWidth : Integer;
     HttpServerPanelWidth  : Integer;
-  public
 
+    BoolsAsChecks: Boolean;
+    ActiveDesignerControl : TControl;
+
+    procedure AddInspectorSettings;
+    procedure AddInspectorDimension;
+
+    procedure GetBoolsAsChecks(Sender: TJvInspectorEventData; var Value: Int64);
+    procedure SetBoolsAsChecks(Sender: TJvInspectorEventData; var Value: Int64);
+
+    procedure ChangeChkState(const Item: TJvCustomInspectorItem);
+  public
+    DesignClass: string;
   end;
 
 var
@@ -1254,6 +1277,108 @@ var
 implementation
 
 {$R *.dfm}
+
+var
+  VerInfoStr: string = 'Version 0.1';
+
+  dim_left  : String = '0';
+  dim_top   : String = '0';
+  dim_width : string = '0';
+  dim_height: string = '0';
+
+  comp_dim_left   : TJvCustomInspectorItem;
+  comp_dim_top    : TJvCustomInspectorItem;
+  comp_dim_width  : TJvCustomInspectorItem;
+  comp_dim_height : TJvCustomInspectorItem;
+
+type
+  TMyPainter = class(TComponent)
+  private
+    FString: String;
+  public
+    constructor Create(AOwner: TComponent);
+  published
+    property Text: String read FString write FString;
+  end;
+
+
+procedure TForm2.ChangeChkState(const Item: TJvCustomInspectorItem);
+var
+  I: Integer;
+begin
+  if Item is TJvInspectorBooleanItem then
+    TJvInspectorBooleanItem(Item).ShowAsCheckbox := BoolsAsChecks;
+  for I := 0 to Item.Count - 1 do
+    ChangeChkState(Item[I]);
+end;
+
+procedure TForm2.GetBoolsAsChecks(Sender: TJvInspectorEventData; var Value: Int64);
+begin
+  Value := Ord(BoolsAsChecks);
+end;
+
+procedure TForm2.SetBoolsAsChecks(Sender: TJvInspectorEventData; var Value: Int64);
+begin
+  if (Value <> 0) <> BoolsAsChecks then
+  begin
+    BoolsAsChecks := Value <> 0;
+    JvInspector1.BeginUpdate;
+    try
+      ChangeChkState(JvInspector1.Root);
+    finally
+      JvInspector1.EndUpdate;
+    end;
+  end;
+end;
+
+
+
+constructor TMyPainter.Create(AOwner: TComponent);
+begin
+//  inherited Create(AOwner);
+end;
+
+procedure TForm2.AddInspectorSettings;
+var
+  InspCat: TJvInspectorCustomCategoryItem;
+begin
+  InspCat := TJvInspectorCustomCategoryItem.Create(JvInspector1.Root, nil);
+  InspCat.DisplayName := 'Inspector Settings';
+
+  TJvInspectorPropData.New(InspCat, JvInspector1, GetPropInfo(JvInspector1, 'Painter')).DisplayName := 'Style';
+  TJvInspectorVarData .New(InspCat, 'AboutJVCL', TypeInfo(string), @VerInfoStr).DisplayName := 'About';
+
+  with TJvInspectorEventData(TJvInspectorEventData.New(InspCat, 'Use check marks', System.TypeInfo(Boolean)).Data) do
+  begin
+    OnGetAsOrdinal := GetBoolsAsChecks;
+    OnSetAsOrdinal := SetBoolsAsChecks;
+  end;
+  InspCat.Expanded := True;
+end;
+
+procedure TForm2.AddInspectorDimension;
+var
+  Cat: TJvInspectorCustomCategoryItem;
+begin
+  Cat := TJvInspectorCustomCategoryItem.Create(JvInspector1.Root, nil);
+  Cat.DisplayName  := 'Dimension';
+
+  comp_dim_width  := TJvInspectorVarData.New(Cat, '0', TypeInfo(String), @dim_width );
+  comp_dim_width.DisplayName   := 'Width';
+  comp_dim_width.DisplayValue  := '0';
+
+  comp_dim_top    := TJvInspectorVarData.New(Cat, '0', TypeInfo(String), @dim_top   );
+  comp_dim_top.DisplayName     := 'Top';
+  comp_dim_top.DisplayValue    := '0';
+
+  comp_dim_height := TJvInspectorVarData.New(Cat, '0', TypeInfo(String), @dim_height);
+  comp_dim_height.DisplayName  := 'Height';
+  comp_dim_height.DisplayValue := '0';
+
+  comp_dim_left   := TJvInspectorVarData.New(Cat, '0', TypeInfo(String), @dim_left  );
+  comp_dim_left.DisplayName    := 'Left';
+  comp_dim_left.DisplayValue   := '0';
+end;
 
 procedure TForm2.FormCreate(Sender: TObject);
 var
@@ -1298,10 +1423,15 @@ begin
         Surface.Active := true;
         Color := clBtnFace;
         DrawRules := false;
+        Clear;
         OnPaint := DevelopmentDesignerPanel_Paint;
         Invalidate;
       end;
-      
+
+      BoolsAsChecks := false;
+      AddInspectorSettings;
+      AddInspectorDimension;
+
     except
       ShowMessage('Exception in Unit2 occur.');
       exit;
@@ -1402,11 +1532,6 @@ begin
   if TimeTableGrid.Cells[col,row] = 't' then
      TimeTableGrid.Cells[col,row] := 'f' else
      TimeTableGrid.Cells[col,row] := 't' ;
-end;
-
-procedure TForm2.FormClick(Sender: TObject);
-begin
-  iniFile.Free;
 end;
 
 procedure TForm2.TimeTableGrid_deSelectButtonClick(Sender: TObject);
@@ -1981,5 +2106,144 @@ begin
   with DevelopmentDesignerPanel do
     DesignPaintGrid(Canvas, ClientRect, Color);
 end;
+
+procedure TForm2.DevelopmentDesignerPanelGetAddClass(Sender: TObject;
+  var ioClass: String);
+begin
+  ioClass := DesignClass;
+
+  DesignClass := '';
+  jvSpeedButton1.Down := true;
+end;
+
+procedure TForm2.JvSpeedButton6Click(Sender: TObject);
+begin
+  DesignClass := 'TEdit';
+end;
+
+procedure TForm2.JvSpeedButton5Click(Sender: TObject);
+begin
+  DesignClass := 'TButton';
+end;
+
+procedure TForm2.JvSpeedButton4Click(Sender: TObject);
+begin
+  DesignClass := 'TLabel';
+end;
+
+var
+  MyPaint: TMyPainter;
+procedure TForm2.JvInspector1AfterItemCreate(
+  Sender: TObject;
+  Item: TJvCustomInspectorItem);
+begin
+  if (Item.Data <> nil) and (CompareText(Item.Data.Name, 'Painter') = 0) then
+  with Item as TJvInspectorComponentItem do
+  begin
+    AddOwner(self);
+  end
+end;
+procedure TForm2.DevelopmentDesignerPanelSelectionChange(Sender: TObject);
+var
+  idx,cnt: Integer;
+  s : String;
+  tc: TControl;
+begin
+  with DevelopmentDesignerPanel do
+  begin
+    for idx := 0 to ControlCount - 1 do
+    begin
+      tc := Controls[idx];
+      ActiveDesignerControl := tc;
+      if Surface.Selector.IsSelected(tc) then
+      begin
+        if tc.ClassName = 'TButton' then
+        begin
+          comp_dim_left  .DisplayValue := IntToStr(TButton(tc).Left  );
+          comp_dim_top   .DisplayValue := IntToStr(TButton(tc).Top   );
+          comp_dim_width .DisplayValue := IntToStr(TButton(tc).Width );
+          comp_dim_height.DisplayValue := IntToStr(TButton(tc).Height);
+        end else
+        if tc.ClassName = 'TEdit' then
+        begin
+          comp_dim_left  .DisplayValue := IntToStr(TEdit(tc).Left  );
+          comp_dim_top   .DisplayValue := IntToStr(TEdit(tc).Top   );
+          comp_dim_width .DisplayValue := IntToStr(TEdit(tc).Width );
+          comp_dim_height.DisplayValue := IntToStr(TEdit(tc).Height);
+        end else
+        if tc.ClassName = 'TLabel' then
+        begin
+          comp_dim_left  .DisplayValue := IntToStr(TLabel(tc).Left  );
+          comp_dim_top   .DisplayValue := IntToStr(TLabel(tc).Top   );
+          comp_dim_width .DisplayValue := IntToStr(TLabel(tc).Width );
+          comp_dim_height.DisplayValue := IntToStr(TLabel(tc).Height);
+        end;
+        break;
+      end;
+    end;
+  end;
+end;
+
+procedure TForm2.JvInspector1DataValueChanged(
+  Sender: TObject;
+  Data: TJvCustomInspectorData);
+var
+  idx: Integer;
+  dn: String;
+  dv: Integer;
+begin
+  with DevelopmentDesignerPanel do
+  begin
+    for idx := 0 to Data.ItemCount - 1 do
+    begin
+      dn := LowerCase(Data.Items[idx].DisplayName);
+      dv := StrToInt (Data.AsString);
+
+      if Data.Items[idx].Parent.DisplayName = 'Dimension' then
+      begin
+        if ActiveDesignerControl is TButton then
+        begin
+          if dn = 'width'  then TButton(ActiveDesignerControl).width  := dv else
+          if dn = 'height' then TButton(ActiveDesignerControl).height := dv else
+          if dn = 'top'    then TButton(ActiveDesignerControl).top    := dv else
+          if dn = 'left'   then TButton(ActiveDesignerControl).left   := dv;
+        end else
+        if ActiveDesignerControl is TButton then
+        begin
+          if dn = 'width'  then TEdit(ActiveDesignerControl).width  := dv else
+          if dn = 'height' then TEdit(ActiveDesignerControl).height := dv else
+          if dn = 'top'    then TEdit(ActiveDesignerControl).top    := dv else
+          if dn = 'left'   then TEdit(ActiveDesignerControl).left   := dv;
+        end else
+        if ActiveDesignerControl is TLabel then
+        begin
+          if dn = 'width'  then TLabel(ActiveDesignerControl).width  := dv else
+          if dn = 'height' then TLabel(ActiveDesignerControl).height := dv else
+          if dn = 'top'    then TLabel(ActiveDesignerControl).top    := dv else
+          if dn = 'left'   then TLabel(ActiveDesignerControl).left   := dv;
+        end;
+      end
+
+    end;
+  end;
+end;
+
+procedure TForm2.FormDestroy(Sender: TObject);
+begin
+  iniFile.Free;
+end;
+
+initialization
+  RegisterClass(TMainMenu);
+  RegisterClass(TPopupMenu);
+  RegisterClass(TLabel);
+  RegisterClass(TButton);
+  RegisterClass(TButton);
+  RegisterClass(TEdit);
+
+  TJvInspectorAlignItem.RegisterAsDefaultItem;
+  TJvInspectorAnchorsItem.RegisterAsDefaultItem;
+  TJvInspectorColorItem.RegisterAsDefaultItem;
+  TJvInspectorTImageIndexItem.RegisterAsDefaultItem;
 
 end.
