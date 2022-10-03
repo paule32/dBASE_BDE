@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 56
-  Top = 92
+  Left = 186
+  Top = 63
   Width = 1132
   Height = 665
   Caption = 'DataBase Explorer (c) 2022 Jens Kallup 1.0.0'
@@ -65,7 +65,7 @@ object Form2: TForm2
           Top = 124
           Width = 1106
           Height = 469
-          ActivePage = TabSheet34
+          ActivePage = TabSheet33
           Align = alClient
           TabOrder = 0
           OnChange = TasksPageControlChange
@@ -1702,12 +1702,12 @@ object Form2: TForm2
                     object Panel20: TPanel
                       Left = 8
                       Top = 8
-                      Width = 809
+                      Width = 761
                       Height = 145
                       Anchors = [akLeft, akTop, akRight]
                       TabOrder = 0
                       DesignSize = (
-                        809
+                        761
                         145)
                       object Button18: TButton
                         Left = 8
@@ -1760,7 +1760,7 @@ object Form2: TForm2
                       object ListBox3: TListBox
                         Left = 240
                         Top = 8
-                        Width = 553
+                        Width = 505
                         Height = 121
                         Anchors = [akLeft, akTop, akRight]
                         ItemHeight = 13
@@ -2060,7 +2060,7 @@ object Form2: TForm2
                 TabOrder = 0
                 object Splitter19: TSplitter
                   Left = 1
-                  Top = 377
+                  Top = 180
                   Width = 183
                   Height = 3
                   Cursor = crVSplit
@@ -2075,67 +2075,27 @@ object Form2: TForm2
                   Caption = 'Screens'
                   TabOrder = 0
                 end
-                object JvSettingsTreeView2: TJvSettingsTreeView
+                object SetupPageTreeView: TJvSettingsTreeView
                   Left = 1
                   Top = 42
                   Width = 183
                   Height = 138
                   PageDefault = 0
-                  PageList = JvPageList1
+                  PageList = SetupPageList
                   Align = alTop
                   Indent = 19
                   TabOrder = 1
+                  OnClick = SetupPageTreeViewClick
                   Items.Data = {
-                    040000001D000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000000000000
-                    047A7A7A7A220000000000000000000000FFFFFFFFFFFFFFFF01000000020000
-                    00097A7A7A7A7A676767671E000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01
-                    0000000000000005687A6868681D000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                    FF000000000000000004363736371C0000000000000000000000FFFFFFFFFFFF
-                    FFFF01000000010000000367676723000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                    FFFF01000000000000000A393938393839383938391F00000000000000000000
-                    00FFFFFFFFFFFFFFFF0000000001000000066868686868681F00000002000000
-                    02000000FFFFFFFFFFFFFFFF000000000000000006303030303939}
-                  Items.Links = {
-                    0800000001000000010000000100000000000000010000000100000000000000
-                    00000000}
-                end
-                object JvPageList2: TJvPageList
-                  Left = 1
-                  Top = 180
-                  Width = 183
-                  Height = 197
-                  ActivePage = JvStandardPage4
-                  PropagateEnable = False
-                  Align = alTop
-                  object JvStandardPage3: TJvStandardPage
-                    Left = 0
-                    Top = 0
-                    Width = 183
-                    Height = 197
-                    Caption = 'JvStandardPage1'
-                  end
-                  object JvStandardPage4: TJvStandardPage
-                    Left = 0
-                    Top = 0
-                    Width = 183
-                    Height = 197
-                    Caption = 'JvStandardPage2'
-                    object JvImageComboBox2: TJvImageComboBox
-                      Left = 120
-                      Top = 16
-                      Width = 145
-                      Height = 23
-                      Style = csOwnerDrawVariable
-                      ButtonStyle = fsLighter
-                      DroppedWidth = 145
-                      ImageHeight = 0
-                      ImageWidth = 0
-                      ItemHeight = 17
-                      ItemIndex = -1
-                      TabOrder = 0
-                      Items = <>
-                    end
-                  end
+                    02000000220000000100000001000000FFFFFFFFFFFFFFFF0100000002000000
+                    094C616E67756167657320000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+                    00000000000007456E676C6973681F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                    FFFF0000000000000000064765726D616E210000000000000000000000FFFFFF
+                    FFFFFFFFFF0100000002000000084D616E696665737424000000FFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFF01000000000000000B4170706C69636174696F6E2200
+                    00000200000002000000FFFFFFFFFFFFFFFF000000000000000009526573736F
+                    75726365}
+                  Items.Links = {06000000010000000000000000000000010000000100000000000000}
                 end
               end
               object Panel29: TPanel
@@ -2149,7 +2109,7 @@ object Form2: TForm2
                 object Splitter16: TSplitter
                   Left = 1
                   Top = 314
-                  Width = 905
+                  Width = 904
                   Height = 3
                   Cursor = crVSplit
                   Align = alBottom
@@ -2157,13 +2117,13 @@ object Form2: TForm2
                 object Splitter17: TSplitter
                   Left = 1
                   Top = 42
-                  Width = 905
+                  Width = 904
                   Height = 3
                   Cursor = crVSplit
                   Align = alTop
                 end
                 object Splitter18: TSplitter
-                  Left = 693
+                  Left = 692
                   Top = 45
                   Height = 269
                   Align = alRight
@@ -2171,7 +2131,7 @@ object Form2: TForm2
                 object Panel31: TPanel
                   Left = 1
                   Top = 317
-                  Width = 905
+                  Width = 904
                   Height = 119
                   Align = alBottom
                   Caption = 'Panel31'
@@ -2180,28 +2140,112 @@ object Form2: TForm2
                 object Panel32: TPanel
                   Left = 1
                   Top = 1
-                  Width = 905
+                  Width = 904
                   Height = 41
                   Align = alTop
                   Caption = 'Panel32'
                   TabOrder = 1
                 end
-                object StringGrid1: TStringGrid
-                  Left = 1
-                  Top = 45
-                  Width = 692
-                  Height = 269
-                  Align = alClient
-                  TabOrder = 2
-                end
                 object Panel33: TPanel
-                  Left = 696
+                  Left = 695
                   Top = 45
                   Width = 210
                   Height = 269
                   Align = alRight
                   Caption = 'Panel33'
-                  TabOrder = 3
+                  TabOrder = 2
+                end
+                object SetupPageList: TJvPageList
+                  Left = 1
+                  Top = 45
+                  Width = 691
+                  Height = 269
+                  ActivePage = SetupPageLanguage
+                  PropagateEnable = False
+                  Align = alClient
+                  object SetupPageLanguage: TJvStandardPage
+                    Left = 0
+                    Top = 0
+                    Width = 691
+                    Height = 269
+                    Caption = 'JvStandardPage1'
+                    object ScrollBox38: TScrollBox
+                      Left = 0
+                      Top = 0
+                      Width = 691
+                      Height = 269
+                      Align = alClient
+                      TabOrder = 0
+                      DesignSize = (
+                        687
+                        265)
+                      object SetupLangPageControl: TPageControl
+                        Left = 0
+                        Top = 0
+                        Width = 681
+                        Height = 262
+                        ActivePage = SetupPageLangENU
+                        Anchors = [akLeft, akTop, akRight, akBottom]
+                        TabOrder = 0
+                        object SetupPageLangENU: TTabSheet
+                          Caption = 'English'
+                          object ScrollBox39: TScrollBox
+                            Left = 0
+                            Top = 0
+                            Width = 673
+                            Height = 234
+                            Align = alClient
+                            TabOrder = 0
+                            inline SetupLangFrame: TSetupLocaleFrame
+                              Left = 0
+                              Top = 0
+                              Width = 669
+                              Height = 230
+                              Align = alClient
+                              TabOrder = 0
+                              Visible = False
+                              inherited ScrollBox1: TScrollBox
+                                Width = 669
+                                Height = 230
+                                inherited LangTextStringGrid: TJvStringGrid
+                                  Width = 665
+                                  Height = 226
+                                end
+                              end
+                            end
+                          end
+                        end
+                        object SetupPageLangDEU: TTabSheet
+                          Caption = 'Gernan'
+                          ImageIndex = 1
+                          object ScrollBox40: TScrollBox
+                            Left = 0
+                            Top = 0
+                            Width = 673
+                            Height = 234
+                            Align = alClient
+                            TabOrder = 0
+                          end
+                        end
+                      end
+                    end
+                  end
+                  object LangPage0: TJvStandardPage
+                    Left = 0
+                    Top = 0
+                    Width = 691
+                    Height = 269
+                    object SetupLangInfoLabel: TLabel
+                      Left = 8
+                      Top = 8
+                      Width = 297
+                      Height = 97
+                      Alignment = taCenter
+                      AutoSize = False
+                      Caption = 'labler'
+                      WordWrap = True
+                    end
+                  end
                 end
               end
             end
@@ -2255,7 +2299,7 @@ object Form2: TForm2
                       TabOrder = 0
                       object Splitter5: TSplitter
                         Left = 1
-                        Top = 361
+                        Top = 354
                         Width = 191
                         Height = 3
                         Cursor = crVSplit
@@ -2265,14 +2309,27 @@ object Form2: TForm2
                         Left = 1
                         Top = 1
                         Width = 191
-                        Height = 32
+                        Height = 25
                         Align = alTop
-                        Caption = 'Panel17'
                         TabOrder = 0
+                        object DesignerControlsComboBox: TJvCheckedComboBox
+                          Left = 1
+                          Top = 1
+                          Width = 189
+                          Height = 23
+                          Items.Strings = (
+                            'Form'
+                            '')
+                          CapSelectAll = '&Select all'
+                          CapDeSelectAll = '&Deselect all'
+                          CapInvertAll = '&Invert all'
+                          Align = alClient
+                          TabOrder = 0
+                        end
                       end
                       object PageControl10: TPageControl
                         Left = 1
-                        Top = 33
+                        Top = 26
                         Width = 191
                         Height = 328
                         ActivePage = TabSheet36
@@ -2293,6 +2350,7 @@ object Form2: TForm2
                             TabStop = True
                             TabOrder = 0
                             OnDataValueChanged = JvInspector1DataValueChanged
+                            OnItemValueChanging = JvInspector1ItemValueChanging
                           end
                         end
                         object TabSheet37: TTabSheet
@@ -2312,7 +2370,7 @@ object Form2: TForm2
                       end
                       object Panel24: TPanel
                         Left = 1
-                        Top = 364
+                        Top = 357
                         Width = 191
                         Height = 29
                         Align = alTop
@@ -2321,9 +2379,9 @@ object Form2: TForm2
                       end
                       object ListView1: TListView
                         Left = 1
-                        Top = 393
+                        Top = 386
                         Width = 191
-                        Height = 31
+                        Height = 38
                         Align = alClient
                         Columns = <>
                         TabOrder = 3
@@ -2357,6 +2415,7 @@ object Form2: TForm2
                         Width = 704
                         Height = 391
                         Align = alLeft
+                        Anchors = [akLeft, akTop, akRight, akBottom]
                         Caption = 'Panel25'
                         TabOrder = 1
                         object JvDesignScrollBox1: TJvDesignScrollBox
@@ -2364,13 +2423,14 @@ object Form2: TForm2
                           Top = 1
                           Width = 702
                           Height = 389
-                          Align = alClient
+                          Align = alLeft
+                          Anchors = [akLeft, akTop, akRight, akBottom]
                           TabOrder = 0
                           object DevelopmentDesignerPanel: TJvDesignPanel
                             Left = 0
-                            Top = -1
-                            Width = 793
-                            Height = 530
+                            Top = 0
+                            Width = 1200
+                            Height = 1024
                             TabOrder = 0
                             OnGetAddClass = DevelopmentDesignerPanelGetAddClass
                             OnSelectionChange = DevelopmentDesignerPanelSelectionChange
@@ -2383,6 +2443,7 @@ object Form2: TForm2
                         Width = 156
                         Height = 391
                         Align = alClient
+                        Anchors = [akTop, akRight, akBottom]
                         TabOrder = 2
                       end
                     end
@@ -2744,7 +2805,7 @@ object Form2: TForm2
             object TabSheet40: TTabSheet
               Caption = 'Standard'
               object PageScroller1: TPageScroller
-                Left = 0
+                Left = 87
                 Top = 0
                 Width = 510
                 Height = 51
@@ -2758,7 +2819,7 @@ object Form2: TForm2
                   Align = alLeft
                   TabOrder = 0
                   object JvSpeedButton1: TJvSpeedButton
-                    Left = 88
+                    Left = 8
                     Top = 5
                     Width = 40
                     Height = 40
@@ -2843,7 +2904,7 @@ object Form2: TForm2
                   end
                   object JvSpeedButton2: TJvSpeedButton
                     Tag = 1
-                    Left = 122
+                    Left = 50
                     Top = 5
                     Width = 40
                     Height = 40
@@ -2928,7 +2989,7 @@ object Form2: TForm2
                   end
                   object JvSpeedButton3: TJvSpeedButton
                     Tag = 2
-                    Left = 163
+                    Left = 91
                     Top = 5
                     Width = 40
                     Height = 40
@@ -3013,7 +3074,7 @@ object Form2: TForm2
                   end
                   object JvSpeedButton4: TJvSpeedButton
                     Tag = 3
-                    Left = 204
+                    Left = 132
                     Top = 5
                     Width = 40
                     Height = 40
@@ -3099,7 +3160,7 @@ object Form2: TForm2
                   end
                   object JvSpeedButton5: TJvSpeedButton
                     Tag = 4
-                    Left = 245
+                    Left = 173
                     Top = 5
                     Width = 40
                     Height = 40
@@ -3186,7 +3247,7 @@ object Form2: TForm2
                   end
                   object JvSpeedButton6: TJvSpeedButton
                     Tag = 5
-                    Left = 286
+                    Left = 214
                     Top = 5
                     Width = 40
                     Height = 40
@@ -3270,29 +3331,62 @@ object Form2: TForm2
                       FFFFFFFFFFFFFFFFFFFF}
                     OnClick = JvSpeedButton6Click
                   end
-                  object BackgroundViewButton: TJvImgBtn
-                    Left = 5
-                    Top = 5
-                    Width = 78
-                    Height = 40
-                    Caption = 'View'
-                    TabOrder = 0
-                    OnClick = BackgroundViewButtonClick
-                    Color = 8454016
-                    Images = ImageList1
-                    ImageIndex = 8
-                  end
                 end
+              end
+              object BackgroundViewButton: TJvImgBtn
+                Left = 5
+                Top = 6
+                Width = 78
+                Height = 40
+                Caption = 'View'
+                TabOrder = 1
+                OnClick = BackgroundViewButtonClick
+                Color = 8454016
+                Images = ImageList1
+                ImageIndex = 8
               end
             end
             object TabSheet41: TTabSheet
               Caption = 'Database Control'#39's'
               ImageIndex = 1
+              object JvImgBtn2: TJvImgBtn
+                Left = 5
+                Top = 6
+                Width = 78
+                Height = 40
+                Caption = 'View'
+                TabOrder = 0
+                OnClick = BackgroundViewButtonClick
+                Color = 8454016
+                Images = ImageList1
+                ImageIndex = 8
+              end
             end
             object TabSheet42: TTabSheet
               Caption = 'Database Source'#39's'
               ImageIndex = 2
+              object JvImgBtn3: TJvImgBtn
+                Left = 5
+                Top = 6
+                Width = 78
+                Height = 40
+                Caption = 'View'
+                TabOrder = 0
+                OnClick = BackgroundViewButtonClick
+                Color = 8454016
+                Images = ImageList1
+                ImageIndex = 8
+              end
             end
+          end
+          object JvImgBtn1: TJvImgBtn
+            Left = 648
+            Top = 16
+            Width = 75
+            Height = 25
+            Caption = 'JvImgBtn1'
+            TabOrder = 1
+            Color = clLime
           end
         end
       end
@@ -6934,7 +7028,7 @@ object Form2: TForm2
     ValueFont.Name = 'MS Sans Serif'
     ValueFont.Style = []
     DrawNameEndEllipsis = False
-    Left = 326
+    Left = 382
     Top = 213
   end
   object DotNETPainter: TJvInspectorDotNETPainter

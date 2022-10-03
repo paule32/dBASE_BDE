@@ -1,6 +1,12 @@
 # ignore files
 *.~*
-exe/*.*
+assets/common/*.dll
+assets/images/*.*
+dcu/*.*
+exe/DEU/*.dll
+exe/DEU/*.exe
+exe/ENG/*.dll
+exe/ENG/*.exe
 *.dcu
 *.exe
 *.cpl

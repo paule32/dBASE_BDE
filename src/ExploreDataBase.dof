@@ -90,25 +90,32 @@ MaxStackSize=1048576
 ImageBase=67108864
 ExeDescription=compiler wrapper IDE - kallup.net
 [Directories]
-OutputDir=
-UnitOutputDir=
+OutputDir=.\exe\ENG
+UnitOutputDir=.\dcu
 PackageDLLOutputDir=
-PackageDCPOutputDir=
-SearchPath=G:\DELPHI\SetupToolKit_10\cmp;E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run;E:\Projekte\jedi\jvcl\jvcl\resources;E:\Projekte\SynEdit\Source;E:\Projekte\SynEdit\SynGen
+PackageDCPOutputDir=.\dcp
+SearchPath=E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run;E:\Projekte\jedi\jvcl\jvcl\resources;E:\Projekte\SynEdit\Source;E:\Projekte\SynEdit\SynGen
 Packages=vcl;rtl;vclx;inet;xmlrtl;vclie;inetdbbde;inetdbxpress;dbrtl;dsnap;dsnapcon;vcldb;soaprtl;VclSmp;dbexpress;dbxcds;inetdb;bdertl;vcldbx;webdsnap;websnap;adortl;ibxpress;teeui;teedb;tee;dss;visualclx;visualdbclx;vclactnband;vclshlctrls;IntrawebDB_50_70;Intraweb_50_70;Rave50CLX;Rave50VCL;dclOfficeXP;vc2;indy
 Conditionals=
 DebugSourceDirs=
 UsePackages=0
 [Parameters]
 RunParams=
-HostApplication=G:\AMIGA-500\paule32\test1\src\windows\start.exe
+HostApplication=
 Launcher=
 UseLauncher=0
 DebugCWD=
+[Resource DLL Projects]
+Item0=Deutsch (Deutschland)*$00000407*DEU*DEU
+[RDP Source Files]
+Item0=Unit2.dfm
+Item1=Unit1.dfm
+Item2=SetupLocale.dfm
+Item3=ExploreDataBase.drc
 [Language]
 ActiveLang=
-ProjectLang=
-RootDir=E:\Program Files (x86)\Borland\Delphi7\Bin\
+ProjectLang=$00000409
+RootDir=
 [Version Info]
 IncludeVerInfo=1
 AutoIncBuild=0
@@ -139,18 +146,21 @@ SpecialBuild=
 [Excluded Packages]
 E:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\Jcl70.bpl=JEDI Code Library RTL package
 E:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\JclVcl70.bpl=JEDI Code Library VCL package
-e:\program files (x86)\borland\delphi7\Bin\dcldss70.bpl=Borland Decision Cube Components
-[HistoryLists\hlConditionals]
-Count=1
-Item0=KBMMEMTABLE_PRO_EDITION;madExcept
 [HistoryLists\hlUnitAliases]
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlSearchPath]
-Count=6
-Item0=G:\DELPHI\SetupToolKit_10\cmp;E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run;E:\Projekte\jedi\jvcl\jvcl\resources;E:\Projekte\SynEdit\Source;E:\Projekte\SynEdit\SynGen
-Item1=G:\DELPHI\SetupToolKit_10\cmp;E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run;E:\Projekte\jedi\jvcl\jvcl\resources
-Item2=..\..\run;..\..\common;..\..\Resources;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\common;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\include;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\include\jedi;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\vcl;G:\LMD2013\lib\d7;G:\paule32\RK1700\Entwicklung\jvcl\lib\d7;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\lib\d7;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\windows;G:\paule32\RK1700\Entwicklung\jvcl\Resources;G:\DELPHI\ICS\Source;G:\DELPHI\ICS\Source\Extras;G:\DELPHI\ICS\Source\Include;G:\DELPHI\ICS\Source\zobj125;G:\DELPHI\ICS\Source\zobj125\win64;G:\DELPHI\powtils_1_7_1\main;G:\DELPHI\lakeofsoft-vcpub-b1e0d1c\common;G:\DELPHI\TnTcomponents\Source;G:\DELPHI\TnTcomponents\Design;G:\DELPHI\TnTcomponents\Delphi\d7;G:\DELPHI\kbmMW Enterprise Edition 4.93;G:\DELPHI\WebApps;G:\DELPHI\WebApps\include;G:\DELPHI\FireFoxChrome\source;G:\DELPHI\SynEdit\Source;G:\DELPHI\HtmlViewer\source;G:\DELPHI\HtmlViewer\source\Obj;G:\DELPHI\HtmlViewer\resources;G:\DELPHI\cipher\dec\Dec\Source;G:\DELPHI\cipher\dec\Dec\Source\DEC_API;G:\DELPHI\cipher\dec\Dec\Source\DEC_API\Source;G:\DELPHI\cipher\dec\Dec\Part_I;G:\paule32\RK1700\Entwicklung\jvcl\packages\d7;G:\paule32\RK1700\Entwicklung\jvcl\design;G:\paule32\RK1700\Entwicklung\jvcl\common;G:\paule32\RK1700\Entwicklung\jvcl\run;G:\AMIGA-500\paule32\test1\src\windows;G:\Users\user\AppData\Local\tmssoftware\TMSVCLUIPack RS7;G:\Users\user\AppData\Local\tmssoftware\TMSVCLUIPack RS7\Win32;G:\DELPHI\tmsAsync;G:\DELPHI\tmsAsync\win32;G:\DELPHI\SetupToolKit_10;G:\DELPHI\SetupToolKit_10\src;G:\DELPHI\SetupToolKit_10\projects;G:\DELPHI\SetupToolKit_10\zlib;G:\DELPHI\SetupToolKit_10\img;G:\DELPHI\SetupToolKit_10\scripts;G:\DELPHI\SetupToolKit_10\cmp;E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run
-Item3=..\..\run;..\..\common;..\..\Resources;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\common;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\include;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\include\jedi;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\vcl;G:\LMD2013\lib\d7;G:\paule32\RK1700\Entwicklung\jvcl\lib\d7;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\lib\d7;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\windows;G:\paule32\RK1700\Entwicklung\jvcl\Resources;G:\DELPHI\ICS\Source;G:\DELPHI\ICS\Source\Extras;G:\DELPHI\ICS\Source\Include;G:\DELPHI\ICS\Source\zobj125;G:\DELPHI\ICS\Source\zobj125\win64;G:\DELPHI\powtils_1_7_1\main;G:\DELPHI\lakeofsoft-vcpub-b1e0d1c\common;G:\DELPHI\TnTcomponents\Source;G:\DELPHI\TnTcomponents\Design;G:\DELPHI\TnTcomponents\Delphi\d7;G:\DELPHI\kbmMW Enterprise Edition 4.93;G:\DELPHI\WebApps;G:\DELPHI\WebApps\include;G:\DELPHI\FireFoxChrome\source;G:\DELPHI\SynEdit\Source;G:\DELPHI\HtmlViewer\source;G:\DELPHI\HtmlViewer\source\Obj;G:\DELPHI\HtmlViewer\resources;G:\DELPHI\cipher\dec\Dec\Source;G:\DELPHI\cipher\dec\Dec\Source\DEC_API;G:\DELPHI\cipher\dec\Dec\Source\DEC_API\Source;G:\DELPHI\cipher\dec\Dec\Part_I;G:\paule32\RK1700\Entwicklung\jvcl\packages\d7;G:\paule32\RK1700\Entwicklung\jvcl\design;G:\paule32\RK1700\Entwicklung\jvcl\common;G:\paule32\RK1700\Entwicklung\jvcl\run;G:\AMIGA-500\paule32\test1\src\windows;G:\Users\user\AppData\Local\tmssoftware\TMSVCLUIPack RS7;G:\Users\user\AppData\Local\tmssoftware\TMSVCLUIPack RS7\Win32;G:\DELPHI\tmsAsync;G:\DELPHI\tmsAsync\win32;G:\DELPHI\SetupToolKit_10;G:\DELPHI\SetupToolKit_10\src;G:\DELPHI\SetupToolKit_10\projects;G:\DELPHI\SetupToolKit_10\zlib;G:\DELPHI\SetupToolKit_10\img;G:\DELPHI\SetupToolKit_10\scripts;G:\DELPHI\SetupToolKit_10\cmp;E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu
-Item4=..\..\run;..\..\common;..\..\Resources;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\common;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\include;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\include\jedi;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\vcl;G:\LMD2013\lib\d7;G:\paule32\RK1700\Entwicklung\jvcl\lib\d7;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\lib\d7;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\windows;G:\paule32\RK1700\Entwicklung\jvcl\Resources;G:\DELPHI\ICS\Source;G:\DELPHI\ICS\Source\Extras;G:\DELPHI\ICS\Source\Include;G:\DELPHI\ICS\Source\zobj125;G:\DELPHI\ICS\Source\zobj125\win64;G:\DELPHI\powtils_1_7_1\main;G:\DELPHI\lakeofsoft-vcpub-b1e0d1c\common;G:\DELPHI\TnTcomponents\Source;G:\DELPHI\TnTcomponents\Design;G:\DELPHI\TnTcomponents\Delphi\d7;G:\DELPHI\kbmMW Enterprise Edition 4.93;G:\DELPHI\WebApps;G:\DELPHI\WebApps\include;G:\DELPHI\FireFoxChrome\source;G:\DELPHI\SynEdit\Source;G:\DELPHI\HtmlViewer\source;G:\DELPHI\HtmlViewer\source\Obj;G:\DELPHI\HtmlViewer\resources;G:\DELPHI\cipher\dec\Dec\Source;G:\DELPHI\cipher\dec\Dec\Source\DEC_API;G:\DELPHI\cipher\dec\Dec\Source\DEC_API\Source;G:\DELPHI\cipher\dec\Dec\Part_I;G:\paule32\RK1700\Entwicklung\jvcl\packages\d7;G:\paule32\RK1700\Entwicklung\jvcl\design;G:\paule32\RK1700\Entwicklung\jvcl\common;G:\paule32\RK1700\Entwicklung\jvcl\run;G:\AMIGA-500\paule32\test1\src\windows;G:\Users\user\AppData\Local\tmssoftware\TMSVCLUIPack RS7;G:\Users\user\AppData\Local\tmssoftware\TMSVCLUIPack RS7\Win32;G:\DELPHI\tmsAsync;G:\DELPHI\tmsAsync\win32;G:\DELPHI\SetupToolKit_10;G:\DELPHI\SetupToolKit_10\src;G:\DELPHI\SetupToolKit_10\projects;G:\DELPHI\SetupToolKit_10\zlib;G:\DELPHI\SetupToolKit_10\img;G:\DELPHI\SetupToolKit_10\scripts;G:\DELPHI\SetupToolKit_10\cmp;E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common
-Item5=..\..\run;..\..\common;..\..\Resources;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\common;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\include;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\include\jedi;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\vcl;G:\LMD2013\lib\d7;G:\paule32\RK1700\Entwicklung\jvcl\lib\d7;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\lib\d7;G:\paule32\RK1700\Entwicklung\jcl-2.7.0.5676\source\windows;G:\paule32\RK1700\Entwicklung\jvcl\Resources;G:\DELPHI\ICS\Source;G:\DELPHI\ICS\Source\Extras;G:\DELPHI\ICS\Source\Include;G:\DELPHI\ICS\Source\zobj125;G:\DELPHI\ICS\Source\zobj125\win64;G:\DELPHI\powtils_1_7_1\main;G:\DELPHI\lakeofsoft-vcpub-b1e0d1c\common;G:\DELPHI\TnTcomponents\Source;G:\DELPHI\TnTcomponents\Design;G:\DELPHI\TnTcomponents\Delphi\d7;G:\DELPHI\kbmMW Enterprise Edition 4.93;G:\DELPHI\WebApps;G:\DELPHI\WebApps\include;G:\DELPHI\FireFoxChrome\source;G:\DELPHI\SynEdit\Source;G:\DELPHI\HtmlViewer\source;G:\DELPHI\HtmlViewer\source\Obj;G:\DELPHI\HtmlViewer\resources;G:\DELPHI\cipher\dec\Dec\Source;G:\DELPHI\cipher\dec\Dec\Source\DEC_API;G:\DELPHI\cipher\dec\Dec\Source\DEC_API\Source;G:\DELPHI\cipher\dec\Dec\Part_I;G:\paule32\RK1700\Entwicklung\jvcl\packages\d7;G:\paule32\RK1700\Entwicklung\jvcl\design;G:\paule32\RK1700\Entwicklung\jvcl\common;G:\paule32\RK1700\Entwicklung\jvcl\run;G:\AMIGA-500\paule32\test1\src\windows;G:\Users\user\AppData\Local\tmssoftware\TMSVCLUIPack RS7;G:\Users\user\AppData\Local\tmssoftware\TMSVCLUIPack RS7\Win32;G:\DELPHI\tmsAsync;G:\DELPHI\tmsAsync\win32;G:\DELPHI\SetupToolKit_10;G:\DELPHI\SetupToolKit_10\src;G:\DELPHI\SetupToolKit_10\projects;G:\DELPHI\SetupToolKit_10\zlib;G:\DELPHI\SetupToolKit_10\img;G:\DELPHI\SetupToolKit_10\scripts;G:\DELPHI\SetupToolKit_10\cmp;E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg
+Count=3
+Item0=E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run;E:\Projekte\jedi\jvcl\jvcl\resources;E:\Projekte\SynEdit\Source;E:\Projekte\SynEdit\SynGen
+Item1=E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run;E:\Projekte\jedi\jvcl\jvcl\resources
+Item2=..\..\run;..\..\common;..\..\Resources;E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run
+[HistoryLists\hlUnitOutputDirectory]
+Count=1
+Item0=.\dcu
+[HistoryLists\hlOutputDirectorry]
+Count=2
+Item0=.\exe\ENG
+Item1=.\exe
+[HistoryLists\hlDCPOutput]
+Count=1
+Item0=.\dcp

@@ -12,9 +12,10 @@ uses
   JvExExtCtrls, JvExtComponent, JvComponentPanel, JvSplitter, ToolWin,
   JvCoolBar, JvBevel, JvPanel, JvItemsPanel, JvExStdCtrls, JvListBox,
   JvComboListBox, JvXPCore, JvBDELists, SynEdit, JvDesignSurface,
-  JvInspector, JvPageListTreeView, JvCombobox, JvListComb, JvPageList,
+  JvPageListTreeView, JvCombobox, JvListComb, JvPageList,
   JvSpeedButton, JvButton, JvCtrls, TeeProcs, TeEngine, Chart, JvDesignUtils,
-  JclRTTI, JvInspExtraEditors;
+  JclRTTI, JvInspExtraEditors, JvExMask, JvToolEdit, JvColorCombo,
+  JvDialogs, JvInspector, SetupLocale;
 
 type
   TForm2 = class(TForm)
@@ -1023,7 +1024,6 @@ type
     ListView1: TListView;
     Panel25: TPanel;
     JvDesignScrollBox1: TJvDesignScrollBox;
-    DevelopmentDesignerPanel: TJvDesignPanel;
     Splitter6: TSplitter;
     ScrollBox32: TScrollBox;
     Splitter11: TSplitter;
@@ -1085,21 +1085,15 @@ type
     Splitter16: TSplitter;
     Panel32: TPanel;
     Splitter17: TSplitter;
-    StringGrid1: TStringGrid;
     Panel33: TPanel;
     Splitter18: TSplitter;
     Panel34: TPanel;
     Splitter19: TSplitter;
-    JvSettingsTreeView2: TJvSettingsTreeView;
-    JvPageList2: TJvPageList;
-    JvStandardPage3: TJvStandardPage;
-    JvStandardPage4: TJvStandardPage;
-    JvImageComboBox2: TJvImageComboBox;
+    SetupPageTreeView: TJvSettingsTreeView;
     PageControl16: TPageControl;
     TabSheet40: TTabSheet;
     PageScroller1: TPageScroller;
     DevelopmentMenuPanel: TPanel;
-    BackgroundViewButton: TJvImgBtn;
     JvSpeedButton1: TJvSpeedButton;
     JvSpeedButton2: TJvSpeedButton;
     JvSpeedButton3: TJvSpeedButton;
@@ -1109,6 +1103,23 @@ type
     TabSheet41: TTabSheet;
     TabSheet42: TTabSheet;
     DotNETPainter: TJvInspectorDotNETPainter;
+    DevelopmentDesignerPanel: TJvDesignPanel;
+    DesignerControlsComboBox: TJvCheckedComboBox;
+    JvImgBtn1: TJvImgBtn;
+    BackgroundViewButton: TJvImgBtn;
+    JvImgBtn2: TJvImgBtn;
+    JvImgBtn3: TJvImgBtn;
+    SetupPageList: TJvPageList;
+    SetupPageLanguage: TJvStandardPage;
+    LangPage0: TJvStandardPage;
+    ScrollBox38: TScrollBox;
+    SetupLangPageControl: TPageControl;
+    SetupPageLangENU: TTabSheet;
+    ScrollBox39: TScrollBox;
+    SetupPageLangDEU: TTabSheet;
+    ScrollBox40: TScrollBox;
+    SetupLangInfoLabel: TLabel;
+    SetupLangFrame: TSetupLocaleFrame;
     procedure FormCreate(Sender: TObject);
     procedure DesktopApplicationOLEActivate(Sender: TObject);
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1244,6 +1255,10 @@ type
     procedure JvInspector1DataValueChanged(Sender: TObject;
       Data: TJvCustomInspectorData);
     procedure FormDestroy(Sender: TObject);
+    procedure JvInspector1ItemValueChanging(Sender: TObject;
+      Item: TJvCustomInspectorItem; var NewValue: String;
+      var AllowChange: Boolean);
+    procedure SetupPageTreeViewClick(Sender: TObject);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -1262,13 +1277,21 @@ type
 
     procedure AddInspectorSettings;
     procedure AddInspectorDimension;
+    procedure AddInspectorAppearence;
 
     procedure GetBoolsAsChecks(Sender: TJvInspectorEventData; var Value: Int64);
     procedure SetBoolsAsChecks(Sender: TJvInspectorEventData; var Value: Int64);
 
+    procedure GetStringAsColor(Sender: TJvInspectorEventData; var Value: String);
+    procedure SetStringAsColor(Sender: TJvInspectorEventData; var Value: String);
+
+
+    procedure HideSetupLangPages;
+
     procedure ChangeChkState(const Item: TJvCustomInspectorItem);
   public
     DesignClass: string;
+    in_insp: Boolean;
   end;
 
 var
@@ -1286,21 +1309,17 @@ var
   dim_width : string = '0';
   dim_height: string = '0';
 
+  // Position
   comp_dim_left   : TJvCustomInspectorItem;
   comp_dim_top    : TJvCustomInspectorItem;
   comp_dim_width  : TJvCustomInspectorItem;
   comp_dim_height : TJvCustomInspectorItem;
-
-type
-  TMyPainter = class(TComponent)
-  private
-    FString: String;
-  public
-    constructor Create(AOwner: TComponent);
-  published
-    property Text: String read FString write FString;
-  end;
 
+  // Appearence
+  comp_btn_color  : TJvCustomInspectorItem;
+
+  Comp_ColorBox   : String;
+
 
 procedure TForm2.ChangeChkState(const Item: TJvCustomInspectorItem);
 var
@@ -1310,6 +1329,15 @@ begin
     TJvInspectorBooleanItem(Item).ShowAsCheckbox := BoolsAsChecks;
   for I := 0 to Item.Count - 1 do
     ChangeChkState(Item[I]);
+end;
+
+procedure TForm2.GetStringAsColor(Sender: TJvInspectorEventData; var Value: String);
+begin
+  Value := comp_btn_color_string;
+end;
+procedure TForm2.SetStringAsColor(Sender: TJvInspectorEventData; var Value: String);
+begin
+  TJvInspectorStringItem(comp_btn_color).Data.AsString := comp_btn_color_string;
 end;
 
 procedure TForm2.GetBoolsAsChecks(Sender: TJvInspectorEventData; var Value: Int64);
@@ -1332,13 +1360,7 @@ begin
 end;
 
 
-
-constructor TMyPainter.Create(AOwner: TComponent);
-begin
-//  inherited Create(AOwner);
-end;
-
-procedure TForm2.AddInspectorSettings;
+procedure TForm2.AddInspectorSettings;
 var
   InspCat: TJvInspectorCustomCategoryItem;
 begin
@@ -1380,6 +1402,42 @@ begin
   comp_dim_left.DisplayValue   := '0';
 end;
 
+procedure TForm2.AddInspectorAppearence;
+var
+  Cat: TJvInspectorCustomCategoryItem;
+begin
+  Cat := TJvInspectorCustomCategoryItem.Create(JvInspector1.Root, nil);
+  Cat.DisplayName  := 'Appearence';
+
+  Comp_ColorBox  := 'Color';
+
+  comp_btn_color := TJvInspectorEventData.New(Cat, 'Color', System.TypeInfo(String));
+  with TJvInspectorEventData(comp_btn_color.Data) do
+  begin
+    OnGetAsString := GetStringAsColor;
+    OnSetAsString := SetStringAsColor;
+  end;
+  Cat.Expanded := True;
+
+//  comp_btn_color := TJvInspectorVarData.New(Cat, '0', TypeInfo(string), @Comp_ColorBox);
+//  comp_btn_color.DisplayName   := 'Color';
+
+//  in_insp := true;
+//  comp_btn_color.DisplayValue  := '$ff0';
+end;
+
+procedure TForm2.HideSetupLangPages;
+var
+  idx : Integer;
+begin
+  with SetupLangPageControl do
+  begin
+    for idx := 0 to PageCount - 1 do
+    Pages[idx].TabVisible := false;
+    ActivePageIndex := 0;
+  end;
+end;
+
 procedure TForm2.FormCreate(Sender: TObject);
 var
   x, y: Integer;
@@ -1388,6 +1446,7 @@ var
   cnf : String;
   b   : Boolean;
   sl  : TStringList;
+  idx : Integer;
 begin
   cnf := ExtractFilePath(Application.ExeName);
   cnf := cnf + 'config.ini';
@@ -1395,7 +1454,7 @@ begin
   begin
     ShowMessage('Warning: "config.ini"' + #13#10 +
     'could not be open !');
-    exit;
+    exit;  // todo
   end;
   try
     try
@@ -1429,9 +1488,21 @@ begin
       end;
 
       BoolsAsChecks := false;
-      AddInspectorSettings;
+//      AddInspectorSettings;
       AddInspectorDimension;
+      AddInspectorAppearence;
 
+      HideSetupLangPages;
+
+      // frame
+      with SetupLangFrame.LangTextStringGrid do
+      begin
+        EditorMode := false;
+        Options    := Options - [goEditing];
+
+        Cells[0,0] := 'Text';
+        Cells[1,0] := 'Translation';
+      end;
     except
       ShowMessage('Exception in Unit2 occur.');
       exit;
@@ -2107,7 +2178,8 @@ begin
     DesignPaintGrid(Canvas, ClientRect, Color);
 end;
 
-procedure TForm2.DevelopmentDesignerPanelGetAddClass(Sender: TObject;
+procedure TForm2.DevelopmentDesignerPanelGetAddClass(
+  Sender: TObject;
   var ioClass: String);
 begin
   ioClass := DesignClass;
@@ -2123,7 +2195,7 @@ end;
 
 procedure TForm2.JvSpeedButton5Click(Sender: TObject);
 begin
-  DesignClass := 'TButton';
+  DesignClass := 'TJvImgBtn';
 end;
 
 procedure TForm2.JvSpeedButton4Click(Sender: TObject);
@@ -2131,8 +2203,6 @@ begin
   DesignClass := 'TLabel';
 end;
 
-var
-  MyPaint: TMyPainter;
 procedure TForm2.JvInspector1AfterItemCreate(
   Sender: TObject;
   Item: TJvCustomInspectorItem);
@@ -2149,6 +2219,20 @@ var
   s : String;
   tc: TControl;
 begin
+  DesignerControlsComboBox.Clear;
+  DesignerControlsComboBox.Items.Add('Form');
+
+  with DevelopmentDesignerPanel do
+  begin
+    for idx := 0 to ControlCount - 1 do
+    begin
+      tc := Controls[idx];
+      if Length(Trim(tc.Name)) > 0 then
+      DesignerControlsComboBox.Items.Add(tc.Name);
+    end;
+  end;
+  DesignerControlsComboBox.SetUnCheckedAll(nil);
+
   with DevelopmentDesignerPanel do
   begin
     for idx := 0 to ControlCount - 1 do
@@ -2157,12 +2241,13 @@ begin
       ActiveDesignerControl := tc;
       if Surface.Selector.IsSelected(tc) then
       begin
-        if tc.ClassName = 'TButton' then
+        DesignerControlsComboBox.Checked[idx+1] := true;
+        if tc.ClassName = 'TJvImgBtn' then
         begin
-          comp_dim_left  .DisplayValue := IntToStr(TButton(tc).Left  );
-          comp_dim_top   .DisplayValue := IntToStr(TButton(tc).Top   );
-          comp_dim_width .DisplayValue := IntToStr(TButton(tc).Width );
-          comp_dim_height.DisplayValue := IntToStr(TButton(tc).Height);
+          comp_dim_left  .DisplayValue := IntToStr(TJvImgBtn(tc).Left  );
+          comp_dim_top   .DisplayValue := IntToStr(TJvImgBtn(tc).Top   );
+          comp_dim_width .DisplayValue := IntToStr(TJvImgBtn(tc).Width );
+          comp_dim_height.DisplayValue := IntToStr(TJvImgBtn(tc).Height);
         end else
         if tc.ClassName = 'TEdit' then
         begin
@@ -2197,18 +2282,20 @@ begin
     for idx := 0 to Data.ItemCount - 1 do
     begin
       dn := LowerCase(Data.Items[idx].DisplayName);
+
+      if Data.TypeInfo.Kind = tkInteger then
       dv := StrToInt (Data.AsString);
 
       if Data.Items[idx].Parent.DisplayName = 'Dimension' then
       begin
-        if ActiveDesignerControl is TButton then
+        if ActiveDesignerControl is TJvImgBtn then
         begin
-          if dn = 'width'  then TButton(ActiveDesignerControl).width  := dv else
-          if dn = 'height' then TButton(ActiveDesignerControl).height := dv else
-          if dn = 'top'    then TButton(ActiveDesignerControl).top    := dv else
-          if dn = 'left'   then TButton(ActiveDesignerControl).left   := dv;
+          if dn = 'width'  then TJvImgBtn(ActiveDesignerControl).width  := dv else
+          if dn = 'height' then TJvImgBtn(ActiveDesignerControl).height := dv else
+          if dn = 'top'    then TJvImgBtn(ActiveDesignerControl).top    := dv else
+          if dn = 'left'   then TJvImgBtn(ActiveDesignerControl).left   := dv;
         end else
-        if ActiveDesignerControl is TButton then
+        if ActiveDesignerControl is TEdit then
         begin
           if dn = 'width'  then TEdit(ActiveDesignerControl).width  := dv else
           if dn = 'height' then TEdit(ActiveDesignerControl).height := dv else
@@ -2222,8 +2309,9 @@ begin
           if dn = 'top'    then TLabel(ActiveDesignerControl).top    := dv else
           if dn = 'left'   then TLabel(ActiveDesignerControl).left   := dv;
         end;
-      end
-
+      end else
+      begin
+      end;
     end;
   end;
 end;
@@ -2233,11 +2321,55 @@ begin
   iniFile.Free;
 end;
 
+procedure TForm2.JvInspector1ItemValueChanging(Sender: TObject;
+  Item: TJvCustomInspectorItem; var NewValue: String;
+  var AllowChange: Boolean);
+begin
+  AllowChange := true;
+end;
+
+procedure TForm2.SetupPageTreeViewClick(Sender: TObject);
+var
+  tn: TTreeNode;
+begin
+  HideSetupLangPages;
+
+  tn := SetupPageTreeView.Selected;
+
+  if tn.Text = 'Languages' then
+  begin
+    SetupLangInfoLabel.Caption :=
+    'Here, You can define, and/or change the settings for locales for various types of Languages.';
+    exit;
+  end else
+  if tn.Text = 'Manifest' then
+  begin
+    SetupLangInfoLabel.Caption :=
+    'Here, You can define, and/or change application meta data';
+    exit;
+  end;
+
+  if tn.Parent <> nil then
+  if tn.Parent.Text = 'Languages' then
+  begin
+    if tn.Text = 'English' then
+    begin
+      SetupLangPageControl.Pages[0].TabVisible := true;
+      SetupLangFrame.Parent := SetupLangPageControl.Pages[0];
+      SetupLangFrame.Show;
+    end else
+    if tn.Text = 'German' then
+    begin
+      SetupLangPageControl.Pages[1].TabVisible := true;
+    end;
+  end;
+end;
+
 initialization
   RegisterClass(TMainMenu);
   RegisterClass(TPopupMenu);
   RegisterClass(TLabel);
-  RegisterClass(TButton);
+  RegisterClass(TJvImgBtn);
   RegisterClass(TButton);
   RegisterClass(TEdit);
 
