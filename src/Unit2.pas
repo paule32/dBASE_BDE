@@ -1105,7 +1105,6 @@ type
     DotNETPainter: TJvInspectorDotNETPainter;
     DevelopmentDesignerPanel: TJvDesignPanel;
     DesignerControlsComboBox: TJvCheckedComboBox;
-    JvImgBtn1: TJvImgBtn;
     BackgroundViewButton: TJvImgBtn;
     JvImgBtn2: TJvImgBtn;
     JvImgBtn3: TJvImgBtn;
@@ -1120,6 +1119,9 @@ type
     ScrollBox40: TScrollBox;
     SetupLangInfoLabel: TLabel;
     SetupLangFrame: TSetupLocaleFrame;
+    TabSheet43: TTabSheet;
+    ScrollBox41: TScrollBox;
+    AppSwitchButton: TJvImgBtn;
     procedure FormCreate(Sender: TObject);
     procedure DesktopApplicationOLEActivate(Sender: TObject);
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1259,6 +1261,7 @@ type
       Item: TJvCustomInspectorItem; var NewValue: String;
       var AllowChange: Boolean);
     procedure SetupPageTreeViewClick(Sender: TObject);
+    procedure AppSwitchButtonClick(Sender: TObject);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -1267,13 +1270,9 @@ type
     locListRect: TRect;
     locListItemString: String;
 
-    MiscToolsPanelWidth   : Integer;
-    DNServerPanelWidth    : Integer;
-    ProxyServerPanelWidth : Integer;
-    HttpServerPanelWidth  : Integer;
-
     BoolsAsChecks: Boolean;
-    ActiveDesignerControl : TControl;
+
+    NewControlOnDesigner  : Boolean;
 
     procedure AddInspectorSettings;
     procedure AddInspectorDimension;
@@ -1316,7 +1315,7 @@ var
   comp_dim_height : TJvCustomInspectorItem;
 
   // Appearence
-  comp_btn_color  : TJvCustomInspectorItem;
+  comp_btn_color_item : TJvCustomInspectorItem;
 
   Comp_ColorBox   : String;
 
@@ -1333,11 +1332,11 @@ end;
 
 procedure TForm2.GetStringAsColor(Sender: TJvInspectorEventData; var Value: String);
 begin
-  Value := comp_btn_color_string;
+  Value := ColorToString(comp_btn_color);
 end;
 procedure TForm2.SetStringAsColor(Sender: TJvInspectorEventData; var Value: String);
 begin
-  TJvInspectorStringItem(comp_btn_color).Data.AsString := comp_btn_color_string;
+  TJvInspectorStringItem(comp_btn_color_item).Data.AsString := ColorToString(comp_btn_color);
 end;
 
 procedure TForm2.GetBoolsAsChecks(Sender: TJvInspectorEventData; var Value: Int64);
@@ -1411,8 +1410,8 @@ begin
 
   Comp_ColorBox  := 'Color';
 
-  comp_btn_color := TJvInspectorEventData.New(Cat, 'Color', System.TypeInfo(String));
-  with TJvInspectorEventData(comp_btn_color.Data) do
+  comp_btn_color_item := TJvInspectorEventData.New(Cat, 'Color', System.TypeInfo(String));
+  with TJvInspectorEventData(comp_btn_color_item.Data) do
   begin
     OnGetAsString := GetStringAsColor;
     OnSetAsString := SetStringAsColor;
@@ -1440,6 +1439,9 @@ end;
 
 procedure TForm2.FormCreate(Sender: TObject);
 var
+  FileHandle: Integer;
+  dateString: String;
+
   x, y: Integer;
   len : Integer;
   chk : TCheckBox;
@@ -1448,16 +1450,36 @@ var
   sl  : TStringList;
   idx : Integer;
 begin
-  cnf := ExtractFilePath(Application.ExeName);
-  cnf := cnf + 'config.ini';
-  if not FileExists(cnf) then
-  begin
-    ShowMessage('Warning: "config.ini"' + #13#10 +
-    'could not be open !');
-    exit;  // todo
-  end;
   try
     try
+      cnf := ExtractFilePath(Application.ExeName);
+      if not DirectoryExists(cnf + 'assets') then
+      begin
+        if not CreateDir(cnf + 'assets') then
+        raise Exception.Create('cannot create "assets" directory.');
+        if not CreateDir(cnf + 'assets\common') then
+        raise Exception.Create('cannot create "assets\common" directory.');
+      end;
+
+      if not FileExists(cnf + 'assets\common\config.ini') then
+      begin
+        FileHandle := FileCreate(cnf + 'assets\common\config.ini');
+        if FileHandle < 0 then
+        raise Exception.Create('unable to create default config.ini file.');
+
+        dateString :=
+        '; config.ini'      + #13#10 +
+        '; created on: '    + DateToStr(Date) + #13#10 +
+        '[Terminal]'        + #13#10 +
+        '[Locations]'       + #13#10 +
+        '[UserList]'        + #13#10 +
+        '[TimeTableAccess]' + #13#10 ;
+
+        if FileWrite(FileHandle,dateString[1],Length(dateString)) < 0 then
+        raise Exception.Create('could not write config.ini file.');
+        FileClose(FileHandle);
+      end;
+
       iniFile := TIniFile.Create(cnf);
       strList := TStringList.Create;
       strList.Delimiter := '=';
@@ -1487,7 +1509,10 @@ begin
         Invalidate;
       end;
 
+      // init some stuff
+      NewControlOnDesigner := false;
       BoolsAsChecks := false;
+
 //      AddInspectorSettings;
       AddInspectorDimension;
       AddInspectorAppearence;
@@ -2241,16 +2266,44 @@ begin
       ActiveDesignerControl := tc;
       if Surface.Selector.IsSelected(tc) then
       begin
+        if tc.ClassName = 'TJvImgBtn' then
+        begin
+          comp_btn_color := TJvImgBtn(tc).Color;
+          comp_btn_color_item .Data.AsString := ColorToString(comp_btn_color);
+
+          if ActiveSelectedInspectorItem <> nil then
+          ActiveSelectedInspectorItem.GetEditCtrl.Text := ColorToString(comp_btn_color);
+        end;
+      end;
+    end;
+
+    for idx := 0 to ControlCount - 1 do
+    begin
+      tc := Controls[idx];
+      ActiveDesignerControl := tc;
+      if Surface.Selector.IsSelected(tc) then
+      begin
         DesignerControlsComboBox.Checked[idx+1] := true;
         if tc.ClassName = 'TJvImgBtn' then
         begin
-          comp_dim_left  .DisplayValue := IntToStr(TJvImgBtn(tc).Left  );
-          comp_dim_top   .DisplayValue := IntToStr(TJvImgBtn(tc).Top   );
-          comp_dim_width .DisplayValue := IntToStr(TJvImgBtn(tc).Width );
-          comp_dim_height.DisplayValue := IntToStr(TJvImgBtn(tc).Height);
+          dim_left   := IntToStr(TJvImgBtn(tc).Left  );
+          dim_width  := IntToStr(TJvImgBtn(tc).width );
+          dim_top    := IntToStr(TJvImgBtn(tc).top   );
+          dim_height := IntToStr(TJvImgBtn(tc).height);
+
+          comp_dim_left  .Data.AsString := IntToStr(TJvImgBtn(tc).Left  );
+          comp_dim_top   .Data.AsString := IntToStr(TJvImgBtn(tc).Top   );
+          comp_dim_width .Data.AsString := IntToStr(TJvImgBtn(tc).Width );
+          comp_dim_height.Data.AsString := IntToStr(TJvImgBtn(tc).Height);
+          break;
         end else
         if tc.ClassName = 'TEdit' then
         begin
+          dim_left   := IntToStr(TEdit(tc).Left  );
+          dim_width  := IntToStr(TEdit(tc).width );
+          dim_top    := IntToStr(TEdit(tc).top   );
+          dim_height := IntToStr(TEdit(tc).height);
+
           comp_dim_left  .DisplayValue := IntToStr(TEdit(tc).Left  );
           comp_dim_top   .DisplayValue := IntToStr(TEdit(tc).Top   );
           comp_dim_width .DisplayValue := IntToStr(TEdit(tc).Width );
@@ -2258,12 +2311,16 @@ begin
         end else
         if tc.ClassName = 'TLabel' then
         begin
+          dim_left   := IntToStr(TLabel(tc).Left  );
+          dim_width  := IntToStr(TLabel(tc).width );
+          dim_top    := IntToStr(TLabel(tc).top   );
+          dim_height := IntToStr(TLabel(tc).height);
+
           comp_dim_left  .DisplayValue := IntToStr(TLabel(tc).Left  );
           comp_dim_top   .DisplayValue := IntToStr(TLabel(tc).Top   );
           comp_dim_width .DisplayValue := IntToStr(TLabel(tc).Width );
           comp_dim_height.DisplayValue := IntToStr(TLabel(tc).Height);
         end;
-        break;
       end;
     end;
   end;
@@ -2283,31 +2340,31 @@ begin
     begin
       dn := LowerCase(Data.Items[idx].DisplayName);
 
-      if Data.TypeInfo.Kind = tkInteger then
-      dv := StrToInt (Data.AsString);
+      //if Data.TypeInfo.Kind = tkInteger then
+      //dv := StrToInt (Data.AsString);
 
       if Data.Items[idx].Parent.DisplayName = 'Dimension' then
       begin
         if ActiveDesignerControl is TJvImgBtn then
         begin
-          if dn = 'width'  then TJvImgBtn(ActiveDesignerControl).width  := dv else
-          if dn = 'height' then TJvImgBtn(ActiveDesignerControl).height := dv else
-          if dn = 'top'    then TJvImgBtn(ActiveDesignerControl).top    := dv else
-          if dn = 'left'   then TJvImgBtn(ActiveDesignerControl).left   := dv;
+          if dn = 'width'  then TJvImgBtn(ActiveDesignerControl).width  := StrToInt(dim_width)  else
+          if dn = 'height' then TJvImgBtn(ActiveDesignerControl).height := StrToInt(dim_height) else
+          if dn = 'top'    then TJvImgBtn(ActiveDesignerControl).top    := StrToInt(dim_top)    else
+          if dn = 'left'   then TJvImgBtn(ActiveDesignerControl).left   := StrToInt(dim_left);
         end else
         if ActiveDesignerControl is TEdit then
         begin
-          if dn = 'width'  then TEdit(ActiveDesignerControl).width  := dv else
-          if dn = 'height' then TEdit(ActiveDesignerControl).height := dv else
-          if dn = 'top'    then TEdit(ActiveDesignerControl).top    := dv else
-          if dn = 'left'   then TEdit(ActiveDesignerControl).left   := dv;
+          if dn = 'width'  then TEdit(ActiveDesignerControl).width  := StrToInt(dim_width)  else
+          if dn = 'height' then TEdit(ActiveDesignerControl).height := StrToInt(dim_height) else
+          if dn = 'top'    then TEdit(ActiveDesignerControl).top    := StrToInt(dim_top)    else
+          if dn = 'left'   then TEdit(ActiveDesignerControl).left   := StrToInt(dim_left);
         end else
         if ActiveDesignerControl is TLabel then
         begin
-          if dn = 'width'  then TLabel(ActiveDesignerControl).width  := dv else
-          if dn = 'height' then TLabel(ActiveDesignerControl).height := dv else
-          if dn = 'top'    then TLabel(ActiveDesignerControl).top    := dv else
-          if dn = 'left'   then TLabel(ActiveDesignerControl).left   := dv;
+          if dn = 'width'  then TLabel(ActiveDesignerControl).width  := StrToInt(dim_width)  else
+          if dn = 'height' then TLabel(ActiveDesignerControl).height := StrToInt(dim_height) else
+          if dn = 'top'    then TLabel(ActiveDesignerControl).top    := StrToInt(dim_top)    else
+          if dn = 'left'   then TLabel(ActiveDesignerControl).left   := StrToInt(dim_left);
         end;
       end else
       begin
@@ -2361,6 +2418,22 @@ begin
     if tn.Text = 'German' then
     begin
       SetupLangPageControl.Pages[1].TabVisible := true;
+    end;
+  end;
+end;
+
+procedure TForm2.AppSwitchButtonClick(Sender: TObject);
+begin
+  with AppSwitchButton do
+  begin
+    if Tag = 1 then
+    begin
+      Caption := 'GUI-App';
+      Tag := 0;
+    end else
+    begin
+      Caption := 'DOS-App';
+      Tag := 1;
     end;
   end;
 end;

@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 186
-  Top = 63
+  Left = 95
+  Top = 53
   Width = 1132
   Height = 665
   Caption = 'DataBase Explorer (c) 2022 Jens Kallup 1.0.0'
@@ -65,7 +65,7 @@ object Form2: TForm2
           Top = 124
           Width = 1106
           Height = 469
-          ActivePage = TabSheet33
+          ActivePage = TabSheet34
           Align = alClient
           TabOrder = 0
           OnChange = TasksPageControlChange
@@ -820,7 +820,7 @@ object Form2: TForm2
                   object ScrollBox27: TScrollBox
                     Left = 0
                     Top = 0
-                    Width = 1087
+                    Width = 1086
                     Height = 409
                     Align = alClient
                     TabOrder = 0
@@ -1535,6 +1535,18 @@ object Form2: TForm2
                           TabOrder = 0
                         end
                       end
+                      object TabSheet43: TTabSheet
+                        Caption = 'Terminals'
+                        ImageIndex = 1
+                        object ScrollBox41: TScrollBox
+                          Left = 0
+                          Top = 0
+                          Width = 745
+                          Height = 234
+                          Align = alClient
+                          TabOrder = 0
+                        end
+                      end
                     end
                     object ListBox21: TListBox
                       Left = 784
@@ -1702,12 +1714,12 @@ object Form2: TForm2
                     object Panel20: TPanel
                       Left = 8
                       Top = 8
-                      Width = 761
+                      Width = 757
                       Height = 145
                       Anchors = [akLeft, akTop, akRight]
                       TabOrder = 0
                       DesignSize = (
-                        761
+                        757
                         145)
                       object Button18: TButton
                         Left = 8
@@ -1760,7 +1772,7 @@ object Form2: TForm2
                       object ListBox3: TListBox
                         Left = 240
                         Top = 8
-                        Width = 505
+                        Width = 501
                         Height = 121
                         Anchors = [akLeft, akTop, akRight]
                         ItemHeight = 13
@@ -2090,10 +2102,10 @@ object Form2: TForm2
                     02000000220000000100000001000000FFFFFFFFFFFFFFFF0100000002000000
                     094C616E67756167657320000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
                     00000000000007456E676C6973681F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                    FFFF0000000000000000064765726D616E210000000000000000000000FFFFFF
+                    FFFF0000000000000000064765726D616E210000000100000001000000FFFFFF
                     FFFFFFFFFF0100000002000000084D616E696665737424000000FFFFFFFFFFFF
                     FFFFFFFFFFFFFFFFFFFF01000000000000000B4170706C69636174696F6E2200
-                    00000200000002000000FFFFFFFFFFFFFFFF000000000000000009526573736F
+                    0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000009526573736F
                     75726365}
                   Items.Links = {06000000010000000000000000000000010000000100000000000000}
                 end
@@ -2408,6 +2420,22 @@ object Form2: TForm2
                         Align = alTop
                         Caption = 'Panel17'
                         TabOrder = 0
+                        object AppSwitchButton: TJvImgBtn
+                          Tag = 1
+                          Left = 0
+                          Top = 3
+                          Width = 75
+                          Height = 25
+                          Caption = 'DOS-App'
+                          TabOrder = 0
+                          OnClick = AppSwitchButtonClick
+                          Color = clLime
+                          HotTrackFont.Charset = ANSI_CHARSET
+                          HotTrackFont.Color = clWindowText
+                          HotTrackFont.Height = -12
+                          HotTrackFont.Name = 'Consolas'
+                          HotTrackFont.Style = []
+                        end
                       end
                       object Panel25: TPanel
                         Left = 1
@@ -3378,15 +3406,6 @@ object Form2: TForm2
                 ImageIndex = 8
               end
             end
-          end
-          object JvImgBtn1: TJvImgBtn
-            Left = 648
-            Top = 16
-            Width = 75
-            Height = 25
-            Caption = 'JvImgBtn1'
-            TabOrder = 1
-            Color = clLime
           end
         end
       end
