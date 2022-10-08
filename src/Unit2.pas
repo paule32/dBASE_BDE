@@ -15,12 +15,13 @@ uses
   JvPageListTreeView, JvCombobox, JvListComb, JvPageList,
   JvSpeedButton, JvButton, JvCtrls, TeeProcs, TeEngine, Chart, JvDesignUtils,
   JclRTTI, JvInspExtraEditors, JvExMask, JvToolEdit, JvColorCombo,
-  JvDialogs, JvInspector, SetupLocale;
+  JvDialogs, JvInspector, SetupLocale, SynEditMiscClasses, SynEditSearch,
+  SynEditRegexSearch, JvDataSource, JvDBGridFooter, JvExDBGrids, JvDBGrid,
+  JvDBUltimGrid, JvDBCheckBox, JvExGrids, JvStringGrid, JvCheckBox;
 
 type
   TForm2 = class(TForm)
     StatusBar1: TStatusBar;
-    DataSource1: TDataSource;
     Table1: TTable;
     ScrollBox2: TScrollBox;
     ScrollView: TScrollBox;
@@ -1122,6 +1123,42 @@ type
     TabSheet43: TTabSheet;
     ScrollBox41: TScrollBox;
     AppSwitchButton: TJvImgBtn;
+    CompileButton: TJvImgBtn;
+    JvCheckedComboBox1: TJvCheckedComboBox;
+    OpenDialog1: TOpenDialog;
+    SaveDialog1: TSaveDialog;
+    FindDialog1: TFindDialog;
+    SynEditSearch1: TSynEditSearch;
+    TabSheet44: TTabSheet;
+    ScrollBox42: TScrollBox;
+    PageControl17: TPageControl;
+    TabSheet45: TTabSheet;
+    TabSheet46: TTabSheet;
+    TabSheet47: TTabSheet;
+    TabSheet48: TTabSheet;
+    ToolBar1: TToolBar;
+    ToolButton1: TToolButton;
+    ToolButton2: TToolButton;
+    ToolButton3: TToolButton;
+    ToolButton4: TToolButton;
+    ToolButton5: TToolButton;
+    ToolButton6: TToolButton;
+    ToolButton7: TToolButton;
+    Panel36: TPanel;
+    JvCheckedComboBox2: TJvCheckedComboBox;
+    ToolButton8: TToolButton;
+    ToolButton9: TToolButton;
+    ToolButton10: TToolButton;
+    JvTableItems1: TJvTableItems;
+    JvBDEItems1: TJvBDEItems;
+    Panel37: TPanel;
+    Panel38: TPanel;
+    JvComboBox1: TJvComboBox;
+    JvComboBox2: TJvComboBox;
+    JvDBGridFooter1: TJvDBGridFooter;
+    JvDataSource1: TJvDataSource;
+    JvStringGrid1: TJvStringGrid;
+    JvCheckBox1: TJvCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure DesktopApplicationOLEActivate(Sender: TObject);
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1262,6 +1299,19 @@ type
       var AllowChange: Boolean);
     procedure SetupPageTreeViewClick(Sender: TObject);
     procedure AppSwitchButtonClick(Sender: TObject);
+    procedure CompileButtonClick(Sender: TObject);
+    procedure SynEdit1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FindDialog1Find(Sender: TObject);
+    procedure PageControl17Change(Sender: TObject);
+    procedure JvComboBox1Change(Sender: TObject);
+    procedure JvComboBox2Change(Sender: TObject);
+    procedure JvDBUltimGrid1DrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumn;
+      State: TGridDrawState);
+    procedure JvDBUltimGrid1ColExit(Sender: TObject);
+    procedure JvStringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
+      Rect: TRect; State: TGridDrawState);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -1270,9 +1320,12 @@ type
     locListRect: TRect;
     locListItemString: String;
 
+    PopupMenu_TimeAccess: TPopupMenu;
     BoolsAsChecks: Boolean;
-
     NewControlOnDesigner  : Boolean;
+
+    SourceNew: Boolean;
+    SourceFileNAme : String;
 
     procedure AddInspectorSettings;
     procedure AddInspectorDimension;
@@ -1286,6 +1339,7 @@ type
 
 
     procedure HideSetupLangPages;
+    procedure CreatePopupMenu;
 
     procedure ChangeChkState(const Item: TJvCustomInspectorItem);
   public
@@ -1299,6 +1353,9 @@ var
 implementation
 
 {$R *.dfm}
+
+uses
+  parseDBASE;
 
 var
   VerInfoStr: string = 'Version 0.1';
@@ -1316,6 +1373,7 @@ var
 
   // Appearence
   comp_btn_color_item : TJvCustomInspectorItem;
+  comp_btn_text_item  : TJvCustomInspectorItem;
 
   Comp_ColorBox   : String;
 
@@ -1382,7 +1440,7 @@ var
   Cat: TJvInspectorCustomCategoryItem;
 begin
   Cat := TJvInspectorCustomCategoryItem.Create(JvInspector1.Root, nil);
-  Cat.DisplayName  := 'Dimension';
+  Cat.DisplayName  := 'Position';
 
   comp_dim_width  := TJvInspectorVarData.New(Cat, '0', TypeInfo(String), @dim_width );
   comp_dim_width.DisplayName   := 'Width';
@@ -1416,6 +1474,7 @@ begin
     OnGetAsString := GetStringAsColor;
     OnSetAsString := SetStringAsColor;
   end;
+  comp_btn_text_item := TJvInspectorEventData.New(Cat, 'Text', System.TypeInfo(String));
   Cat.Expanded := True;
 
 //  comp_btn_color := TJvInspectorVarData.New(Cat, '0', TypeInfo(string), @Comp_ColorBox);
@@ -1434,6 +1493,94 @@ begin
     for idx := 0 to PageCount - 1 do
     Pages[idx].TabVisible := false;
     ActivePageIndex := 0;
+  end;
+end;
+
+var
+  mi_day: Array [0..6] of String = (
+  'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag');
+
+procedure TForm2.CreatePopupMenu;
+var
+  mi_date: TMenuItem;
+
+  mi_date_Week1,  mi_date_Week2,
+  mi_date_Week3,  mi_date_Week4: TMenuItem;
+
+  mi_date_day: Array of TMenuItem;
+  mi_date_am : Array of TMenuItem;
+  mi_date_pm : Array of TMenuItem;
+
+  idx: Integer;
+begin
+  try
+    PopupMenu_TimeAccess := TPopupMenu.Create(Application);
+
+    mi_date := TMenuItem.Create(PopupMenu_TimeAccess);
+    mi_date.Caption := 'Date';
+
+    mi_date_Week1 := TMenuItem.Create(mi_date); mi_date_Week1.Caption := 'Week 1';
+    mi_date_Week2 := TMenuItem.Create(mi_date); mi_date_Week2.Caption := 'Week 2';
+    mi_date_Week3 := TMenuItem.Create(mi_date); mi_date_Week3.Caption := 'Week 3';
+    mi_date_Week4 := TMenuItem.Create(mi_date); mi_date_Week4.Caption := 'Week 4';
+
+    SetLength(mi_date_day,28);
+    for idx := 0 to 27 do
+    mi_date_day[idx] := TMenuItem.Create(PopupMenu_TimeAccess);
+
+    SetLength(mi_date_am,28);
+    SetLength(mi_date_pm,28);
+    for idx := 0 to 27 do
+    begin
+      mi_date_am[idx] := TMenuItem.Create(PopupMenu_TimeAccess);
+      mi_date_am[idx].Caption := 'After Meridan';
+
+      mi_date_pm[idx] := TMenuItem.Create(PopupMenu_TimeAccess);
+      mi_date_pm[idx].Caption := 'Past Meridan';
+    end;
+
+    for idx :=  0 to  6 do
+    begin
+      mi_date_day[idx].Caption := mi_day[idx];
+      mi_date_day[idx].Add(mi_date_am[idx]);
+      mi_date_day[idx].Add(mi_date_pm[idx]);
+    end;
+
+    for idx :=  7 to 13 do
+    begin
+      mi_date_day[idx].Caption := mi_day[idx - 7];
+      mi_date_day[idx].Add(mi_date_am[idx]);
+      mi_date_day[idx].Add(mi_date_pm[idx]);
+    end;
+
+    for idx := 14 to 20 do
+    begin
+      mi_date_day[idx].Caption := mi_day[idx - 14];
+      mi_date_day[idx].Add(mi_date_am[idx]);
+      mi_date_day[idx].Add(mi_date_pm[idx]);
+    end;
+
+    for idx := 21 to 27 do
+    begin
+      mi_date_day[idx].Caption := mi_day[idx - 21];
+      mi_date_day[idx].Add(mi_date_am[idx]);
+      mi_date_day[idx].Add(mi_date_pm[idx]);
+    end;
+
+    for idx :=  0 to  6 do mi_date_Week1.Add(mi_date_day[idx]);
+    for idx :=  7 to 13 do mi_date_Week2.Add(mi_date_day[idx]);
+    for idx := 14 to 20 do mi_date_Week3.Add(mi_date_day[idx]);
+    for idx := 21 to 27 do mi_date_Week4.Add(mi_date_day[idx]);
+
+    mi_date.Add(mi_date_Week1);
+    mi_date.Add(mi_date_Week2);
+    mi_date.Add(mi_date_Week3);
+    mi_date.Add(mi_date_Week4);
+
+    PopupMenu_TimeAccess.Items.Add(mi_date);
+
+    SynEdit1.PopupMenu := PopupMenu_TimeAccess;
+  finally
   end;
 end;
 
@@ -1518,6 +1665,14 @@ begin
       AddInspectorAppearence;
 
       HideSetupLangPages;
+      CreatePopupMenu;
+
+      SourceNew := true;
+      SourceFileName := 'unknown.prg';
+
+      // database/files
+      if PageControl17.TabIndex = 0 then
+      PageControl17Change(Sender);
 
       // frame
       with SetupLangFrame.LangTextStringGrid do
@@ -1536,14 +1691,17 @@ begin
   end;
 
 
-  ConnectionListGrid.ColWidths[0] := 21;
-  ConnectionListGrid.ColWidths[5] := 113;
+  with ConnectionListGrid do
+  begin
+    ColWidths[0] := 21;
+    ColWidths[5] := 113;
 
-  ConnectionListGrid.Cells[1,0] := 'Date / Time';
-  ConnectionListGrid.Cells[2,0] := 'Log-Code';
-  ConnectionListGrid.Cells[3,0] := 'Location';
-  ConnectionListGrid.Cells[4,0] := 'User';
-  ConnectionListGrid.Cells[5,0] := 'Action';
+    Cells[1,0] := 'Date / Time';
+    Cells[2,0] := 'Log-Code';
+    Cells[3,0] := 'Location';
+    Cells[4,0] := 'User';
+    Cells[5,0] := 'Action';
+  end;
 
   TimeTableGrid_WeekList.Text := IntToStr(WeekOfTheYear(Now));
 
@@ -1553,34 +1711,42 @@ begin
   UserLogGrid.Cells[2,0] := 'Log-Code';
   UserLogGrid.Cells[3,0] := 'Action';
 
-  TimeTableGrid.ColWidths[0] := 74;
-  TimeTableGrid.Cells[0, 0] := 'Time';
-  TimeTableGrid.Cells[0, 1] := '00:00 - 01:00';
-  TimeTableGrid.Cells[0, 2] := '01:00 - 02:00';
-  TimeTableGrid.Cells[0, 3] := '03:00 - 04:00';
-  TimeTableGrid.Cells[0, 4] := '05:00 - 06:00';
-  TimeTableGrid.Cells[0, 5] := '07:00 - 08:00';
-  TimeTableGrid.Cells[0, 6] := '09:00 - 10:00';
-  TimeTableGrid.Cells[0, 7] := '11:00 - 12:00';
-  TimeTableGrid.Cells[0, 8] := '13:00 - 14:00';
-  TimeTableGrid.Cells[0, 9] := '15:00 - 16:00';
-  TimeTableGrid.Cells[0,10] := '17:00 - 18:00';
-  TimeTableGrid.Cells[0,11] := '19:00 - 20:00';
-  TimeTableGrid.Cells[0,12] := '21:00 - 22:00';
-  TimeTableGrid.Cells[0,13] := '23:00 - 00:00';
+  with TimeTableGrid do
+  begin
+    ColWidths[0] := 74;
+    Cells[0, 0] := 'Time';
+    Cells[0, 1] := '00:00 - 01:00';
+    Cells[0, 2] := '01:00 - 02:00';
+    Cells[0, 3] := '03:00 - 04:00';
+    Cells[0, 4] := '05:00 - 06:00';
+    Cells[0, 5] := '07:00 - 08:00';
+    Cells[0, 6] := '09:00 - 10:00';
+    Cells[0, 7] := '11:00 - 12:00';
+    Cells[0, 8] := '13:00 - 14:00';
+    Cells[0, 9] := '15:00 - 16:00';
+    Cells[0,10] := '17:00 - 18:00';
+    Cells[0,11] := '19:00 - 20:00';
+    Cells[0,12] := '21:00 - 22:00';
+    Cells[0,13] := '23:00 - 00:00';
 
-  TimeTableGrid.Cells[1,0] := 'Mo';
-  TimeTableGrid.Cells[2,0] := 'Ts';
-  TimeTableGrid.Cells[3,0] := 'We';
-  TimeTableGrid.Cells[4,0] := 'Th';
-  TimeTableGrid.Cells[5,0] := 'Fr';
-  TimeTableGrid.Cells[6,0] := 'Sa';
-  TimeTableGrid.Cells[7,0] := 'Su';
-
-  TimeTableGrid.Cells[2,2] := 't';
+    Cells[1,0] := 'Mo';
+    Cells[2,0] := 'Ts';
+    Cells[3,0] := 'We';
+    Cells[4,0] := 'Th';
+    Cells[5,0] := 'Fr';
+    Cells[6,0] := 'Sa';
+    Cells[7,0] := 'Su';
+  end;
 
 //  LocationListTimer.Enabled := true;
 end;
+
+procedure TForm2.FormDestroy(Sender: TObject);
+begin
+  PopupMenu_TimeAccess.Items.Clear;
+  iniFile.Free;
+end;
+
 
 procedure TForm2.DesktopApplicationOLEActivate(Sender: TObject);
 begin
@@ -2239,6 +2405,7 @@ begin
   end
 end;
 procedure TForm2.DevelopmentDesignerPanelSelectionChange(Sender: TObject);
+label label_1;
 var
   idx,cnt: Integer;
   s : String;
@@ -2343,7 +2510,7 @@ begin
       //if Data.TypeInfo.Kind = tkInteger then
       //dv := StrToInt (Data.AsString);
 
-      if Data.Items[idx].Parent.DisplayName = 'Dimension' then
+      if Data.Items[idx].Parent.DisplayName = 'Position' then
       begin
         if ActiveDesignerControl is TJvImgBtn then
         begin
@@ -2371,11 +2538,6 @@ begin
       end;
     end;
   end;
-end;
-
-procedure TForm2.FormDestroy(Sender: TObject);
-begin
-  iniFile.Free;
 end;
 
 procedure TForm2.JvInspector1ItemValueChanging(Sender: TObject;
@@ -2438,6 +2600,283 @@ begin
   end;
 end;
 
+procedure TForm2.CompileButtonClick(Sender: TObject);
+begin
+  SynEdit1.Text
+end;
+
+procedure TForm2.SynEdit1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if key = VK_F1 then
+  begin
+    exit;
+  end else
+  if Key = VK_F2 then
+  begin
+    ShowMessage('compile');
+    exit;
+  end;
+
+  if ssCtrl in Shift then
+  begin
+    if (Char(key) = 'f') or (Char(key) = 'F') then
+    begin
+      if FindDialog1.Execute then
+      begin
+      end;
+    end else
+    if (Char(key) = 's') or (Char(key) = 'S') then
+    begin
+      if SynEdit1.Modified = true then
+      if SourceNew then
+      begin
+        if SaveDialog1.Execute then
+        begin
+          SynEdit1.Lines.SaveToFile(SaveDialog1.FileName);
+          SourceFileName := SaveDialog1.FileName;
+          SourceNew := false;
+        end;
+      end else
+      begin
+        SynEdit1.Lines.SaveToFile(SourceFileName);
+        SourceNew := false;
+      end;
+    end else
+    if (Char(key) = 'o') or (Char(key) = 'O') then
+    begin
+      if OpenDialog1.Execute then
+      begin
+        SynEdit1.Lines.LoadFromFile(OpenDialog1.FileName);
+        SynEdit1.Modified := true;
+        SourceFileName := OpenDialog1.FileName;
+        SourceNew := false;
+      end;
+    end;
+  end;
+end;
+
+procedure TForm2.FindDialog1Find(Sender: TObject);
+var
+  FoundAt: Integer;
+begin
+  with SynEdit1 do
+  begin
+    SynEditSearch1.Pattern := finddialog1.FindText;
+    SynEditSearch1.FindAll(SynEdit1.Lines.Text);
+
+    SetFocus;
+    SelStart := SynEditSearch1.Results[0]-1;
+    SelLength := Length(FindDialog1.FindText);
+  end;
+end;
+
+procedure TForm2.PageControl17Change(Sender: TObject);
+var
+  idx: Integer;
+  AliasList: TStrings;
+begin
+  if PageControl17.ActivePage.Caption = 'Data' then
+  begin
+    JvComboBox1.Items.Clear;
+
+    with JvDatabaseItems1.DBSession do
+    begin
+      AliasList := TStringList.Create;
+      GetDatabaseNames(AliasList);
+      JvComboBox1.Items.AddStrings(AliasList);
+    end;
+
+(*
+//    while not JvDatabaseItems1.Eof do
+    begin
+showmessage('no: ' + inttostr(JvDatabaseItems1.DBSession.DatabaseCount - 1) + #13#10 + JvDatabaseItems1.FieldList.CommaText);
+      JvComboBox1.Items.Add(JvDatabaseItems1.FieldList.CommaText);
+//      JvDatabaseItems1.Next;
+    end;*)
+  end;
+end;
+
+procedure TForm2.JvComboBox1Change(Sender: TObject);
+var
+  TableNames: TStrings;
+begin
+  TableNames := TStringList.Create;
+
+  try
+    JvDatabaseItems1.DBSession.OpenDatabase(
+    JvComboBox1.Text);
+    JvDatabaseItems1.DBSession.Databases[
+    JvComboBox1.ItemIndex].GetTableNames(TableNames,false);
+
+    JvComboBox2.Items.Clear;
+    JvComboBox2.Items.AddStrings(TableNames);
+  except
+    JvComboBox2.Items.Clear;
+    ShowMessage('Error occur.');
+  end;
+end;
+
+procedure TForm2.JvComboBox2Change(Sender: TObject);
+var
+  idx, i,j: Integer;
+  FieldNames: TStrings;
+begin
+  FieldNames := TStringList.Create;
+  if Length(Trim(JvComboBox2.Text)) > 0 then
+  begin
+    with JvTableItems1 do
+    begin
+      if Active then Close;
+      DatabaseName := JvComboBox1.Text;
+      TableName    := JvComboBox2.Text;
+      Open;
+      First;
+      with JvStringGrid1 do
+      begin
+        ColWidths[0] := 12;
+
+        RowCount  := RecordCount + 1;
+        ColCount  := FieldCount  + 1;
+        FixedRows := 1;
+        FixedCols := 1;
+
+        GetFieldNames(FieldNames);
+
+        for idx := 0 to FieldNames.Count - 1 do
+        Cells[idx+1,0] := FieldNames[idx];
+
+        for i := 1 to RecordCount do begin
+        for j := 1 to FieldCount  do begin
+        Cells[j,i] := FieldByName(FieldNames[j-1]).AsString;
+        end; Next; end;
+
+        Visible := true;
+      end;
+    end;
+  end;
+end;
+
+procedure TForm2.JvDBUltimGrid1DrawColumnCell(
+  Sender    : TObject;
+  const Rect: TRect;
+  DataCol   : Integer;
+  Column    : TColumn;
+  State     : TGridDrawState);
+const
+  IsChecked : array[Boolean] of Integer = (DFCS_BUTTONCHECK, DFCS_BUTTONCHECK or DFCS_CHECKED);
+var
+  DrawState: Integer;
+  DrawRect: TRect;
+begin
+  if (gdFocused in State) then
+  begin
+(*    if (Column.Field.FieldName = JvDBCheckBox1.DataField) then
+    begin
+      JvDBCheckBox1.Left    := Rect.Left   + JvStringGrid1.Left + 2;
+      JvDBCheckBox1.Top     := Rect.Top    + JvStringGrid1.Top  + 2;
+      JvDBCheckBox1.Width   := Rect.Right  - Rect.Left;
+      JvDBCheckBox1.Height  := Rect.Bottom - Rect.Top;
+      JvDBCheckBox1.Visible := True;
+    end;*)
+  end else
+  begin
+(*    if (Column.Field.FieldName = JvDBCheckBox1.DataField) then
+    begin
+      DrawRect := Rect;
+      InflateRect(DrawRect,-1,-1);
+      DrawState := ISChecked[Column.Field.AsBoolean];
+      JvStringGrid1.Canvas.FillRect(Rect);
+      DrawFrameControl(JvStringGrid1.Canvas.Handle,DrawRect,DFC_BUTTON,DrawState);
+   end;*)
+ end;
+end;
+
+procedure TForm2.JvDBUltimGrid1ColExit(Sender: TObject);
+begin
+//  if JvStringGrid1.SelectedField.FieldName = JvDBCheckBox1.DataField then
+//  JvDBCheckBox1.Visible := false;
+end;
+
+procedure TForm2.JvStringGrid1DrawCell(
+  Sender    : TObject;
+  ACol, ARow: Integer;
+  Rect      : TRect;
+  State     : TGridDrawState);
+var
+  x : Integer;
+
+  function FieldTypeAsString(Value : TFieldType): string;
+  begin
+    case Value of
+      ftUnknown     : Result := 'Unknown';
+      ftString      : Result := 'String';
+      ftSmallint    : Result := 'SmallInt';
+      ftInteger     : Result := 'Integer';
+      ftWord        : Result := 'Word';
+      ftBoolean     : Result := 'Boolean';
+      ftFloat       : Result := 'Float';
+      ftCurrency    : Result := 'Currency';
+      ftBCD         : Result := 'BCD';
+      ftDate        : Result := 'Date';
+      ftTime        : Result := 'Time';
+      ftDateTime    : Result := 'DateTime';
+      ftBytes       : Result := 'Bytes';
+      ftVarBytes    : Result := 'VarBytes';
+      ftAutoInc     : Result := 'AutoInc';
+      ftBlob        : Result := 'Blob';
+      ftMemo        : Result := 'Memo';
+      ftGraphic     : Result := 'Graphic';
+      ftFmtMemo     : Result := 'FmtMemo';
+      ftParadoxOle  : Result := 'Paradox-OLE';
+      ftDBaseOle    : Result := 'dBASE-OLE';
+      ftTypedBinary : Result := 'TypedBinary';
+    end;
+  end;
+  function CheckBox(Value: String): Cardinal;
+  begin
+    if LowerCase(Value) = 't' then // Checked
+    result:= DFCS_BUTTONCHECK or DFCS_CHECKED else
+    result:= DFCS_BUTTONCHECK;
+  end;
+begin
+  if (gdFocused in State) then
+  begin
+    if (ACol = 12) and (ARow > 0) then
+    begin
+      JvCheckBox1.Caption := '';
+
+      JvCheckBox1.Left    := Rect.Left   + JvStringGrid1.Left + 2;
+      JvCheckBox1.Top     := Rect.Top    + JvStringGrid1.Top  + 2;
+      JvCheckBox1.Width   := Rect.Right  - Rect.Left;
+      JvCheckBox1.Height  := Rect.Bottom - Rect.Top;
+      JvCheckBox1.Visible := True;
+    end;
+  end else
+  begin
+    if (ACol = 12) and (ARow > 0) then
+    begin
+      JvCheckBox1.Caption := '';
+      InflateRect(Rect,-1,-1);
+      JvStringGrid1.Canvas.FillRect(Rect);
+      DrawFrameControl(JvStringGrid1.Canvas.Handle, Rect, DFC_BUTTON,
+      CheckBox(Trim(JvStringGrid1.Cells[ACol, ARow])));
+    end else
+    if (ACol = 3) and (ARow > 0) then
+    begin
+      with JvTableItems1 do
+      begin
+        for x := 1 to RecordCount do
+        begin
+          Canvas.TextOut(rect.Left+2,rect.Top+4,
+          FieldTypeAsString(FieldByName('TYPE').DataType));
+          Next;
+        end;
+      end;
+    end;
+  end;
+end;
+
 initialization
   RegisterClass(TMainMenu);
   RegisterClass(TPopupMenu);
@@ -2452,3 +2891,4 @@ initialization
   TJvInspectorTImageIndexItem.RegisterAsDefaultItem;
 
 end.
+

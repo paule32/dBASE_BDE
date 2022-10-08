@@ -4,7 +4,8 @@ uses
   Forms,
   Unit2 in 'Unit2.pas' {Form2},
   Unit1 in 'Unit1.pas' {DataBaseExplorer: TAppletModule},
-  SetupLocale in 'SetupLocale.pas' {SetupLocaleFrame: TFrame};
+  SetupLocale in 'SetupLocale.pas' {SetupLocaleFrame: TFrame},
+  parseDBASE in 'parseDBASE.pas';
 
 {$R *.res}
 
