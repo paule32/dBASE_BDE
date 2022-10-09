@@ -6,3 +6,4 @@ take a look to the template application for a preview - thank's) - for free
 
 ![Preview](src/screen.png)
 ![DatabaseView](src/screen2.png)
+![DatabaseTableFieldView](src/screen3.png)
