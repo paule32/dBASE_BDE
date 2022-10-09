@@ -18,7 +18,7 @@ uses
   JvDialogs, JvInspector, SetupLocale, SynEditMiscClasses, SynEditSearch,
   SynEditRegexSearch, JvDataSource, JvDBGridFooter, JvExDBGrids, JvDBGrid,
   JvDBUltimGrid, JvDBCheckBox, JvExGrids, JvStringGrid, JvCheckBox,
-  JvBDEQuery;
+  JvBDEQuery, JvBaseDlg, JvSelectDirectory;
 
 type
   TForm2 = class(TForm)
@@ -50,14 +50,6 @@ type
     DBGrid1: TDBGrid;
     TabSheet31: TTabSheet;
     ScrollBox24: TScrollBox;
-    Splitter10: TSplitter;
-    Splitter15: TSplitter;
-    StringGrid6: TStringGrid;
-    Panel23: TPanel;
-    StringGrid7: TStringGrid;
-    Panel26: TPanel;
-    Panel35: TPanel;
-    StringGrid8: TStringGrid;
     ScrollBox1: TScrollBox;
     Splitter7: TSplitter;
     Splitter8: TSplitter;
@@ -995,19 +987,11 @@ type
     TabSheet34: TTabSheet;
     ScrollBox29: TScrollBox;
     ScrollBox6: TScrollBox;
-    PageControl6: TPageControl;
+    DevelopPage: TPageControl;
     TabSheet6: TTabSheet;
     TabSheet35: TTabSheet;
     ScrollBox30: TScrollBox;
-    Panel1: TPanel;
-    Panel3: TPanel;
     Panel4: TPanel;
-    Splitter1: TSplitter;
-    Panel6: TPanel;
-    SynEdit1: TSynEdit;
-    Splitter2: TSplitter;
-    Panel13: TPanel;
-    ListBox19: TListBox;
     JvDesignSurface1: TJvDesignSurface;
     BorlandPainter: TJvInspectorBorlandPainter;
     ScrollBox31: TScrollBox;
@@ -1028,23 +1012,6 @@ type
     JvDesignScrollBox1: TJvDesignScrollBox;
     Splitter6: TSplitter;
     ScrollBox32: TScrollBox;
-    Splitter11: TSplitter;
-    PageControl12: TPageControl;
-    TabSheet38: TTabSheet;
-    ScrollBox33: TScrollBox;
-    Panel27: TPanel;
-    Splitter12: TSplitter;
-    Panel30: TPanel;
-    ScrollBox34: TScrollBox;
-    SynEdit2: TSynEdit;
-    ScrollBox35: TScrollBox;
-    JvSettingsTreeView1: TJvSettingsTreeView;
-    Splitter13: TSplitter;
-    JvPageList1: TJvPageList;
-    JvStandardPage1: TJvStandardPage;
-    JvStandardPage2: TJvStandardPage;
-    JvImageComboBox1: TJvImageComboBox;
-    Panel28: TPanel;
     ListBox20: TListBox;
     RichEdit1: TRichEdit;
     ChatSendTextButton: TJvImgBtn;
@@ -1124,8 +1091,6 @@ type
     TabSheet43: TTabSheet;
     ScrollBox41: TScrollBox;
     AppSwitchButton: TJvImgBtn;
-    CompileButton: TJvImgBtn;
-    JvCheckedComboBox1: TJvCheckedComboBox;
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
     FindDialog1: TFindDialog;
@@ -1178,6 +1143,57 @@ type
     JvStringGrid2: TJvStringGrid;
     JvCheckBox1: TJvCheckBox;
     JvQuery1: TJvQuery;
+    Panel23: TPanel;
+    Panel45: TPanel;
+    Splitter15: TSplitter;
+    Panel35: TPanel;
+    Panel46: TPanel;
+    Splitter20: TSplitter;
+    Panel42: TPanel;
+    Panel44: TPanel;
+    JvStringGrid3: TJvStringGrid;
+    JvStringGrid4: TJvStringGrid;
+    JvStringGrid5: TJvStringGrid;
+    Splitter10: TSplitter;
+    PageControl12: TPageControl;
+    TabSheet38: TTabSheet;
+    ScrollBox33: TScrollBox;
+    Splitter12: TSplitter;
+    Panel27: TPanel;
+    ScrollBox35: TScrollBox;
+    Splitter13: TSplitter;
+    JvSettingsTreeView1: TJvSettingsTreeView;
+    JvPageList1: TJvPageList;
+    JvStandardPage1: TJvStandardPage;
+    JvStandardPage2: TJvStandardPage;
+    JvImageComboBox1: TJvImageComboBox;
+    Panel28: TPanel;
+    Panel30: TPanel;
+    ScrollBox34: TScrollBox;
+    SynEdit2: TSynEdit;
+    Splitter11: TSplitter;
+    Panel1: TPanel;
+    Splitter1: TSplitter;
+    ListBox18: TJvSettingsTreeView;
+    Panel3: TPanel;
+    JvCheckedComboBox1: TJvCheckedComboBox;
+    Panel13: TPanel;
+    ListBox19: TListBox;
+    Panel6: TPanel;
+    SourceTextEditor: TSynEdit;
+    Splitter2: TSplitter;
+    Panel26: TPanel;
+    CompileButton: TJvImgBtn;
+    RadioGroup1: TRadioGroup;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    RadioButton3: TRadioButton;
+    JvImgBtn1: TJvImgBtn;
+    TranspileOutputEdit: TEdit;
+    Label12: TLabel;
+    SpeedButton1: TSpeedButton;
+    JvSelectDirectory1: TJvSelectDirectory;
+    JvOpenDialog1: TJvOpenDialog;
     procedure FormCreate(Sender: TObject);
     procedure DesktopApplicationOLEActivate(Sender: TObject);
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1319,7 +1335,7 @@ type
     procedure SetupPageTreeViewClick(Sender: TObject);
     procedure AppSwitchButtonClick(Sender: TObject);
     procedure CompileButtonClick(Sender: TObject);
-    procedure SynEdit1KeyDown(Sender: TObject; var Key: Word;
+    procedure SourceTextEditorKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FindDialog1Find(Sender: TObject);
     procedure PageControl17Change(Sender: TObject);
@@ -1329,10 +1345,13 @@ type
       const Rect: TRect; DataCol: Integer; Column: TColumn;
       State: TGridDrawState);
     procedure JvDBUltimGrid1ColExit(Sender: TObject);
-    procedure JvStringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
-      Rect: TRect; State: TGridDrawState);
     procedure JvComboBox4Change(Sender: TObject);
     procedure JvComboBox2Change(Sender: TObject);
+    procedure JvStringGrid2DrawCell(Sender: TObject; ACol, ARow: Integer;
+      Rect: TRect; State: TGridDrawState);
+    procedure SourceTextEditorMouseDown(Sender: TObject;
+      Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure SpeedButton1Click(Sender: TObject);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -1602,7 +1621,7 @@ begin
 
     PopupMenu_TimeAccess.Items.Add(mi_date);
 
-    SynEdit1.PopupMenu := PopupMenu_TimeAccess;
+    SourceTextEditor.PopupMenu := PopupMenu_TimeAccess;
   finally
   end;
 end;
@@ -2361,6 +2380,7 @@ end;
 
 procedure TForm2.TasksPageControlChange(Sender: TObject);
 begin
+(*
   if TasksPageControl.TabIndex = 6 then
   begin
     Panel1.Visible    := false;
@@ -2370,7 +2390,7 @@ begin
     Panel1.Visible := true;
     Splitter2.Visible := true;
     Splitter2.Top := Panel1.Height;
-  end;
+  end;*)
 end;
 
 procedure TForm2.BackgroundViewButtonClick(Sender: TObject);
@@ -2626,10 +2646,24 @@ end;
 
 procedure TForm2.CompileButtonClick(Sender: TObject);
 begin
-  SynEdit1.Text
+  if  (RadioButton1.Checked = false)
+  and (RadioButton2.Checked = false)
+  and (RadioButton3.Checked = false) then
+  begin
+    ShowMessage('No Transpile target specified.');
+    exit;
+  end;
+  if Length(Trim(TranspileOutputEdit.Text)) < 1 then
+  begin
+    ShowMessage('No output directory specified.');
+    exit;
+  end;
+  if RadioButton1.Checked then TranspileBorlandDelphi   (TranspileOutputEdit.Text, SourceTextEditor.Text) else
+  if RadioButton2.Checked then TranspileBorlandCBuilder (TranspileOutputEdit.Text, SourceTextEditor.Text) else
+  if RadioButton3.Checked then TranspileGnuCC           (TranspileOutputEdit.Text, SourceTextEditor.Text) ;
 end;
 
-procedure TForm2.SynEdit1KeyDown(Sender: TObject; var Key: Word;
+procedure TForm2.SourceTextEditorKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if key = VK_F1 then
@@ -2652,18 +2686,18 @@ begin
     end else
     if (Char(key) = 's') or (Char(key) = 'S') then
     begin
-      if SynEdit1.Modified = true then
+      if SourceTextEditor.Modified = true then
       if SourceNew then
       begin
         if SaveDialog1.Execute then
         begin
-          SynEdit1.Lines.SaveToFile(SaveDialog1.FileName);
+          SourceTextEditor.Lines.SaveToFile(SaveDialog1.FileName);
           SourceFileName := SaveDialog1.FileName;
           SourceNew := false;
         end;
       end else
       begin
-        SynEdit1.Lines.SaveToFile(SourceFileName);
+        SourceTextEditor.Lines.SaveToFile(SourceFileName);
         SourceNew := false;
       end;
     end else
@@ -2671,8 +2705,8 @@ begin
     begin
       if OpenDialog1.Execute then
       begin
-        SynEdit1.Lines.LoadFromFile(OpenDialog1.FileName);
-        SynEdit1.Modified := true;
+        SourceTextEditor.Lines.LoadFromFile(OpenDialog1.FileName);
+        SourceTextEditor.Modified := true;
         SourceFileName := OpenDialog1.FileName;
         SourceNew := false;
       end;
@@ -2684,10 +2718,10 @@ procedure TForm2.FindDialog1Find(Sender: TObject);
 var
   FoundAt: Integer;
 begin
-  with SynEdit1 do
+  with SourceTextEditor do
   begin
     SynEditSearch1.Pattern := finddialog1.FindText;
-    SynEditSearch1.FindAll(SynEdit1.Lines.Text);
+    SynEditSearch1.FindAll(SourceTextEditor.Lines.Text);
 
     SetFocus;
     SelStart := SynEditSearch1.Results[0]-1;
@@ -2814,7 +2848,7 @@ begin
 //  JvDBCheckBox1.Visible := false;
 end;
 
-procedure TForm2.JvStringGrid1DrawCell(
+procedure TForm2.JvStringGrid2DrawCell(
   Sender    : TObject;
   ACol, ARow: Integer;
   Rect      : TRect;
@@ -2892,10 +2926,8 @@ end;
 procedure TForm2.JvComboBox2Change(Sender: TObject);
 var
   idx, i,j,k,rec: Integer;
-  FieldNames: TStrings;
   s1, s2: String;
 begin
-  FieldNames := TStringList.Create;
   if Length(Trim(JvComboBox1.Text)) > 0 then
   begin
     with JvTableItems1 do
@@ -2919,34 +2951,89 @@ begin
 
         First;
 
-        for i := 1 to RecordCount do
+        with JvQuery1 do
         begin
-          s1 := FieldByName('NAME').AsString; Cells[i,0] := s1;
+          if Active then Close;
+          SQL.Clear;
+          SQL.Add('SELECT * FROM "' + TableNamePath + JvComboBox2.Text + '";');
+          ExecSQL;
+          Open;
+          First;
+        end;
 
-          if JvQuery1.Active then
-          JvQuery1.Close;
-          JvQuery1.SQL.Clear;
-          JvQuery1.SQL.Add('SELECT * FROM "' +
-          TableNamePath + JvComboBox2.Text + '";');
-          JvQuery1.ExecSQL;
-          JvQuery1.Open;
-          JvQuery1.First;
-showmessage(inttostr(jvquery1.FieldCount));
-          for k := 1 to JvQuery1.FieldCount do
+        for j := 1 to JvQuery1.FieldCount do
+        Cells[j,0] := JvQuery1.FieldDefs.Items[j-1].DisplayName;
+
+        for k := 1 to JvQuery1.RecordCount do
+        begin
+          for j := 1 to JvQuery1.FieldCount do
           begin
-            for j := 1 to RecordCount do
-            begin
-              if Cells[i,0] <> 'BMP' then
-              Cells[k,j] := JvQuery1.DataSetField.FieldValues[k].AsString;
-              JvQuery1.Next;
-            end;
+            if  (JvQuery1.FieldDefs.Items[j-1].DataType <> ftBlob)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftBytes)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftVarBytes)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftGraphic)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftVariant)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftUnknown)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftBlob)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftTypedBinary) then
+            Cells[j,k] := JvQuery1.Fields.Fields[j-1].AsString;
           end;
-          Next;
+          JvQuery1.Next;
         end;
 
         Visible := true;
       end;
     end;
+  end;
+end;
+
+procedure TForm2.SourceTextEditorMouseDown(
+  Sender: TObject;
+  Button: TMouseButton;
+  Shift : TShiftState;
+  X, Y  : Integer);
+var
+  buffer : String;
+  i: Integer;
+  c: String;
+  wc: PWideChar;
+begin
+  if JvSpeedButton4.Down then
+  begin
+    buffer :=
+    '  Label = new Label(this)' + #13#10 +
+    '  with Label'              + #13#10 +
+    '    Top    = 20'           + #13#10 +
+    '    Left   = 20'           + #13#10 +
+    '    Width  = 50'           + #13#10 +
+    '    Height = 48'           + #13#10 +
+    '  endwith'                 + #13#10 ;
+    try
+      try
+        i := Length(buffer) * sizeof(WideChar);
+        GetMem(wc, i+1);
+        wc := StringToWideChar(buffer,wc,i);
+        with SourceTextEditor do
+        InsertLine(CaretXY,CaretXY, wc, true);
+      except
+        on EOutOfMemory do
+        begin
+          ShowMessage('out of memory');
+          ExitProcess(1);
+        end;
+      end;
+    finally
+      FreeMem(wc);
+      JvSpeedButton1.Down := true;
+    end;
+  end;
+end;
+
+procedure TForm2.SpeedButton1Click(Sender: TObject);
+begin
+  if JvSelectDirectory1.Execute then
+  begin
+    TranspileOutputEdit.Text := JvSelectDirectory1.Directory
   end;
 end;
 
