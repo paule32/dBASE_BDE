@@ -46,6 +46,7 @@ I will not say or write to much, because I will not lost you, but till there:
 Thanks for reading, and thanks for Your trust.
 paule32 
 
-![Preview](src/screen.png)
+![DesignerPreview](src/screen.png)
 ![DatabaseView](src/screen2.png)
 ![DatabaseTableFieldView](src/screen3.png)
+![DesignerEditorProview](src/screen3.png)
