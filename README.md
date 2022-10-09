@@ -51,3 +51,4 @@ paule32
 ![DatabaseTableFieldView](src/screen3.png)
 ![DesignerEditorProview](src/screen4.png)
 ![Monitor](src/screen5.png)
+![Permissions](src/screen6.png)
