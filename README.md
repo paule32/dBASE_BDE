@@ -50,3 +50,4 @@ paule32
 ![DatabaseView](src/screen2.png)
 ![DatabaseTableFieldView](src/screen3.png)
 ![DesignerEditorProview](src/screen4.png)
+![Monitor](src/screen5.png)
