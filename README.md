@@ -49,4 +49,4 @@ paule32
 ![DesignerPreview](src/screen.png)
 ![DatabaseView](src/screen2.png)
 ![DatabaseTableFieldView](src/screen3.png)
-![DesignerEditorProview](src/screen3.png)
+![DesignerEditorProview](src/screen4.png)
