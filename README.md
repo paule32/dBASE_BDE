@@ -32,9 +32,7 @@ So I will End-Up my Welcome to the new Community Member's, and hope
 You can understand, and follow my way of Software production.
 
 You can follow the Process at my GitHub.com account, download Sources,
-and many many more at the following URL:
-
-https://github.com/paule32/dBASE_BDE
+and many many more.
 
 You can find a Wiki for Diskussions, and Help.
 A working Pre-Alpha-Template compiled Version of the latest Release for:
