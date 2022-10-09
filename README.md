@@ -5,3 +5,4 @@ take a look to the template application for a preview - thank's) - for free
 (please give me a donut :-)
 
 ![Preview](src/screen.png)
+![DatabaseView](src/screen2.png)

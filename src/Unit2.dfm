@@ -940,7 +940,7 @@ object Form2: TForm2
                       Top = 24
                       Width = 145
                       Height = 21
-                      ItemHeight = 0
+                      ItemHeight = 13
                       TabOrder = 1
                       Text = 'ComboBox1'
                     end
@@ -2099,12 +2099,12 @@ object Form2: TForm2
                   TabOrder = 1
                   OnClick = SetupPageTreeViewClick
                   Items.Data = {
-                    02000000220000000000000000000000FFFFFFFFFFFFFFFF0100000002000000
+                    02000000220000000100000001000000FFFFFFFFFFFFFFFF0100000002000000
                     094C616E67756167657320000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
                     00000000000007456E676C6973681F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                    FFFF0000000000000000064765726D616E210000000000000000000000FFFFFF
-                    FFFFFFFFFF0100000002000000084D616E696665737424000000020000000200
-                    0000FFFFFFFFFFFFFFFF01000000000000000B4170706C69636174696F6E2200
+                    FFFF0000000000000000064765726D616E210000000100000001000000FFFFFF
+                    FFFFFFFFFF0100000002000000084D616E696665737424000000FFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFF01000000000000000B4170706C69636174696F6E2200
                     0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000009526573736F
                     75726365}
                   Items.Links = {06000000010000000000000000000000010000000100000000000000}
@@ -2218,10 +2218,10 @@ object Form2: TForm2
                               Visible = False
                               inherited ScrollBox1: TScrollBox
                                 Width = 669
-                                Height = 230
+                                Height = 200
                                 inherited LangTextStringGrid: TJvStringGrid
                                   Width = 665
-                                  Height = 226
+                                  Height = 196
                                   ColWidths = (
                                     188
                                     294)
@@ -2692,14 +2692,14 @@ object Form2: TForm2
                                   TabOrder = 0
                                   Items.Data = {
                                     040000001D000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000000000000
-                                    047A7A7A7A220000000000000000000000FFFFFFFFFFFFFFFF01000000020000
+                                    047A7A7A7A220000000100000001000000FFFFFFFFFFFFFFFF01000000020000
                                     00097A7A7A7A7A676767671E000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01
                                     0000000000000005687A6868681D000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                                    FF000000000000000004363736371C0000000000000000000000FFFFFFFFFFFF
+                                    FF000000000000000004363736371C0000000100000001000000FFFFFFFFFFFF
                                     FFFF01000000010000000367676723000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                                    FFFF01000000000000000A393938393839383938391F00000000000000000000
-                                    00FFFFFFFFFFFFFFFF0000000001000000066868686868681F00000002000000
-                                    02000000FFFFFFFFFFFFFFFF000000000000000006303030303939}
+                                    FFFF01000000000000000A393938393839383938391F00000001000000010000
+                                    00FFFFFFFFFFFFFFFF0000000001000000066868686868681F000000FFFFFFFF
+                                    FFFFFFFFFFFFFFFFFFFFFFFF000000000000000006303030303939}
                                   Items.Links = {
                                     0800000001000000010000000100000000000000010000000100000000000000
                                     00000000}
@@ -2816,9 +2816,9 @@ object Form2: TForm2
                       Left = 0
                       Top = 0
                       Width = 1062
-                      Height = 57
+                      Height = 395
                       ActivePage = TabSheet45
-                      Align = alTop
+                      Align = alClient
                       Font.Charset = ANSI_CHARSET
                       Font.Color = clBlack
                       Font.Height = -12
@@ -2964,10 +2964,186 @@ object Form2: TForm2
                             OnChange = JvComboBox1Change
                           end
                         end
+                        object JvStringGrid1: TJvStringGrid
+                          Left = 0
+                          Top = 29
+                          Width = 1054
+                          Height = 336
+                          Align = alClient
+                          ColCount = 1
+                          FixedCols = 0
+                          RowCount = 1
+                          FixedRows = 0
+                          Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing]
+                          TabOrder = 1
+                          Visible = False
+                          OnDrawCell = JvStringGrid1DrawCell
+                          Alignment = taLeftJustify
+                          FixedFont.Charset = DEFAULT_CHARSET
+                          FixedFont.Color = clWindowText
+                          FixedFont.Height = -11
+                          FixedFont.Name = 'MS Sans Serif'
+                          FixedFont.Style = []
+                        end
                       end
                       object TabSheet46: TTabSheet
                         Caption = 'Fields'
                         ImageIndex = 1
+                        object ToolBar2: TToolBar
+                          Left = 0
+                          Top = 0
+                          Width = 1054
+                          Height = 29
+                          ButtonHeight = 23
+                          Caption = 'ToolBar1'
+                          TabOrder = 0
+                          object ToolButton11: TToolButton
+                            Left = 0
+                            Top = 2
+                            Caption = 'ToolButton1'
+                            ImageIndex = 0
+                          end
+                          object ToolButton12: TToolButton
+                            Left = 23
+                            Top = 2
+                            Caption = 'ToolButton2'
+                            ImageIndex = 1
+                          end
+                          object ToolButton13: TToolButton
+                            Left = 46
+                            Top = 2
+                            Caption = 'ToolButton3'
+                            ImageIndex = 2
+                          end
+                          object ToolButton14: TToolButton
+                            Left = 69
+                            Top = 2
+                            Caption = 'ToolButton4'
+                            ImageIndex = 3
+                          end
+                          object ToolButton15: TToolButton
+                            Left = 92
+                            Top = 2
+                            Caption = 'ToolButton5'
+                            ImageIndex = 4
+                          end
+                          object ToolButton16: TToolButton
+                            Left = 115
+                            Top = 2
+                            Caption = 'ToolButton6'
+                            ImageIndex = 5
+                          end
+                          object ToolButton17: TToolButton
+                            Left = 138
+                            Top = 2
+                            Width = 7
+                            Caption = 'ToolButton7'
+                            ImageIndex = 6
+                            Style = tbsSeparator
+                          end
+                          object Panel39: TPanel
+                            Left = 145
+                            Top = 2
+                            Width = 48
+                            Height = 23
+                            BevelOuter = bvNone
+                            Caption = 'Index :'
+                            TabOrder = 0
+                          end
+                          object JvCheckedComboBox3: TJvCheckedComboBox
+                            Left = 193
+                            Top = 2
+                            Width = 121
+                            Height = 23
+                            Items.Strings = (
+                              '<empty>'
+                              'one'
+                              'two'
+                              'three')
+                            CapSelectAll = '&Select all'
+                            CapDeSelectAll = '&Deselect all'
+                            CapInvertAll = '&Invert all'
+                            TabOrder = 1
+                          end
+                          object ToolButton18: TToolButton
+                            Left = 314
+                            Top = 2
+                            Width = 8
+                            Caption = 'ToolButton8'
+                            ImageIndex = 7
+                            Style = tbsSeparator
+                          end
+                          object ToolButton19: TToolButton
+                            Left = 322
+                            Top = 2
+                            Caption = 'ToolButton9'
+                            ImageIndex = 7
+                          end
+                          object ToolButton20: TToolButton
+                            Left = 345
+                            Top = 2
+                            Width = 8
+                            Caption = 'ToolButton10'
+                            ImageIndex = 8
+                            Style = tbsSeparator
+                          end
+                          object Panel40: TPanel
+                            Left = 353
+                            Top = 2
+                            Width = 48
+                            Height = 23
+                            BevelOuter = bvNone
+                            Caption = 'Table :'
+                            TabOrder = 2
+                          end
+                          object JvComboBox3: TJvComboBox
+                            Left = 401
+                            Top = 2
+                            Width = 112
+                            Height = 23
+                            Style = csDropDownList
+                            TabOrder = 5
+                            OnChange = JvComboBox3Change
+                          end
+                          object Panel41: TPanel
+                            Left = 513
+                            Top = 2
+                            Width = 79
+                            Height = 23
+                            BevelOuter = bvNone
+                            Caption = 'Database :'
+                            TabOrder = 3
+                          end
+                          object JvComboBox4: TJvComboBox
+                            Left = 592
+                            Top = 2
+                            Width = 112
+                            Height = 23
+                            Style = csDropDownList
+                            TabOrder = 4
+                            OnChange = JvComboBox4Change
+                          end
+                        end
+                        object JvStringGrid2: TJvStringGrid
+                          Left = 0
+                          Top = 29
+                          Width = 1054
+                          Height = 336
+                          Align = alClient
+                          ColCount = 1
+                          FixedCols = 0
+                          RowCount = 1
+                          FixedRows = 0
+                          TabOrder = 1
+                          Visible = False
+                          OnDrawCell = JvStringGrid1DrawCell
+                          Alignment = taLeftJustify
+                          FixedFont.Charset = DEFAULT_CHARSET
+                          FixedFont.Color = clWindowText
+                          FixedFont.Height = -11
+                          FixedFont.Name = 'MS Sans Serif'
+                          FixedFont.Style = []
+                        end
                       end
                       object TabSheet47: TTabSheet
                         Caption = 'Index'
@@ -2978,42 +3154,13 @@ object Form2: TForm2
                         ImageIndex = 3
                       end
                     end
-                    object JvDBGridFooter1: TJvDBGridFooter
-                      Left = 0
-                      Top = 376
-                      Width = 1062
-                      Height = 19
-                      SizeGrip = True
-                      Columns = <>
-                      DataSource = JvDataSource1
-                    end
-                    object JvStringGrid1: TJvStringGrid
-                      Left = 0
-                      Top = 57
-                      Width = 1062
-                      Height = 319
-                      Align = alClient
-                      ColCount = 1
-                      FixedCols = 0
-                      RowCount = 1
-                      FixedRows = 0
-                      TabOrder = 2
-                      Visible = False
-                      OnDrawCell = JvStringGrid1DrawCell
-                      Alignment = taLeftJustify
-                      FixedFont.Charset = DEFAULT_CHARSET
-                      FixedFont.Color = clWindowText
-                      FixedFont.Height = -11
-                      FixedFont.Name = 'MS Sans Serif'
-                      FixedFont.Style = []
-                    end
                     object JvCheckBox1: TJvCheckBox
                       Left = 40
                       Top = 120
                       Width = 83
                       Height = 17
                       Caption = 'JvCheckBox1'
-                      TabOrder = 3
+                      TabOrder = 1
                       Visible = False
                       LinkedControls = <>
                       HotTrackFont.Charset = ANSI_CHARSET
@@ -7378,5 +7525,11 @@ object Form2: TForm2
     DataSet = JvTableItems1
     Left = 221
     Top = 280
+  end
+  object JvQuery1: TJvQuery
+    DataSource = JvDataSource1
+    Macros = <>
+    Left = 433
+    Top = 378
   end
 end

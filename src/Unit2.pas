@@ -17,7 +17,8 @@ uses
   JclRTTI, JvInspExtraEditors, JvExMask, JvToolEdit, JvColorCombo,
   JvDialogs, JvInspector, SetupLocale, SynEditMiscClasses, SynEditSearch,
   SynEditRegexSearch, JvDataSource, JvDBGridFooter, JvExDBGrids, JvDBGrid,
-  JvDBUltimGrid, JvDBCheckBox, JvExGrids, JvStringGrid, JvCheckBox;
+  JvDBUltimGrid, JvDBCheckBox, JvExGrids, JvStringGrid, JvCheckBox,
+  JvBDEQuery;
 
 type
   TForm2 = class(TForm)
@@ -1155,10 +1156,28 @@ type
     Panel38: TPanel;
     JvComboBox1: TJvComboBox;
     JvComboBox2: TJvComboBox;
-    JvDBGridFooter1: TJvDBGridFooter;
     JvDataSource1: TJvDataSource;
     JvStringGrid1: TJvStringGrid;
+    ToolBar2: TToolBar;
+    ToolButton11: TToolButton;
+    ToolButton12: TToolButton;
+    ToolButton13: TToolButton;
+    ToolButton14: TToolButton;
+    ToolButton15: TToolButton;
+    ToolButton16: TToolButton;
+    ToolButton17: TToolButton;
+    Panel39: TPanel;
+    JvCheckedComboBox3: TJvCheckedComboBox;
+    ToolButton18: TToolButton;
+    ToolButton19: TToolButton;
+    ToolButton20: TToolButton;
+    Panel40: TPanel;
+    JvComboBox3: TJvComboBox;
+    Panel41: TPanel;
+    JvComboBox4: TJvComboBox;
+    JvStringGrid2: TJvStringGrid;
     JvCheckBox1: TJvCheckBox;
+    JvQuery1: TJvQuery;
     procedure FormCreate(Sender: TObject);
     procedure DesktopApplicationOLEActivate(Sender: TObject);
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1305,13 +1324,15 @@ type
     procedure FindDialog1Find(Sender: TObject);
     procedure PageControl17Change(Sender: TObject);
     procedure JvComboBox1Change(Sender: TObject);
-    procedure JvComboBox2Change(Sender: TObject);
+    procedure JvComboBox3Change(Sender: TObject);
     procedure JvDBUltimGrid1DrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumn;
       State: TGridDrawState);
     procedure JvDBUltimGrid1ColExit(Sender: TObject);
     procedure JvStringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
+    procedure JvComboBox4Change(Sender: TObject);
+    procedure JvComboBox2Change(Sender: TObject);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -1323,6 +1344,8 @@ type
     PopupMenu_TimeAccess: TPopupMenu;
     BoolsAsChecks: Boolean;
     NewControlOnDesigner  : Boolean;
+    AliasListFlag: Boolean;
+    TableNamePath: String;
 
     SourceNew: Boolean;
     SourceFileNAme : String;
@@ -1671,7 +1694,8 @@ begin
       SourceFileName := 'unknown.prg';
 
       // database/files
-      if PageControl17.TabIndex = 0 then
+      AliasListFlag := false;
+      if PageControl17.TabIndex = 1 then
       PageControl17Change(Sender);
 
       // frame
@@ -2676,28 +2700,20 @@ var
   idx: Integer;
   AliasList: TStrings;
 begin
-  if PageControl17.ActivePage.Caption = 'Data' then
+  if AliasListFlag = true then exit;
+  AliasListFlag := true;
+
+  with JvDatabaseItems1.DBSession do
   begin
-    JvComboBox1.Items.Clear;
+    AliasList := TStringList.Create;
+    GetDatabaseNames(AliasList);
 
-    with JvDatabaseItems1.DBSession do
-    begin
-      AliasList := TStringList.Create;
-      GetDatabaseNames(AliasList);
-      JvComboBox1.Items.AddStrings(AliasList);
-    end;
-
-(*
-//    while not JvDatabaseItems1.Eof do
-    begin
-showmessage('no: ' + inttostr(JvDatabaseItems1.DBSession.DatabaseCount - 1) + #13#10 + JvDatabaseItems1.FieldList.CommaText);
-      JvComboBox1.Items.Add(JvDatabaseItems1.FieldList.CommaText);
-//      JvDatabaseItems1.Next;
-    end;*)
+    JvComboBox1.Items.AddStrings(AliasList);
+    JvComboBox4.Items.AddStrings(AliasList);
   end;
 end;
 
-procedure TForm2.JvComboBox1Change(Sender: TObject);
+procedure TForm2.JvComboBox4Change(Sender: TObject);
 var
   TableNames: TStrings;
 begin
@@ -2705,34 +2721,34 @@ begin
 
   try
     JvDatabaseItems1.DBSession.OpenDatabase(
-    JvComboBox1.Text);
+    JvComboBox4.Text);
     JvDatabaseItems1.DBSession.Databases[
-    JvComboBox1.ItemIndex].GetTableNames(TableNames,false);
+    JvComboBox4.ItemIndex].GetTableNames(TableNames,false);
 
-    JvComboBox2.Items.Clear;
-    JvComboBox2.Items.AddStrings(TableNames);
+    JvComboBox3.Items.Clear;
+    JvComboBox3.Items.AddStrings(TableNames);
   except
     JvComboBox2.Items.Clear;
     ShowMessage('Error occur.');
   end;
 end;
 
-procedure TForm2.JvComboBox2Change(Sender: TObject);
+procedure TForm2.JvComboBox3Change(Sender: TObject);
 var
   idx, i,j: Integer;
   FieldNames: TStrings;
 begin
   FieldNames := TStringList.Create;
-  if Length(Trim(JvComboBox2.Text)) > 0 then
+  if Length(Trim(JvComboBox3.Text)) > 0 then
   begin
     with JvTableItems1 do
     begin
       if Active then Close;
-      DatabaseName := JvComboBox1.Text;
-      TableName    := JvComboBox2.Text;
+      DatabaseName := JvComboBox4.Text;
+      TableName    := JvComboBox3.Text;
       Open;
       First;
-      with JvStringGrid1 do
+      with JvStringGrid2 do
       begin
         ColWidths[0] := 12;
 
@@ -2804,35 +2820,8 @@ procedure TForm2.JvStringGrid1DrawCell(
   Rect      : TRect;
   State     : TGridDrawState);
 var
-  x : Integer;
+  s : String;
 
-  function FieldTypeAsString(Value : TFieldType): string;
-  begin
-    case Value of
-      ftUnknown     : Result := 'Unknown';
-      ftString      : Result := 'String';
-      ftSmallint    : Result := 'SmallInt';
-      ftInteger     : Result := 'Integer';
-      ftWord        : Result := 'Word';
-      ftBoolean     : Result := 'Boolean';
-      ftFloat       : Result := 'Float';
-      ftCurrency    : Result := 'Currency';
-      ftBCD         : Result := 'BCD';
-      ftDate        : Result := 'Date';
-      ftTime        : Result := 'Time';
-      ftDateTime    : Result := 'DateTime';
-      ftBytes       : Result := 'Bytes';
-      ftVarBytes    : Result := 'VarBytes';
-      ftAutoInc     : Result := 'AutoInc';
-      ftBlob        : Result := 'Blob';
-      ftMemo        : Result := 'Memo';
-      ftGraphic     : Result := 'Graphic';
-      ftFmtMemo     : Result := 'FmtMemo';
-      ftParadoxOle  : Result := 'Paradox-OLE';
-      ftDBaseOle    : Result := 'dBASE-OLE';
-      ftTypedBinary : Result := 'TypedBinary';
-    end;
-  end;
   function CheckBox(Value: String): Cardinal;
   begin
     if LowerCase(Value) = 't' then // Checked
@@ -2850,28 +2839,112 @@ begin
       JvCheckBox1.Top     := Rect.Top    + JvStringGrid1.Top  + 2;
       JvCheckBox1.Width   := Rect.Right  - Rect.Left;
       JvCheckBox1.Height  := Rect.Bottom - Rect.Top;
-      JvCheckBox1.Visible := True;
+
     end;
   end else
   begin
+    if (ACol = 3) and (ARow > 0) then
+    begin
+      with JvStringGrid2 do
+      begin
+        s := Cells[ACol,ARow];
+        if s = '1' then Canvas.TextOut(rect.Left+2,rect.Top+4,'CHAR') else
+        if s = '2' then Canvas.TextOut(rect.Left+2,rect.Top+4,'DATE') else
+        if s = '3' then Canvas.TextOut(rect.Left+2,rect.Top+4,'BLOB') else
+        if s = '5' then Canvas.TextOut(rect.Left+2,rect.Top+4,'DECIMAL') else
+        if s = '7' then Canvas.TextOut(rect.Left+2,rect.Top+4,'FLOAT');
+      end;
+    end;
     if (ACol = 12) and (ARow > 0) then
     begin
       JvCheckBox1.Caption := '';
       InflateRect(Rect,-1,-1);
       JvStringGrid1.Canvas.FillRect(Rect);
-      DrawFrameControl(JvStringGrid1.Canvas.Handle, Rect, DFC_BUTTON,
-      CheckBox(Trim(JvStringGrid1.Cells[ACol, ARow])));
-    end else
-    if (ACol = 3) and (ARow > 0) then
+      DrawFrameControl(JvStringGrid2.Canvas.Handle, Rect, DFC_BUTTON,
+      CheckBox(Trim(JvStringGrid2.Cells[ACol, ARow])));
+    end;
+  end;
+end;
+
+procedure TForm2.JvComboBox1Change(Sender: TObject);
+var
+  TableNames: TStrings;
+begin
+  TableNames := TStringList.Create;
+
+  try
+    JvDatabaseItems1.DBSession.OpenDatabase(
+    JvComboBox1.Text);
+    JvDatabaseItems1.DBSession.Databases[
+    JvComboBox1.ItemIndex].GetTableNames(TableNames,false);
+
+TableNamePath := ExtractFilePath(JvDatabaseItems1.DBSession.Databases[
+JvComboBox1.ItemIndex].Directory);
+
+    JvComboBox2.Items.Clear;
+    JvComboBox2.Items.AddStrings(TableNames);
+  except
+    JvComboBox2.Items.Clear;
+    ShowMessage('Error occur.');
+  end;
+end;
+
+procedure TForm2.JvComboBox2Change(Sender: TObject);
+var
+  idx, i,j,k,rec: Integer;
+  FieldNames: TStrings;
+  s1, s2: String;
+begin
+  FieldNames := TStringList.Create;
+  if Length(Trim(JvComboBox1.Text)) > 0 then
+  begin
+    with JvTableItems1 do
     begin
-      with JvTableItems1 do
+      if Active then Close;
+      DatabaseName  := JvComboBox1.Text;
+      TableName     := JvComboBox2.Text;
+      Open;
+      First;
+      with JvStringGrid1 do
       begin
-        for x := 1 to RecordCount do
+        ColWidths[0] := 12;
+
+        rec := 1; while not eof do begin
+        inc(rec); next; end ;
+
+        RowCount  := RecordCount + 1;
+        ColCount  := Rec;
+        FixedRows := 1;
+        FixedCols := 1;
+
+        First;
+
+        for i := 1 to RecordCount do
         begin
-          Canvas.TextOut(rect.Left+2,rect.Top+4,
-          FieldTypeAsString(FieldByName('TYPE').DataType));
+          s1 := FieldByName('NAME').AsString; Cells[i,0] := s1;
+
+          if JvQuery1.Active then
+          JvQuery1.Close;
+          JvQuery1.SQL.Clear;
+          JvQuery1.SQL.Add('SELECT * FROM "' +
+          TableNamePath + JvComboBox2.Text + '";');
+          JvQuery1.ExecSQL;
+          JvQuery1.Open;
+          JvQuery1.First;
+showmessage(inttostr(jvquery1.FieldCount));
+          for k := 1 to JvQuery1.FieldCount do
+          begin
+            for j := 1 to RecordCount do
+            begin
+              if Cells[i,0] <> 'BMP' then
+              Cells[k,j] := JvQuery1.DataSetField.FieldValues[k].AsString;
+              JvQuery1.Next;
+            end;
+          end;
           Next;
         end;
+
+        Visible := true;
       end;
     end;
   end;
