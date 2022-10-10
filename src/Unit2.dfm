@@ -979,7 +979,7 @@ object Form2: TForm2
                       Top = 24
                       Width = 145
                       Height = 21
-                      ItemHeight = 13
+                      ItemHeight = 0
                       TabOrder = 1
                       Text = 'ComboBox1'
                     end
@@ -1753,12 +1753,12 @@ object Form2: TForm2
                     object Panel20: TPanel
                       Left = 8
                       Top = 8
-                      Width = 717
+                      Width = 713
                       Height = 145
                       Anchors = [akLeft, akTop, akRight]
                       TabOrder = 0
                       DesignSize = (
-                        717
+                        713
                         145)
                       object Button18: TButton
                         Left = 8
@@ -1811,7 +1811,7 @@ object Form2: TForm2
                       object ListBox3: TListBox
                         Left = 240
                         Top = 8
-                        Width = 461
+                        Width = 457
                         Height = 121
                         Anchors = [akLeft, akTop, akRight]
                         ItemHeight = 13

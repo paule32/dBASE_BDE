@@ -3007,6 +3007,67 @@ begin
     '    Left   = 20'           + #13#10 +
     '    Width  = 50'           + #13#10 +
     '    Height = 48'           + #13#10 +
+    '    Text   = "Label1"'     + #13#10 +
+    '  endwith'                 + #13#10 ;
+    try
+      try
+        i := Length(buffer) * sizeof(WideChar);
+        GetMem(wc, i+1);
+        wc := StringToWideChar(buffer,wc,i);
+        with SourceTextEditor do
+        InsertLine(CaretXY,CaretXY, wc, true);
+      except
+        on EOutOfMemory do
+        begin
+          ShowMessage('out of memory');
+          ExitProcess(1);
+        end;
+      end;
+    finally
+      FreeMem(wc);
+      JvSpeedButton1.Down := true;
+    end;
+  end else
+  if JvSpeedButton5.Down then
+  begin
+    buffer :=
+    '  PushButton1 = new PushButton(this)' + #13#10 +
+    '  with (this.PushButton1)' + #13#10 +
+    '    Top    = 20'           + #13#10 +
+    '    Left   = 20'           + #13#10 +
+    '    Width  = 50'           + #13#10 +
+    '    Height = 48'           + #13#10 +
+    '    Text   = "Button1"'    + #13#10 +
+    '  endwith'                 + #13#10 ;
+    try
+      try
+        i := Length(buffer) * sizeof(WideChar);
+        GetMem(wc, i+1);
+        wc := StringToWideChar(buffer,wc,i);
+        with SourceTextEditor do
+        InsertLine(CaretXY,CaretXY, wc, true);
+      except
+        on EOutOfMemory do
+        begin
+          ShowMessage('out of memory');
+          ExitProcess(1);
+        end;
+      end;
+    finally
+      FreeMem(wc);
+      JvSpeedButton1.Down := true;
+    end;
+  end else
+  if JvSpeedButton6.Down then
+  begin
+    buffer :=
+    '  EntryField1 = new Entryfield(this)' + #13#10 +
+    '  with (this.EntryField1)' + #13#10 +
+    '    Top    = 20'           + #13#10 +
+    '    Left   = 20'           + #13#10 +
+    '    Width  = 50'           + #13#10 +
+    '    Height = 48'           + #13#10 +
+    '    Text   = "Edit1"'      + #13#10 +
     '  endwith'                 + #13#10 ;
     try
       try
