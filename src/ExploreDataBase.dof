@@ -146,21 +146,3 @@ SpecialBuild=
 [Excluded Packages]
 E:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\Jcl70.bpl=JEDI Code Library RTL package
 E:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\JclVcl70.bpl=JEDI Code Library VCL package
-[HistoryLists\hlUnitAliases]
-Count=1
-Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
-[HistoryLists\hlSearchPath]
-Count=3
-Item0=E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run;E:\Projekte\jedi\jvcl\jvcl\resources;E:\Projekte\SynEdit\Source;E:\Projekte\SynEdit\SynGen
-Item1=E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run;E:\Projekte\jedi\jvcl\jvcl\resources
-Item2=..\..\run;..\..\common;..\..\Resources;E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run
-[HistoryLists\hlUnitOutputDirectory]
-Count=1
-Item0=.\dcu
-[HistoryLists\hlOutputDirectorry]
-Count=2
-Item0=.\exe\ENG
-Item1=.\exe
-[HistoryLists\hlDCPOutput]
-Count=1
-Item0=.\dcp

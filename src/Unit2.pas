@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, DB, DBTables, ComCtrls, DBCtrls, Grids, DBGrids,
   Menus, ExtCtrls, Mask, IdAntiFreezeBase, IdAntiFreeze, IdBaseComponent,
-  IdComponent, IdTCPConnection, IdTCPClient, OleCtnrs, IniFiles, DateUtils,
+  IdComponent, IdTCPConnection, IdTCPClient, IniFiles, DateUtils,
   ImgList, Buttons, TypInfo, JvComponentBase, JvTabBarXPPainter,
   JvExComCtrls, JvTabBar, JvExControls, JvArrowButton, JvComCtrls,
   JvExExtCtrls, JvExtComponent, JvComponentPanel, JvSplitter, ToolWin,
@@ -18,12 +18,16 @@ uses
   JvDialogs, JvInspector, SetupLocale, SynEditMiscClasses, SynEditSearch,
   SynEditRegexSearch, JvDataSource, JvDBGridFooter, JvExDBGrids, JvDBGrid,
   JvDBUltimGrid, JvDBCheckBox, JvExGrids, JvStringGrid, JvCheckBox,
-  JvBDEQuery, JvBaseDlg, JvSelectDirectory;
+  JvBDEQuery, JvBaseDlg, JvSelectDirectory, JvWaitingGradient, OleCtrls,
+  ActiveXDebuggerFormProj1_TLB, ActiveXDebugFormFPC_TLB;
+
+type
+  TFrameClassFunc =  function: TCustomFrameClass;
+  function getMyCppFrameClass: TCustomFrameClass; pascal; external 'debugFrame.dll' name 'getMyCppFrameClass';
 
 type
   TForm2 = class(TForm)
     StatusBar1: TStatusBar;
-    Table1: TTable;
     ScrollBox2: TScrollBox;
     ScrollView: TScrollBox;
     IdTCPClient1: TIdTCPClient;
@@ -201,8 +205,7 @@ type
     ScrollBox28: TScrollBox;
     StaticText2: TStaticText;
     JvPanel1: TJvPanel;
-    JvArrowButton6: TJvArrowButton;
-    JvArrowButton7: TJvArrowButton;
+    MenuFile: TJvArrowButton;
     BackgroundViewPanel: TJvPanel;
     JvSplitter1: TJvSplitter;
     JvPanel2: TJvPanel;
@@ -984,34 +987,9 @@ type
     N13: TMenuItem;
     N14: TMenuItem;
     TabSheet33: TTabSheet;
-    TabSheet34: TTabSheet;
-    ScrollBox29: TScrollBox;
     ScrollBox6: TScrollBox;
-    DevelopPage: TPageControl;
-    TabSheet6: TTabSheet;
-    TabSheet35: TTabSheet;
-    ScrollBox30: TScrollBox;
-    Panel4: TPanel;
     JvDesignSurface1: TJvDesignSurface;
     BorlandPainter: TJvInspectorBorlandPainter;
-    ScrollBox31: TScrollBox;
-    Panel16: TPanel;
-    Splitter4: TSplitter;
-    Panel17: TPanel;
-    PageControl10: TPageControl;
-    TabSheet36: TTabSheet;
-    TabSheet37: TTabSheet;
-    JvInspector1: TJvInspector;
-    JvInspector2: TJvInspector;
-    Splitter5: TSplitter;
-    Panel18: TPanel;
-    Panel21: TPanel;
-    Panel24: TPanel;
-    ListView1: TListView;
-    Panel25: TPanel;
-    JvDesignScrollBox1: TJvDesignScrollBox;
-    Splitter6: TSplitter;
-    ScrollBox32: TScrollBox;
     ListBox20: TListBox;
     RichEdit1: TRichEdit;
     ChatSendTextButton: TJvImgBtn;
@@ -1072,8 +1050,6 @@ type
     TabSheet41: TTabSheet;
     TabSheet42: TTabSheet;
     DotNETPainter: TJvInspectorDotNETPainter;
-    DevelopmentDesignerPanel: TJvDesignPanel;
-    DesignerControlsComboBox: TJvCheckedComboBox;
     BackgroundViewButton: TJvImgBtn;
     JvImgBtn2: TJvImgBtn;
     JvImgBtn3: TJvImgBtn;
@@ -1090,18 +1066,109 @@ type
     SetupLangFrame: TSetupLocaleFrame;
     TabSheet43: TTabSheet;
     ScrollBox41: TScrollBox;
-    AppSwitchButton: TJvImgBtn;
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
     FindDialog1: TFindDialog;
     SynEditSearch1: TSynEditSearch;
-    TabSheet44: TTabSheet;
+    JvTableItems1: TJvTableItems;
+    JvBDEItems1: TJvBDEItems;
+    JvDataSource1: TJvDataSource;
+    JvQuery1: TJvQuery;
+    Panel23: TPanel;
+    Panel45: TPanel;
+    Splitter15: TSplitter;
+    Panel35: TPanel;
+    Panel46: TPanel;
+    Splitter20: TSplitter;
+    Panel42: TPanel;
+    Panel44: TPanel;
+    JvStringGrid3: TJvStringGrid;
+    JvStringGrid4: TJvStringGrid;
+    JvStringGrid5: TJvStringGrid;
+    JvSelectDirectory1: TJvSelectDirectory;
+    JvOpenDialog1: TJvOpenDialog;
+    MenuFilePopup: TPopupMenu;
+    New1: TMenuItem;
+    N15: TMenuItem;
+    Exit1: TMenuItem;
+    dBaseTextModule1: TMenuItem;
+    dBASEForm1: TMenuItem;
+    dBaseSQL1: TMenuItem;
+    Open1: TMenuItem;
+    Save1: TMenuItem;
+    SaveAs1: TMenuItem;
+    N16: TMenuItem;
+    TabSheet50: TTabSheet;
+    DevPanelBar: TJvTabBar;
+    DevPageList: TJvPageList;
+    JvStandardPage3: TJvStandardPage;
+    JvStandardPage4: TJvStandardPage;
+    JvStandardPage5: TJvStandardPage;
+    JvStandardPage6: TJvStandardPage;
+    ScrollBox31: TScrollBox;
+    Splitter4: TSplitter;
+    Panel16: TPanel;
+    Splitter5: TSplitter;
+    Panel17: TPanel;
+    DesignerControlsComboBox: TJvCheckedComboBox;
+    PageControl10: TPageControl;
+    TabSheet36: TTabSheet;
+    JvInspector1: TJvInspector;
+    TabSheet37: TTabSheet;
+    JvInspector2: TJvInspector;
+    Panel24: TPanel;
+    ListView1: TListView;
+    Panel18: TPanel;
+    Splitter6: TSplitter;
+    Panel21: TPanel;
+    AppSwitchButton: TJvImgBtn;
+    Panel25: TPanel;
+    JvDesignScrollBox1: TJvDesignScrollBox;
+    DevelopmentDesignerPanel: TJvDesignPanel;
+    ScrollBox32: TScrollBox;
+    ScrollBox30: TScrollBox;
+    Panel4: TPanel;
+    Splitter10: TSplitter;
+    Splitter11: TSplitter;
+    PageControl12: TPageControl;
+    TabSheet38: TTabSheet;
+    ScrollBox33: TScrollBox;
+    Splitter12: TSplitter;
+    Panel27: TPanel;
+    ScrollBox35: TScrollBox;
+    Splitter13: TSplitter;
+    JvSettingsTreeView1: TJvSettingsTreeView;
+    JvPageList1: TJvPageList;
+    JvStandardPage1: TJvStandardPage;
+    JvStandardPage2: TJvStandardPage;
+    JvImageComboBox1: TJvImageComboBox;
+    Panel28: TPanel;
+    Panel30: TPanel;
+    ScrollBox34: TScrollBox;
+    SynEdit2: TSynEdit;
+    Panel1: TPanel;
+    Splitter1: TSplitter;
+    ListBox18: TJvSettingsTreeView;
+    Panel3: TPanel;
+    JvCheckedComboBox1: TJvCheckedComboBox;
+    Panel13: TPanel;
+    ListBox19: TListBox;
+    Panel6: TPanel;
+    Splitter2: TSplitter;
+    SourceTextEditor: TSynEdit;
+    Panel26: TPanel;
+    Label12: TLabel;
+    SpeedButton1: TSpeedButton;
+    CompileButton: TJvImgBtn;
+    RadioGroup1: TRadioGroup;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    RadioButton3: TRadioButton;
+    JvImgBtn1: TJvImgBtn;
+    TranspileOutputEdit: TEdit;
     ScrollBox42: TScrollBox;
     PageControl17: TPageControl;
     TabSheet45: TTabSheet;
-    TabSheet46: TTabSheet;
-    TabSheet47: TTabSheet;
-    TabSheet48: TTabSheet;
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
@@ -1115,14 +1182,12 @@ type
     ToolButton8: TToolButton;
     ToolButton9: TToolButton;
     ToolButton10: TToolButton;
-    JvTableItems1: TJvTableItems;
-    JvBDEItems1: TJvBDEItems;
     Panel37: TPanel;
+    JvComboBox2: TJvComboBox;
     Panel38: TPanel;
     JvComboBox1: TJvComboBox;
-    JvComboBox2: TJvComboBox;
-    JvDataSource1: TJvDataSource;
     JvStringGrid1: TJvStringGrid;
+    TabSheet46: TTabSheet;
     ToolBar2: TToolBar;
     ToolButton11: TToolButton;
     ToolButton12: TToolButton;
@@ -1141,61 +1206,14 @@ type
     Panel41: TPanel;
     JvComboBox4: TJvComboBox;
     JvStringGrid2: TJvStringGrid;
+    TabSheet47: TTabSheet;
+    TabSheet48: TTabSheet;
     JvCheckBox1: TJvCheckBox;
-    JvQuery1: TJvQuery;
-    Panel23: TPanel;
-    Panel45: TPanel;
-    Splitter15: TSplitter;
-    Panel35: TPanel;
-    Panel46: TPanel;
-    Splitter20: TSplitter;
-    Panel42: TPanel;
-    Panel44: TPanel;
-    JvStringGrid3: TJvStringGrid;
-    JvStringGrid4: TJvStringGrid;
-    JvStringGrid5: TJvStringGrid;
-    Splitter10: TSplitter;
-    PageControl12: TPageControl;
-    TabSheet38: TTabSheet;
-    ScrollBox33: TScrollBox;
-    Splitter12: TSplitter;
-    Panel27: TPanel;
-    ScrollBox35: TScrollBox;
-    Splitter13: TSplitter;
-    JvSettingsTreeView1: TJvSettingsTreeView;
-    JvPageList1: TJvPageList;
-    JvStandardPage1: TJvStandardPage;
-    JvStandardPage2: TJvStandardPage;
-    JvImageComboBox1: TJvImageComboBox;
-    Panel28: TPanel;
-    Panel30: TPanel;
-    ScrollBox34: TScrollBox;
-    SynEdit2: TSynEdit;
-    Splitter11: TSplitter;
-    Panel1: TPanel;
-    Splitter1: TSplitter;
-    ListBox18: TJvSettingsTreeView;
-    Panel3: TPanel;
-    JvCheckedComboBox1: TJvCheckedComboBox;
-    Panel13: TPanel;
-    ListBox19: TListBox;
-    Panel6: TPanel;
-    SourceTextEditor: TSynEdit;
-    Splitter2: TSplitter;
-    Panel26: TPanel;
-    CompileButton: TJvImgBtn;
-    RadioGroup1: TRadioGroup;
-    RadioButton1: TRadioButton;
-    RadioButton2: TRadioButton;
-    RadioButton3: TRadioButton;
-    JvImgBtn1: TJvImgBtn;
-    TranspileOutputEdit: TEdit;
-    Label12: TLabel;
-    SpeedButton1: TSpeedButton;
-    JvSelectDirectory1: TJvSelectDirectory;
-    JvOpenDialog1: TJvOpenDialog;
+    JvModernTabBarPainter1: TJvModernTabBarPainter;
+    ProgressBar1: TJvWaitingGradient;
+    ScrollBox29: TScrollBox;
     procedure FormCreate(Sender: TObject);
-    procedure DesktopApplicationOLEActivate(Sender: TObject);
+
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
     procedure TimeTableGridDblClick(Sender: TObject);
@@ -1223,7 +1241,6 @@ type
       var Width, Height: Integer);
     procedure Week41MeasureItem(Sender: TObject; ACanvas: TCanvas;
       var Width, Height: Integer);
-    procedure JvArrowButton6Click(Sender: TObject);
     procedure AfterMeridan1MeasureItem(Sender: TObject; ACanvas: TCanvas;
       var Width, Height: Integer);
     procedure Week13MeasureItem(Sender: TObject; ACanvas: TCanvas;
@@ -1352,6 +1369,13 @@ type
     procedure SourceTextEditorMouseDown(Sender: TObject;
       Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure MenuFileClick(Sender: TObject);
+    procedure New1MeasureItem(Sender: TObject; ACanvas: TCanvas; var Width,
+      Height: Integer);
+    procedure DevelopPageDrawTab(Control: TCustomTabControl;
+      TabIndex: Integer; const Rect: TRect; Active: Boolean);
+    procedure StatusBar1DrawPanel(StatusBar: TStatusBar;
+      Panel: TStatusPanel; const Rect: TRect);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -1385,6 +1409,8 @@ type
 
     procedure ChangeChkState(const Item: TJvCustomInspectorItem);
   public
+    FFrame: TCustomFrame;
+    
     DesignClass: string;
     in_insp: Boolean;
   end;
@@ -1638,6 +1664,7 @@ var
   b   : Boolean;
   sl  : TStringList;
   idx : Integer;
+  ProgressBarStyle: integer;
 begin
   try
     try
@@ -1712,6 +1739,14 @@ begin
       SourceNew := true;
       SourceFileName := 'unknown.prg';
 
+      // statzsbar
+      StatusBar1.Panels[1].Style := psOwnerDraw;
+      ProgressBar1.Parent := StatusBar1;
+      ProgressBar1.Active := false;
+      ProgressBarStyle := GetWindowLong(ProgressBar1.Parent.Handle, GWL_EXSTYLE);
+      ProgressBarStyle := ProgressBarStyle - WS_EX_STATICEDGE;
+      SetWindowLong(ProgressBar1.Parent.Handle, GWL_EXSTYLE, ProgressBarStyle);
+
       // database/files
       AliasListFlag := false;
       if PageControl17.TabIndex = 1 then
@@ -1726,6 +1761,11 @@ begin
         Cells[0,0] := 'Text';
         Cells[1,0] := 'Translation';
       end;
+
+      // debug
+      FFrame := getMyCppFrameClass.CreateParented(Form2.Handle);
+//      FDebugFrame.ParentWindow := ScrollBox29.Handle;
+//      FDebugFrame.Parent := ScrollBox29;
     except
       ShowMessage('Exception in Unit2 occur.');
       exit;
@@ -1787,14 +1827,11 @@ end;
 procedure TForm2.FormDestroy(Sender: TObject);
 begin
   PopupMenu_TimeAccess.Items.Clear;
+  FDebugFrame.Free;
+  
   iniFile.Free;
 end;
 
-
-procedure TForm2.DesktopApplicationOLEActivate(Sender: TObject);
-begin
-  ShowMessage('test');
-end;
 
 procedure TForm2.TimeTableGridDrawCell(Sender: TObject; ACol,
   ARow: Integer; Rect: TRect; State: TGridDrawState);
@@ -2085,21 +2122,6 @@ procedure TForm2.Week41MeasureItem(Sender: TObject; ACanvas: TCanvas;
   var Width, Height: Integer);
 begin
   Width := 64;
-end;
-
-procedure TForm2.JvArrowButton6Click(Sender: TObject);
-begin
-(*  if JvComboListBox1.Enabled = true then
-  begin
-    JvComboListBox1.Enabled := false;
-    JvComboListBox1.Visible := false;
-  end else
-  begin
-    JvComboListBox1.Enabled := true;
-    JvComboListBox1.Visible := true;
-    JvComboListBox1.Top := 48;
-    JvComboListBox1.Left := 1;
-  end;*)
 end;
 
 procedure TForm2.AfterMeridan1MeasureItem(Sender: TObject;
@@ -3095,6 +3117,58 @@ begin
   if JvSelectDirectory1.Execute then
   begin
     TranspileOutputEdit.Text := JvSelectDirectory1.Directory
+  end;
+end;
+
+procedure TForm2.MenuFileClick(Sender: TObject);
+begin
+  MenuFilePopup.Popup(
+  ScreenToClient(Mouse.CursorPos).X, Form2.Top + 10 +
+  ScreenToClient(Mouse.CursorPos).Y);
+end;
+
+procedure TForm2.New1MeasureItem(Sender: TObject; ACanvas: TCanvas;
+  var Width, Height: Integer);
+begin
+  Height := 16;
+  Width := 100;
+end;
+
+procedure TForm2.DevelopPageDrawTab(
+  Control   : TCustomTabControl;
+  TabIndex  : Integer;
+  const Rect: TRect;
+  Active    : Boolean);
+var
+  R: TRect;
+  s1: String;
+begin
+  R := Rect;
+  with Control.Canvas do
+  begin
+    Brush.Color := clYellow;
+
+    Font.Name  := 'Arial';
+    Font.Size  := 10;
+    Font.Color := clBlack;
+    Font.Style := [fsBold];
+
+    s1 := 'DEBUG';
+    TextOut(2,2,s1);
+  end;
+end;
+
+procedure TForm2.StatusBar1DrawPanel(
+  StatusBar : TStatusBar;
+  Panel     : TStatusPanel;
+  const Rect: TRect);
+begin
+  if Panel = StatusBar.Panels[1] then
+  with ProgressBar1 do begin
+    Top    := Rect.Top;
+    Left   := Rect.Left;
+    Width  := Rect.Right  - Rect.Left - 15;
+    Height := Rect.Bottom - Rect.Top;
   end;
 end;
 
