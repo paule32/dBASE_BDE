@@ -11,10 +11,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "libdwarf.h"
-#include "libdwarf_private.h"
-#include "dwarf_string.h"
-
 #include <iostream>
 
 #include <vcl.h>
@@ -43,21 +39,18 @@ static TForm        * myParentForm    = NULL;
 static TPanel       * myPanel_1       = NULL;
 static TPanel       * myPanel_2       = NULL;
 static TSpeedButton * mySpeedButton_1 = NULL;
+static TTreeView    * myTreeView_1    = NULL;
 static TSplitter    * mySplitter      = NULL;
 static TPageControl * myPageControl   = NULL;
 
-  void __fastcall SpeedButtonClick(TObject *Sender) {
-    ShowMessage("ooioiox ssdfdfs ");
-  }
-
-class MyDummyClass: public TObject
+class MyOpenFileClass: public TObject
 {
 public:
-  void __fastcall SpeedButtonClick(TObject *Sender) {
+  void __fastcall SpeedButtonClick(System::TObject* Sender) {
     ShowMessage("ooioiox ssdfdfs ");
   }
 };
-static MyDummyClass * dummyClass = NULL;
+static MyOpenFileClass * myOpenFileClass = NULL;
 
 extern "C"
 __declspec(dllexport) void
@@ -70,7 +63,7 @@ __stdcall create__MyCppFrame(
   int H)
 {
   try {
-    dummyClass = new MyDummyClass();
+    myOpenFileClass = new MyOpenFileClass();
 
     RECT rect;
     HWND parw = (HWND)ParentForm;
@@ -101,14 +94,35 @@ __stdcall create__MyCppFrame(
     myPanel_2->Align   = alTop;
     myPanel_2->Visible = true;
 
+    //===
+    Graphics::TBitmap *myBitmap_1 = new Graphics::TBitmap();
+    Graphics::TBitmap *myBitmap_2 = new Graphics::TBitmap();
+
+    myBitmap_2->Width  = 21;
+    myBitmap_2->Height = 21;
+
+    myBitmap_1->LoadFromFile("assets\\images\\open.bmp");
+    myBitmap_2->Canvas->StretchDraw(TRect(0,0,21,21), myBitmap_1);
+    //===
+
     mySpeedButton_1 = new TSpeedButton(myPanel_2);
     mySpeedButton_1->Parent  = myPanel_2;
-    mySpeedButton_1->Left    = 10;
-    mySpeedButton_1->Top     = 10;
+    mySpeedButton_1->Left    =  5;
+    mySpeedButton_1->Top     =  5;
     mySpeedButton_1->Width   = 32;
     mySpeedButton_1->Height  = 32;
+    mySpeedButton_1->Glyph   = myBitmap_2;
     mySpeedButton_1->Visible = true;
-    mySpeedButton_1->OnClick = SpeedButtonClick;
+    mySpeedButton_1->OnClick = &(myOpenFileClass->SpeedButtonClick);
+
+    delete myBitmap_1;
+    delete myBitmap_2;
+
+    myTreeView_1 = new TTreeView(myPanel_1);
+    myTreeView_1->Parent  = myPanel_1;
+    myTreeView_1->Height  = 230;
+    myTreeView_1->Align   = alTop;
+    myTreeView_1->Visible = true;
 
     myPageControl = new TPageControl(myParentForm);
     myPageControl->Parent  = myParentForm;
@@ -131,8 +145,7 @@ extern "C"
 __declspec(dllexport) void
 __stdcall resize__MyCppFrame(int ParentForm)
 {
-  if ((ParentForm != NULL)
-  || ((myParentForm != NULL)))
+  if ((ParentForm != NULL) && (myParentForm != NULL))
   {
     RECT rect;
     HWND parw = (HWND)ParentForm;
@@ -148,12 +161,14 @@ extern "C"
 __declspec(dllexport) void
 __stdcall destroy_MyCppFrame(void)
 {
+  delete myOpenFileClass;
   delete myPageControl;
-  
+
+  delete myTreeView_1;
+
   delete myPanel_2;
   delete myPanel_1;
 
   delete myParentForm;
 }
-
 

@@ -3,7 +3,7 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="E:\Projekte\DataBase\debugger\pack\lib\dbgFrame.dll"/>
+    <PROJECT value="dbgFrame.dll"/>
     <OBJFILES value="dbgFrame.obj"/>
     <RESFILES value="dbgFrame.res"/>
     <IDLFILES value=""/>
@@ -27,23 +27,23 @@
     <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
     <RELEASELIBPATH value="$(BCB)\lib\release"/>
     <LINKER value="ilink32"/>
-    <USERDEFINES value="_DEBUG"/>
+    <USERDEFINES value=""/>
     <SYSDEFINES value="NO_STRICT;_NO_VCL;_RTLDLL;USEPACKAGES"/>
     <MAINSOURCE value="dbgFrame.bpf"/>
-    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl;E:\Projekte\DataBase\debugger"/>
-    <LIBPATH value="$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="E:\Projekte\DataBase\debugger\pack;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="E:\Projekte\DataBase\debugger\pack;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-I$(BCB)\include -I$(BCB)\include\vcl -IE:\Projekte\DataBase\debugger 
-      -src_suffix cpp -D_DEBUG -boa"/>
-    <CFLAG1 value="-WD -Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- 
-      -tWD -tWM -c"/>
-    <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
+    <IDLCFLAGS value="-IE:\Projekte\DataBase\debugger\pack -I$(BCB)\include -I$(BCB)\include\vcl 
+      -src_suffix cpp -boa"/>
+    <CFLAG1 value="-WD -O2 -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -C -fp -ff -X- -ps -a8 -6 -b- 
+      -k- -vi -tWD -tWM -c"/>
+    <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
-    <AFLAGS value="/mx /w2 /zd"/>
-    <LFLAGS value="-lE:\Projekte\DataBase\debugger\pack\lib -D&quot;&quot; -aa -Tpd -x -Gn -Gi -v"/>
+    <AFLAGS value="/mx /w1 /zn"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpd -x -Gn -Gi"/>
     <OTHERFILES value=""/>
   </OPTIONS>
   <LINKER>
@@ -87,34 +87,6 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
-
-[HistoryLists\hlIncludePath]
-Count=2
-Item0=$(BCB)\include;$(BCB)\include\vcl;E:\Projekte\DataBase\debugger
-Item1=$(BCB)\include;$(BCB)\include\vcl
-
-[HistoryLists\hlLibraryPath]
-Count=1
-Item0=$(BCB)\lib\obj;$(BCB)\lib
-
-[HistoryLists\hlDebugSourcePath]
-Count=1
-Item0=$(BCB)\source\vcl
-
-[HistoryLists\hlConditionals]
-Count=1
-Item0=_DEBUG
-
-[HistoryLists\hlFinalOutputDir]
-Count=3
-Item0=E:\Projekte\DataBase\debugger\pack\lib
-Item1=E:\Projekte\DataBase\debugger\bpl\
-Item2=E:\Projekte\DataBase\debugger\bpl
-
-[HistoryLists\hIBPIOutputDir]
-Count=2
-Item0=E:\Projekte\DataBase\debugger\pack\lib
-Item1=E:\Projekte\DataBase\debugger\bpl
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl
