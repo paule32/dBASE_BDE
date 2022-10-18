@@ -46,9 +46,21 @@ I will not say or write to much, because I will not lost you, but till there:
 Thanks for reading, and thanks for Your trust.
 paule32 
 
+Development Area: The Form Designer:
 ![DesignerPreview](src/screen.png)
+
+Development Area: The Table Data Explorer:
 ![DatabaseView](src/screen2.png)
 ![DatabaseTableFieldView](src/screen3.png)
+
+Development Area: The Debug Window:
+![Permissions](src/screen7.png)
+
+Development Area: The source code Editor:
 ![DesignerEditorProview](src/screen4.png)
+
+The Database Server Monitor:
 ![Monitor](src/screen5.png)
+
+The Database User Permissions:
 ![Permissions](src/screen6.png)
