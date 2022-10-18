@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="E:\Projekte\DataBase\Debugger\pack\lib\dbgFrame.bpl"/>
+    <OBJFILES value="dbgFrame.obj ..\dwarf_abbrev.obj ..\dwarf_alloc.obj ..\dwarf_arange.obj 
+      ..\dwarf_crc.obj ..\dwarf_crc32.obj ..\dwarf_debug_sup.obj 
+      ..\dwarf_debuglink.obj ..\dwarf_debugnames.obj ..\dwarf_die_deliv.obj 
+      ..\dwarf_dsc.obj ..\dwarf_elf_load_headers.obj 
+      ..\dwarf_elf_rel_detector.obj ..\dwarf_elfread.obj ..\dwarf_error.obj 
+      ..\dwarf_find_sigref.obj ..\dwarf_fission_to_cu.obj ..\dwarf_form.obj 
+      ..\dwarf_form_class_names.obj ..\dwarf_frame.obj ..\dwarf_frame2.obj 
+      ..\dwarf_funcs.obj ..\dwarf_gdbindex.obj ..\dwarf_generic_init.obj 
+      ..\dwarf_global.obj ..\dwarf_gnu_index.obj ..\dwarf_groups.obj 
+      ..\dwarf_harmless.obj ..\dwarf_init_finish.obj ..\dwarf_leb.obj 
+      ..\dwarf_line.obj ..\dwarf_loc.obj ..\dwarf_locationop_read.obj 
+      ..\dwarf_loclists.obj ..\dwarf_machoread.obj ..\dwarf_macro.obj 
+      ..\dwarf_macro5.obj ..\dwarf_memcpy_swap.obj ..\dwarf_names.obj 
+      ..\dwarf_object_detector.obj ..\dwarf_object_read_common.obj 
+      ..\dwarf_peread.obj ..\dwarf_print_lines.obj ..\dwarf_pubtypes.obj 
+      ..\dwarf_query.obj ..\dwarf_ranges.obj ..\dwarf_rnglists.obj 
+      ..\dwarf_safe_strcpy.obj ..\dwarf_str_offsets.obj ..\dwarf_string.obj 
+      ..\dwarf_stringsection.obj ..\dwarf_tied.obj ..\dwarf_tsearchhash.obj 
+      ..\dwarf_types.obj ..\dwarf_util.obj ..\dwarf_vars.obj ..\dwarf_weaks.obj 
+      ..\dwarf_xu_index.obj"/>
+    <RESFILES value="dbgFrame.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES)"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value=""/>
+    <SPARELIBS value="rtl.lib vcl.lib"/>
+    <PACKAGES value="vcl.bpi rtl.bpi"/>
+    <PATHCPP value=".;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;..;.."/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value=""/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
+    <MAINSOURCE value="dbgFrame.cpp"/>
+    <INCLUDEPATH value="..\;..;&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot;;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="..\;..;&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot;;$(BCB)\lib\obj;$(BCB)\lib;E:\Projekte\DataBase\debugger\pack\lib"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-I..\. -I.. -I&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot; 
+      -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -boa"/>
+    <CFLAG1 value="-O2 -H=$(BCB)\lib\vcl60.csm -Hc -w- -Vx -Ve -X- -a8 -6 -b- -k- -vi -c -tWM"/>
+    <PFLAGS value="-$Y- -$W -$U -$R -$Q -$L- -$D- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w1 /zn"/>
+    <LFLAGS value="-lE:\Projekte\DataBase\Debugger\pack\lib -D&quot;&quot; -GC&quot;education material only&quot; 
+      -aa -Tpp -x -Gn -Gl -Gi"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0pkg32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="dbgFrame.res" FORMNAME="" UNITNAME="dbgFrame.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="dbgFrame.cpp" FORMNAME="" UNITNAME="dbgFrame" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\vcl.bpi" FORMNAME="" UNITNAME="vcl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\rtl.bpi" FORMNAME="" UNITNAME="rtl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_abbrev.c" FORMNAME="" UNITNAME="dwarf_abbrev" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_alloc.c" FORMNAME="" UNITNAME="dwarf_alloc" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_arange.c" FORMNAME="" UNITNAME="dwarf_arange" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_crc.c" FORMNAME="" UNITNAME="dwarf_crc" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_crc32.c" FORMNAME="" UNITNAME="dwarf_crc32" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_debug_sup.c" FORMNAME="" UNITNAME="dwarf_debug_sup" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_debuglink.c" FORMNAME="" UNITNAME="dwarf_debuglink" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_debugnames.c" FORMNAME="" UNITNAME="dwarf_debugnames" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_die_deliv.c" FORMNAME="" UNITNAME="dwarf_die_deliv" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_dsc.c" FORMNAME="" UNITNAME="dwarf_dsc" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_elf_load_headers.c" FORMNAME="" UNITNAME="dwarf_elf_load_headers" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_elf_rel_detector.c" FORMNAME="" UNITNAME="dwarf_elf_rel_detector" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_elfread.c" FORMNAME="" UNITNAME="dwarf_elfread" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_error.c" FORMNAME="" UNITNAME="dwarf_error" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_find_sigref.c" FORMNAME="" UNITNAME="dwarf_find_sigref" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_fission_to_cu.c" FORMNAME="" UNITNAME="dwarf_fission_to_cu" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_form.c" FORMNAME="" UNITNAME="dwarf_form" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_form_class_names.c" FORMNAME="" UNITNAME="dwarf_form_class_names" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_frame.c" FORMNAME="" UNITNAME="dwarf_frame" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_frame2.c" FORMNAME="" UNITNAME="dwarf_frame2" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_funcs.c" FORMNAME="" UNITNAME="dwarf_funcs" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_gdbindex.c" FORMNAME="" UNITNAME="dwarf_gdbindex" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_generic_init.c" FORMNAME="" UNITNAME="dwarf_generic_init" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_global.c" FORMNAME="" UNITNAME="dwarf_global" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_gnu_index.c" FORMNAME="" UNITNAME="dwarf_gnu_index" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_groups.c" FORMNAME="" UNITNAME="dwarf_groups" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_harmless.c" FORMNAME="" UNITNAME="dwarf_harmless" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_init_finish.c" FORMNAME="" UNITNAME="dwarf_init_finish" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_leb.c" FORMNAME="" UNITNAME="dwarf_leb" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_line.c" FORMNAME="" UNITNAME="dwarf_line" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_loc.c" FORMNAME="" UNITNAME="dwarf_loc" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_locationop_read.c" FORMNAME="" UNITNAME="dwarf_locationop_read" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_loclists.c" FORMNAME="" UNITNAME="dwarf_loclists" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_machoread.c" FORMNAME="" UNITNAME="dwarf_machoread" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_macro.c" FORMNAME="" UNITNAME="dwarf_macro" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_macro5.c" FORMNAME="" UNITNAME="dwarf_macro5" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_memcpy_swap.c" FORMNAME="" UNITNAME="dwarf_memcpy_swap" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_names.c" FORMNAME="" UNITNAME="dwarf_names" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_object_detector.c" FORMNAME="" UNITNAME="dwarf_object_detector" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_object_read_common.c" FORMNAME="" UNITNAME="dwarf_object_read_common" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_peread.c" FORMNAME="" UNITNAME="dwarf_peread" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_print_lines.c" FORMNAME="" UNITNAME="dwarf_print_lines" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_pubtypes.c" FORMNAME="" UNITNAME="dwarf_pubtypes" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_query.c" FORMNAME="" UNITNAME="dwarf_query" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_ranges.c" FORMNAME="" UNITNAME="dwarf_ranges" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_rnglists.c" FORMNAME="" UNITNAME="dwarf_rnglists" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_safe_strcpy.c" FORMNAME="" UNITNAME="dwarf_safe_strcpy" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_str_offsets.c" FORMNAME="" UNITNAME="dwarf_str_offsets" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_string.c" FORMNAME="" UNITNAME="dwarf_string" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_stringsection.c" FORMNAME="" UNITNAME="dwarf_stringsection" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_tied.c" FORMNAME="" UNITNAME="dwarf_tied" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_tsearchhash.c" FORMNAME="" UNITNAME="dwarf_tsearchhash" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_types.c" FORMNAME="" UNITNAME="dwarf_types" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_util.c" FORMNAME="" UNITNAME="dwarf_util" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_vars.c" FORMNAME="" UNITNAME="dwarf_vars" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_weaks.c" FORMNAME="" UNITNAME="dwarf_weaks" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\dwarf_xu_index.c" FORMNAME="" UNITNAME="dwarf_xu_index" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1031
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=5
+Item0=..\;..;C:\Program Files (x86)\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl
+Item1=..\;C:\Program Files (x86)\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl
+Item2=..\;C:\Program Files (x86)\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl;E:\Projekte\DataBase\debugger
+Item3=C:\Program Files (x86)\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl
+Item4=$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=5
+Item0=..\;..;C:\Program Files (x86)\Borland\CBuilder6\Projects;$(BCB)\lib\obj;$(BCB)\lib;E:\Projekte\DataBase\debugger\pack\lib
+Item1=..\;C:\Program Files (x86)\Borland\CBuilder6\Projects;$(BCB)\lib\obj;$(BCB)\lib;E:\Projekte\DataBase\debugger\pack\lib
+Item2=C:\Program Files (x86)\Borland\CBuilder6\Projects;$(BCB)\lib\obj;$(BCB)\lib;E:\Projekte\DataBase\debugger\pack\lib
+Item3=C:\Program Files (x86)\Borland\CBuilder6\Projects;$(BCB)\lib\obj;$(BCB)\lib
+Item4=$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[HistoryLists\hlFinalOutputDir]
+Count=2
+Item0=E:\Projekte\DataBase\Debugger\pack\lib\
+Item1=E:\Projekte\DataBase\Debugger\pack\lib
+
+[HistoryLists\hIBPIOutputDir]
+Count=1
+Item0=E:\Projekte\DataBase\Debugger\pack\lib
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+
+[Linker]
+LibPrefix=
+LibSuffix=
+LibVersion=
+  </IDEOPTIONS>
+</PROJECT>
