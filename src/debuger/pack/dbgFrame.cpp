@@ -20,6 +20,7 @@
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
+#include <Grids.hpp>
 #include <ExtCtrls.hpp>
 #include <Buttons.hpp>
 #include <Dialogs.hpp>
@@ -39,15 +40,143 @@ static TForm        * myParentForm    = NULL;
 static TPanel       * myPanel_1       = NULL;
 static TPanel       * myPanel_2       = NULL;
 static TSpeedButton * mySpeedButton_1 = NULL;
+
+static TScrollBox   * myScrollBox_1   = NULL;
 static TTreeView    * myTreeView_1    = NULL;
 static TSplitter    * mySplitter      = NULL;
+
 static TPageControl * myPageControl   = NULL;
+static TTabSheet    * myTabSheet_1    = NULL;
+static TScrollBox   * myTabSheetBox_1 = NULL;
 
 class MyOpenFileClass: public TObject
 {
 public:
   void __fastcall SpeedButtonClick(System::TObject* Sender) {
-    ShowMessage("ooioiox ssdfdfs ");
+    TOpenDialog* opendlg = new TOpenDialog(Application);
+    if (!opendlg->Execute()) {
+      ShowMessage("Error during open file occur.");
+      return;
+    }
+
+    AnsiString fileName = opendlg->FileName;
+    HANDLE file = NULL;
+    DWORD fileSize = NULL;
+    DWORD bytesRead = NULL;
+    LPVOID fileData = NULL;
+    PIMAGE_DOS_HEADER dosHeader;
+    PIMAGE_NT_HEADERS imageNTHeaders;
+    PIMAGE_SECTION_HEADER sectionHeader;
+    PIMAGE_SECTION_HEADER importSection;
+    IMAGE_IMPORT_DESCRIPTOR* importDescriptor;
+    PIMAGE_THUNK_DATA thunkData;
+    DWORD thunk = NULL;
+    DWORD rawOffset = NULL;
+
+    try
+    {
+      file = CreateFile(
+        fileName.c_str(),       // name of file
+        GENERIC_READ,           // open for reading
+        FILE_SHARE_READ,        // shared for reading
+        NULL,                   // default security
+        OPEN_EXISTING,          // open if exists
+        FILE_ATTRIBUTE_NORMAL |  FILE_FLAG_OVERLAPPED,  // normal file
+        NULL);                  // no attr. template
+
+      if (file == INVALID_HANDLE_VALUE) {
+        ShowMessage("Could not read file");
+        return;
+      }
+
+      // display page
+      myTabSheet_1 = new TTabSheet(myPageControl);
+      myTabSheet_1->PageControl = myPageControl;
+      myTabSheet_1->Caption = fileName;
+      myTabSheet_1->Visible = true;
+
+      myTabSheetBox_1 = new TScrollBox(myTabSheet_1);
+      myTabSheetBox_1->Parent  = myTabSheet_1;
+      myTabSheetBox_1->Align   = alClient;
+      myTabSheetBox_1->Visible = true;
+
+      myTreeView_1->Items->Clear();
+
+      AnsiString s1 = "File: " + fileName;
+      TTreeNode *nodeRoot = myTreeView_1->Items->Add(NULL, s1);
+
+      TTreeNode *nodeRoot_dos = myTreeView_1->Items->AddChild(nodeRoot,"DOS Header");
+
+      TTreeNode *nodeRoot_nt  = myTreeView_1->Items->AddChild(nodeRoot,"NT Header");
+      TTreeNode *nodeRoot_nt_file  = myTreeView_1->Items->AddChild(nodeRoot_nt,"File Header");
+
+      TTreeNode *nodeRoot_optional = myTreeView_1->Items->AddChild(nodeRoot_nt,"Optional Header");
+      TTreeNode *nodeRoot_opt_data = myTreeView_1->Items->AddChild(nodeRoot_optional,"Data Directories");
+
+      TTreeNode *nodeRoot_sections = myTreeView_1->Items->AddChild(nodeRoot,"Section Headers");
+      TTreeNode *nodeRoot_import   = myTreeView_1->Items->AddChild(nodeRoot,"Import Directory");
+      TTreeNode *nodeRoot_resource = myTreeView_1->Items->AddChild(nodeRoot,"Resouce Directory");
+      //===
+
+
+      TStringGrid *myStringGrid_1 = new TStringGrid(myTabSheet_1);
+      myStringGrid_1->Parent    = myTabSheet_1;
+      myStringGrid_1->FixedRows = 3;
+      myStringGrid_1->FixedCols = 0;
+      myStringGrid_1->ColCount  = 7;
+      myStringGrid_1->DefaultColWidth = 100;
+      myStringGrid_1->Height    = 320;
+      myStringGrid_1->Width     = myTabSheetBox_1->Width - 10;
+      myStringGrid_1->Visible   = true;
+
+      myStringGrid_1->Cells[0][0] = "Module Name";
+      myStringGrid_1->Cells[1][0] = "Imports";
+      myStringGrid_1->Cells[2][0] = "Offsets";
+      myStringGrid_1->Cells[3][0] = "Time Stamp";
+      myStringGrid_1->Cells[4][0] = "Forward Chain";
+      myStringGrid_1->Cells[5][0] = "Name RVA";
+      myStringGrid_1->Cells[6][0] = "FTs (IAT)";
+      //===
+
+
+      fileSize = GetFileSize(file, NULL);
+      fileData = HeapAlloc(GetProcessHeap(), 0, fileSize);
+
+      ReadFile(file, fileData, fileSize, &bytesRead, NULL);
+
+      // dos header
+      dosHeader = (PIMAGE_DOS_HEADER)fileData;
+
+      // nt headers
+      imageNTHeaders = (PIMAGE_NT_HEADERS)((DWORD)fileData + dosHeader->e_lfanew);
+
+      // file header
+
+      // optional header
+
+      // data directories
+
+      // section headers
+      DWORD sectionLocation =
+        (DWORD)imageNTHeaders + sizeof(DWORD) +
+        (DWORD)(sizeof(IMAGE_FILE_HEADER)) +
+        (DWORD)imageNTHeaders->FileHeader.SizeOfOptionalHeader;
+
+      DWORD sectionSize =
+        (DWORD)sizeof(IMAGE_SECTION_HEADER);
+
+      // get offset to the import directory RVA
+      DWORD importDirectoryRVA =
+      imageNTHeaders->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].VirtualAddress;
+
+      if (file != NULL)
+      CloseHandle(file);
+    }
+    catch (...) {
+      if (file != NULL)
+      CloseHandle(file);
+      ShowMessage("Error in External module during read header structures.");
+    }
   }
 };
 static MyOpenFileClass * myOpenFileClass = NULL;
@@ -118,8 +247,15 @@ __stdcall create__MyCppFrame(
     delete myBitmap_1;
     delete myBitmap_2;
 
-    myTreeView_1 = new TTreeView(myPanel_1);
-    myTreeView_1->Parent  = myPanel_1;
+    //===
+    myScrollBox_1 = new TScrollBox(myPanel_1);
+    myScrollBox_1->Parent  = myPanel_1;
+    myScrollBox_1->Align   = alClient;
+    myScrollBox_1->Visible = true;
+    //===
+
+    myTreeView_1 = new TTreeView(myScrollBox_1);
+    myTreeView_1->Parent  = myScrollBox_1;
     myTreeView_1->Height  = 230;
     myTreeView_1->Align   = alTop;
     myTreeView_1->Visible = true;
@@ -153,7 +289,7 @@ __stdcall resize__MyCppFrame(int ParentForm)
     MapWindowPoints(HWND_DESKTOP, GetParent(parw), (LPPOINT)&rect, 2);
 
     myParentForm->Width  = rect.right;
-    myParentForm->Height = rect.bottom;
+    myParentForm->Height = rect.bottom-5;
   }
 }
 
@@ -165,6 +301,7 @@ __stdcall destroy_MyCppFrame(void)
   delete myPageControl;
 
   delete myTreeView_1;
+  delete myScrollBox_1;
 
   delete myPanel_2;
   delete myPanel_1;

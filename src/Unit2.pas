@@ -19,11 +19,56 @@ uses
   SynEditRegexSearch, JvDataSource, JvDBGridFooter, JvExDBGrids, JvDBGrid,
   JvDBUltimGrid, JvDBCheckBox, JvExGrids, JvStringGrid, JvCheckBox,
   JvBDEQuery, JvBaseDlg, JvSelectDirectory, JvWaitingGradient, OleCtrls,
-  ActiveXDebuggerFormProj1_TLB, ActiveXDebugFormFPC_TLB;
+  ActiveXDebuggerFormProj1_TLB, ActiveXDebugFormFPC_TLB, JvMenus, AppEvnts,
+  JvStringHolder, JvNavigationPane, JvEditorCommon, JvEditor, JvHLEditor,
+  JvHLEditorPropertyForm, SHDocVw, mshtml, ActiveX, JvEdit, JvSpin;
 
+(*var
+  CppModule: HMODULE = 0;
 type
-  TFrameClassFunc =  function: TCustomFrameClass;
-  function getMyCppFrameClass: TCustomFrameClass; pascal; external 'debugFrame.dll' name 'getMyCppFrameClass';
+  TFrameClassFunc =  procedure(frm: TForm; scr: TScrollBox; x,y,w,h:Integer); stdcall;
+  *)
+
+  procedure create__MyCppFrame(frm: Integer; scr: TScrollBox; x,y,w,h:Integer); stdcall; external 'dbgFrame.dll' name 'create__MyCppFrame';
+  procedure destroy_MyCppFrame;               stdcall; external 'dbgFrame.dll'  name 'destroy_MyCppFrame';
+  procedure resize__MyCppFrame(frm: Integer); stdcall; external 'dbgFrame.dll'  name 'resize__MyCppFrame';
+
+// Commands to pass to HtmlHelp()
+const
+  HH_DISPLAY_TOPIC        = $0000;
+  HH_HELP_FINDER          = $0000;  // WinHelp equivalent
+  HH_DISPLAY_TOC          = $0001;
+  HH_DISPLAY_INDEX        = $0002;
+  HH_DISPLAY_SEARCH       = $0003;
+  HH_SET_WIN_TYPE         = $0004;
+  HH_GET_WIN_TYPE         = $0005;
+  HH_GET_WIN_HANDLE       = $0006;
+  HH_ENUM_INFO_TYPE       = $0007;  // Get Info type name, call repeatedly to enumerate, -1 at end
+  HH_SET_INFO_TYPE        = $0008;  // Add Info type to filter.
+  HH_SYNC                 = $0009;
+  HH_RESERVED1            = $000A;
+  HH_RESERVED2            = $000B;
+  HH_RESERVED3            = $000C;
+  HH_KEYWORD_LOOKUP       = $000D;
+  HH_DISPLAY_TEXT_POPUP   = $000E;  // display string resource id or text in a popup window
+  HH_HELP_CONTEXT         = $000F;  // display mapped numeric value in dwData
+  HH_TP_HELP_CONTEXTMENU  = $0010;  // text popup help, same as WinHelp HELP_CONTEXTMENU
+  HH_TP_HELP_WM_HELP      = $0011;  // text popup help, same as WinHelp HELP_WM_HELP
+  HH_CLOSE_ALL            = $0012;  // close all windows opened directly or indirectly by the caller
+  HH_ALINK_LOOKUP         = $0013;  // ALink version of HH_KEYWORD_LOOKUP
+  HH_GET_LAST_ERROR       = $0014;  // not currently implemented // See HHERROR.h
+  HH_ENUM_CATEGORY        = $0015;	// Get category name, call repeatedly to enumerate, -1 at end
+  HH_ENUM_CATEGORY_IT     = $0016;  // Get category info type members, call repeatedly to enumerate, -1 at end
+  HH_RESET_IT_FILTER      = $0017;  // Clear the info type filter of all info types.
+  HH_SET_INCLUSIVE_FILTER = $0018;  // set inclusive filtering method for untyped topics to be included in display
+  HH_SET_EXCLUSIVE_FILTER = $0019;  // set exclusive filtering method for untyped topics to be excluded from display
+  HH_INITIALIZE           = $001C;  // Initializes the help system.
+  HH_UNINITIALIZE         = $001D;  // Uninitializes the help system.
+  HH_PRETRANSLATEMESSAGE  = $00FD;  // Pumps messages. (NULL, NULL, MSG*).
+  HH_SET_GLOBAL_PROPERTY  = $00FC;  // Set a global property. (NULL, NULL, HH_GPROP)
+
+  function HtmlHelp(hwndCaller: THandle; pszFile: PChar; uCommand: cardinal; dwData: longint): THandle; stdcall;
+           external 'hhctrl.ocx' name 'HtmlHelpA';
 
 type
   TForm2 = class(TForm)
@@ -1037,33 +1082,16 @@ type
     Panel34: TPanel;
     Splitter19: TSplitter;
     SetupPageTreeView: TJvSettingsTreeView;
-    PageControl16: TPageControl;
-    TabSheet40: TTabSheet;
-    PageScroller1: TPageScroller;
-    DevelopmentMenuPanel: TPanel;
-    JvSpeedButton1: TJvSpeedButton;
-    JvSpeedButton2: TJvSpeedButton;
-    JvSpeedButton3: TJvSpeedButton;
-    JvSpeedButton4: TJvSpeedButton;
-    JvSpeedButton5: TJvSpeedButton;
-    JvSpeedButton6: TJvSpeedButton;
-    TabSheet41: TTabSheet;
-    TabSheet42: TTabSheet;
     DotNETPainter: TJvInspectorDotNETPainter;
-    BackgroundViewButton: TJvImgBtn;
-    JvImgBtn2: TJvImgBtn;
-    JvImgBtn3: TJvImgBtn;
     SetupPageList: TJvPageList;
     SetupPageLanguage: TJvStandardPage;
     LangPage0: TJvStandardPage;
     ScrollBox38: TScrollBox;
     SetupLangPageControl: TPageControl;
     SetupPageLangENU: TTabSheet;
-    ScrollBox39: TScrollBox;
     SetupPageLangDEU: TTabSheet;
     ScrollBox40: TScrollBox;
     SetupLangInfoLabel: TLabel;
-    SetupLangFrame: TSetupLocaleFrame;
     TabSheet43: TTabSheet;
     ScrollBox41: TScrollBox;
     OpenDialog1: TOpenDialog;
@@ -1155,17 +1183,8 @@ type
     ListBox19: TListBox;
     Panel6: TPanel;
     Splitter2: TSplitter;
-    SourceTextEditor: TSynEdit;
+    EditorScrollBox: TScrollBox;
     Panel26: TPanel;
-    Label12: TLabel;
-    SpeedButton1: TSpeedButton;
-    CompileButton: TJvImgBtn;
-    RadioGroup1: TRadioGroup;
-    RadioButton1: TRadioButton;
-    RadioButton2: TRadioButton;
-    RadioButton3: TRadioButton;
-    JvImgBtn1: TJvImgBtn;
-    TranspileOutputEdit: TEdit;
     ScrollBox42: TScrollBox;
     PageControl17: TPageControl;
     TabSheet45: TTabSheet;
@@ -1212,6 +1231,156 @@ type
     JvModernTabBarPainter1: TJvModernTabBarPainter;
     ProgressBar1: TJvWaitingGradient;
     ScrollBox29: TScrollBox;
+    Panel43: TPanel;
+    Panel47: TPanel;
+    JvTabBar1: TJvTabBar;
+    JvModernTabBarPainter2: TJvModernTabBarPainter;
+    JvSpeedButton7: TJvSpeedButton;
+    JvSpeedButton8: TJvSpeedButton;
+    JvArrowButton5: TJvArrowButton;
+    JvPopupMenu1: TJvPopupMenu;
+    dBASE1: TMenuItem;
+    Pascal1: TMenuItem;
+    JvXPMenuItemPainter1: TJvXPMenuItemPainter;
+    JvSpeedButton9: TJvSpeedButton;
+    ISOLISP1: TMenuItem;
+    dBase4DOS1: TMenuItem;
+    N17: TMenuItem;
+    Timer1: TTimer;
+    JvImgBtn4: TJvImgBtn;
+    JvImgBtn5: TJvImgBtn;
+    SourceCodeGrid: TStringGrid;
+    Panel48: TPanel;
+    Panel49: TPanel;
+    Splitter21: TSplitter;
+    CompileButton: TJvImgBtn;
+    JvImgBtn1: TJvImgBtn;
+    JvImgBtn6: TJvImgBtn;
+    Label12: TLabel;
+    TranspileOutputEdit: TEdit;
+    SpeedButton1: TSpeedButton;
+    RadioButton2: TRadioButton;
+    RadioButton1: TRadioButton;
+    RadioButton3: TRadioButton;
+    RadioGroup1: TRadioGroup;
+    SourceTextEditor: TSynEdit;
+    SourceTextEditorCut: TJvImgBtn;
+    SourceTextEditorCopy: TJvImgBtn;
+    SourceTextEditorPaste: TJvImgBtn;
+    SourceTextEditorDelete: TJvImgBtn;
+    SourceTextEditorSelectAll: TJvImgBtn;
+    JvSpeedButton10: TJvSpeedButton;
+    JvSpeedButton11: TJvSpeedButton;
+    SelectionTimer: TTimer;
+    SourceTextEditorUndo: TJvImgBtn;
+    SourceTextEditorRedo: TJvImgBtn;
+    SourceTextEditorStringHolder: TJvStrHolder;
+    TabSheet6: TTabSheet;
+    TabSheet34: TTabSheet;
+    ScrollBox43: TScrollBox;
+    ScrollBox44: TScrollBox;
+    ComponentPageControl: TPageControl;
+    TabSheet40: TTabSheet;
+    PageScroller1: TPageScroller;
+    DevelopmentMenuPanel: TPanel;
+    JvSpeedButton1: TJvSpeedButton;
+    JvSpeedButton2: TJvSpeedButton;
+    JvSpeedButton3: TJvSpeedButton;
+    JvSpeedButton4: TJvSpeedButton;
+    JvSpeedButton5: TJvSpeedButton;
+    JvSpeedButton6: TJvSpeedButton;
+    BackgroundViewButton: TJvImgBtn;
+    TabSheet41: TTabSheet;
+    JvImgBtn2: TJvImgBtn;
+    TabSheet42: TTabSheet;
+    JvImgBtn3: TJvImgBtn;
+    HelpAuthoringPageControl: TPageControl;
+    TabSheet35: TTabSheet;
+    TabSheet44: TTabSheet;
+    TabSheet49: TTabSheet;
+    TabSheet51: TTabSheet;
+    SpeedButton2: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
+    SpeedButton6: TSpeedButton;
+    SpeedButton7: TSpeedButton;
+    JvArrowButton6: TJvArrowButton;
+    TopicPopupMenu: TJvPopupMenu;
+    TopicPopupMenuPainter: TJvXPMenuItemPainter;
+    InsertNewTopic1: TMenuItem;
+    InsertAfter1: TMenuItem;
+    InsertBefore1: TMenuItem;
+    N18: TMenuItem;
+    N19: TMenuItem;
+    InsertSubTopic1: TMenuItem;
+    JvPanel3: TJvPanel;
+    JvSplitter4: TJvSplitter;
+    Panel50: TPanel;
+    Splitter22: TSplitter;
+    Panel51: TPanel;
+    Panel52: TPanel;
+    Edit14: TEdit;
+    Splitter23: TSplitter;
+    TreeView1: TTreeView;
+    Panel53: TPanel;
+    Panel54: TPanel;
+    Panel55: TPanel;
+    Splitter24: TSplitter;
+    Panel56: TPanel;
+    Panel57: TPanel;
+    Edit15: TEdit;
+    TreeView4: TTreeView;
+    WebBrowser1: TWebBrowser;
+    Button1: TButton;
+    JvSpeedButton12: TJvSpeedButton;
+    JvSpeedButton13: TJvSpeedButton;
+    TopicSettingButton: TJvArrowButton;
+    TopicSettingPopupMenu: TJvPopupMenu;
+    TopicSettingMenuItemPainter: TJvXPMenuItemPainter;
+    opicSymbol1: TMenuItem;
+    opicKind1: TMenuItem;
+    N20: TMenuItem;
+    HeadLine1: TMenuItem;
+    FoorLine1: TMenuItem;
+    N21: TMenuItem;
+    Status1: TMenuItem;
+    ContaininBuilds1: TMenuItem;
+    HiddenTopic1: TMenuItem;
+    NormalTopic1: TMenuItem;
+    EmptyTopic1: TMenuItem;
+    ExternalURL1: TMenuItem;
+    ExternalFile1: TMenuItem;
+    N23: TMenuItem;
+    ShowTopicTitle1: TMenuItem;
+    ShowHeadLine1: TMenuItem;
+    N24: TMenuItem;
+    ShowcustomizedText1: TMenuItem;
+    CustomizedText1: TMenuItem;
+    ShowCopyright1: TMenuItem;
+    ShowFootLine1: TMenuItem;
+    N25: TMenuItem;
+    ShowcustomizedText2: TMenuItem;
+    CustomizedText2: TMenuItem;
+    Complete1: TMenuItem;
+    NeedsReview1: TMenuItem;
+    InProgress1: TMenuItem;
+    OutofDate1: TMenuItem;
+    AllBuilds1: TMenuItem;
+    N26: TMenuItem;
+    chm1: TMenuItem;
+    html1: TMenuItem;
+    pdf1: TMenuItem;
+    Hidden1: TMenuItem;
+    Hidden2: TMenuItem;
+    HiddeninTopicList1: TMenuItem;
+    Panel58: TPanel;
+    Edit16: TEdit;
+    Edit17: TEdit;
+    JvSpinEdit1: TJvSpinEdit;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    N22: TMenuItem;
     procedure FormCreate(Sender: TObject);
 
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1376,6 +1545,30 @@ type
       TabIndex: Integer; const Rect: TRect; Active: Boolean);
     procedure StatusBar1DrawPanel(StatusBar: TStatusBar;
       Panel: TStatusPanel; const Rect: TRect);
+    procedure FormResize(Sender: TObject);
+    procedure dBASE1Click(Sender: TObject);
+    procedure Pascal1Click(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure Timer1Timer(Sender: TObject);
+    procedure JvPopupMenu1Popup(Sender: TObject);
+    procedure dBase4DOS1Click(Sender: TObject);
+    procedure ISOLISP1Click(Sender: TObject);
+    procedure SourceTextEditorKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure SelectionTimerTimer(Sender: TObject);
+    procedure SourceTextEditorSelectAllClick(Sender: TObject);
+    procedure SourceTextEditorDeleteClick(Sender: TObject);
+    procedure SourceTextEditorClick(Sender: TObject);
+    procedure SourceTextEditorKeyPress(Sender: TObject; var Key: WideChar);
+    procedure SourceTextEditorChange(Sender: TObject);
+    procedure SourceTextEditorUndoClick(Sender: TObject);
+    procedure SourceTextEditorCopyClick(Sender: TObject);
+    procedure SourceTextEditorPasteClick(Sender: TObject);
+    procedure SourceTextEditorCutClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure WebBrowser1DocumentComplete(Sender: TObject;
+      const pDisp: IDispatch; var URL: OleVariant);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -1410,13 +1603,20 @@ type
     procedure ChangeChkState(const Item: TJvCustomInspectorItem);
   public
     FFrame: TCustomFrame;
-    
+
     DesignClass: string;
     in_insp: Boolean;
   end;
 
 var
   Form2: TForm2;
+
+type
+  TUseHTMLHelp = class(TObject)
+    function ApplicationHelp(Command: Word; Data: Longint; var CallHelp: Boolean): Boolean;
+  end;
+var
+  HTMLHelpUser: TUseHTMLHelp;
 
 implementation
 
@@ -1445,6 +1645,52 @@ var
 
   Comp_ColorBox   : String;
 
+function TUseHTMLHelp.ApplicationHelp(Command: Word; Data: Longint; var CallHelp: Boolean): Boolean;
+var
+  helpWindow: THandle;
+  aWindow: HWND;
+begin
+  // Make sure VCL doesn't activate WinHelp
+  CallHelp := false;
+  Result := true;
+
+  try
+    if (Length(Trim(Application.HelpFile)) < 3)
+    or (FileExists(Trim(Application.HelpFile)) = false) then
+    begin
+      ShowMessage('Help file: ' + Application.HelpFile + #13#10 + ' could not open !');
+      result := false;
+      exit;
+    end;
+
+    if Command in [HELP_CONTEXT, HELP_CONTEXTPOPUP] then
+    begin
+      // Ordinary context jump
+      helpWindow := HtmlHelp(Application.Handle, PChar(Application.HelpFile), HH_DISPLAY_TOC, Data)
+    end else
+    if Command = HELP_KEY then
+    begin
+      // Keyword lookup
+      helpWindow := HtmlHelp(Application.Handle, PChar(Application.HelpFile), HH_DISPLAY_INDEX, Data)
+    end else
+    if Command = HELP_QUIT then
+    begin
+      // Application quits -> close all its help files
+      helpWindow := HtmlHelp(Application.Handle, nil, HH_CLOSE_ALL, 0)
+    end else
+    begin
+      // Any other command -> display table of contents
+      helpWindow := HtmlHelp(Application.Handle, PChar(Application.HelpFile), HH_HELP_FINDER, 0)
+    end;
+  except
+    on E: Exception do
+    begin
+      ShowMessage('Help file Exception in Application:' + #13#10 +
+      E.Message);
+    end;
+  end;
+end;
+
 
 procedure TForm2.ChangeChkState(const Item: TJvCustomInspectorItem);
 var
@@ -1664,7 +1910,9 @@ var
   b   : Boolean;
   sl  : TStringList;
   idx : Integer;
+
   ProgressBarStyle: integer;
+  ctrl: TPanel;
 begin
   try
     try
@@ -1725,9 +1973,33 @@ begin
         Invalidate;
       end;
 
+      // source edit/grid
+      with SourceCodeGrid do
+      begin
+        ColCount  := 3;
+        RowCount  := 2;
+        FixedRows := 1;
+        FixedCols := 1;
+
+        DefaultRowHeight := 21;
+
+        ColWidths[0] :=  74;
+        ColWidths[1] :=  79;
+        ColWidths[2] := 519;
+
+        Cells[0,0] := 'Line';
+        Cells[1,0] := 'Error Code';
+        Cells[2,0] := 'Message';
+      end;
+
       // init some stuff
       NewControlOnDesigner := false;
       BoolsAsChecks := false;
+
+      DevPageList.ActivePage := JvStandardPage4;
+      DevPanelBar.Tabs[1].Selected := true;
+
+//      JvEdit1.Parent := n22;
 
 //      AddInspectorSettings;
       AddInspectorDimension;
@@ -1739,7 +2011,7 @@ begin
       SourceNew := true;
       SourceFileName := 'unknown.prg';
 
-      // statzsbar
+      // statusbar
       StatusBar1.Panels[1].Style := psOwnerDraw;
       ProgressBar1.Parent := StatusBar1;
       ProgressBar1.Active := false;
@@ -1747,12 +2019,16 @@ begin
       ProgressBarStyle := ProgressBarStyle - WS_EX_STATICEDGE;
       SetWindowLong(ProgressBar1.Parent.Handle, GWL_EXSTYLE, ProgressBarStyle);
 
+      // html authoring
+//      (WebBrowser1.Document as IHTMLDocument2).designMode := 'on';
+
       // database/files
       AliasListFlag := false;
       if PageControl17.TabIndex = 1 then
       PageControl17Change(Sender);
 
       // frame
+(*
       with SetupLangFrame.LangTextStringGrid do
       begin
         EditorMode := false;
@@ -1760,15 +2036,59 @@ begin
 
         Cells[0,0] := 'Text';
         Cells[1,0] := 'Translation';
-      end;
+      end;*)
 
       // debug
-      FFrame := getMyCppFrameClass.CreateParented(Form2.Handle);
-//      FDebugFrame.ParentWindow := ScrollBox29.Handle;
-//      FDebugFrame.Parent := ScrollBox29;
+(*      if CppModule = 0 then
+      begin
+        CppModule := LoadPackage('dbgFrame.bpl');
+        if CppModule < 1 then
+        begin
+          ShowMessage('can''t load: dbgFrame.bpl');
+          exit;
+        end;
+      end;
+
+      FrameClassFunc := TFrameClassFunc(
+      GetProcAddress(CppModule, 'getMyCppFrameClass'));
+
+      if not Assigned(FrameClassFunc) then
+      raise Exception.Create(
+      'can not find export symbol:  ' +
+      'getMyCppFrameClass() in:'      + #13#10 +
+      'dbgFrame.bpl');
+*)
+
+      create__MyCppFrame(
+        ScrollBox29.Handle,
+        ScrollBox29, 0,0,
+        ScrollBox29.Width  + 200 ,
+        ScrollBox29.Height + 200); //.CreateParented(ScrollBox29.Handle);
+//      FFrame.Parent := Form2;
+
+(*
+      showmessage('controls: ' + inttostr(FFrame.ComponentCount));
+      for idx := 0 to FFrame.ComponentCount - 1 do
+      begin
+        if FFrame.Components[idx].Name = 'Panel1' then
+        begin
+          ShowMessage('Panel1 <---');
+          ctrl := TPanel(FFrame.Components[idx]);
+          ctrl.Parent := ScrollBox29;
+        end else
+        if FFrame.Components[idx].Name = 'BCB6_Splitter1' then
+        begin
+          ShowMessage('Splitter <===');
+          TSplitter(FFrame.Components[idx]).Parent := ctrl;
+        end;
+      end;
+      *)
     except
-      ShowMessage('Exception in Unit2 occur.');
-      exit;
+      on E: Exception do
+      begin
+        ShowMessage('Exception in Unit2 occur:' + #13#10 + e.Message);
+        exit;
+      end;
     end;
   finally
   end;
@@ -1826,8 +2146,11 @@ end;
 
 procedure TForm2.FormDestroy(Sender: TObject);
 begin
+//  UnLoadPackage(CppModule);
+
+  destroy_MyCppFrame;
   PopupMenu_TimeAccess.Items.Clear;
-  FDebugFrame.Free;
+//  FFrame.Free;
   
   iniFile.Free;
 end;
@@ -2402,17 +2725,31 @@ end;
 
 procedure TForm2.TasksPageControlChange(Sender: TObject);
 begin
-(*
-  if TasksPageControl.TabIndex = 6 then
+  if (TasksPageControl.TabIndex = 7)
+  or (TasksPageControl.TabIndex = 8) then
   begin
-    Panel1.Visible    := false;
-    Splitter2.Visible := false;
+    ComponentPageControl.Enabled := false;
+    ComponentPageControl.Visible := false;
+    ComponentPageControl.Align   := alNone;
+
+    HelpAuthoringPageControl.Enabled := false;
+    HelpAuthoringPageControl.Visible := false;
   end else
   begin
-    Panel1.Visible := true;
-    Splitter2.Visible := true;
-    Splitter2.Top := Panel1.Height;
-  end;*)
+    HelpAuthoringPageControl.Enabled := false;
+    HelpAuthoringPageControl.Visible := false;
+
+    ComponentPageControl.Visible := true;
+    ComponentPageControl.Enabled := false;
+    ComponentPageControl.Align   := alClient;
+  end;
+
+  if (TasksPageControl.TabIndex = 8) then
+  begin
+    HelpAuthoringPageControl.Visible := true;
+    HelpAuthoringPageControl.Enabled := true;
+    HelpAuthoringPageControl.Align   := alClient;
+  end;
 end;
 
 procedure TForm2.BackgroundViewButtonClick(Sender: TObject);
@@ -2640,8 +2977,8 @@ begin
     if tn.Text = 'English' then
     begin
       SetupLangPageControl.Pages[0].TabVisible := true;
-      SetupLangFrame.Parent := SetupLangPageControl.Pages[0];
-      SetupLangFrame.Show;
+//      SetupLangFrame.Parent := SetupLangPageControl.Pages[0];
+//      SetupLangFrame.Show;
     end else
     if tn.Text = 'German' then
     begin
@@ -2687,11 +3024,21 @@ end;
 
 procedure TForm2.SourceTextEditorKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
+var
+  rc : TPoint;
 begin
-  if key = VK_F1 then
+  if SourceTextEditor.Modified then
   begin
-    exit;
-  end else
+    SourceTextEditorUndo.Color := clLime;
+  end;
+
+  rc := TPoint(SourceTextEditor.CaretXY);
+  StatusBar1.Panels[2].Text :=
+  'Row: ' + IntToStr(rc.Y)  + ', ' +
+  'Col: ' + IntToStr(rc.X)  ;
+
+  SelectionTimer.Enabled := true;
+  
   if Key = VK_F2 then
   begin
     ShowMessage('compile');
@@ -3016,10 +3363,23 @@ procedure TForm2.SourceTextEditorMouseDown(
   X, Y  : Integer);
 var
   buffer : String;
-  i: Integer;
-  c: String;
+  i : Integer;
+  c : String;
   wc: PWideChar;
+  rc: TPoint;
 begin
+  if SourceTextEditor.Modified then
+  begin
+    SourceTextEditorUndo.Color := clLime;
+  end;
+
+  rc := TPoint(SourceTextEditor.CaretXY);
+  StatusBar1.Panels[2].Text :=
+  'Row: ' + IntToStr(rc.Y)  + ', ' +
+  'Col: ' + IntToStr(rc.X)  ;
+
+  SelectionTimer.Enabled := true;
+
   if JvSpeedButton4.Down then
   begin
     buffer :=
@@ -3172,7 +3532,331 @@ begin
   end;
 end;
 
+procedure TForm2.FormResize(Sender: TObject);
+begin
+  resize__MyCppFrame(ScrollBox29.Handle);
+end;
+
+procedure TForm2.dBASE1Click(Sender: TObject);
+begin
+  JvArrowButton5.Caption := 'dBASE Mode 1';
+  SourceTextEditor.Lines.Clear;
+  SourceTextEditor.Lines.Text :=
+  '** END HEADER -- do not remove this line' + #13#10 +
+  '//'                                       + #13#10 +
+  '// Generated on 09/28/97'                 + #13#10 +
+  '//'                                       + #13#10 +
+  'parameter bModal'                         + #13#10 +
+  'local f'                                  + #13#10 +
+  'f = new AboutForm()'                      + #13#10 +
+  'if (bModal)'                              + #13#10 +
+  '  f.mdi = .f.   // ensure not MDI'        + #13#10 +
+  '  f.readModal()'                          + #13#10 +
+  'else'                                     + #13#10 +
+  '  f.open()'                               + #13#10 +
+  'endif'                                    + #13#10 +
+  ''                                         + #13#10 +
+  'CLASS AboutForm OF FORM'                  + #13#10 +
+  ''                                         + #13#10 +
+  'ENDCLASS'                                 + #13#10;
+end;
+
+procedure TForm2.Pascal1Click(Sender: TObject);
+begin
+  JvArrowButton5.Caption := 'Pascal Mode';
+  SourceTextEditor.Lines.Clear;
+  SourceTextEditor.Lines.Text := '// Pascal/Delphi' + #13#10;
+end;
+
+procedure TForm2.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+var
+  callHelp: Boolean;
+  rc : TPoint;
+begin
+  if SourceTextEditor.Focused then
+  begin
+    rc := TPoint(SourceTextEditor.CaretXY);
+    StatusBar1.Panels[2].Text :=
+    'Row: ' + IntToStr(rc.Y)  + ', ' +
+    'Col: ' + IntToStr(rc.X)  ;
+  end;
+
+  if key = VK_F1 then
+  begin
+    callHelp := true;
+    Timer1.Enabled := true;
+    HTMLHelpUser.ApplicationHelp(HELP_CONTEXT, 1, callHelp);
+  end;
+end;
+
+procedure TForm2.Timer1Timer(Sender: TObject);
+var
+  aWindow: HWND;
+begin
+  aWindow := FindWindow('Windows-Hilfe', nil);
+  if aWindow < 1 then
+  aWindow := FindWindow('Windows-Help', nil);
+
+  if aWindow > 0 then
+  begin
+  showmessage('434');
+    ShowWindow(awindow, SW_SHOW);
+    SetForegroundWindow(aWindow);
+  end;
+end;
+
+procedure TForm2.JvPopupMenu1Popup(Sender: TObject);
+begin
+  Timer1.Enabled := true;
+end;
+
+procedure TForm2.dBase4DOS1Click(Sender: TObject);
+begin
+  JvArrowButton5.Caption := 'dBASE Mode 2';
+  SourceTextEditor.Lines.Clear;
+  SourceTextEditor.Lines.Text := '// dBase 4 DOS' + #13#10;
+end;
+
+procedure TForm2.ISOLISP1Click(Sender: TObject);
+begin
+  JvArrowButton5.Caption := 'LISP Mode';
+  SourceTextEditor.Lines.Clear;
+  SourceTextEditor.Lines.Text := ';; LISP mode' + #13#10;
+end;
+
+procedure TForm2.SourceTextEditorKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+var
+  rc : TPoint;
+begin
+  if SourceTextEditor.Modified then
+  begin
+    SourceTextEditorUndo.Color := clLime;
+  end;
+
+  rc := TPoint(SourceTextEditor.CaretXY);
+  StatusBar1.Panels[2].Text :=
+  'Row: ' + IntToStr(rc.Y)  + ', ' +
+  'Col: ' + IntToStr(rc.X)  ;
+
+  SelectionTimer.Enabled := false;
+end;
+
+procedure TForm2.SelectionTimerTimer(Sender: TObject);
+begin
+  if SourceTextEditor.SelLength > 0 then
+  begin
+    SourceTextEditorCut .Color := clLime;
+    SourceTextEditorCopy.Color := clLime;
+
+    SourceTextEditorSelectAll.Caption := 'De-Select All';
+    SourceTextEditorSelectAll.Tag := 1;
+
+    SourceTextEditorDelete.Color := clLime;
+    SourceTextEditorDelete.Tag   := 1;
+  end else
+  begin
+    SourceTextEditorCut   .Color := $0080FF80;
+    SourceTextEditorCopy  .Color := $0080FF80;
+    SourceTextEditorDelete.Color := $0080FF80;
+    
+    SourceTextEditorSelectAll.Caption := 'Select All';
+  end;
+
+  if SourceTextEditor.Modified then
+  begin
+    SourceTextEditorUndo.Color := clLime;
+  end;
+end;
+
+procedure TForm2.SourceTextEditorSelectAllClick(Sender: TObject);
+begin
+  if SourceTextEditorSelectAll.Tag = 0 then
+  begin
+    SourceTextEditorSelectAll.Caption := 'De-Select All';
+    SourceTextEditorSelectAll.Tag := 1;
+    SourceTextEditorDelete   .Tag := 1;
+
+    SourceTextEditor.SelectAll;
+  end else
+  begin
+    SourceTextEditorSelectAll.Caption := 'Select All';
+    SourceTextEditorSelectAll.Tag := 0;
+    SourceTextEditorDelete   .Tag := 0;
+
+    SourceTextEditor.SelStart := 1;
+    SourceTextEditor.SelEnd   := 1;
+  end;
+end;
+
+procedure TForm2.SourceTextEditorDeleteClick(Sender: TObject);
+begin
+  if SourceTextEditorDelete.Tag = 0 then
+  begin
+    if SourceTextEditor.SelLength > 1 then
+    begin
+      SourceTextEditorDelete.Tag := 0;
+      SourceTextEditor.ClearSelection;
+      SourceTextEditorDelete.SetFocus;
+    end else
+    begin
+      SourceTextEditorDelete.Tag := 0;
+      SourceTextEditor.SetFocus;
+      SourceTextEditor.SelLength := 1;
+      SourceTextEditor.ClearSelection;
+      SourceTextEditorDelete.SetFocus;
+    end;
+  end else
+  begin
+    SourceTextEditorDelete.Tag := 0;
+    SourceTextEditor.ClearSelection;
+    SourceTextEditor.SelLength := 1;
+
+    SourceTextEditorSelectAll.Caption := 'Select All';
+    SourceTextEditorSelectAll.Tag := 0;
+
+    SourceTextEditor.SetFocus;
+  end;
+end;
+
+procedure TForm2.SourceTextEditorClick(Sender: TObject);
+var
+  rc : TPoint;
+begin
+  if SourceTextEditor.Modified then
+  begin
+    SourceTextEditorUndo.Color := clLime;
+  end;
+
+  rc := TPoint(SourceTextEditor.CaretXY);
+  StatusBar1.Panels[2].Text :=
+  'Row: ' + IntToStr(rc.Y)  + ', ' +
+  'Col: ' + IntToStr(rc.X)  ;
+end;
+
+procedure TForm2.SourceTextEditorKeyPress(Sender: TObject;
+  var Key: WideChar);
+var
+  rc : TPoint;
+begin
+  if SourceTextEditor.Modified then
+  begin
+    SourceTextEditorUndo.Color := clLime;
+  end;
+
+  rc := TPoint(SourceTextEditor.CaretXY);
+  StatusBar1.Panels[2].Text :=
+  'Row: ' + IntToStr(rc.Y)  + ', ' +
+  'Col: ' + IntToStr(rc.X)  ;
+end;
+
+procedure TForm2.SourceTextEditorChange(Sender: TObject);
+begin
+  if SourceTextEditor.Modified then
+  begin
+    SourceTextEditorUndo.Color := clLime;
+  end;
+end;
+
+procedure TForm2.SourceTextEditorUndoClick(Sender: TObject);
+begin
+  if not SourceTextEditor.UndoList.CanUndo then
+  begin
+    SourceTextEditorUndo.Color := $0080FF80;
+    SourceTextEditor.Modified  := false;
+  end else
+  begin
+    SourceTextEditor.Undo;
+    if SourceTextEditor.UndoList.CanUndo then
+    begin
+      SourceTextEditorUndo.Color := clLime;
+      SourceTextEditor.Modified  := true;
+    end else
+    begin
+      SourceTextEditorUndo.Color := $0080FF80;
+      SourceTextEditor.Modified  := false;
+    end;
+  end;
+end;
+
+procedure TForm2.SourceTextEditorCopyClick(Sender: TObject);
+begin
+  if SourceTextEditor.SelLength > 0 then
+  begin
+    SourceTextEditorStringHolder.Strings.Add('plain text');
+    SourceTextEditorStringHolder.Strings.Add(SourceTextEditor.SelText);
+  end;
+end;
+
+procedure TForm2.SourceTextEditorPasteClick(Sender: TObject);
+var
+  str0: String;
+  len0: Integer;
+  str1: PWideChar;
+  str2: PWideChar;
+begin
+  if SourceTextEditorStringHolder.Strings.Count > 1 then
+  begin
+    if SourceTextEditorStringHolder.Strings[0] = 'plain text' then
+    begin
+      str0 := SourceTextEditorStringHolder.Strings[1];
+      len0 := Length(str0) * 3;
+
+      GetMem(str2,   len0) ;
+      str1 := StringToWideChar(str0,str2,len0);
+
+      SourceTextEditor.InsertBlock(
+      SourceTextEditor.CaretXY,
+      SourceTextEditor.CaretXY, str2, true);
+    end;
+  end;
+end;
+
+procedure TForm2.SourceTextEditorCutClick(Sender: TObject);
+begin
+  SourceTextEditorCopyClick   (Sender);
+  SourceTextEditorDeleteClick (Sender);
+end;
+
+procedure TForm2.Button1Click(Sender: TObject);
+var
+  all: IHTMLElementCollection;
+  doc: IHTMLDocument2;
+  win: IHTMLWindow2;
+  fc: IHTMLFramesCollection2;
+  u: IUnknown;
+  i: Integer;
+  v: OleVariant;
+begin
+  WebBrowser1.Navigate('file:///E:/Projekte/DataBase/exe/ENG/test.html');
+  doc := WebBrowser1.Document as IHTMLDocument2;
+  all := doc.all;
+
+  fc := doc.frames;
+//  ShowMessage(Format('frames detected: %d', [fc.Length]));
+
+  for i := 0 to Pred(fc.length) do
+  begin
+    v := i;
+    u := fc.item(v);
+    if u.QueryInterface(IHTMLWindow2, win) = 0 then
+    ShowMessage(win.document.body.innerHTML)
+  end;
+
+  (WebBrowser1.Document as IHTMLDocument2).designMode := 'on';
+end;
+
+procedure TForm2.WebBrowser1DocumentComplete(Sender: TObject;
+  const pDisp: IDispatch; var URL: OleVariant);
+begin
+  (WebBrowser1.Document as IHTMLDocument2).designMode := 'on';
+end;
+
 initialization
+  HTMLHelpUser       := TUseHTMLHelp.Create;
+  Application.OnHelp := HTMLHelpUser.ApplicationHelp;
+
   RegisterClass(TMainMenu);
   RegisterClass(TPopupMenu);
   RegisterClass(TLabel);
@@ -3184,6 +3868,10 @@ initialization
   TJvInspectorAnchorsItem.RegisterAsDefaultItem;
   TJvInspectorColorItem.RegisterAsDefaultItem;
   TJvInspectorTImageIndexItem.RegisterAsDefaultItem;
+
+finalization
+  Application.OnHelp := nil;
+  HTMLHelpUser.Free;
 
 end.
 

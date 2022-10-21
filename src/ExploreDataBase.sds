@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<desktop scan="4" scanned="20221020130033" built="20221020130130" lang="de-DE" pane="TLogPane" col="4" row="Caption">
+  <language id="en-GB" autoime="0" autokeyboard="0"/>
+  <language id="de-DE" autoime="0" autokeyboard="0"/>
+  <triggers>
+    <item class="TValidateTrigger" position="2"/>
+  </triggers>
+  <sheet>
+    <columns>
+      <item class="TFlagsColumn" width="52"/>
+      <item class="TPathColumn" width="176"/>
+      <item class="TTranslationStatusColumn" width="133"/>
+      <item class="TOriginalColumn" width="351"/>
+      <item class="TTranslationColumn" lang="de-DE" width="351"/>
+    </columns>
+  </sheet>
+  <view node="TVclFormNode" view="TFormEditor"/>
+  <view node="TVclMenuNode" view="TMenuEditor"/>
+  <path>
+    <item>All</item>
+    <item>exe\ENG\ExploreDataBase.exe</item>
+    <item>Forms</item>
+    <item>TFORM2</item>
+  </path>
+</desktop>

@@ -36,8 +36,11 @@ Source: "files\assets\common\config.ini";    DestDir: "{app}\assets\common"
 Source: "files\assets\images\*.*";           DestDir: "{app}\assets\images"
 Source: "files\assets\locale\setup.deu";     DestDir: "{app}\assets\locale"
 Source: "files\assets\locale\setup.eng";     DestDir: "{app}\assets\locale"
-Source: "files\config.ini";                  DestDir: "{app}"
+Source: "files\assets\common\config.ini";    DestDir: "{app}"
 Source: "files\runtime.exe";                 DestDir: "{app}"
+Source: "files\test.html";                   DestDir: "{app}"
+Source: "files\borlndmm.dll";                DestDir: "{app}"
+Source: "files\dbgFrame.dll";                DestDir: "{app}"
 Source: "files\readme-enu.txt";              DestDir: "{app}"; Languages: en; Flags: isreadme
 Source: "files\readme-deu.txt";              DestDir: "{app}"; Languages: de; Flags: isreadme
 

@@ -22,7 +22,6 @@ object SetupLocaleFrame: TSetupLocaleFrame
       FixedCols = 0
       Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goDrawFocusSelected, goRowSizing, goColSizing, goEditing]
       TabOrder = 0
-      OnSelectCell = LangTextStringGridSelectCell
       Alignment = taLeftJustify
       FixedFont.Charset = DEFAULT_CHARSET
       FixedFont.Color = clWindowText

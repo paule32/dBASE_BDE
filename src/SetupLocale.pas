@@ -8,10 +8,10 @@ uses
 
 type
   TSetupLocaleFrame = class(TFrame)
-    ScrollBox1: TScrollBox;
+(*    ScrollBox1: TScrollBox;
     LangTextStringGrid: TJvStringGrid;
     procedure LangTextStringGridSelectCell(Sender: TObject; ACol,
-      ARow: Integer; var CanSelect: Boolean);
+      ARow: Integer; var CanSelect: Boolean);*)
   private
     { Private declarations }
   public
@@ -22,6 +22,7 @@ implementation
 
 {$R *.dfm}
 
+(*
 procedure TSetupLocaleFrame.LangTextStringGridSelectCell(Sender: TObject;
   ACol, ARow: Integer; var CanSelect: Boolean);
 begin
@@ -37,6 +38,6 @@ begin
       EditorMode := true;
     end;
   end;
-end;
+end;*)
 
 end.

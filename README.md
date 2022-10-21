@@ -56,8 +56,14 @@ Development Area: The Table Data Explorer:
 Development Area: The Debug Window:
 ![Permissions](src/screen7.png)
 
-Development Area: The source code Editor:
+Development Area: The source code Editor (old):
 ![DesignerEditorProview](src/screen4.png)
+
+Development Area: The source code Editor (new):
+![DesignerEditorProview](src/screen8.png)
+
+Development Area: The Help-Authoring Tool (new):
+![DesignerEditorProview](src/screen9.png)
 
 The Database Server Monitor:
 ![Monitor](src/screen5.png)
