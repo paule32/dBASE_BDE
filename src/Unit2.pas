@@ -21,7 +21,8 @@ uses
   JvBDEQuery, JvBaseDlg, JvSelectDirectory, JvWaitingGradient, OleCtrls,
   ActiveXDebuggerFormProj1_TLB, ActiveXDebugFormFPC_TLB, JvMenus, AppEvnts,
   JvStringHolder, JvNavigationPane, JvEditorCommon, JvEditor, JvHLEditor,
-  JvHLEditorPropertyForm, SHDocVw, mshtml, ActiveX, JvEdit, JvSpin;
+  JvHLEditorPropertyForm, SHDocVw, mshtml, ActiveX, JvEdit, JvSpin,
+  JvDBControls, JvToolBar;
 
 (*var
   CppModule: HMODULE = 0;
@@ -1126,13 +1127,13 @@ type
     Save1: TMenuItem;
     SaveAs1: TMenuItem;
     N16: TMenuItem;
-    TabSheet50: TTabSheet;
+    TaskPageDevelopment: TTabSheet;
     DevPanelBar: TJvTabBar;
     DevPageList: TJvPageList;
-    JvStandardPage3: TJvStandardPage;
-    JvStandardPage4: TJvStandardPage;
-    JvStandardPage5: TJvStandardPage;
-    JvStandardPage6: TJvStandardPage;
+    DesignerPage: TJvStandardPage;
+    EditorPage: TJvStandardPage;
+    TableDataPage: TJvStandardPage;
+    DebugPage: TJvStandardPage;
     ScrollBox31: TScrollBox;
     Splitter4: TSplitter;
     Panel16: TPanel;
@@ -1202,9 +1203,7 @@ type
     ToolButton9: TToolButton;
     ToolButton10: TToolButton;
     Panel37: TPanel;
-    JvComboBox2: TJvComboBox;
     Panel38: TPanel;
-    JvComboBox1: TJvComboBox;
     JvStringGrid1: TJvStringGrid;
     TabSheet46: TTabSheet;
     ToolBar2: TToolBar;
@@ -1221,9 +1220,7 @@ type
     ToolButton19: TToolButton;
     ToolButton20: TToolButton;
     Panel40: TPanel;
-    JvComboBox3: TJvComboBox;
     Panel41: TPanel;
-    JvComboBox4: TJvComboBox;
     JvStringGrid2: TJvStringGrid;
     TabSheet47: TTabSheet;
     TabSheet48: TTabSheet;
@@ -1276,7 +1273,7 @@ type
     SourceTextEditorRedo: TJvImgBtn;
     SourceTextEditorStringHolder: TJvStrHolder;
     TabSheet6: TTabSheet;
-    TabSheet34: TTabSheet;
+    TaskPageHelpAuthoring: TTabSheet;
     ScrollBox43: TScrollBox;
     ScrollBox44: TScrollBox;
     ComponentPageControl: TPageControl;
@@ -1381,6 +1378,39 @@ type
     Label14: TLabel;
     Label15: TLabel;
     N22: TMenuItem;
+    DatabaseButtonPopupMenu: TJvPopupMenu;
+    DatabaseButtonPopupMenuPainter: TJvXPMenuItemPainter;
+    DatabaseListButton1: TJvArrowButton;
+    DatabaseListButton2: TJvArrowButton;
+    JvDatabaseItems1NAME: TStringField;
+    JvDatabaseItems1FILENAME: TStringField;
+    JvDatabaseItems1EXTENSION: TStringField;
+    JvDatabaseItems1TYPE: TStringField;
+    JvDatabaseItems1DATE: TDateField;
+    JvDatabaseItems1TIME: TTimeField;
+    JvDatabaseItems1SIZE: TIntegerField;
+    JvDatabaseItems1VIEW: TBooleanField;
+    JvDatabaseItems1SYNONYM: TBooleanField;
+    TableListMenuPopup: TJvPopupMenu;
+    TableListMenuPopupPainter: TJvXPMenuItemPainter;
+    DatabaseTableListButton1: TJvArrowButton;
+    JvPopupMenu2: TJvPopupMenu;
+    JvXPMenuItemPainter2: TJvXPMenuItemPainter;
+    DatabaseTableListButton2: TJvArrowButton;
+    NavigatorPageControl: TPageControl;
+    TabSheet52: TTabSheet;
+    JvToolBar1: TJvToolBar;
+    NavigatorAdd: TToolButton;
+    NavigatorDelete: TToolButton;
+    NavigatorSave: TToolButton;
+    NavigatorCancel: TToolButton;
+    JvToolBar2: TJvToolBar;
+    NavigatorFirst: TToolButton;
+    NavigatorPrev: TToolButton;
+    NavigatorNext: TToolButton;
+    NavigatorLast: TToolButton;
+    JvToolBar3: TJvToolBar;
+    NavigatorRefresh: TToolButton;
     procedure FormCreate(Sender: TObject);
 
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1525,14 +1555,10 @@ type
       Shift: TShiftState);
     procedure FindDialog1Find(Sender: TObject);
     procedure PageControl17Change(Sender: TObject);
-    procedure JvComboBox1Change(Sender: TObject);
-    procedure JvComboBox3Change(Sender: TObject);
     procedure JvDBUltimGrid1DrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumn;
       State: TGridDrawState);
     procedure JvDBUltimGrid1ColExit(Sender: TObject);
-    procedure JvComboBox4Change(Sender: TObject);
-    procedure JvComboBox2Change(Sender: TObject);
     procedure JvStringGrid2DrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
     procedure SourceTextEditorMouseDown(Sender: TObject;
@@ -1569,6 +1595,14 @@ type
     procedure Button1Click(Sender: TObject);
     procedure WebBrowser1DocumentComplete(Sender: TObject;
       const pDisp: IDispatch; var URL: OleVariant);
+    procedure DatabaseListButton1Click(Sender: TObject);
+    procedure DatabaseTableListButton1Click(Sender: TObject);
+    procedure DatabaseTableListButton2Click(Sender: TObject);
+    procedure DatabaseListButton2Click(Sender: TObject);
+    procedure TableDataPageShow(Sender: TObject);
+    procedure DesignerPageShow(Sender: TObject);
+    procedure EditorPageShow(Sender: TObject);
+    procedure DevPanelBarTabSelected(Sender: TObject; Item: TJvTabBarItem);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -1585,6 +1619,9 @@ type
 
     SourceNew: Boolean;
     SourceFileNAme : String;
+
+    procedure DatabaseButtonPopupMenuOnClick(Sender: TObject);
+    procedure TableListItemOnClick(Sender: TObject);
 
     procedure AddInspectorSettings;
     procedure AddInspectorDimension;
@@ -1996,7 +2033,7 @@ begin
       NewControlOnDesigner := false;
       BoolsAsChecks := false;
 
-      DevPageList.ActivePage := JvStandardPage4;
+      DevPageList.ActivePage := EditorPage;
       DevPanelBar.Tabs[1].Selected := true;
 
 //      JvEdit1.Parent := n22;
@@ -2024,8 +2061,7 @@ begin
 
       // database/files
       AliasListFlag := false;
-      if PageControl17.TabIndex = 1 then
-      PageControl17Change(Sender);
+
 
       // frame
 (*
@@ -2725,15 +2761,50 @@ end;
 
 procedure TForm2.TasksPageControlChange(Sender: TObject);
 begin
+  ComponentPageControl.Enabled := false;
+  ComponentPageControl.Visible := false;
+
+  HelpAuthoringPageControl.Enabled := false;
+  HelpAuthoringPageControl.Visible := false;
+
+  NavigatorPageControl.Enabled := false;
+  NavigatorPageControl.Visible := false;
+
+  if TasksPageControl.ActivePage = TaskPageDevelopment then
+  begin
+    if (DevPanelBar.SelectedTab.Caption = 'Tables') then
+    begin
+      NavigatorPageControl.Enabled := true;
+      NavigatorPageControl.Visible := true;
+    end else
+    if (DevPanelBar.SelectedTab.Caption = 'Design')
+    or (DevPanelBar.SelectedTab.Caption = 'Editor') then
+    begin
+      ComponentPageControl.Enabled := true;
+      ComponentPageControl.Visible := true;
+    end else
+    if (DevPanelBar.SelectedTab.Caption = 'DEBUG') then
+    begin
+    end;
+  end else
+  if TasksPageControl.ActivePage = TaskPageHelpAuthoring then
+  begin
+    HelpAuthoringPageControl.Enabled := true;
+    HelpAuthoringPageControl.Visible := true;
+  end;
+
+  (*
   if (TasksPageControl.TabIndex = 7)
   or (TasksPageControl.TabIndex = 8) then
   begin
     ComponentPageControl.Enabled := false;
     ComponentPageControl.Visible := false;
-    ComponentPageControl.Align   := alNone;
 
     HelpAuthoringPageControl.Enabled := false;
     HelpAuthoringPageControl.Visible := false;
+
+    NavigatorPageControl.Enabled := false;
+    NavigatorPageControl.Visible := false;
   end else
   begin
     HelpAuthoringPageControl.Enabled := false;
@@ -2741,7 +2812,6 @@ begin
 
     ComponentPageControl.Visible := true;
     ComponentPageControl.Enabled := false;
-    ComponentPageControl.Align   := alClient;
   end;
 
   if (TasksPageControl.TabIndex = 8) then
@@ -2749,7 +2819,7 @@ begin
     HelpAuthoringPageControl.Visible := true;
     HelpAuthoringPageControl.Enabled := true;
     HelpAuthoringPageControl.Align   := alClient;
-  end;
+  end;*)
 end;
 
 procedure TForm2.BackgroundViewButtonClick(Sender: TObject);
@@ -3102,78 +3172,39 @@ procedure TForm2.PageControl17Change(Sender: TObject);
 var
   idx: Integer;
   AliasList: TStrings;
+  menuItems: Array of TMenuItem;
 begin
   if AliasListFlag = true then exit;
   AliasListFlag := true;
 
-  with JvDatabaseItems1.DBSession do
-  begin
-    AliasList := TStringList.Create;
-    GetDatabaseNames(AliasList);
+  AliasList := TStringList.Create;
+  JvDatabaseItems1.DBSession.GetDatabaseNames(AliasList);
 
-    JvComboBox1.Items.AddStrings(AliasList);
-    JvComboBox4.Items.AddStrings(AliasList);
+  DatabaseButtonPopupMenu.Items.Clear;
+  SetLength(menuItems,AliasList.Count);
+  for idx := 0 to AliasList.Count - 1 do
+  begin
+    menuItems[idx] := TMenuItem.Create(DatabaseButtonPopupMenu);
+    menuItems[idx].Caption := Format('%03d - %s',[idx+1,AliasList.Strings [idx]]);
+    menuItems[idx].OnClick := DatabaseButtonPopupMenuOnClick;
   end;
+
+  DatabaseButtonPopupMenu.Items.Add(menuItems);
+
+//    JvComboBox1.Items.AddStrings(AliasList);
+//    JvComboBox4.Items.AddStrings(AliasList);
+//  end;
 end;
 
-procedure TForm2.JvComboBox4Change(Sender: TObject);
+procedure TForm2.DatabaseButtonPopupMenuOnClick(Sender: TObject);
 var
-  TableNames: TStrings;
+  s: String;
 begin
-  TableNames := TStringList.Create;
+  s := TMenuItem(Sender).Caption;
+  s := Copy(s,8,Length(s));
 
-  try
-    JvDatabaseItems1.DBSession.OpenDatabase(
-    JvComboBox4.Text);
-    JvDatabaseItems1.DBSession.Databases[
-    JvComboBox4.ItemIndex].GetTableNames(TableNames,false);
-
-    JvComboBox3.Items.Clear;
-    JvComboBox3.Items.AddStrings(TableNames);
-  except
-    JvComboBox2.Items.Clear;
-    ShowMessage('Error occur.');
-  end;
-end;
-
-procedure TForm2.JvComboBox3Change(Sender: TObject);
-var
-  idx, i,j: Integer;
-  FieldNames: TStrings;
-begin
-  FieldNames := TStringList.Create;
-  if Length(Trim(JvComboBox3.Text)) > 0 then
-  begin
-    with JvTableItems1 do
-    begin
-      if Active then Close;
-      DatabaseName := JvComboBox4.Text;
-      TableName    := JvComboBox3.Text;
-      Open;
-      First;
-      with JvStringGrid2 do
-      begin
-        ColWidths[0] := 12;
-
-        RowCount  := RecordCount + 1;
-        ColCount  := FieldCount  + 1;
-        FixedRows := 1;
-        FixedCols := 1;
-
-        GetFieldNames(FieldNames);
-
-        for idx := 0 to FieldNames.Count - 1 do
-        Cells[idx+1,0] := FieldNames[idx];
-
-        for i := 1 to RecordCount do begin
-        for j := 1 to FieldCount  do begin
-        Cells[j,i] := FieldByName(FieldNames[j-1]).AsString;
-        end; Next; end;
-
-        Visible := true;
-      end;
-    end;
-  end;
+  DatabaseListButton1.Caption := s;
+  DatabaseListButton2.Caption := s;
 end;
 
 procedure TForm2.JvDBUltimGrid1DrawColumnCell(
@@ -3265,93 +3296,6 @@ begin
       JvStringGrid1.Canvas.FillRect(Rect);
       DrawFrameControl(JvStringGrid2.Canvas.Handle, Rect, DFC_BUTTON,
       CheckBox(Trim(JvStringGrid2.Cells[ACol, ARow])));
-    end;
-  end;
-end;
-
-procedure TForm2.JvComboBox1Change(Sender: TObject);
-var
-  TableNames: TStrings;
-begin
-  TableNames := TStringList.Create;
-
-  try
-    JvDatabaseItems1.DBSession.OpenDatabase(
-    JvComboBox1.Text);
-    JvDatabaseItems1.DBSession.Databases[
-    JvComboBox1.ItemIndex].GetTableNames(TableNames,false);
-
-TableNamePath := ExtractFilePath(JvDatabaseItems1.DBSession.Databases[
-JvComboBox1.ItemIndex].Directory);
-
-    JvComboBox2.Items.Clear;
-    JvComboBox2.Items.AddStrings(TableNames);
-  except
-    JvComboBox2.Items.Clear;
-    ShowMessage('Error occur.');
-  end;
-end;
-
-procedure TForm2.JvComboBox2Change(Sender: TObject);
-var
-  idx, i,j,k,rec: Integer;
-  s1, s2: String;
-begin
-  if Length(Trim(JvComboBox1.Text)) > 0 then
-  begin
-    with JvTableItems1 do
-    begin
-      if Active then Close;
-      DatabaseName  := JvComboBox1.Text;
-      TableName     := JvComboBox2.Text;
-      Open;
-      First;
-      with JvStringGrid1 do
-      begin
-        ColWidths[0] := 12;
-
-        rec := 1; while not eof do begin
-        inc(rec); next; end ;
-
-        RowCount  := RecordCount + 1;
-        ColCount  := Rec;
-        FixedRows := 1;
-        FixedCols := 1;
-
-        First;
-
-        with JvQuery1 do
-        begin
-          if Active then Close;
-          SQL.Clear;
-          SQL.Add('SELECT * FROM "' + TableNamePath + JvComboBox2.Text + '";');
-          ExecSQL;
-          Open;
-          First;
-        end;
-
-        for j := 1 to JvQuery1.FieldCount do
-        Cells[j,0] := JvQuery1.FieldDefs.Items[j-1].DisplayName;
-
-        for k := 1 to JvQuery1.RecordCount do
-        begin
-          for j := 1 to JvQuery1.FieldCount do
-          begin
-            if  (JvQuery1.FieldDefs.Items[j-1].DataType <> ftBlob)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftBytes)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftVarBytes)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftGraphic)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftVariant)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftUnknown)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftBlob)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftTypedBinary) then
-            Cells[j,k] := JvQuery1.Fields.Fields[j-1].AsString;
-          end;
-          JvQuery1.Next;
-        end;
-
-        Visible := true;
-      end;
     end;
   end;
 end;
@@ -3828,8 +3772,18 @@ var
   u: IUnknown;
   i: Integer;
   v: OleVariant;
+  s: String;
 begin
-  WebBrowser1.Navigate('file:///E:/Projekte/DataBase/exe/ENG/test.html');
+  s := ExtractFilePath(Application.ExeName) + 'test.html';
+  if not FileExists(s) then
+  begin
+    ShowMessage('test.html not found !');
+    exit;
+  end;
+  s := StringReplace(s,'\','/',[rfReplaceAll]);
+  s := 'file:///'  + s;
+
+  WebBrowser1.Navigate(s);
   doc := WebBrowser1.Document as IHTMLDocument2;
   all := doc.all;
 
@@ -3851,6 +3805,264 @@ procedure TForm2.WebBrowser1DocumentComplete(Sender: TObject;
   const pDisp: IDispatch; var URL: OleVariant);
 begin
   (WebBrowser1.Document as IHTMLDocument2).designMode := 'on';
+end;
+
+procedure FileSearch(FileList: TStringList; const dirName: string; ext: String);
+var
+  searchResult: TSearchRec;
+begin
+  if FindFirst(dirName+'\*', faAnyFile, searchResult)=0 then begin
+    try
+      repeat
+        if (searchResult.Attr and faDirectory)=0 then
+        begin
+          if SameText(ExtractFileExt(searchResult.Name), ext) then
+          begin
+            FileList.Add(searchResult.Name);
+          end;
+        end;
+      until FindNext(searchResult)<>0
+    finally
+      FindClose(searchResult);
+    end;
+  end;
+end;
+
+procedure TForm2.DatabaseListButton1Click(Sender: TObject);
+var
+  TableNames: TStringList;
+  idx: Integer;
+  menuItems: Array of TMenuItem;
+begin
+  if Length(Trim(DatabaseListButton1.Caption)) < 1 then
+  exit;
+
+  try
+    TableNames := TStringList.Create;
+
+    JvDatabaseItems1.DBSession.OpenDatabase(DatabaseListButton1.Caption);
+    FileSearch(TableNames,JvDatabaseItems1.DBSession.Databases[0].Directory,'.dbf');
+
+    TableListMenuPopup.Items.Clear;
+    SetLength(menuItems,TableNames.Count);
+
+    for idx := 0 to TableNames.Count - 1 do
+    begin
+      menuItems[idx] := TMenuItem.Create(TableListMenuPopup);
+      menuItems[idx].Caption := TableNames.Strings[idx];
+      menuItems[idx].OnClick := TableListItemOnClick;
+    end;
+    TableListMenuPopup.Items.Add(menuItems);
+  except
+    on E: Exception do
+    begin
+      TableNames .Clear;
+      TableNames .Free;
+      ShowMessage('Error occur: ' +
+      DatabaseListButton1.Caption + #13#10 + E.Message);
+    end;
+  end;
+end;
+
+procedure TForm2.TableListItemOnClick(Sender: TObject);
+var
+  s: String;
+begin
+  s := TMenuItem(Sender).Caption;
+  s := Copy(s,2,Length(s));
+
+  DatabaseTableListButton1.Caption := s;
+  DatabaseTableListButton2.Caption := s;
+end;
+
+procedure TForm2.DatabaseTableListButton1Click(Sender: TObject);
+var
+  idx, i,j: Integer;
+  FieldNames: TStrings;
+begin
+  if Length(Trim(DatabaseTableListButton1.Caption)) < 1 then
+  exit;
+
+  FieldNames := TStringList.Create;
+    with JvTableItems1 do
+    begin
+      if Active then Close;
+      DatabaseName := DatabaseListButton1.Caption;
+      TableName    := DatabaseTableListButton1.Caption;
+      Open;
+      First;
+      with JvStringGrid2 do
+      begin
+        ColWidths[0] := 12;
+
+        RowCount  := RecordCount + 1;
+        ColCount  := FieldCount  + 1;
+        FixedRows := 1;
+        FixedCols := 1;
+
+        GetFieldNames(FieldNames);
+
+        for idx := 0 to FieldNames.Count - 1 do
+        Cells[idx+1,0] := FieldNames[idx];
+
+        for i := 1 to RecordCount do begin
+        for j := 1 to FieldCount  do begin
+        Cells[j,i] := FieldByName(FieldNames[j-1]).AsString;
+        end; Next; end;
+
+        Visible := true;
+      end;
+    end;
+end;
+
+procedure TForm2.DatabaseTableListButton2Click(Sender: TObject);
+var
+  idx, i,j,k,rec: Integer;
+  s1, s2: String;
+begin
+  if Length(Trim(DatabaseTableListButton2.Caption)) < 1 then
+  exit;
+
+    with JvTableItems1 do
+    begin
+      if Active then Close;
+      DatabaseName := DatabaseListButton2.Caption;
+      TableName    := DBSession.Databases[0].Directory + DatabaseTableListButton2.Caption;
+      Open;
+      First;
+      with JvStringGrid1 do
+      begin
+        ColWidths[0] := 12;
+
+        rec := 1; while not eof do begin
+        inc(rec); next; end ;
+
+        RowCount  := RecordCount + 1;
+        ColCount  := Rec;
+        FixedRows := 1;
+        FixedCols := 1;
+
+        First;
+
+        with JvQuery1 do
+        begin
+          if Active then Close;
+          SQL.Clear;
+          SQL.Add('SELECT * FROM "' +
+            JvDatabaseItems1.DBSession.Databases[0].Directory +
+            DatabaseTableListButton2.Caption + '";');
+          ExecSQL;
+          Open;
+          First;
+        end;
+
+        for j := 1 to JvQuery1.FieldCount do
+        Cells[j,0] := JvQuery1.FieldDefs.Items[j-1].DisplayName;
+
+        for k := 1 to JvQuery1.RecordCount do
+        begin
+          for j := 1 to JvQuery1.FieldCount do
+          begin
+            if  (JvQuery1.FieldDefs.Items[j-1].DataType <> ftBlob)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftBytes)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftVarBytes)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftGraphic)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftVariant)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftUnknown)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftBlob)
+            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftTypedBinary) then
+            Cells[j,k] := JvQuery1.Fields.Fields[j-1].AsString;
+          end;
+          JvQuery1.Next;
+        end;
+
+        Visible := true;
+      end;
+    end;
+end;
+
+procedure TForm2.DatabaseListButton2Click(Sender: TObject);
+var
+  TableNames: TStringList;
+  idx: Integer;
+  menuItems: Array of TMenuItem;
+begin
+  if Length(Trim(DatabaseListButton2.Caption)) < 1 then
+  exit;
+
+  try
+    TableNames := TStringList.Create;
+
+    JvDatabaseItems1.DBSession.OpenDatabase(DatabaseListButton2.Caption);
+    FileSearch(TableNames,JvDatabaseItems1.DBSession.Databases[0].Directory,'.dbf');
+
+    TableListMenuPopup.Items.Clear;
+    SetLength(menuItems,TableNames.Count);
+
+    for idx := 0 to TableNames.Count - 1 do
+    begin
+      menuItems[idx] := TMenuItem.Create(TableListMenuPopup);
+      menuItems[idx].Caption := TableNames.Strings[idx];
+      menuItems[idx].OnClick := TableListItemOnClick;
+    end;
+    TableListMenuPopup.Items.Add(menuItems);
+  except
+    on E: Exception do
+    begin
+      TableNames .Clear;
+      TableNames .Free;
+      ShowMessage('Error occur: ' +
+      DatabaseListButton2.Caption + #13#10 + E.Message);
+    end;
+  end;
+end;
+
+procedure TForm2.TableDataPageShow(Sender: TObject);
+begin
+  ComponentPageControl.Enabled := false;
+  ComponentPageControl.Visible := false;
+
+  HelpAuthoringPageControl.Enabled := false;
+  HelpAuthoringPageControl.Visible := false;
+
+  NavigatorPageControl.Visible := true;
+  NavigatorPageControl.Enabled := true;
+end;
+
+procedure TForm2.DesignerPageShow(Sender: TObject);
+begin
+  HelpAuthoringPageControl.Enabled := false;
+  HelpAuthoringPageControl.Visible := false;
+
+  NavigatorPageControl.Enabled := false;
+  NavigatorPageControl.Visible := false;
+
+  ComponentPageControl.Enabled := true;
+  ComponentPageControl.Visible := true;
+end;
+
+procedure TForm2.EditorPageShow(Sender: TObject);
+begin
+  HelpAuthoringPageControl.Enabled := false;
+  HelpAuthoringPageControl.Visible := false;
+
+  NavigatorPageControl.Enabled := false;
+  NavigatorPageControl.Visible := false;
+
+  ComponentPageControl.Enabled := true;
+  ComponentPageControl.Visible := true;
+end;
+
+procedure TForm2.DevPanelBarTabSelected(Sender: TObject;
+  Item: TJvTabBarItem);
+begin
+  TasksPageControlChange(Sender);
+
+  if Item.Caption = 'Tables' then
+  begin
+    PageControl17.TabIndex := 1; PageControl17Change(Sender);
+    PageControl17.TabIndex := 0; PageControl17Change(Sender);
+  end;
 end;
 
 initialization
