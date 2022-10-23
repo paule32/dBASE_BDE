@@ -9,11 +9,18 @@ program ExploreDataBase;
 uses
   Windows,
   SysUtils,
-  Forms, Dialogs, IniFiles, Classes, Graphics, Controls, StdCtrls,
+  Forms,
+  Dialogs,
+  IniFiles,
+  Classes,
+  Graphics,
+  Controls,
+  StdCtrls,
   Unit2 in 'Unit2.pas' {Form2},
   Unit1 in 'Unit1.pas' {DataBaseExplorer: TAppletModule},
   SetupLocale in 'SetupLocale.pas' {SetupLocaleFrame: TFrame},
-  parseDBASE in 'parseDBASE.pas';
+  parseDBASE in 'parseDBASE.pas',
+  NewTableDialog in 'NewTableDialog.pas' {OKRightDlg};
 
 {$R *.res}
 
@@ -233,8 +240,9 @@ begin
 
     Application.Initialize;
     Application.CreateForm(TForm2, Form2);
-    Application.CreateForm(TDataBaseExplorer, DataBaseExplorer);
-    Application.Run;
+  Application.CreateForm(TDataBaseExplorer, DataBaseExplorer);
+  Application.CreateForm(TOKRightDlg, OKRightDlg);
+  Application.Run;
 
   end;
 end;

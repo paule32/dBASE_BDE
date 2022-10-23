@@ -1187,8 +1187,8 @@ type
     EditorScrollBox: TScrollBox;
     Panel26: TPanel;
     ScrollBox42: TScrollBox;
-    PageControl17: TPageControl;
-    TabSheet45: TTabSheet;
+    DataTablePageControl: TPageControl;
+    DataPage: TTabSheet;
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
@@ -1204,8 +1204,7 @@ type
     ToolButton10: TToolButton;
     Panel37: TPanel;
     Panel38: TPanel;
-    JvStringGrid1: TJvStringGrid;
-    TabSheet46: TTabSheet;
+    FieldPage: TTabSheet;
     ToolBar2: TToolBar;
     ToolButton11: TToolButton;
     ToolButton12: TToolButton;
@@ -1221,10 +1220,9 @@ type
     ToolButton20: TToolButton;
     Panel40: TPanel;
     Panel41: TPanel;
-    JvStringGrid2: TJvStringGrid;
+    DataPageGrid2: TJvStringGrid;
     TabSheet47: TTabSheet;
     TabSheet48: TTabSheet;
-    JvCheckBox1: TJvCheckBox;
     JvModernTabBarPainter1: TJvModernTabBarPainter;
     ProgressBar1: TJvWaitingGradient;
     ScrollBox29: TScrollBox;
@@ -1411,6 +1409,10 @@ type
     NavigatorLast: TToolButton;
     JvToolBar3: TJvToolBar;
     NavigatorRefresh: TToolButton;
+    Table1: TTable;
+    DataSource1: TDataSource;
+    DataPageGrid1: TDBGrid;
+    JvCheckBox1: TCheckBox;
     procedure FormCreate(Sender: TObject);
 
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1554,12 +1556,12 @@ type
     procedure SourceTextEditorKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FindDialog1Find(Sender: TObject);
-    procedure PageControl17Change(Sender: TObject);
+    procedure DataTablePageControlChange(Sender: TObject);
     procedure JvDBUltimGrid1DrawColumnCell(Sender: TObject;
       const Rect: TRect; DataCol: Integer; Column: TColumn;
       State: TGridDrawState);
     procedure JvDBUltimGrid1ColExit(Sender: TObject);
-    procedure JvStringGrid2DrawCell(Sender: TObject; ACol, ARow: Integer;
+    procedure DataPageGrid2DrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
     procedure SourceTextEditorMouseDown(Sender: TObject;
       Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
@@ -1603,6 +1605,15 @@ type
     procedure DesignerPageShow(Sender: TObject);
     procedure EditorPageShow(Sender: TObject);
     procedure DevPanelBarTabSelected(Sender: TObject; Item: TJvTabBarItem);
+    procedure NavigatorNextClick(Sender: TObject);
+    procedure DataPageGrid1Click(Sender: TObject);
+    procedure NavigatorPrevClick(Sender: TObject);
+    procedure NavigatorFirstClick(Sender: TObject);
+    procedure NavigatorLastClick(Sender: TObject);
+    procedure DataPageGrid1DblClick(Sender: TObject);
+    procedure NavigatorAddClick(Sender: TObject);
+    procedure NavigatorDeleteClick(Sender: TObject);
+    procedure NavigatorSaveClick(Sender: TObject);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -1617,10 +1628,16 @@ type
     AliasListFlag: Boolean;
     TableNamePath: String;
 
+    DataPageGrid1ActiveRow: Integer;
+    DataPageGrid2ActiveRow: Integer;
+    DataPageGrid1Modified : Integer;
+
     SourceNew: Boolean;
     SourceFileNAme : String;
 
     procedure DatabaseButtonPopupMenuOnClick(Sender: TObject);
+
+    procedure TableListItemNewTableOnClick(Sender: TObject);
     procedure TableListItemOnClick(Sender: TObject);
 
     procedure AddInspectorSettings;
@@ -1640,6 +1657,7 @@ type
     procedure ChangeChkState(const Item: TJvCustomInspectorItem);
   public
     FFrame: TCustomFrame;
+    FNewTableName: String;
 
     DesignClass: string;
     in_insp: Boolean;
@@ -1660,7 +1678,7 @@ implementation
 {$R *.dfm}
 
 uses
-  parseDBASE;
+  NewTableDialog, parseDBASE;
 
 var
   VerInfoStr: string = 'Version 0.1';
@@ -1950,6 +1968,7 @@ var
 
   ProgressBarStyle: integer;
   ctrl: TPanel;
+  edit: TEdit;
 begin
   try
     try
@@ -2033,6 +2052,7 @@ begin
       NewControlOnDesigner := false;
       BoolsAsChecks := false;
 
+      DataPageGrid1ActiveRow  := 1;
       DevPageList.ActivePage := EditorPage;
       DevPanelBar.Tabs[1].Selected := true;
 
@@ -2061,6 +2081,8 @@ begin
 
       // database/files
       AliasListFlag := false;
+      DataPageGrid1Modified := 0;
+
 
 
       // frame
@@ -3168,7 +3190,7 @@ begin
   end;
 end;
 
-procedure TForm2.PageControl17Change(Sender: TObject);
+procedure TForm2.DataTablePageControlChange(Sender: TObject);
 var
   idx: Integer;
   AliasList: TStrings;
@@ -3248,7 +3270,7 @@ begin
 //  JvDBCheckBox1.Visible := false;
 end;
 
-procedure TForm2.JvStringGrid2DrawCell(
+procedure TForm2.DataPageGrid2DrawCell(
   Sender    : TObject;
   ACol, ARow: Integer;
   Rect      : TRect;
@@ -3269,8 +3291,8 @@ begin
     begin
       JvCheckBox1.Caption := '';
 
-      JvCheckBox1.Left    := Rect.Left   + JvStringGrid1.Left + 2;
-      JvCheckBox1.Top     := Rect.Top    + JvStringGrid1.Top  + 2;
+      JvCheckBox1.Left    := Rect.Left   + DataPageGrid1.Left + 2;
+      JvCheckBox1.Top     := Rect.Top    + DataPageGrid1.Top  + 2;
       JvCheckBox1.Width   := Rect.Right  - Rect.Left;
       JvCheckBox1.Height  := Rect.Bottom - Rect.Top;
 
@@ -3279,7 +3301,7 @@ begin
   begin
     if (ACol = 3) and (ARow > 0) then
     begin
-      with JvStringGrid2 do
+      with DataPageGrid2 do
       begin
         s := Cells[ACol,ARow];
         if s = '1' then Canvas.TextOut(rect.Left+2,rect.Top+4,'CHAR') else
@@ -3293,9 +3315,9 @@ begin
     begin
       JvCheckBox1.Caption := '';
       InflateRect(Rect,-1,-1);
-      JvStringGrid1.Canvas.FillRect(Rect);
-      DrawFrameControl(JvStringGrid2.Canvas.Handle, Rect, DFC_BUTTON,
-      CheckBox(Trim(JvStringGrid2.Cells[ACol, ARow])));
+      DataPageGrid2.Canvas.FillRect(Rect);
+      DrawFrameControl(DataPageGrid2.Canvas.Handle, Rect, DFC_BUTTON,
+      CheckBox(Trim(DataPageGrid2.Cells[ACol, ARow])));
     end;
   end;
 end;
@@ -3551,6 +3573,8 @@ begin
 end;
 
 procedure TForm2.JvPopupMenu1Popup(Sender: TObject);
+var
+  point: TPoint;
 begin
   Timer1.Enabled := true;
 end;
@@ -3844,7 +3868,7 @@ begin
     FileSearch(TableNames,JvDatabaseItems1.DBSession.Databases[0].Directory,'.dbf');
 
     TableListMenuPopup.Items.Clear;
-    SetLength(menuItems,TableNames.Count);
+    SetLength(menuItems,TableNames.Count+1);
 
     for idx := 0 to TableNames.Count - 1 do
     begin
@@ -3852,6 +3876,10 @@ begin
       menuItems[idx].Caption := TableNames.Strings[idx];
       menuItems[idx].OnClick := TableListItemOnClick;
     end;
+    showmessage('count: ' + inttostr(tablenames.count));
+    menuItems[TableNames.Count] := TMenuItem.Create(TableListMenuPopup);
+    menuItems[TableNames.Count].Caption := 'lulu';
+
     TableListMenuPopup.Items.Add(menuItems);
   except
     on E: Exception do
@@ -3891,7 +3919,7 @@ begin
       TableName    := DatabaseTableListButton1.Caption;
       Open;
       First;
-      with JvStringGrid2 do
+      with DataPageGrid2 do
       begin
         ColWidths[0] := 12;
 
@@ -3910,6 +3938,15 @@ begin
         Cells[j,i] := FieldByName(FieldNames[j-1]).AsString;
         end; Next; end;
 
+        if DataTablePageControl.ActivePage = FieldPage then
+        begin inc(
+          DataPageGrid2ActiveRow  );
+          DataPageGrid2.Selection := TGridRect(Rect(0,
+
+          DataPageGrid2ActiveRow, DataPageGrid2.Width,
+          DataPageGrid2ActiveRow));
+        end;
+
         Visible := true;
       end;
     end;
@@ -3923,62 +3960,29 @@ begin
   if Length(Trim(DatabaseTableListButton2.Caption)) < 1 then
   exit;
 
-    with JvTableItems1 do
-    begin
-      if Active then Close;
-      DatabaseName := DatabaseListButton2.Caption;
-      TableName    := DBSession.Databases[0].Directory + DatabaseTableListButton2.Caption;
-      Open;
-      First;
-      with JvStringGrid1 do
-      begin
-        ColWidths[0] := 12;
+  Table1.Close;
 
-        rec := 1; while not eof do begin
-        inc(rec); next; end ;
+  Table1.DatabaseName := DatabaseListButton2.Caption;
 
-        RowCount  := RecordCount + 1;
-        ColCount  := Rec;
-        FixedRows := 1;
-        FixedCols := 1;
+  Table1.TableName :=
+  JvDatabaseItems1.DBSession.Databases[0].Directory +
+  DatabaseTableListButton2.Caption;
 
-        First;
+  Table1.Open;
+  Table1.First;
 
-        with JvQuery1 do
-        begin
-          if Active then Close;
-          SQL.Clear;
-          SQL.Add('SELECT * FROM "' +
-            JvDatabaseItems1.DBSession.Databases[0].Directory +
-            DatabaseTableListButton2.Caption + '";');
-          ExecSQL;
-          Open;
-          First;
-        end;
+  DataSource1.DataSet.Open;
+  DataSource1.DataSet.First;
 
-        for j := 1 to JvQuery1.FieldCount do
-        Cells[j,0] := JvQuery1.FieldDefs.Items[j-1].DisplayName;
-
-        for k := 1 to JvQuery1.RecordCount do
-        begin
-          for j := 1 to JvQuery1.FieldCount do
-          begin
-            if  (JvQuery1.FieldDefs.Items[j-1].DataType <> ftBlob)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftBytes)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftVarBytes)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftGraphic)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftVariant)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftUnknown)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftBlob)
-            and (JvQuery1.FieldDefs.Items[j-1].DataType <> ftTypedBinary) then
-            Cells[j,k] := JvQuery1.Fields.Fields[j-1].AsString;
-          end;
-          JvQuery1.Next;
-        end;
-
-        Visible := true;
-      end;
-    end;
+  NavigatorFirst  .Enabled := false;
+  NavigatorLast   .Enabled := true;
+  NavigatorPrev   .Enabled := false;
+  NavigatorNext   .Enabled := true;
+  NavigatorAdd    .Enabled := true;
+  NavigatorDelete .Enabled := true;
+  NavigatorSave   .Enabled := true; // todo
+  NavigatorCancel .Enabled := false;
+  NavigatorRefresh.Enabled := false;
 end;
 
 procedure TForm2.DatabaseListButton2Click(Sender: TObject);
@@ -3997,7 +4001,7 @@ begin
     FileSearch(TableNames,JvDatabaseItems1.DBSession.Databases[0].Directory,'.dbf');
 
     TableListMenuPopup.Items.Clear;
-    SetLength(menuItems,TableNames.Count);
+    SetLength(menuItems,TableNames.Count+2);
 
     for idx := 0 to TableNames.Count - 1 do
     begin
@@ -4005,6 +4009,14 @@ begin
       menuItems[idx].Caption := TableNames.Strings[idx];
       menuItems[idx].OnClick := TableListItemOnClick;
     end;
+
+    menuItems[TableNames.Count] := TMenuItem.Create(TableListMenuPopup);
+    menuItems[TableNames.Count].Caption := '-';
+
+    menuItems[TableNames.Count+1] := TMenuItem.Create(TableListMenuPopup);
+    menuItems[TableNames.Count+1].Caption := 'Create New Table';
+    menuItems[TableNames.Count+1].OnClick := TableListItemNewTableOnClick;
+
     TableListMenuPopup.Items.Add(menuItems);
   except
     on E: Exception do
@@ -4014,6 +4026,45 @@ begin
       ShowMessage('Error occur: ' +
       DatabaseListButton2.Caption + #13#10 + E.Message);
     end;
+  end;
+end;
+
+procedure TForm2.TableListItemNewTableOnClick(Sender: TObject);
+begin
+  Application.CreateForm(TOKRightDlg, OKRightDlg);
+  OkRightDlg.FormServer := Form2;
+  OKRightDlg.ShowModal;
+
+  if Length(Form2.FNewTableName) < 1 then
+  exit;
+
+  with Table1 do
+  begin
+    Close;
+    if Exists then DeleteTable;
+
+    DatabaseName := DatabaseListButton2.Caption;
+    TableName    := Form2.FNewTableName;
+    TableType    := ttDBASE;
+    with FieldDefs do
+    begin
+      Clear;
+      with AddFieldDef do
+      begin
+        Name     := 'FIELD_NAME';
+        DataType := ftString;
+        Size     := 25;
+      end;
+      with AddFieldDef do
+      begin
+        Name     := 'FIELD_LENGTH';
+        DataType := ftInteger;
+      end;
+    end;
+    CreateTable;
+    Open;
+    Append;
+    Post;
   end;
 end;
 
@@ -4060,8 +4111,236 @@ begin
 
   if Item.Caption = 'Tables' then
   begin
-    PageControl17.TabIndex := 1; PageControl17Change(Sender);
-    PageControl17.TabIndex := 0; PageControl17Change(Sender);
+    DataTablePageControl.TabIndex := 1; DataTablePageControlChange(Sender);
+    DataTablePageControl.TabIndex := 0; DataTablePageControlChange(Sender);
+  end;
+end;
+
+procedure TForm2.NavigatorNextClick(Sender: TObject);
+var
+  row: Integer;
+begin
+  if DataTablePageControl.ActivePage = DataPage then
+  begin
+    DataSource1.DataSet.Next;
+
+    if DataSource1.DataSet.Eof then
+    begin
+      NavigatorFirst.Enabled := true;
+      NavigatorPrev .Enabled := true;
+      NavigatorLast .Enabled := false;
+      NavigatorNext .Enabled := false;
+      Beep;
+    end else
+    begin
+      NavigatorFirst.Enabled := true;
+      NavigatorPrev .Enabled := true;
+      NavigatorLast .Enabled := true;
+      NavigatorNext .Enabled := true;
+    end;
+  end;
+end;
+
+procedure TForm2.DataPageGrid1Click(Sender: TObject);
+var
+  row: Integer;
+begin
+(*  DataPageGrid1ActiveRow := DataPageGrid1.Row;
+  if (DataPageGrid1ActiveRow = 1) then
+  begin
+    NavigatorPrev.Enabled := false;
+  end;
+
+  if DataPageGrid1Modified > 0 then
+  begin
+    DataPageGrid1Modified := 0;
+    row := DataPageGrid1.RowCount;
+    DataPageGrid1.RowCount := row - 1;
+  end;*)
+end;
+
+procedure TForm2.NavigatorPrevClick(Sender: TObject);
+var
+  row: Integer;
+begin
+  if DataTablePageControl.ActivePage = DataPage then
+  begin
+    DataSource1.DataSet.Prior;
+
+    if DataSource1.DataSet.Bof then
+    begin
+      NavigatorFirst.Enabled := false;
+      NavigatorPrev .Enabled := false;
+      NavigatorNext .Enabled := true;
+      NavigatorLast .Enabled := true;
+    end else
+    begin
+      NavigatorFirst.Enabled := true;
+      NavigatorPrev .Enabled := true;
+      NavigatorNext .Enabled := true;
+      NavigatorLast .Enabled := true;
+    end;
+  end;
+end;
+
+procedure TForm2.NavigatorFirstClick(Sender: TObject);
+var
+  row: Integer;
+begin
+  if DataTablePageControl.ActivePage = DataPage then
+  begin
+    DataSource1.DataSet.First;
+
+    if DataSource1.DataSet.Bof then
+    begin
+      NavigatorFirst.Enabled := false;
+      NavigatorPrev .Enabled := false;
+      NavigatorLast .Enabled := true;
+      NavigatorNext .Enabled := true;
+    end else
+    begin
+      NavigatorPrev .Enabled := true;
+      NavigatorFirst.Enabled := true;
+      NavigatorNext .Enabled := true;
+      NavigatorLast .Enabled := true;
+    end;
+  end;
+end;
+
+procedure TForm2.NavigatorLastClick(Sender: TObject);
+var
+  row: Integer;
+begin
+  if DataTablePageControl.ActivePage = DataPage then
+  begin
+    DataSource1.DataSet.Last;
+
+    if DataSource1.DataSet.Eof then
+    begin
+      NavigatorFirst.Enabled := true;
+      NavigatorPrev .Enabled := true;
+      NavigatorNext .Enabled := false;
+      NavigatorLast .Enabled := false;
+    end;
+  end;
+end;
+
+procedure TForm2.DataPageGrid1DblClick(Sender: TObject);
+begin
+  if DataTablePageControl.ActivePage = DataPage then
+  begin
+  end;
+end;
+
+procedure TForm2.NavigatorAddClick(Sender: TObject);
+var
+  idx: Integer;
+  row: Integer;
+begin
+  if DataTablePageControl.ActivePage = DataPage then
+  begin
+  (*
+    row := DataPageGrid1.RowCount;
+
+    DataPageGrid1.RowCount := row + 1;
+    DataPageGrid1Modified  := row + 1;
+
+    for idx := 1 to DataPageGrid1.ColCount - 1 do
+    DataPageGrid1.Cells[idx,DataPageGrid1.RowCount] := '';
+
+
+    DataPageGrid1.Selection := TGridRect(Rect(0,
+    row + 1, DataPageGrid1.Width,
+    row + 1));
+    *)
+  end;
+end;
+
+procedure TForm2.NavigatorDeleteClick(Sender: TObject);
+var
+  row, idx: Integer;
+  delSQL  : String;
+begin
+  if DataTablePageControl.ActivePage = DataPage then
+  begin
+  (*
+    if DataPageGrid1Modified > 0 then
+    begin
+      DataPageGrid1Modified := 0;
+      row := DataPageGrid1.RowCount;
+      DataPageGrid1.RowCount := row - 1;
+      exit;
+    end;
+
+    with JvQuery1 do
+    begin
+      if Active then Close;
+      SQL.Clear;
+      SQL.Add('DELETE FROM "' +
+
+      JvDatabaseItems1.DBSession.Databases[0].Directory +
+      DatabaseTableListButton2.Caption +
+      '" WHERE NAME="' +
+      DataPageGrid1.Cells[1,DataPageGrid1.Row] +
+      '";');
+
+      ExecSQL;
+
+      for idx := 1 to DataPageGrid1.ColCount - 1 do
+      DataPageGrid1.Cells[idx,DataPageGrid1.Row] := '';
+
+      row := DataPageGrid1.RowCount;
+      DataPageGrid1.RowCount := row - 1;
+    end;
+    *)
+  end;
+end;
+
+procedure TForm2.NavigatorSaveClick(Sender: TObject);
+var
+  i, row, col: Integer;
+  fieldString: Array of String;
+begin
+  if DataTablePageControl.ActivePage = DataPage then
+  begin
+    ProgressBar1.Active := true;
+
+    (*
+    // todo !!!
+    col := DataPageGrid1.ColCount - 1;
+    SetLength(fieldString,col);
+
+    if JvTableItems1.Active then JvTableItems1.Close;
+
+    JvTableItems1.DatabaseName :=
+    DatabaseListButton2.Caption;
+
+    JvTableItems1.TableName :=
+    JvDatabaseItems1.DBSession.Databases[0].Directory +
+    DatabaseTableListButton2.Caption;
+
+    JvTableItems1.DataSetField.ReadOnly := false;
+    JvTableItems1.OpenDatabase;
+    JvTableItems1.Active := true;
+
+    for i := 0 to (col - 1) do
+    fieldString[i] := DataPageGrid1.Cells[i+1,0];
+
+    for row := 1 to DataPageGrid1.RowCount - 1 do
+    begin
+      for col := 0 to High(fieldString) do
+      begin
+        with JvTableItems1 do
+        begin
+          Append;
+//          FieldByName(fieldString[col]).AsString := 'ooo';
+        end;
+      end;
+    end;
+
+    DatabaseTableListButton2Click(Sender);
+    *)
+    ProgressBar1.Active := false;
   end;
 end;
 
