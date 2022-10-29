@@ -22,7 +22,8 @@ uses
   ActiveXDebuggerFormProj1_TLB, ActiveXDebugFormFPC_TLB, JvMenus, AppEvnts,
   JvStringHolder, JvNavigationPane, JvEditorCommon, JvEditor, JvHLEditor,
   JvHLEditorPropertyForm, SHDocVw, mshtml, ActiveX, JvEdit, JvSpin,
-  JvDBControls, JvToolBar;
+  JvDBControls, JvToolBar, SynEditHighlighter, SynHighlighterHtml, xmldom,
+  MyHintWindow, xmlMainMenu, XMLIntf, msxmldom, XMLDoc;
 
 (*var
   CppModule: HMODULE = 0;
@@ -251,7 +252,7 @@ type
     ScrollBox28: TScrollBox;
     StaticText2: TStaticText;
     JvPanel1: TJvPanel;
-    MenuFile: TJvArrowButton;
+    MenuEdit: TJvArrowButton;
     BackgroundViewPanel: TJvPanel;
     JvSplitter1: TJvSplitter;
     JvPanel2: TJvPanel;
@@ -1116,17 +1117,6 @@ type
     JvStringGrid5: TJvStringGrid;
     JvSelectDirectory1: TJvSelectDirectory;
     JvOpenDialog1: TJvOpenDialog;
-    MenuFilePopup: TPopupMenu;
-    New1: TMenuItem;
-    N15: TMenuItem;
-    Exit1: TMenuItem;
-    dBaseTextModule1: TMenuItem;
-    dBASEForm1: TMenuItem;
-    dBaseSQL1: TMenuItem;
-    Open1: TMenuItem;
-    Save1: TMenuItem;
-    SaveAs1: TMenuItem;
-    N16: TMenuItem;
     TaskPageDevelopment: TTabSheet;
     DevPanelBar: TJvTabBar;
     DevPageList: TJvPageList;
@@ -1246,29 +1236,11 @@ type
     JvImgBtn5: TJvImgBtn;
     SourceCodeGrid: TStringGrid;
     Panel48: TPanel;
-    Panel49: TPanel;
     Splitter21: TSplitter;
-    CompileButton: TJvImgBtn;
-    JvImgBtn1: TJvImgBtn;
-    JvImgBtn6: TJvImgBtn;
-    Label12: TLabel;
-    TranspileOutputEdit: TEdit;
-    SpeedButton1: TSpeedButton;
-    RadioButton2: TRadioButton;
-    RadioButton1: TRadioButton;
-    RadioButton3: TRadioButton;
-    RadioGroup1: TRadioGroup;
     SourceTextEditor: TSynEdit;
-    SourceTextEditorCut: TJvImgBtn;
-    SourceTextEditorCopy: TJvImgBtn;
-    SourceTextEditorPaste: TJvImgBtn;
-    SourceTextEditorDelete: TJvImgBtn;
-    SourceTextEditorSelectAll: TJvImgBtn;
     JvSpeedButton10: TJvSpeedButton;
     JvSpeedButton11: TJvSpeedButton;
     SelectionTimer: TTimer;
-    SourceTextEditorUndo: TJvImgBtn;
-    SourceTextEditorRedo: TJvImgBtn;
     SourceTextEditorStringHolder: TJvStrHolder;
     TabSheet6: TTabSheet;
     TaskPageHelpAuthoring: TTabSheet;
@@ -1325,10 +1297,7 @@ type
     Panel57: TPanel;
     Edit15: TEdit;
     TreeView4: TTreeView;
-    WebBrowser1: TWebBrowser;
-    Button1: TButton;
     JvSpeedButton12: TJvSpeedButton;
-    JvSpeedButton13: TJvSpeedButton;
     TopicSettingButton: TJvArrowButton;
     TopicSettingPopupMenu: TJvPopupMenu;
     TopicSettingMenuItemPainter: TJvXPMenuItemPainter;
@@ -1369,12 +1338,6 @@ type
     Hidden2: TMenuItem;
     HiddeninTopicList1: TMenuItem;
     Panel58: TPanel;
-    Edit16: TEdit;
-    Edit17: TEdit;
-    JvSpinEdit1: TJvSpinEdit;
-    Label13: TLabel;
-    Label14: TLabel;
-    Label15: TLabel;
     N22: TMenuItem;
     DatabaseButtonPopupMenu: TJvPopupMenu;
     DatabaseButtonPopupMenuPainter: TJvXPMenuItemPainter;
@@ -1413,6 +1376,68 @@ type
     DataSource1: TDataSource;
     DataPageGrid1: TDBGrid;
     JvCheckBox1: TCheckBox;
+    DBComboBox1: TComboBox;
+    ScrollBox39: TScrollBox;
+    SourceTextEditorRedo: TJvImgBtn;
+    SourceTextEditorUndo: TJvImgBtn;
+    SourceTextEditorSelectAll: TJvImgBtn;
+    SourceTextEditorDelete: TJvImgBtn;
+    SourceTextEditorPaste: TJvImgBtn;
+    SourceTextEditorCopy: TJvImgBtn;
+    SourceTextEditorCut: TJvImgBtn;
+    SpeedButton1: TSpeedButton;
+    TranspileOutputEdit: TEdit;
+    Label12: TLabel;
+    RadioGroup1: TRadioGroup;
+    RadioButton2: TRadioButton;
+    RadioButton3: TRadioButton;
+    RadioButton1: TRadioButton;
+    JvImgBtn6: TJvImgBtn;
+    JvImgBtn1: TJvImgBtn;
+    CompileButton: TJvImgBtn;
+    ScrollBox45: TScrollBox;
+    Label13: TLabel;
+    Edit16: TEdit;
+    Label14: TLabel;
+    Edit17: TEdit;
+    Label15: TLabel;
+    JvSpinEdit1: TJvSpinEdit;
+    HTMLEditorView: TPageControl;
+    TabSheet34: TTabSheet;
+    TabSheet45: TTabSheet;
+    ScrollBox46: TScrollBox;
+    WebBrowser1: TWebBrowser;
+    ScrollBox47: TScrollBox;
+    SynEdit1: TSynEdit;
+    SynHTMLSyn1: TSynHTMLSyn;
+    TabSheet46: TTabSheet;
+    JvSpeedButton13: TJvSpeedButton;
+    PageControl6: TPageControl;
+    TabSheet50: TTabSheet;
+    PageScroller2: TPageScroller;
+    XMLDesignButton: TJvSpeedButton;
+    HtmlMenuSpeedButton: TJvSpeedButton;
+    JvImgBtn7: TJvImgBtn;
+    ScrollBox48: TScrollBox;
+    HtmlDesignPanel: TJvDesignPanel;
+    XMLDocument1: TXMLDocument;
+    HintTimer: TTimer;
+    JvXPMenuItemPainter3: TJvXPMenuItemPainter;
+    N27: TMenuItem;
+    N28: TMenuItem;
+    N29: TMenuItem;
+    Exit2: TMenuItem;
+    Open2: TMenuItem;
+    Save2: TMenuItem;
+    SaveAs2: TMenuItem;
+    dBaseForm2: TMenuItem;
+    dBaseTestModule1: TMenuItem;
+    dBaseSQL2: TMenuItem;
+    MenuFilePopup: TJvPopupMenu;
+    MenuFile: TJvArrowButton;
+    HTMLdesignerMenu: TJvPopupMenu;
+    JvXPMenuItemPainter4: TJvXPMenuItemPainter;
+    AddmenuItem1: TMenuItem;
     procedure FormCreate(Sender: TObject);
 
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1566,7 +1591,6 @@ type
     procedure SourceTextEditorMouseDown(Sender: TObject;
       Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     procedure SpeedButton1Click(Sender: TObject);
-    procedure MenuFileClick(Sender: TObject);
     procedure New1MeasureItem(Sender: TObject; ACanvas: TCanvas; var Width,
       Height: Integer);
     procedure DevelopPageDrawTab(Control: TCustomTabControl;
@@ -1595,8 +1619,6 @@ type
     procedure SourceTextEditorPasteClick(Sender: TObject);
     procedure SourceTextEditorCutClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
-    procedure WebBrowser1DocumentComplete(Sender: TObject;
-      const pDisp: IDispatch; var URL: OleVariant);
     procedure DatabaseListButton1Click(Sender: TObject);
     procedure DatabaseTableListButton1Click(Sender: TObject);
     procedure DatabaseTableListButton2Click(Sender: TObject);
@@ -1614,6 +1636,41 @@ type
     procedure NavigatorAddClick(Sender: TObject);
     procedure NavigatorDeleteClick(Sender: TObject);
     procedure NavigatorSaveClick(Sender: TObject);
+    procedure DataPageGrid1DrawColumnCell(Sender: TObject;
+      const Rect: TRect; DataCol: Integer; Column: TColumn;
+      State: TGridDrawState);
+    procedure DataPageGrid1ColExit(Sender: TObject);
+    procedure DataPageGrid1KeyPress(Sender: TObject; var Key: Char);
+    procedure DBComboBox1Change(Sender: TObject);
+    procedure DBComboBox1KeyPress(Sender: TObject; var Key: Char);
+    procedure DataPageGrid1CellClick(Column: TColumn);
+    procedure DBComboBox1Click(Sender: TObject);
+    procedure DBComboBox1Select(Sender: TObject);
+    procedure HtmlDesignPanelPaint(Sender: TObject);
+    procedure HtmlMenuSpeedButtonClick(Sender: TObject);
+    procedure HtmlDesignPanelGetAddClass(Sender: TObject;
+      var ioClass: String);
+    procedure JvImgBtn7Click(Sender: TObject);
+    procedure HintTimerTimer(Sender: TObject);
+    procedure XMLDesignButtonMouseEnter(Sender: TObject);
+    procedure XMLDesignButtonMouseLeave(Sender: TObject);
+    procedure HtmlMenuSpeedButtonMouseEnter(Sender: TObject);
+    procedure HtmlMenuSpeedButtonMouseLeave(Sender: TObject);
+    procedure JvSpeedButton1MouseEnter(Sender: TObject);
+    procedure JvSpeedButton1MouseLeave(Sender: TObject);
+    procedure JvSpeedButton2MouseEnter(Sender: TObject);
+    procedure JvSpeedButton2MouseLeave(Sender: TObject);
+    procedure JvSpeedButton3MouseEnter(Sender: TObject);
+    procedure JvSpeedButton3MouseLeave(Sender: TObject);
+    procedure JvSpeedButton4MouseEnter(Sender: TObject);
+    procedure JvSpeedButton4MouseLeave(Sender: TObject);
+    procedure MenuEditClick(Sender: TObject);
+    procedure MenuFileClick(Sender: TObject);
+    procedure MenuEditMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure MenuFileMouseMove(Sender: TObject; Shift: TShiftState;
+      X, Y: Integer);
+    procedure HtmlDesignPanelSelectionChange(Sender: TObject);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -1628,12 +1685,16 @@ type
     AliasListFlag: Boolean;
     TableNamePath: String;
 
+    DBComboBox1Selected: Boolean;
+
     DataPageGrid1ActiveRow: Integer;
     DataPageGrid2ActiveRow: Integer;
     DataPageGrid1Modified : Integer;
 
     SourceNew: Boolean;
     SourceFileNAme : String;
+
+    function  getSelectedHTMLdesignerComponent: TComponent;
 
     procedure DatabaseButtonPopupMenuOnClick(Sender: TObject);
 
@@ -1658,6 +1719,8 @@ type
   public
     FFrame: TCustomFrame;
     FNewTableName: String;
+
+    ApplicationBalloonHint: TMyHintWindow;
 
     DesignClass: string;
     in_insp: Boolean;
@@ -2029,6 +2092,15 @@ begin
         Invalidate;
       end;
 
+      with HtmlDesignPanel do
+      begin
+        Surface.Active := true;
+        Color := clBtnFace;
+        DrawRules := false;
+        Clear;
+        Invalidate;
+      end;
+
       // source edit/grid
       with SourceCodeGrid do
       begin
@@ -2055,6 +2127,10 @@ begin
       DataPageGrid1ActiveRow  := 1;
       DevPageList.ActivePage := EditorPage;
       DevPanelBar.Tabs[1].Selected := true;
+
+
+      ApplicationBalloonHint := TMyHintWindow.Create(Form2);
+      ApplicationBalloonHint.Parent := Form2;
 
 //      JvEdit1.Parent := n22;
 
@@ -2206,10 +2282,12 @@ procedure TForm2.FormDestroy(Sender: TObject);
 begin
 //  UnLoadPackage(CppModule);
 
+  ApplicationBalloonHint.Free;
   destroy_MyCppFrame;
+
   PopupMenu_TimeAccess.Items.Clear;
 //  FFrame.Free;
-  
+
   iniFile.Free;
 end;
 
@@ -3218,7 +3296,7 @@ begin
 //  end;
 end;
 
-procedure TForm2.DatabaseButtonPopupMenuOnClick(Sender: TObject);
+procedure TForm2.DatabaseButtonPopupMenuOnClick (Sender: TObject);
 var
   s: String;
 begin
@@ -3444,13 +3522,6 @@ begin
   begin
     TranspileOutputEdit.Text := JvSelectDirectory1.Directory
   end;
-end;
-
-procedure TForm2.MenuFileClick(Sender: TObject);
-begin
-  MenuFilePopup.Popup(
-  ScreenToClient(Mouse.CursorPos).X, Form2.Top + 10 +
-  ScreenToClient(Mouse.CursorPos).Y);
 end;
 
 procedure TForm2.New1MeasureItem(Sender: TObject; ACanvas: TCanvas;
@@ -3798,37 +3869,6 @@ var
   v: OleVariant;
   s: String;
 begin
-  s := ExtractFilePath(Application.ExeName) + 'test.html';
-  if not FileExists(s) then
-  begin
-    ShowMessage('test.html not found !');
-    exit;
-  end;
-  s := StringReplace(s,'\','/',[rfReplaceAll]);
-  s := 'file:///'  + s;
-
-  WebBrowser1.Navigate(s);
-  doc := WebBrowser1.Document as IHTMLDocument2;
-  all := doc.all;
-
-  fc := doc.frames;
-//  ShowMessage(Format('frames detected: %d', [fc.Length]));
-
-  for i := 0 to Pred(fc.length) do
-  begin
-    v := i;
-    u := fc.item(v);
-    if u.QueryInterface(IHTMLWindow2, win) = 0 then
-    ShowMessage(win.document.body.innerHTML)
-  end;
-
-  (WebBrowser1.Document as IHTMLDocument2).designMode := 'on';
-end;
-
-procedure TForm2.WebBrowser1DocumentComplete(Sender: TObject;
-  const pDisp: IDispatch; var URL: OleVariant);
-begin
-  (WebBrowser1.Document as IHTMLDocument2).designMode := 'on';
 end;
 
 procedure FileSearch(FileList: TStringList; const dirName: string; ext: String);
@@ -4057,7 +4097,18 @@ begin
       end;
       with AddFieldDef do
       begin
+        Name     := 'FIELD_TYPE';
+        DataType := ftString;
+        Size     := Length(' Auto Increment ');
+      end;
+      with AddFieldDef do
+      begin
         Name     := 'FIELD_LENGTH';
+        DataType := ftInteger;
+      end;
+      with AddFieldDef do
+      begin
+        Name     := 'FIELD_PRECISION';
         DataType := ftInteger;
       end;
     end;
@@ -4227,6 +4278,9 @@ end;
 
 procedure TForm2.DataPageGrid1DblClick(Sender: TObject);
 begin
+  DBComboBox1.Visible := false;
+  DBComboBox1.Enabled := false;
+
   if DataTablePageControl.ActivePage = DataPage then
   begin
   end;
@@ -4239,20 +4293,9 @@ var
 begin
   if DataTablePageControl.ActivePage = DataPage then
   begin
-  (*
-    row := DataPageGrid1.RowCount;
-
-    DataPageGrid1.RowCount := row + 1;
-    DataPageGrid1Modified  := row + 1;
-
-    for idx := 1 to DataPageGrid1.ColCount - 1 do
-    DataPageGrid1.Cells[idx,DataPageGrid1.RowCount] := '';
-
-
-    DataPageGrid1.Selection := TGridRect(Rect(0,
-    row + 1, DataPageGrid1.Width,
-    row + 1));
-    *)
+    if not Table1.Active then Table1.Open;
+    Table1.Append;
+    Table1.Post;
   end;
 end;
 
@@ -4263,36 +4306,10 @@ var
 begin
   if DataTablePageControl.ActivePage = DataPage then
   begin
-  (*
-    if DataPageGrid1Modified > 0 then
-    begin
-      DataPageGrid1Modified := 0;
-      row := DataPageGrid1.RowCount;
-      DataPageGrid1.RowCount := row - 1;
-      exit;
-    end;
-
-    with JvQuery1 do
-    begin
-      if Active then Close;
-      SQL.Clear;
-      SQL.Add('DELETE FROM "' +
-
-      JvDatabaseItems1.DBSession.Databases[0].Directory +
-      DatabaseTableListButton2.Caption +
-      '" WHERE NAME="' +
-      DataPageGrid1.Cells[1,DataPageGrid1.Row] +
-      '";');
-
-      ExecSQL;
-
-      for idx := 1 to DataPageGrid1.ColCount - 1 do
-      DataPageGrid1.Cells[idx,DataPageGrid1.Row] := '';
-
-      row := DataPageGrid1.RowCount;
-      DataPageGrid1.RowCount := row - 1;
-    end;
-    *)
+    if not Table1.Active then Table1.Open;
+    Table1.Delete;
+    Table1.Edit;
+    Table1.Post;
   end;
 end;
 
@@ -4304,43 +4321,389 @@ begin
   if DataTablePageControl.ActivePage = DataPage then
   begin
     ProgressBar1.Active := true;
+    ProgressBar1.Active := false;
+  end;
+end;
 
-    (*
-    // todo !!!
-    col := DataPageGrid1.ColCount - 1;
-    SetLength(fieldString,col);
-
-    if JvTableItems1.Active then JvTableItems1.Close;
-
-    JvTableItems1.DatabaseName :=
-    DatabaseListButton2.Caption;
-
-    JvTableItems1.TableName :=
-    JvDatabaseItems1.DBSession.Databases[0].Directory +
-    DatabaseTableListButton2.Caption;
-
-    JvTableItems1.DataSetField.ReadOnly := false;
-    JvTableItems1.OpenDatabase;
-    JvTableItems1.Active := true;
-
-    for i := 0 to (col - 1) do
-    fieldString[i] := DataPageGrid1.Cells[i+1,0];
-
-    for row := 1 to DataPageGrid1.RowCount - 1 do
+procedure TForm2.DataPageGrid1DrawColumnCell(
+  Sender    : TObject;
+  const Rect: TRect;
+  DataCol   : Integer;
+  Column    : TColumn;
+  State     : TGridDrawState);
+begin
+  if (gdFocused in State) and (Column.Title.Caption = 'FIELD_TYPE') then
+  begin
+    with dbComboBox1 do
     begin
-      for col := 0 to High(fieldString) do
+      Left    := Rect.Left   + DataPageGrid1.Left + 2;
+      Top     := Rect.Top    + DataPageGrid1.Top  + 2;
+
+      Width   := Rect.Right  - Rect.Left;
+      Height  := Rect.Bottom - Rect.Top;
+
+      Visible := true;
+      Enabled := true;
+    end;
+  end else
+  begin
+    dbComboBox1.Enabled := false;
+    dbComboBox1.Visible := false;
+  end;
+end;
+
+procedure TForm2.DataPageGrid1ColExit(Sender: TObject);
+begin
+//  if DataPageGrid1.SelectedField.FieldName = 'FIELD_TYPE' then
+  begin
+    DBComboBox1.Visible := false;
+    DBComboBox1.Enabled := false;
+  end;
+end;
+
+procedure TForm2.DataPageGrid1KeyPress(Sender: TObject; var Key: Char);
+begin
+  if (key = chr(9)) then
+  exit;
+
+  if (DataPageGrid1.SelectedField.FieldName = 'FIELD_TYPE') then
+  begin
+    DBComboBox1.SetFocus;
+    SendMessage(DBComboBox1.Handle, WM_CHAR, WORD(key), 0);
+  end
+end;
+
+procedure TForm2.DBComboBox1Change(Sender: TObject);
+var
+  col: Integer;
+begin
+  Table1.Edit;
+  Table1.FieldByName('FIELD_TYPE').AsString := DBComboBox1.Text;
+  Table1.Post;
+
+  DBComboBox1.Visible := false;
+  DataPageGrid1.SelectedIndex := 2;
+end;
+
+procedure TForm2.DBComboBox1KeyPress(Sender: TObject; var Key: Char);
+begin
+//  if key = #9 then
+  begin
+    Table1.Edit;
+    Table1.FieldByName('FIELD_TYPE').AsString := DBComboBox1.Text;
+    Table1.Post;
+
+    DataPageGrid1.SelectedIndex := 2;
+
+    DBComboBox1.Visible := false;
+    DBComboBox1.Enabled := false;
+  end;
+end;
+
+procedure TForm2.DataPageGrid1CellClick(Column: TColumn);
+begin
+  DBComboBox1.Visible := false;
+  DBComboBox1.Enabled := false;
+end;
+
+procedure TForm2.DBComboBox1Click(Sender: TObject);
+begin
+  Table1.Edit;
+  Table1.FieldByName('FIELD_TYPE').AsString := DBComboBox1.Text;
+  Table1.Post;
+
+  DataPageGrid1.SelectedIndex := 2;
+
+  DBComboBox1.Visible := false;
+  DBComboBox1.Enabled := false;
+end;
+
+procedure TForm2.DBComboBox1Select(Sender: TObject);
+begin
+  Table1.Edit;
+  Table1.FieldByName('FIELD_TYPE').AsString := DBComboBox1.Text;
+  Table1.Post;
+
+  DataPageGrid1.SelectedIndex := 2;
+
+  DBComboBox1.Visible := false;
+  DBComboBox1.Enabled := false;
+end;
+
+procedure TForm2.HtmlDesignPanelPaint(Sender: TObject);
+begin
+  with HtmlDesignPanel do
+    DesignPaintGrid(Canvas, ClientRect, Color);
+end;
+
+procedure TForm2.HtmlMenuSpeedButtonClick(Sender: TObject);
+begin
+  DesignClass := 'TxmlMainMenu';
+end;
+
+procedure TForm2.HtmlDesignPanelGetAddClass(Sender: TObject;
+  var ioClass: String);
+begin
+  ioClass := DesignClass;
+
+  DesignClass := '';
+  XmlDesignButton.Down := true;
+end;
+
+procedure TForm2.JvImgBtn7Click(Sender: TObject);
+var
+  XMLrootNode : IXMLnode;
+  XMLnode     : IXMLnode;
+
+  XMLattribute: string;
+  XMLindex    : Integer;
+
+  XMLfile, XMLcss, XMLtitle : String;
+
+  HTMLstream  : TMemoryStream;
+  HTMLbuffer  : String;
+begin
+  XMLfile := ExtractFilePath(Application.ExeName) + 'index.xml';
+  if not FileExists(XMLfile) then
+  begin
+    ShowMessage('file does not exists: ' + #13#10 + XMLfile);
+    exit;
+  end;
+
+  XMLdocument1.LoadFromFile(XMLfile);
+  XMLrootNode := XMLdocument1.ChildNodes.FindNode('html');
+
+  if XMLrootNode = nil then
+  begin
+    ShowMessage('no valid html xml document.');
+    exit;
+  end;
+
+  // cascading style sheet template
+  if XMLrootNode.HasAttribute('css') then
+     XMLcss   := XMLrootNode.Attributes['css'];
+  if XMLrootNode.HasAttribute('title') then
+     XMLtitle := XMLrootNode.Attributes['title'];
+
+
+  HTMLbuffer :=
+  '<!DOCTYPE html>'    + #13#10 +
+  '<html>'  + #13#10#9 +
+  '<head>'  + #13#10#9 ;
+
+  if Length(Trim(XMLtitle)) > 0 then
+  HTMLbuffer := HTMLbuffer  + #9  +
+  '<title>' + XMLtitle + '</title>' + #13#10#9;
+
+  if Length(Trim(XMLcss)) > 0 then
+  HTMLbuffer := HTMLbuffer + #9 +
+  '<link rel="stylesheet" href="'   + XMLcss + '">' + #13#10#9;
+
+  HTMLbuffer := HTMLbuffer +
+  '</head>' + #13#10 +
+  '<body>'  + #13#10 ;
+
+  // traverse child nodes ...
+  for XMLindex := 0 to XMLrootNode.ChildNodes.Count - 1 do
+  begin
+    XMLnode := XMLrootNode.ChildNodes.Get(XMLindex);
+    if XMLnode.NodeType = ntText then
+    begin
+      ShowMessage('ATEXT: ' + XMLnode.Text);
+    end else
+    if XMLnode.IsTextElement then
+    begin
+      ShowMessage('ETEXT: ' + #13#10 + XMLnode.Text);
+    end;
+  end;
+
+  HTMLbuffer := HTMLbuffer +
+  '</body>' + #13#10 +
+  '</html>' + #13#10 ;
+
+  HTMLstream := TMemoryStream.Create;
+  HTMLstream.WriteBuffer(HTMLbuffer[1],Length(HTMLbuffer));
+  HTMLstream.SaveToFile(ChangeFileExt(XMLfile,'.html'));
+  HTMLstream.Free;
+end;
+
+procedure TForm2.HintTimerTimer(Sender: TObject);
+begin
+  if ApplicationBalloonHint.Enabled then
+  begin
+    ApplicationBalloonHint.HideHint;
+    HintTimer.Enabled := false;
+  end;
+end;
+
+procedure TForm2.XMLDesignButtonMouseEnter(Sender: TObject);
+begin
+  with ApplicationBalloonHint do
+  begin
+    Description := 'Mouse Cursor / Selector';
+    Caption     := 'Mouse';
+    ShowHint(Mouse.CursorPos);
+  end;
+  HintTimer.Enabled := true;
+end;
+
+procedure TForm2.XMLDesignButtonMouseLeave(Sender: TObject);
+begin
+  HintTimer.Enabled := false;
+  ApplicationBalloonHint.Visible := false;
+end;
+
+procedure TForm2.HtmlMenuSpeedButtonMouseEnter(Sender: TObject);
+begin
+  with ApplicationBalloonHint do
+  begin
+    Description := 'HTML Main-Menu';
+    Caption     := 'MainMenu';
+    ShowHint(Mouse.CursorPos);
+  end;
+  HintTimer.Enabled := true;
+end;
+
+procedure TForm2.HtmlMenuSpeedButtonMouseLeave(Sender: TObject);
+begin
+  HintTimer.Enabled := false;
+  ApplicationBalloonHint.Visible := false;
+end;
+
+procedure TForm2.JvSpeedButton1MouseEnter(Sender: TObject);
+begin
+  with ApplicationBalloonHint do
+  begin
+    Description := 'TMouse Cursor / Selector';
+    Caption     := 'Mouse';
+    ShowHint(Mouse.CursorPos);
+  end;
+  HintTimer.Enabled := true;
+end;
+
+procedure TForm2.JvSpeedButton1MouseLeave(Sender: TObject);
+begin
+  HintTimer.Enabled := false;
+  ApplicationBalloonHint.Visible := false;
+end;
+
+procedure TForm2.JvSpeedButton2MouseEnter(Sender: TObject);
+begin
+  with ApplicationBalloonHint do
+  begin
+    Description := 'Create / Edit the application main menu';
+    Caption     := 'TMainMenu';
+    ShowHint(Mouse.CursorPos);
+  end;
+  HintTimer.Enabled := true;
+end;
+
+procedure TForm2.JvSpeedButton2MouseLeave(Sender: TObject);
+begin
+  HintTimer.Enabled := false;
+  ApplicationBalloonHint.Visible := false;
+end;
+
+procedure TForm2.JvSpeedButton3MouseEnter(Sender: TObject);
+begin
+  with ApplicationBalloonHint do
+  begin
+    Description := 'Create / Edit the application popup menu';
+    Caption     := 'TMainPopupMenu';
+    ShowHint(Mouse.CursorPos);
+  end;
+  HintTimer.Enabled := true;
+end;
+
+procedure TForm2.JvSpeedButton3MouseLeave(Sender: TObject);
+begin
+  HintTimer.Enabled := false;
+  ApplicationBalloonHint.Visible := false;
+end;
+
+procedure TForm2.JvSpeedButton4MouseEnter(Sender: TObject);
+begin
+  with ApplicationBalloonHint do
+  begin
+    Description := 'Create a Text-Label';
+    Caption     := 'TLabel';
+    ShowHint(Mouse.CursorPos);
+  end;
+  HintTimer.Enabled := true;
+end;
+
+procedure TForm2.JvSpeedButton4MouseLeave(Sender: TObject);
+begin
+  HintTimer.Enabled := false;
+  ApplicationBalloonHint.Visible := false;
+end;
+
+procedure TForm2.MenuEditClick(Sender: TObject);
+begin
+  MenuFilePopup.Popup(
+  ScreenToClient(Mouse.CursorPos).X, Form2.Top + 10 +
+  ScreenToClient(Mouse.CursorPos).Y);
+end;
+
+procedure TForm2.MenuFileClick(Sender: TObject);
+begin
+  MenuFilePopup.Popup(
+  ScreenToClient(Mouse.CursorPos).X, Form2.Top + 10 +
+  ScreenToClient(Mouse.CursorPos).Y);
+end;
+
+procedure TForm2.MenuEditMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  MenuFile.FillFont.Style := [];
+  MenuFile.Font.Style := [];
+
+  MenuEdit.FillFont.Style := [fsBold];
+  MenuEdit.Font.Style := [fsBold];
+end;
+
+procedure TForm2.MenuFileMouseMove(Sender: TObject;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  MenuEdit.FillFont.Style := [];
+  MenuEdit.Font.Style := [];
+
+  MenuFile.FillFont.Style := [fsBold];
+  MenuFile.Font.Style := [fsBold];
+end;
+
+procedure TForm2.HtmlDesignPanelSelectionChange(Sender: TObject);
+var
+  tc: TComponent;
+begin
+  tc := getSelectedHTMLdesignerComponent;
+end;
+
+function TForm2.getSelectedHTMLdesignerComponent: TComponent;
+var
+  idx: Integer;
+  tc: TControl;
+begin
+  result := nil;
+  with HtmlDesignPanel do
+  begin
+    for idx := 0 to ControlCount - 1 do
+    begin
+      tc := Controls[idx];
+      ActiveDesignerControl := tc;
+      if Surface.Selector.IsSelected(tc) then
       begin
-        with JvTableItems1 do
+        if tc.ClassName = 'TxmlMainMenu' then
         begin
-          Append;
-//          FieldByName(fieldString[col]).AsString := 'ooo';
+          with TxmlMainMenu(tc) do
+          begin
+            Align := alTop;
+            result := tc;
+            exit;
+          end;
         end;
       end;
     end;
-
-    DatabaseTableListButton2Click(Sender);
-    *)
-    ProgressBar1.Active := false;
   end;
 end;
 
@@ -4354,6 +4717,8 @@ initialization
   RegisterClass(TJvImgBtn);
   RegisterClass(TButton);
   RegisterClass(TEdit);
+
+  RegisterClass(TxmlMainMenu);
 
   TJvInspectorAlignItem.RegisterAsDefaultItem;
   TJvInspectorAnchorsItem.RegisterAsDefaultItem;

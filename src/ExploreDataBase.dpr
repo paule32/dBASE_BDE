@@ -20,7 +20,9 @@ uses
   Unit1 in 'Unit1.pas' {DataBaseExplorer: TAppletModule},
   SetupLocale in 'SetupLocale.pas' {SetupLocaleFrame: TFrame},
   parseDBASE in 'parseDBASE.pas',
-  NewTableDialog in 'NewTableDialog.pas' {OKRightDlg};
+  NewTableDialog in 'NewTableDialog.pas' {OKRightDlg},
+  MyHintWindow in 'MyHintWindow.pas',
+  XMLmainMenu in 'XMLmainMenu.pas';
 
 {$R *.res}
 

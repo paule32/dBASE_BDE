@@ -1,8 +1,8 @@
 object Form2: TForm2
-  Left = 4
-  Top = 54
-  Width = 1291
-  Height = 701
+  Left = 21
+  Top = 126
+  Width = 1162
+  Height = 679
   Caption = 'DataBase Explorer (c) 2022 Jens Kallup 1.0.0'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,8 +20,8 @@ object Form2: TForm2
   TextHeight = 13
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 639
-    Width = 1275
+    Top = 617
+    Width = 1146
     Height = 23
     Panels = <
       item
@@ -44,29 +44,29 @@ object Form2: TForm2
   object ScrollBox2: TScrollBox
     Left = 0
     Top = 0
-    Width = 1275
-    Height = 639
+    Width = 1146
+    Height = 617
     Align = alClient
     TabOrder = 1
     object ScrollView: TScrollBox
       Left = 0
       Top = 0
-      Width = 1271
-      Height = 635
+      Width = 1142
+      Height = 613
       Align = alClient
       TabOrder = 0
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 1267
-        Height = 631
+        Width = 1138
+        Height = 609
         Align = alClient
         Caption = 'Panel2'
         TabOrder = 0
         object JvSplitter1: TJvSplitter
           Left = 1
           Top = 17
-          Width = 1265
+          Width = 1136
           Height = 3
           Cursor = crVSplit
           Align = alTop
@@ -74,7 +74,7 @@ object Form2: TForm2
         object BackgroundViewPanel: TJvPanel
           Left = 1
           Top = 1
-          Width = 1265
+          Width = 1136
           Height = 16
           Align = alTop
           TabOrder = 3
@@ -82,9 +82,9 @@ object Form2: TForm2
         object TasksPageControl: TPageControl
           Left = 1
           Top = 126
-          Width = 1265
-          Height = 504
-          ActivePage = TaskPageDevelopment
+          Width = 1136
+          Height = 482
+          ActivePage = TaskPageHelpAuthoring
           Align = alClient
           TabOrder = 0
           OnChange = TasksPageControlChange
@@ -94,21 +94,21 @@ object Form2: TForm2
             object ScrollBox23: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 476
+              Width = 1128
+              Height = 454
               Align = alClient
               TabOrder = 0
               object Splitter3: TSplitter
                 Left = 201
                 Top = 0
                 Width = 4
-                Height = 472
+                Height = 450
               end
               object Panel22: TPanel
                 Left = 0
                 Top = 0
                 Width = 201
-                Height = 472
+                Height = 450
                 Align = alLeft
                 Caption = 'Panel3'
                 TabOrder = 0
@@ -116,7 +116,7 @@ object Form2: TForm2
                   Left = 1
                   Top = 1
                   Width = 199
-                  Height = 470
+                  Height = 448
                   ActivePage = TabSheet31
                   Align = alClient
                   TabOrder = 0
@@ -146,7 +146,7 @@ object Form2: TForm2
                       Left = 0
                       Top = 172
                       Width = 191
-                      Height = 270
+                      Height = 248
                       ActivePage = TabSheet30
                       Align = alClient
                       TabOrder = 1
@@ -324,20 +324,20 @@ object Form2: TForm2
               object ScrollBox1: TScrollBox
                 Left = 205
                 Top = 0
-                Width = 1048
-                Height = 472
+                Width = 919
+                Height = 450
                 Align = alClient
                 TabOrder = 1
                 object Splitter7: TSplitter
                   Left = 0
                   Top = 231
-                  Width = 1044
+                  Width = 915
                   Height = 9
                   Cursor = crVSplit
                   Align = alBottom
                 end
                 object Splitter8: TSplitter
-                  Left = 669
+                  Left = 540
                   Top = 25
                   Height = 206
                   Align = alRight
@@ -345,7 +345,7 @@ object Form2: TForm2
                 object Panel7: TPanel
                   Left = 0
                   Top = 0
-                  Width = 1044
+                  Width = 915
                   Height = 25
                   Align = alTop
                   BevelInner = bvSpace
@@ -363,8 +363,8 @@ object Form2: TForm2
                 object Panel8: TPanel
                   Left = 0
                   Top = 240
-                  Width = 1044
-                  Height = 228
+                  Width = 915
+                  Height = 206
                   Align = alBottom
                   Anchors = [akLeft, akTop, akRight, akBottom]
                   Caption = 'Panel8'
@@ -372,8 +372,8 @@ object Form2: TForm2
                   object PageControl5: TPageControl
                     Left = 1
                     Top = 1
-                    Width = 1042
-                    Height = 226
+                    Width = 913
+                    Height = 204
                     ActivePage = TabSheet3
                     Align = alClient
                     TabOrder = 0
@@ -561,7 +561,7 @@ object Form2: TForm2
                   end
                 end
                 object PageControl4: TPageControl
-                  Left = 672
+                  Left = 543
                   Top = 25
                   Width = 372
                   Height = 206
@@ -690,12 +690,12 @@ object Form2: TForm2
                 object ScrollBox22: TScrollBox
                   Left = 0
                   Top = 25
-                  Width = 669
+                  Width = 540
                   Height = 206
                   Align = alClient
                   TabOrder = 3
                   DesignSize = (
-                    665
+                    536
                     202)
                   object SystemViewGrid: TStringGrid
                     Left = 0
@@ -746,7 +746,7 @@ object Form2: TForm2
                   object PageControl9: TPageControl
                     Left = 280
                     Top = 8
-                    Width = 382
+                    Width = 253
                     Height = 185
                     ActivePage = TabSheet22
                     Anchors = [akLeft, akTop, akRight]
@@ -797,15 +797,15 @@ object Form2: TForm2
             object ScrollBox20: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 476
+              Width = 1128
+              Height = 454
               Align = alClient
               TabOrder = 0
               object PageControl11: TPageControl
                 Left = 0
                 Top = 0
-                Width = 1253
-                Height = 472
+                Width = 1124
+                Height = 450
                 ActivePage = TabSheet23
                 Align = alClient
                 TabOrder = 0
@@ -829,15 +829,15 @@ object Form2: TForm2
             object ScrollBox25: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 476
+              Width = 1128
+              Height = 454
               Align = alClient
               TabOrder = 0
               object PageControl1: TPageControl
                 Left = 0
                 Top = 0
-                Width = 1253
-                Height = 472
+                Width = 1124
+                Height = 450
                 ActivePage = TabSheet11
                 Align = alClient
                 TabOrder = 0
@@ -861,15 +861,15 @@ object Form2: TForm2
             object ScrollBox19: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 476
+              Width = 1128
+              Height = 454
               Align = alClient
               TabOrder = 0
               object PageControl2: TPageControl
                 Left = 0
                 Top = 0
-                Width = 1253
-                Height = 472
+                Width = 1124
+                Height = 450
                 ActivePage = TabSheet21
                 Align = alClient
                 TabOrder = 0
@@ -893,15 +893,15 @@ object Form2: TForm2
             object ScrollBox5: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 476
+              Width = 1128
+              Height = 454
               Align = alClient
               TabOrder = 0
               object PageControl7: TPageControl
                 Left = 0
                 Top = 0
                 Width = 985
-                Height = 472
+                Height = 450
                 ActivePage = TabSheet8
                 Align = alLeft
                 TabOrder = 0
@@ -934,7 +934,7 @@ object Form2: TForm2
                     Left = 0
                     Top = 0
                     Width = 977
-                    Height = 444
+                    Height = 422
                     Align = alClient
                     TabOrder = 0
                     object Label5: TLabel
@@ -1500,12 +1500,12 @@ object Form2: TForm2
                     Left = 0
                     Top = 0
                     Width = 977
-                    Height = 444
+                    Height = 422
                     Align = alClient
                     TabOrder = 0
                     DesignSize = (
                       973
-                      440)
+                      418)
                     object Panel15: TPanel
                       Left = 8
                       Top = 8
@@ -1578,7 +1578,7 @@ object Form2: TForm2
                       Left = 8
                       Top = 128
                       Width = 753
-                      Height = 328
+                      Height = 306
                       ActivePage = TabSheet39
                       Anchors = [akLeft, akTop, akBottom]
                       TabOrder = 1
@@ -1610,7 +1610,7 @@ object Form2: TForm2
                       Left = 784
                       Top = 149
                       Width = 177
-                      Height = 307
+                      Height = 285
                       Anchors = [akLeft, akTop, akBottom]
                       ItemHeight = 13
                       TabOrder = 2
@@ -1624,12 +1624,12 @@ object Form2: TForm2
                     Left = 0
                     Top = 0
                     Width = 977
-                    Height = 444
+                    Height = 422
                     Align = alClient
                     TabOrder = 0
                     DesignSize = (
                       973
-                      440)
+                      418)
                     object Panel19: TPanel
                       Left = 8
                       Top = 8
@@ -1763,21 +1763,21 @@ object Form2: TForm2
                     Left = 0
                     Top = 0
                     Width = 977
-                    Height = 444
+                    Height = 422
                     Align = alClient
                     TabOrder = 0
                     DesignSize = (
                       973
-                      440)
+                      418)
                     object Panel20: TPanel
                       Left = 8
                       Top = 8
-                      Width = 601
+                      Width = 577
                       Height = 145
                       Anchors = [akLeft, akTop, akRight]
                       TabOrder = 0
                       DesignSize = (
-                        601
+                        577
                         145)
                       object Button18: TButton
                         Left = 8
@@ -1830,7 +1830,7 @@ object Form2: TForm2
                       object ListBox3: TListBox
                         Left = 240
                         Top = 8
-                        Width = 345
+                        Width = 321
                         Height = 121
                         Anchors = [akLeft, akTop, akRight]
                         ItemHeight = 13
@@ -1862,7 +1862,7 @@ object Form2: TForm2
                     Left = 0
                     Top = 0
                     Width = 977
-                    Height = 444
+                    Height = 422
                     Align = alClient
                     TabOrder = 0
                     object Label11: TLabel
@@ -2112,20 +2112,20 @@ object Form2: TForm2
             object ScrollBox6: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 476
+              Width = 1128
+              Height = 454
               Align = alClient
               TabOrder = 0
               object Splitter14: TSplitter
                 Left = 185
                 Top = 0
-                Height = 472
+                Height = 450
               end
               object Panel14: TPanel
                 Left = 0
                 Top = 0
                 Width = 185
-                Height = 472
+                Height = 450
                 Align = alLeft
                 TabOrder = 0
                 object Splitter19: TSplitter
@@ -2157,12 +2157,12 @@ object Form2: TForm2
                   TabOrder = 1
                   OnClick = SetupPageTreeViewClick
                   Items.Data = {
-                    02000000220000000100000001000000FFFFFFFFFFFFFFFF0100000002000000
+                    02000000220000000000000000000000FFFFFFFFFFFFFFFF0100000002000000
                     094C616E67756167657320000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
                     00000000000007456E676C6973681F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                    FFFF0000000000000000064765726D616E210000000100000001000000FFFFFF
-                    FFFFFFFFFF0100000002000000084D616E696665737424000000FFFFFFFFFFFF
-                    FFFFFFFFFFFFFFFFFFFF01000000000000000B4170706C69636174696F6E2200
+                    FFFF0000000000000000064765726D616E210000000000000000000000FFFFFF
+                    FFFFFFFFFF0100000002000000084D616E696665737424000000020000000200
+                    0000FFFFFFFFFFFFFFFF01000000000000000B4170706C69636174696F6E2200
                     0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000009526573736F
                     75726365}
                   Items.Links = {06000000010000000000000000000000010000000100000000000000}
@@ -2171,15 +2171,15 @@ object Form2: TForm2
               object Panel29: TPanel
                 Left = 188
                 Top = 0
-                Width = 1065
-                Height = 472
+                Width = 936
+                Height = 450
                 Align = alClient
                 Caption = 'Panel29'
                 TabOrder = 1
                 object Splitter16: TSplitter
                   Left = 1
-                  Top = 349
-                  Width = 1063
+                  Top = 327
+                  Width = 934
                   Height = 3
                   Cursor = crVSplit
                   Align = alBottom
@@ -2187,21 +2187,21 @@ object Form2: TForm2
                 object Splitter17: TSplitter
                   Left = 1
                   Top = 42
-                  Width = 1063
+                  Width = 934
                   Height = 3
                   Cursor = crVSplit
                   Align = alTop
                 end
                 object Splitter18: TSplitter
-                  Left = 851
+                  Left = 722
                   Top = 45
-                  Height = 304
+                  Height = 282
                   Align = alRight
                 end
                 object Panel31: TPanel
                   Left = 1
-                  Top = 352
-                  Width = 1063
+                  Top = 330
+                  Width = 934
                   Height = 119
                   Align = alBottom
                   Caption = 'Panel31'
@@ -2210,17 +2210,17 @@ object Form2: TForm2
                 object Panel32: TPanel
                   Left = 1
                   Top = 1
-                  Width = 1063
+                  Width = 934
                   Height = 41
                   Align = alTop
                   Caption = 'Panel32'
                   TabOrder = 1
                 end
                 object Panel33: TPanel
-                  Left = 854
+                  Left = 725
                   Top = 45
                   Width = 210
-                  Height = 304
+                  Height = 282
                   Align = alRight
                   Caption = 'Panel33'
                   TabOrder = 2
@@ -2228,32 +2228,32 @@ object Form2: TForm2
                 object SetupPageList: TJvPageList
                   Left = 1
                   Top = 45
-                  Width = 850
-                  Height = 304
+                  Width = 721
+                  Height = 282
                   ActivePage = SetupPageLanguage
                   PropagateEnable = False
                   Align = alClient
                   object SetupPageLanguage: TJvStandardPage
                     Left = 0
                     Top = 0
-                    Width = 850
-                    Height = 304
+                    Width = 721
+                    Height = 282
                     Caption = 'JvStandardPage1'
                     object ScrollBox38: TScrollBox
                       Left = 0
                       Top = 0
-                      Width = 850
-                      Height = 304
+                      Width = 721
+                      Height = 282
                       Align = alClient
                       TabOrder = 0
                       DesignSize = (
-                        846
-                        300)
+                        717
+                        278)
                       object SetupLangPageControl: TPageControl
                         Left = 0
                         Top = 0
-                        Width = 842
-                        Height = 293
+                        Width = 713
+                        Height = 271
                         ActivePage = SetupPageLangDEU
                         Anchors = [akLeft, akTop, akRight, akBottom]
                         TabOrder = 0
@@ -2266,8 +2266,8 @@ object Form2: TForm2
                           object ScrollBox40: TScrollBox
                             Left = 0
                             Top = 0
-                            Width = 834
-                            Height = 265
+                            Width = 705
+                            Height = 243
                             Align = alClient
                             TabOrder = 0
                           end
@@ -2278,8 +2278,8 @@ object Form2: TForm2
                   object LangPage0: TJvStandardPage
                     Left = 0
                     Top = 0
-                    Width = 850
-                    Height = 304
+                    Width = 721
+                    Height = 282
                     object SetupLangInfoLabel: TLabel
                       Left = 8
                       Top = 8
@@ -2300,8 +2300,8 @@ object Form2: TForm2
             ImageIndex = 7
             object DevPanelBar: TJvTabBar
               Left = 0
-              Top = 452
-              Width = 1257
+              Top = 430
+              Width = 1128
               Height = 24
               Align = alClient
               CloseButton = False
@@ -2326,36 +2326,36 @@ object Form2: TForm2
             object DevPageList: TJvPageList
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 452
-              ActivePage = TableDataPage
+              Width = 1128
+              Height = 430
+              ActivePage = EditorPage
               PropagateEnable = False
               Align = alTop
               Anchors = [akLeft, akTop, akRight, akBottom]
               object DesignerPage: TJvStandardPage
                 Left = 0
                 Top = 0
-                Width = 1257
-                Height = 452
+                Width = 1128
+                Height = 430
                 Caption = 'DesignerPage'
                 OnShow = DesignerPageShow
                 object ScrollBox31: TScrollBox
                   Left = 0
                   Top = 0
-                  Width = 1257
-                  Height = 452
+                  Width = 1128
+                  Height = 430
                   Align = alClient
                   TabOrder = 0
                   object Splitter4: TSplitter
                     Left = 193
                     Top = 0
-                    Height = 448
+                    Height = 426
                   end
                   object Panel16: TPanel
                     Left = 0
                     Top = 0
                     Width = 193
-                    Height = 448
+                    Height = 426
                     Align = alLeft
                     TabOrder = 0
                     object Splitter5: TSplitter
@@ -2442,7 +2442,7 @@ object Form2: TForm2
                       Left = 1
                       Top = 386
                       Width = 191
-                      Height = 61
+                      Height = 39
                       Align = alClient
                       Columns = <>
                       TabOrder = 3
@@ -2451,20 +2451,20 @@ object Form2: TForm2
                   object Panel18: TPanel
                     Left = 196
                     Top = 0
-                    Width = 1057
-                    Height = 448
+                    Width = 928
+                    Height = 426
                     Align = alClient
                     Caption = 'Panel18'
                     TabOrder = 1
                     object Splitter6: TSplitter
-                      Left = 769
+                      Left = 640
                       Top = 33
                       Height = 414
                     end
                     object Panel21: TPanel
                       Left = 1
                       Top = 1
-                      Width = 1055
+                      Width = 926
                       Height = 32
                       Align = alTop
                       Caption = 'Panel17'
@@ -2484,7 +2484,7 @@ object Form2: TForm2
                     object Panel25: TPanel
                       Left = 1
                       Top = 33
-                      Width = 768
+                      Width = 639
                       Height = 414
                       Align = alLeft
                       Anchors = [akLeft, akTop, akRight, akBottom]
@@ -2493,7 +2493,7 @@ object Form2: TForm2
                       object JvDesignScrollBox1: TJvDesignScrollBox
                         Left = 1
                         Top = 1
-                        Width = 766
+                        Width = 637
                         Height = 412
                         Align = alLeft
                         Anchors = [akLeft, akTop, akRight, akBottom]
@@ -2510,7 +2510,7 @@ object Form2: TForm2
                       end
                     end
                     object ScrollBox32: TScrollBox
-                      Left = 772
+                      Left = 643
                       Top = 33
                       Width = 284
                       Height = 414
@@ -2538,40 +2538,40 @@ object Form2: TForm2
               object EditorPage: TJvStandardPage
                 Left = 0
                 Top = 0
-                Width = 1257
-                Height = 452
+                Width = 1128
+                Height = 430
                 Caption = 'EditorPage'
                 OnShow = EditorPageShow
                 object ScrollBox30: TScrollBox
                   Left = 0
                   Top = 0
-                  Width = 1257
-                  Height = 452
+                  Width = 1128
+                  Height = 430
                   Align = alClient
                   TabOrder = 0
                   object Panel4: TPanel
                     Left = 0
                     Top = 0
-                    Width = 1253
-                    Height = 448
+                    Width = 1124
+                    Height = 426
                     Align = alClient
                     TabOrder = 0
                     object Splitter10: TSplitter
                       Left = 161
                       Top = 1
-                      Height = 446
+                      Height = 424
                     end
                     object Splitter11: TSplitter
-                      Left = 1036
+                      Left = 907
                       Top = 1
-                      Height = 446
+                      Height = 424
                       Align = alRight
                     end
                     object PageControl12: TPageControl
-                      Left = 1039
+                      Left = 910
                       Top = 1
                       Width = 213
-                      Height = 446
+                      Height = 424
                       ActivePage = TabSheet38
                       Align = alRight
                       TabOrder = 0
@@ -2581,7 +2581,7 @@ object Form2: TForm2
                           Left = 0
                           Top = 0
                           Width = 205
-                          Height = 418
+                          Height = 396
                           Align = alClient
                           TabOrder = 0
                           object Splitter12: TSplitter
@@ -2697,7 +2697,7 @@ object Form2: TForm2
                             Left = 0
                             Top = 237
                             Width = 201
-                            Height = 177
+                            Height = 155
                             Align = alClient
                             TabOrder = 2
                             object SynEdit2: TSynEdit
@@ -2728,7 +2728,7 @@ object Form2: TForm2
                       Left = 1
                       Top = 1
                       Width = 160
-                      Height = 446
+                      Height = 424
                       Align = alLeft
                       TabOrder = 1
                       object Splitter1: TSplitter
@@ -2790,7 +2790,7 @@ object Form2: TForm2
                         Left = 1
                         Top = 257
                         Width = 158
-                        Height = 188
+                        Height = 166
                         Align = alClient
                         Columns = 1
                         ItemHeight = 13
@@ -2804,14 +2804,14 @@ object Form2: TForm2
                     object Panel6: TPanel
                       Left = 164
                       Top = 1
-                      Width = 872
-                      Height = 446
+                      Width = 743
+                      Height = 424
                       Align = alClient
                       TabOrder = 2
                       object Splitter2: TSplitter
                         Left = 1
                         Top = 392
-                        Width = 870
+                        Width = 741
                         Height = 3
                         Cursor = crVSplit
                         Align = alTop
@@ -2819,19 +2819,19 @@ object Form2: TForm2
                       object EditorScrollBox: TScrollBox
                         Left = 1
                         Top = 80
-                        Width = 870
+                        Width = 741
                         Height = 312
                         Align = alTop
                         TabOrder = 0
                         object Splitter21: TSplitter
-                          Left = 552
+                          Left = 407
                           Top = 0
                           Height = 308
                         end
                         object Panel48: TPanel
                           Left = 0
                           Top = 0
-                          Width = 552
+                          Width = 407
                           Height = 308
                           Align = alLeft
                           Anchors = [akLeft, akTop, akRight]
@@ -2840,7 +2840,7 @@ object Form2: TForm2
                           object SourceTextEditor: TSynEdit
                             Left = 1
                             Top = 1
-                            Width = 550
+                            Width = 405
                             Height = 306
                             Align = alClient
                             Font.Charset = DEFAULT_CHARSET
@@ -2871,23 +2871,13 @@ object Form2: TForm2
                             FontSmoothing = fsmNone
                           end
                         end
-                        object Panel49: TPanel
-                          Left = 555
+                        object ScrollBox39: TScrollBox
+                          Left = 410
                           Top = 0
-                          Width = 311
+                          Width = 327
                           Height = 308
                           Align = alClient
                           TabOrder = 1
-                          DesignSize = (
-                            311
-                            308)
-                          object Label12: TLabel
-                            Left = 17
-                            Top = 121
-                            Width = 80
-                            Height = 13
-                            Caption = 'Output Directory:'
-                          end
                           object SpeedButton1: TSpeedButton
                             Left = 252
                             Top = 136
@@ -2895,14 +2885,139 @@ object Form2: TForm2
                             Height = 33
                             OnClick = SpeedButton1Click
                           end
-                          object CompileButton: TJvImgBtn
+                          object Label12: TLabel
+                            Left = 17
+                            Top = 121
+                            Width = 80
+                            Height = 13
+                            Caption = 'Output Directory:'
+                          end
+                          object SourceTextEditorRedo: TJvImgBtn
                             Tag = 1
-                            Left = 13
-                            Top = 11
+                            Left = 211
+                            Top = 251
                             Width = 75
                             Height = 27
-                            Caption = 'Transpile'
+                            Caption = 'Redo'
                             TabOrder = 0
+                            OnClick = SourceTextEditorDeleteClick
+                            Color = 8454016
+                          end
+                          object SourceTextEditorUndo: TJvImgBtn
+                            Tag = 1
+                            Left = 211
+                            Top = 187
+                            Width = 75
+                            Height = 27
+                            Caption = 'Undo'
+                            TabOrder = 1
+                            OnClick = SourceTextEditorUndoClick
+                            Color = 8454016
+                          end
+                          object SourceTextEditorSelectAll: TJvImgBtn
+                            Tag = 1
+                            Left = 117
+                            Top = 251
+                            Width = 75
+                            Height = 27
+                            Caption = 'Select All'
+                            TabOrder = 2
+                            OnClick = SourceTextEditorSelectAllClick
+                            Color = 8454016
+                          end
+                          object SourceTextEditorDelete: TJvImgBtn
+                            Tag = 1
+                            Left = 117
+                            Top = 187
+                            Width = 75
+                            Height = 27
+                            Caption = 'Delete'
+                            TabOrder = 3
+                            OnClick = SourceTextEditorDeleteClick
+                            Color = 8454016
+                          end
+                          object SourceTextEditorPaste: TJvImgBtn
+                            Tag = 1
+                            Left = 13
+                            Top = 251
+                            Width = 75
+                            Height = 27
+                            Caption = 'Paste'
+                            TabOrder = 4
+                            OnClick = SourceTextEditorPasteClick
+                            Color = 8454016
+                          end
+                          object SourceTextEditorCopy: TJvImgBtn
+                            Tag = 1
+                            Left = 13
+                            Top = 219
+                            Width = 75
+                            Height = 27
+                            Caption = 'Copy'
+                            TabOrder = 5
+                            OnClick = SourceTextEditorCopyClick
+                            Color = 8454016
+                          end
+                          object SourceTextEditorCut: TJvImgBtn
+                            Tag = 1
+                            Left = 13
+                            Top = 187
+                            Width = 75
+                            Height = 27
+                            Caption = 'Cut'
+                            TabOrder = 6
+                            OnClick = SourceTextEditorCutClick
+                            Color = 8454016
+                          end
+                          object TranspileOutputEdit: TEdit
+                            Left = 15
+                            Top = 144
+                            Width = 218
+                            Height = 21
+                            TabOrder = 7
+                          end
+                          object RadioGroup1: TRadioGroup
+                            Left = 111
+                            Top = 8
+                            Width = 170
+                            Height = 97
+                            Caption = ' Output: '
+                            TabOrder = 8
+                          end
+                          object RadioButton2: TRadioButton
+                            Left = 123
+                            Top = 75
+                            Width = 142
+                            Height = 17
+                            Caption = 'C++ Builder VCL'
+                            TabOrder = 9
+                          end
+                          object RadioButton3: TRadioButton
+                            Left = 123
+                            Top = 51
+                            Width = 142
+                            Height = 17
+                            Caption = 'GNU C++ Qt5'
+                            TabOrder = 10
+                          end
+                          object RadioButton1: TRadioButton
+                            Left = 123
+                            Top = 27
+                            Width = 142
+                            Height = 17
+                            Caption = 'Delphi VCL'
+                            Checked = True
+                            TabOrder = 11
+                            TabStop = True
+                          end
+                          object JvImgBtn6: TJvImgBtn
+                            Tag = 1
+                            Left = 13
+                            Top = 79
+                            Width = 75
+                            Height = 26
+                            Caption = 'Compile'
+                            TabOrder = 12
                             OnClick = CompileButtonClick
                             Color = clLime
                           end
@@ -2913,158 +3028,36 @@ object Form2: TForm2
                             Width = 75
                             Height = 26
                             Caption = 'Interpret'
-                            TabOrder = 1
-                            OnClick = CompileButtonClick
-                            Color = clLime
-                          end
-                          object JvImgBtn6: TJvImgBtn
-                            Tag = 1
-                            Left = 13
-                            Top = 79
-                            Width = 75
-                            Height = 26
-                            Caption = 'Compile'
-                            TabOrder = 2
-                            OnClick = CompileButtonClick
-                            Color = clLime
-                          end
-                          object TranspileOutputEdit: TEdit
-                            Left = 15
-                            Top = 144
-                            Width = 218
-                            Height = 21
-                            TabOrder = 3
-                          end
-                          object RadioGroup1: TRadioGroup
-                            Left = 111
-                            Top = 8
-                            Width = 170
-                            Height = 97
-                            Anchors = [akLeft]
-                            Caption = ' Output: '
-                            TabOrder = 7
-                          end
-                          object RadioButton3: TRadioButton
-                            Left = 123
-                            Top = 51
-                            Width = 123
-                            Height = 17
-                            Anchors = [akLeft]
-                            Caption = 'GNU C++ Qt5'
-                            TabOrder = 6
-                          end
-                          object RadioButton1: TRadioButton
-                            Left = 123
-                            Top = 27
-                            Width = 115
-                            Height = 17
-                            Anchors = [akLeft]
-                            Caption = 'Delphi VCL'
-                            Checked = True
-                            TabOrder = 5
-                            TabStop = True
-                          end
-                          object RadioButton2: TRadioButton
-                            Left = 123
-                            Top = 75
-                            Width = 123
-                            Height = 17
-                            Anchors = [akLeft]
-                            Caption = 'C++ Builder VCL'
-                            TabOrder = 4
-                          end
-                          object SourceTextEditorCut: TJvImgBtn
-                            Tag = 1
-                            Left = 13
-                            Top = 187
-                            Width = 75
-                            Height = 27
-                            Caption = 'Cut'
-                            TabOrder = 8
-                            OnClick = SourceTextEditorCutClick
-                            Color = 8454016
-                          end
-                          object SourceTextEditorCopy: TJvImgBtn
-                            Tag = 1
-                            Left = 13
-                            Top = 219
-                            Width = 75
-                            Height = 27
-                            Caption = 'Copy'
-                            TabOrder = 9
-                            OnClick = SourceTextEditorCopyClick
-                            Color = 8454016
-                          end
-                          object SourceTextEditorPaste: TJvImgBtn
-                            Tag = 1
-                            Left = 13
-                            Top = 251
-                            Width = 75
-                            Height = 27
-                            Caption = 'Paste'
-                            TabOrder = 10
-                            OnClick = SourceTextEditorPasteClick
-                            Color = 8454016
-                          end
-                          object SourceTextEditorDelete: TJvImgBtn
-                            Tag = 1
-                            Left = 117
-                            Top = 187
-                            Width = 75
-                            Height = 27
-                            Caption = 'Delete'
-                            TabOrder = 11
-                            OnClick = SourceTextEditorDeleteClick
-                            Color = 8454016
-                          end
-                          object SourceTextEditorSelectAll: TJvImgBtn
-                            Tag = 1
-                            Left = 117
-                            Top = 251
-                            Width = 75
-                            Height = 27
-                            Caption = 'Select All'
-                            TabOrder = 12
-                            OnClick = SourceTextEditorSelectAllClick
-                            Color = 8454016
-                          end
-                          object SourceTextEditorUndo: TJvImgBtn
-                            Tag = 1
-                            Left = 211
-                            Top = 187
-                            Width = 75
-                            Height = 27
-                            Caption = 'Undo'
                             TabOrder = 13
-                            OnClick = SourceTextEditorUndoClick
-                            Color = 8454016
+                            OnClick = CompileButtonClick
+                            Color = clLime
                           end
-                          object SourceTextEditorRedo: TJvImgBtn
+                          object CompileButton: TJvImgBtn
                             Tag = 1
-                            Left = 211
-                            Top = 251
+                            Left = 13
+                            Top = 11
                             Width = 75
                             Height = 27
-                            Caption = 'Redo'
+                            Caption = 'Transpile'
                             TabOrder = 14
-                            OnClick = SourceTextEditorDeleteClick
-                            Color = 8454016
+                            OnClick = CompileButtonClick
+                            Color = clLime
                           end
                         end
                       end
                       object Panel26: TPanel
                         Left = 1
                         Top = 395
-                        Width = 870
-                        Height = 50
+                        Width = 741
+                        Height = 28
                         Align = alClient
                         TabOrder = 1
                         DesignSize = (
-                          870
-                          50)
+                          741
+                          28)
                         object JvImgBtn4: TJvImgBtn
                           Tag = 1
-                          Left = 775
+                          Left = 646
                           Top = 9
                           Width = 75
                           Height = 25
@@ -3076,7 +3069,7 @@ object Form2: TForm2
                         end
                         object JvImgBtn5: TJvImgBtn
                           Tag = 1
-                          Left = 775
+                          Left = 646
                           Top = 41
                           Width = 75
                           Height = 25
@@ -3089,8 +3082,8 @@ object Form2: TForm2
                         object SourceCodeGrid: TStringGrid
                           Left = 1
                           Top = 1
-                          Width = 759
-                          Height = 48
+                          Width = 630
+                          Height = 26
                           Anchors = [akLeft, akTop, akRight, akBottom]
                           Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSizing, goColSizing, goRowSelect]
                           TabOrder = 2
@@ -3099,7 +3092,7 @@ object Form2: TForm2
                       object Panel43: TPanel
                         Left = 1
                         Top = 53
-                        Width = 870
+                        Width = 741
                         Height = 27
                         Align = alTop
                         Caption = 'Panel43'
@@ -3107,7 +3100,7 @@ object Form2: TForm2
                         object JvTabBar1: TJvTabBar
                           Left = 1
                           Top = 1
-                          Width = 868
+                          Width = 739
                           Painter = JvModernTabBarPainter2
                           Tabs = <
                             item
@@ -3119,7 +3112,7 @@ object Form2: TForm2
                       object Panel47: TPanel
                         Left = 1
                         Top = 1
-                        Width = 870
+                        Width = 741
                         Height = 52
                         Align = alTop
                         TabOrder = 3
@@ -3867,22 +3860,22 @@ object Form2: TForm2
               object TableDataPage: TJvStandardPage
                 Left = 0
                 Top = 0
-                Width = 1257
-                Height = 452
+                Width = 1128
+                Height = 430
                 Caption = 'TableDataPage'
                 OnShow = TableDataPageShow
                 object ScrollBox42: TScrollBox
                   Left = 0
                   Top = 0
-                  Width = 1257
-                  Height = 452
+                  Width = 1128
+                  Height = 430
                   Align = alClient
                   TabOrder = 0
                   object DataTablePageControl: TPageControl
                     Left = 0
                     Top = 0
-                    Width = 1253
-                    Height = 448
+                    Width = 1124
+                    Height = 426
                     ActivePage = DataPage
                     Align = alClient
                     Font.Charset = ANSI_CHARSET
@@ -3896,12 +3889,12 @@ object Form2: TForm2
                     object DataPage: TTabSheet
                       Caption = 'Data'
                       DesignSize = (
-                        1245
-                        418)
+                        1116
+                        396)
                       object ToolBar1: TToolBar
                         Left = 0
                         Top = 0
-                        Width = 1245
+                        Width = 1116
                         Height = 29
                         ButtonHeight = 23
                         Caption = 'ToolBar1'
@@ -4048,16 +4041,22 @@ object Form2: TForm2
                       object DataPageGrid1: TDBGrid
                         Left = 0
                         Top = 32
-                        Width = 1233
-                        Height = 385
+                        Width = 1104
+                        Height = 363
                         Anchors = [akLeft, akTop, akRight, akBottom]
                         DataSource = DataSource1
+                        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete]
                         TabOrder = 1
                         TitleFont.Charset = ANSI_CHARSET
                         TitleFont.Color = clBlack
                         TitleFont.Height = -12
                         TitleFont.Name = 'Arial'
                         TitleFont.Style = []
+                        OnCellClick = DataPageGrid1CellClick
+                        OnColExit = DataPageGrid1ColExit
+                        OnDrawColumnCell = DataPageGrid1DrawColumnCell
+                        OnDblClick = DataPageGrid1DblClick
+                        OnKeyPress = DataPageGrid1KeyPress
                       end
                       object JvCheckBox1: TCheckBox
                         Left = 96
@@ -4069,6 +4068,30 @@ object Form2: TForm2
                         TabOrder = 2
                         Visible = False
                       end
+                      object DBComboBox1: TComboBox
+                        Left = 632
+                        Top = 112
+                        Width = 145
+                        Height = 23
+                        AutoDropDown = True
+                        AutoCloseUp = True
+                        Style = csDropDownList
+                        ItemHeight = 15
+                        TabOrder = 3
+                        Visible = False
+                        OnChange = DBComboBox1Change
+                        OnClick = DBComboBox1Click
+                        OnKeyPress = DBComboBox1KeyPress
+                        OnSelect = DBComboBox1Select
+                        Items.Strings = (
+                          'Auto Increment'
+                          'String'
+                          'Boolean'
+                          'Numeric'
+                          'Float'
+                          'Date'
+                          'Time')
+                      end
                     end
                     object FieldPage: TTabSheet
                       Caption = 'Fields'
@@ -4076,7 +4099,7 @@ object Form2: TForm2
                       object ToolBar2: TToolBar
                         Left = 0
                         Top = 0
-                        Width = 1245
+                        Width = 1116
                         Height = 29
                         ButtonHeight = 23
                         Caption = 'ToolBar1'
@@ -4223,8 +4246,8 @@ object Form2: TForm2
                       object DataPageGrid2: TJvStringGrid
                         Left = 0
                         Top = 29
-                        Width = 1245
-                        Height = 389
+                        Width = 1116
+                        Height = 367
                         Align = alClient
                         ColCount = 1
                         FixedCols = 0
@@ -4255,13 +4278,13 @@ object Form2: TForm2
               object DebugPage: TJvStandardPage
                 Left = 0
                 Top = 0
-                Width = 1257
-                Height = 452
+                Width = 1128
+                Height = 430
                 Caption = 'DebugPage'
                 object ScrollBox29: TScrollBox
                   Left = 0
                   Top = 0
-                  Width = 1257
+                  Width = 1128
                   Height = 452
                   Align = alClient
                   TabOrder = 0
@@ -4275,8 +4298,8 @@ object Form2: TForm2
             object ScrollBox43: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 476
+              Width = 1128
+              Height = 454
               Align = alClient
               TabOrder = 0
             end
@@ -4287,25 +4310,25 @@ object Form2: TForm2
             object ScrollBox44: TScrollBox
               Left = 0
               Top = 0
-              Width = 1257
-              Height = 476
+              Width = 1128
+              Height = 454
               Align = alClient
               TabOrder = 0
               object JvSplitter4: TJvSplitter
-                Left = 1056
+                Left = 927
                 Top = 0
-                Height = 440
+                Height = 418
                 Align = alRight
               end
               object Splitter22: TSplitter
-                Left = 209
+                Left = 169
                 Top = 0
-                Height = 440
+                Height = 418
               end
               object JvPanel3: TJvPanel
                 Left = 0
-                Top = 440
-                Width = 1253
+                Top = 418
+                Width = 1124
                 Height = 32
                 Align = alBottom
                 TabOrder = 0
@@ -4313,14 +4336,14 @@ object Form2: TForm2
               object Panel50: TPanel
                 Left = 0
                 Top = 0
-                Width = 209
-                Height = 440
+                Width = 169
+                Height = 418
                 Align = alLeft
                 TabOrder = 1
                 object Splitter23: TSplitter
                   Left = 1
                   Top = 289
-                  Width = 207
+                  Width = 167
                   Height = 3
                   Cursor = crVSplit
                   Align = alTop
@@ -4328,7 +4351,7 @@ object Form2: TForm2
                 object Panel51: TPanel
                   Left = 1
                   Top = 1
-                  Width = 207
+                  Width = 167
                   Height = 288
                   Align = alTop
                   Caption = 'Panel51'
@@ -4336,14 +4359,17 @@ object Form2: TForm2
                   object Panel52: TPanel
                     Left = 1
                     Top = 1
-                    Width = 205
-                    Height = 24
+                    Width = 165
+                    Height = 54
                     Align = alTop
                     TabOrder = 0
+                    DesignSize = (
+                      165
+                      54)
                     object Edit14: TEdit
                       Left = 0
-                      Top = 0
-                      Width = 185
+                      Top = 31
+                      Width = 162
                       Height = 24
                       Font.Charset = DEFAULT_CHARSET
                       Font.Color = clWindowText
@@ -4354,136 +4380,162 @@ object Form2: TForm2
                       TabOrder = 0
                       Text = 'Edit14'
                     end
+                    object JvImgBtn7: TJvImgBtn
+                      Tag = 1
+                      Left = 2
+                      Top = 1
+                      Width = 159
+                      Height = 26
+                      Anchors = [akLeft, akTop, akRight, akBottom]
+                      Caption = 'HTML Refresh / View'
+                      TabOrder = 1
+                      OnClick = JvImgBtn7Click
+                      Color = clLime
+                    end
                   end
                   object TreeView1: TTreeView
                     Left = 1
-                    Top = 25
-                    Width = 205
-                    Height = 262
+                    Top = 55
+                    Width = 165
+                    Height = 232
                     Align = alClient
                     Indent = 19
+                    ReadOnly = True
+                    RowSelect = True
+                    ShowRoot = False
                     TabOrder = 1
+                    Items.Data = {
+                      02000000250000000000000000000000FFFFFFFFFFFFFFFF0000000001000000
+                      0C536F757263652046696C6573240000000000000000000000FFFFFFFFFFFFFF
+                      FF00000000020000000B64656661756C742E7072671E00000000000000000000
+                      00FFFFFFFFFFFFFFFF000000000200000005496E646578220000000000000000
+                      000000FFFFFFFFFFFFFFFF0000000000000000097374796C652E6373731C0000
+                      000000000000000000FFFFFFFFFFFFFFFF000000000000000003584D4C200000
+                      000000000000000000FFFFFFFFFFFFFFFF000000000200000007546F70696320
+                      31220000000000000000000000FFFFFFFFFFFFFFFF0000000000000000097374
+                      796C652E6373731C0000000000000000000000FFFFFFFFFFFFFFFF0000000000
+                      00000003584D4C250000000000000000000000FFFFFFFFFFFFFFFF0000000000
+                      0000000C416C7465726E617469766573}
                   end
-                end
-                object Button1: TButton
-                  Left = 88
-                  Top = 248
-                  Width = 99
-                  Height = 25
-                  Caption = '(RE)load Data'
-                  TabOrder = 1
-                  OnClick = Button1Click
                 end
                 object Panel58: TPanel
                   Left = 1
                   Top = 292
-                  Width = 207
-                  Height = 147
+                  Width = 167
+                  Height = 125
                   Align = alClient
-                  TabOrder = 2
-                  DesignSize = (
-                    207
-                    147)
-                  object Label13: TLabel
-                    Left = 8
-                    Top = 8
-                    Width = 84
-                    Height = 16
-                    Caption = 'Description:'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -13
-                    Font.Name = 'MS Sans Serif'
-                    Font.Style = [fsBold]
-                    ParentFont = False
-                  end
-                  object Label14: TLabel
-                    Left = 8
-                    Top = 56
-                    Width = 57
-                    Height = 16
-                    Caption = 'Help ID:'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -13
-                    Font.Name = 'MS Sans Serif'
-                    Font.Style = [fsBold]
-                    ParentFont = False
-                  end
-                  object Label15: TLabel
-                    Left = 8
-                    Top = 104
-                    Width = 93
-                    Height = 16
-                    Caption = 'Help Context:'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -13
-                    Font.Name = 'MS Sans Serif'
-                    Font.Style = [fsBold]
-                    ParentFont = False
-                  end
-                  object Edit16: TEdit
-                    Left = 8
-                    Top = 24
-                    Width = 161
-                    Height = 24
-                    Anchors = [akLeft, akTop, akRight]
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -13
-                    Font.Name = 'MS Sans Serif'
-                    Font.Style = []
-                    ParentFont = False
+                  TabOrder = 1
+                  object ScrollBox45: TScrollBox
+                    Left = 1
+                    Top = 1
+                    Width = 165
+                    Height = 123
+                    Align = alClient
                     TabOrder = 0
-                  end
-                  object Edit17: TEdit
-                    Left = 8
-                    Top = 72
-                    Width = 161
-                    Height = 24
-                    Anchors = [akLeft, akTop, akRight]
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -13
-                    Font.Name = 'MS Sans Serif'
-                    Font.Style = []
-                    ParentFont = False
-                    TabOrder = 1
-                  end
-                  object JvSpinEdit1: TJvSpinEdit
-                    Left = 8
-                    Top = 120
-                    Width = 162
-                    Height = 24
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -13
-                    Font.Name = 'MS Sans Serif'
-                    Font.Style = []
-                    Anchors = [akLeft, akTop, akRight]
-                    ParentFont = False
-                    TabOrder = 2
+                    DesignSize = (
+                      144
+                      119)
+                    object Label13: TLabel
+                      Left = 8
+                      Top = 8
+                      Width = 84
+                      Height = 16
+                      Caption = 'Description:'
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -13
+                      Font.Name = 'MS Sans Serif'
+                      Font.Style = [fsBold]
+                      ParentFont = False
+                    end
+                    object Label14: TLabel
+                      Left = 8
+                      Top = 56
+                      Width = 57
+                      Height = 16
+                      Caption = 'Help ID:'
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -13
+                      Font.Name = 'MS Sans Serif'
+                      Font.Style = [fsBold]
+                      ParentFont = False
+                    end
+                    object Label15: TLabel
+                      Left = 8
+                      Top = 104
+                      Width = 93
+                      Height = 16
+                      Caption = 'Help Context:'
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -13
+                      Font.Name = 'MS Sans Serif'
+                      Font.Style = [fsBold]
+                      ParentFont = False
+                    end
+                    object Edit16: TEdit
+                      Left = 8
+                      Top = 24
+                      Width = 121
+                      Height = 24
+                      Anchors = [akLeft, akTop, akRight]
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -13
+                      Font.Name = 'MS Sans Serif'
+                      Font.Style = []
+                      ParentFont = False
+                      TabOrder = 0
+                    end
+                    object Edit17: TEdit
+                      Left = 8
+                      Top = 72
+                      Width = 121
+                      Height = 24
+                      Anchors = [akLeft, akTop, akRight]
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -13
+                      Font.Name = 'MS Sans Serif'
+                      Font.Style = []
+                      ParentFont = False
+                      TabOrder = 1
+                    end
+                    object JvSpinEdit1: TJvSpinEdit
+                      Left = 8
+                      Top = 120
+                      Width = 121
+                      Height = 24
+                      Font.Charset = DEFAULT_CHARSET
+                      Font.Color = clWindowText
+                      Font.Height = -13
+                      Font.Name = 'MS Sans Serif'
+                      Font.Style = []
+                      Anchors = [akLeft, akTop, akRight]
+                      ParentFont = False
+                      TabOrder = 2
+                    end
                   end
                 end
               end
               object Panel53: TPanel
-                Left = 212
+                Left = 172
                 Top = 0
-                Width = 844
-                Height = 440
+                Width = 755
+                Height = 418
                 Align = alClient
                 TabOrder = 2
                 object Panel54: TPanel
                   Left = 1
                   Top = 1
-                  Width = 842
-                  Height = 51
+                  Width = 753
+                  Height = 70
                   Align = alTop
                   TabOrder = 0
                   object JvSpeedButton12: TJvSpeedButton
-                    Left = 2
-                    Top = 1
+                    Left = 418
+                    Top = 17
                     Width = 49
                     Height = 45
                     Caption = 'Open'
@@ -4625,8 +4677,8 @@ object Form2: TForm2
                     Transparent = True
                   end
                   object JvSpeedButton13: TJvSpeedButton
-                    Left = 57
-                    Top = 1
+                    Left = 473
+                    Top = 17
                     Width = 49
                     Height = 45
                     Caption = 'Open'
@@ -4767,28 +4819,301 @@ object Form2: TForm2
                     Style = bsNew
                     Transparent = True
                   end
+                  object PageControl6: TPageControl
+                    Left = 1
+                    Top = 1
+                    Width = 409
+                    Height = 68
+                    ActivePage = TabSheet50
+                    Align = alLeft
+                    TabOrder = 0
+                    object TabSheet50: TTabSheet
+                      Caption = 'Standard'
+                      object PageScroller2: TPageScroller
+                        Left = 0
+                        Top = 0
+                        Width = 462
+                        Height = 40
+                        Align = alLeft
+                        TabOrder = 0
+                        object XMLDesignButton: TJvSpeedButton
+                          Left = 0
+                          Top = 0
+                          Width = 40
+                          Height = 40
+                          Align = alLeft
+                          GroupIndex = 1
+                          Down = True
+                          Glyph.Data = {
+                            46090000424D4609000000000000360400002800000024000000240000000100
+                            0800000000001005000025160000251600000001000000000000000000000000
+                            80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                            A6000020400000206000002080000020A0000020C0000020E000004000000040
+                            20000040400000406000004080000040A0000040C0000040E000006000000060
+                            20000060400000606000006080000060A0000060C0000060E000008000000080
+                            20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                            200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                            200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                            200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                            20004000400040006000400080004000A0004000C0004000E000402000004020
+                            20004020400040206000402080004020A0004020C0004020E000404000004040
+                            20004040400040406000404080004040A0004040C0004040E000406000004060
+                            20004060400040606000406080004060A0004060C0004060E000408000004080
+                            20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                            200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                            200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                            200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                            20008000400080006000800080008000A0008000C0008000E000802000008020
+                            20008020400080206000802080008020A0008020C0008020E000804000008040
+                            20008040400080406000804080008040A0008040C0008040E000806000008060
+                            20008060400080606000806080008060A0008060C0008060E000808000008080
+                            20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                            200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                            200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                            200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                            2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                            2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                            2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                            2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                            2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                            2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                            2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFF00FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFF00FFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFF00FFFFFF00FFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFF00FFFFFFFF00FFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FF00FFFF00FFFFFF00FF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFF0000FFFF
+                            FFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFF
+                            FF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFF00FFFFFFFFFFFF000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFF00FFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFF
+                            00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFF
+                            FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FF00FFFFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFF00FFFFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFF00FFFF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFF00FF00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00FFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFF}
+                          OnMouseEnter = XMLDesignButtonMouseEnter
+                          OnMouseLeave = XMLDesignButtonMouseLeave
+                        end
+                        object HtmlMenuSpeedButton: TJvSpeedButton
+                          Tag = 1
+                          Left = 40
+                          Top = 0
+                          Width = 40
+                          Height = 40
+                          Align = alLeft
+                          GroupIndex = 1
+                          Flat = True
+                          Glyph.Data = {
+                            46090000424D4609000000000000360400002800000024000000240000000100
+                            0800000000001005000025160000251600000001000000000000000000000000
+                            80000080000000808000800000008000800080800000C0C0C000C0DCC000F0CA
+                            A6000020400000206000002080000020A0000020C0000020E000004000000040
+                            20000040400000406000004080000040A0000040C0000040E000006000000060
+                            20000060400000606000006080000060A0000060C0000060E000008000000080
+                            20000080400000806000008080000080A0000080C0000080E00000A0000000A0
+                            200000A0400000A0600000A0800000A0A00000A0C00000A0E00000C0000000C0
+                            200000C0400000C0600000C0800000C0A00000C0C00000C0E00000E0000000E0
+                            200000E0400000E0600000E0800000E0A00000E0C00000E0E000400000004000
+                            20004000400040006000400080004000A0004000C0004000E000402000004020
+                            20004020400040206000402080004020A0004020C0004020E000404000004040
+                            20004040400040406000404080004040A0004040C0004040E000406000004060
+                            20004060400040606000406080004060A0004060C0004060E000408000004080
+                            20004080400040806000408080004080A0004080C0004080E00040A0000040A0
+                            200040A0400040A0600040A0800040A0A00040A0C00040A0E00040C0000040C0
+                            200040C0400040C0600040C0800040C0A00040C0C00040C0E00040E0000040E0
+                            200040E0400040E0600040E0800040E0A00040E0C00040E0E000800000008000
+                            20008000400080006000800080008000A0008000C0008000E000802000008020
+                            20008020400080206000802080008020A0008020C0008020E000804000008040
+                            20008040400080406000804080008040A0008040C0008040E000806000008060
+                            20008060400080606000806080008060A0008060C0008060E000808000008080
+                            20008080400080806000808080008080A0008080C0008080E00080A0000080A0
+                            200080A0400080A0600080A0800080A0A00080A0C00080A0E00080C0000080C0
+                            200080C0400080C0600080C0800080C0A00080C0C00080C0E00080E0000080E0
+                            200080E0400080E0600080E0800080E0A00080E0C00080E0E000C0000000C000
+                            2000C0004000C0006000C0008000C000A000C000C000C000E000C0200000C020
+                            2000C0204000C0206000C0208000C020A000C020C000C020E000C0400000C040
+                            2000C0404000C0406000C0408000C040A000C040C000C040E000C0600000C060
+                            2000C0604000C0606000C0608000C060A000C060C000C060E000C0800000C080
+                            2000C0804000C0806000C0808000C080A000C080C000C080E000C0A00000C0A0
+                            2000C0A04000C0A06000C0A08000C0A0A000C0A0C000C0A0E000C0C00000C0C0
+                            2000C0C04000C0C06000C0C08000C0C0A000F0FBFF00A4A0A000808080000000
+                            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00FFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFF525252525252525252525252525252525252FFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            52FFFF00000000000000FFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFF52525252525252525252525252529BFFFF52FFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFF0000000000
+                            000000FFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFF52FFFF000000000000FFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFF00000000000000000000FFFFFF
+                            FF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFF00
+                            00000000000000FFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFF52FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF52FFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFF525252525252525252525252525252525252525252525252
+                            525252529BF6FFFFFFFFFFFF52F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6
+                            F6F6F6F6F6F6F6F6F79BF6FFFFFFFFFF52F60707070707070707070707070708
+                            F6F6F6F6F6F6F6F6F6F6F6F6F6F75BF6FFFFFFFF52F607000000000000000000
+                            0000F708000000000000F6F60000000000F6075B08FFFFFF52F6070707070707
+                            0707070707070708F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6075B08FFFF52F6F6F6
+                            F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F6F75B08FFFF
+                            52525252525252525252525252525252525252525252525252525252525252A4
+                            F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+                            FFFFFFFFFFFFFFFFFFFF}
+                          OnMouseEnter = HtmlMenuSpeedButtonMouseEnter
+                          OnMouseLeave = HtmlMenuSpeedButtonMouseLeave
+                          OnClick = HtmlMenuSpeedButtonClick
+                        end
+                      end
+                    end
+                  end
                 end
-                object WebBrowser1: TWebBrowser
+                object HTMLEditorView: TPageControl
                   Left = 1
-                  Top = 52
-                  Width = 842
-                  Height = 387
+                  Top = 71
+                  Width = 753
+                  Height = 346
+                  ActivePage = TabSheet46
                   Align = alClient
                   TabOrder = 1
-                  OnDocumentComplete = WebBrowser1DocumentComplete
-                  ControlData = {
-                    4C00000006570000FF2700000000000000000000000000000000000000000000
-                    000000004C000000000000000000000001000000E0D057007335CF11AE690800
-                    2B2E126208000000000000004C0000000114020000000000C000000000000046
-                    8000000000000000000000000000000000000000000000000000000000000000
-                    00000000000000000100000000000000000000000000000000000000}
+                  object TabSheet46: TTabSheet
+                    Caption = 'HTML-Designer'
+                    ImageIndex = 2
+                    object ScrollBox48: TScrollBox
+                      Left = 0
+                      Top = 0
+                      Width = 745
+                      Height = 318
+                      Align = alClient
+                      TabOrder = 0
+                      object HtmlDesignPanel: TJvDesignPanel
+                        Left = 0
+                        Top = 0
+                        Width = 741
+                        Height = 314
+                        Align = alClient
+                        TabOrder = 0
+                        OnPaint = HtmlDesignPanelPaint
+                        OnGetAddClass = HtmlDesignPanelGetAddClass
+                        OnSelectionChange = HtmlDesignPanelSelectionChange
+                      end
+                    end
+                  end
+                  object TabSheet34: TTabSheet
+                    Caption = 'HTML Editor'
+                    object ScrollBox47: TScrollBox
+                      Left = 0
+                      Top = 0
+                      Width = 745
+                      Height = 318
+                      Align = alClient
+                      TabOrder = 0
+                      object SynEdit1: TSynEdit
+                        Left = 0
+                        Top = 0
+                        Width = 741
+                        Height = 314
+                        Align = alClient
+                        Font.Charset = DEFAULT_CHARSET
+                        Font.Color = clWindowText
+                        Font.Height = -13
+                        Font.Name = 'Courier New'
+                        Font.Style = []
+                        TabOrder = 0
+                        Gutter.AutoSize = True
+                        Gutter.Font.Charset = DEFAULT_CHARSET
+                        Gutter.Font.Color = clWindowText
+                        Gutter.Font.Height = -11
+                        Gutter.Font.Name = 'Courier New'
+                        Gutter.Font.Style = []
+                        Gutter.ShowLineNumbers = True
+                        Highlighter = SynHTMLSyn1
+                        Lines.UnicodeStrings = '<html>'#13#10'  <div>'#13#10'  </div>'#13#10'</html>'
+                        FontSmoothing = fsmNone
+                      end
+                    end
+                  end
+                  object TabSheet45: TTabSheet
+                    Caption = 'HTML Viewer'
+                    ImageIndex = 1
+                    object ScrollBox46: TScrollBox
+                      Left = 0
+                      Top = 0
+                      Width = 745
+                      Height = 318
+                      Align = alClient
+                      TabOrder = 0
+                      object WebBrowser1: TWebBrowser
+                        Left = 0
+                        Top = 0
+                        Width = 741
+                        Height = 314
+                        Align = alClient
+                        TabOrder = 0
+                        ControlData = {
+                          4C000000964C0000742000000000000000000000000000000000000000000000
+                          000000004C000000000000000000000001000000E0D057007335CF11AE690800
+                          2B2E126208000000000000004C0000000114020000000000C000000000000046
+                          8000000000000000000000000000000000000000000000000000000000000000
+                          00000000000000000100000000000000000000000000000000000000}
+                      end
+                    end
+                  end
                 end
               end
               object Panel55: TPanel
-                Left = 1059
+                Left = 930
                 Top = 0
                 Width = 194
-                Height = 440
+                Height = 418
                 Align = alRight
                 TabOrder = 3
                 object Splitter24: TSplitter
@@ -4844,7 +5169,7 @@ object Form2: TForm2
         object JvPanel1: TJvPanel
           Left = 1
           Top = 20
-          Width = 1265
+          Width = 1136
           Height = 25
           Align = alTop
           Font.Charset = DEFAULT_CHARSET
@@ -4854,6 +5179,30 @@ object Form2: TForm2
           Font.Style = []
           ParentFont = False
           TabOrder = 1
+          object MenuEdit: TJvArrowButton
+            Left = 65
+            Top = 1
+            Width = 64
+            Height = 23
+            Align = alLeft
+            ArrowWidth = 0
+            Caption = 'Edit'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -13
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            FillFont.Charset = DEFAULT_CHARSET
+            FillFont.Color = clBlack
+            FillFont.Height = -11
+            FillFont.Name = 'MS Sans Serif'
+            FillFont.Style = [fsBold]
+            ParentFont = False
+            PressBoth = False
+            SplittedButton = False
+            OnClick = MenuEditClick
+            OnMouseMove = MenuEditMouseMove
+          end
           object MenuFile: TJvArrowButton
             Left = 1
             Top = 1
@@ -4861,7 +5210,6 @@ object Form2: TForm2
             Height = 23
             Align = alLeft
             ArrowWidth = 0
-            DropDown = MenuFilePopup
             Caption = 'File'
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clBlack
@@ -4877,12 +5225,13 @@ object Form2: TForm2
             PressBoth = False
             SplittedButton = False
             OnClick = MenuFileClick
+            OnMouseMove = MenuFileMouseMove
           end
         end
         object JvPanel2: TJvPanel
           Left = 1
           Top = 45
-          Width = 1265
+          Width = 1136
           Height = 81
           Align = alTop
           TabOrder = 2
@@ -4992,6 +5341,8 @@ object Form2: TForm2
                       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                       FFFFFFFFFFFFFFFFFFFF}
+                    OnMouseEnter = JvSpeedButton1MouseEnter
+                    OnMouseLeave = JvSpeedButton1MouseLeave
                   end
                   object JvSpeedButton2: TJvSpeedButton
                     Tag = 1
@@ -5077,6 +5428,8 @@ object Form2: TForm2
                       F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                       FFFFFFFFFFFFFFFFFFFF}
+                    OnMouseEnter = JvSpeedButton2MouseEnter
+                    OnMouseLeave = JvSpeedButton2MouseLeave
                   end
                   object JvSpeedButton3: TJvSpeedButton
                     Tag = 2
@@ -5162,6 +5515,7 @@ object Form2: TForm2
                       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                       FFFFFFFFFFFFFFFFFFFF}
+                    OnMouseEnter = JvSpeedButton3MouseEnter
                   end
                   object JvSpeedButton4: TJvSpeedButton
                     Tag = 3
@@ -5247,6 +5601,8 @@ object Form2: TForm2
                       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
                       FFFFFFFFFFFFFFFFFFFF}
+                    OnMouseEnter = JvSpeedButton4MouseEnter
+                    OnMouseLeave = JvSpeedButton4MouseLeave
                     OnClick = JvSpeedButton4Click
                   end
                   object JvSpeedButton5: TJvSpeedButton
@@ -6091,9 +6447,9 @@ object Form2: TForm2
             object TabSheet52: TTabSheet
               Caption = 'Navigator'
               object JvToolBar1: TJvToolBar
-                Left = 167
+                Left = 156
                 Top = 0
-                Width = 152
+                Width = 144
                 Height = 51
                 Align = alLeft
                 AutoSize = True
@@ -6147,7 +6503,7 @@ object Form2: TForm2
               object JvToolBar2: TJvToolBar
                 Left = 0
                 Top = 0
-                Width = 167
+                Width = 156
                 Height = 51
                 Align = alLeft
                 AutoSize = True
@@ -6201,9 +6557,9 @@ object Form2: TForm2
                 end
               end
               object JvToolBar3: TJvToolBar
-                Left = 319
+                Left = 300
                 Top = 0
-                Width = 40
+                Width = 36
                 Height = 51
                 Align = alLeft
                 AutoSize = True
@@ -8640,7 +8996,7 @@ object Form2: TForm2
     Masked = False
     Width = 24
     Left = 321
-    Top = 236
+    Top = 260
     Bitmap = {
       494C01010A000E00040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000006000000001002000000000000090
@@ -9895,7 +10251,7 @@ object Form2: TForm2
     ValueFont.Style = []
     DrawNameEndEllipsis = False
     Left = 385
-    Top = 233
+    Top = 257
   end
   object DotNETPainter: TJvInspectorDotNETPainter
     CategoryFont.Charset = DEFAULT_CHARSET
@@ -9925,7 +10281,7 @@ object Form2: TForm2
     SelectedFont.Name = 'MS Sans Serif'
     SelectedFont.Style = []
     Left = 356
-    Top = 233
+    Top = 257
   end
   object OpenDialog1: TOpenDialog
     Left = 472
@@ -9980,45 +10336,6 @@ object Form2: TForm2
     Width = 571
     Left = 593
     Top = 267
-  end
-  object MenuFilePopup: TPopupMenu
-    OwnerDraw = True
-    Left = 345
-    Top = 45
-    object New1: TMenuItem
-      Caption = 'New'
-      OnMeasureItem = New1MeasureItem
-      object dBASEForm1: TMenuItem
-        Caption = 'dBase Form'
-      end
-      object dBaseTextModule1: TMenuItem
-        Caption = 'dBase Text Module'
-      end
-      object dBaseSQL1: TMenuItem
-        Caption = 'dBase SQL'
-      end
-    end
-    object N15: TMenuItem
-      Caption = '-'
-    end
-    object Open1: TMenuItem
-      Caption = 'Open ...'
-      ShortCut = 16463
-    end
-    object Save1: TMenuItem
-      Caption = 'Save'
-      ShortCut = 16467
-    end
-    object SaveAs1: TMenuItem
-      Caption = 'Save As ...'
-    end
-    object N16: TMenuItem
-      Caption = '-'
-    end
-    object Exit1: TMenuItem
-      Caption = 'Exit'
-      ShortCut = 16499
-    end
   end
   object JvModernTabBarPainter1: TJvModernTabBarPainter
     TabColor = clYellow
@@ -10685,5 +11002,97 @@ object Form2: TForm2
     DataSet = Table1
     Left = 89
     Top = 352
+  end
+  object SynHTMLSyn1: TSynHTMLSyn
+    Options.AutoDetectEnabled = False
+    Options.AutoDetectLineLimit = 0
+    Options.Visible = False
+    Left = 465
+    Top = 222
+  end
+  object XMLDocument1: TXMLDocument
+    Left = 318
+    Top = 317
+    DOMVendorDesc = 'MSXML'
+  end
+  object HintTimer: TTimer
+    Enabled = False
+    Interval = 2000
+    OnTimer = HintTimerTimer
+    Left = 389
+    Top = 78
+  end
+  object MenuFilePopup: TJvPopupMenu
+    OnPopup = JvPopupMenu1Popup
+    Style = msItemPainter
+    ImageMargin.Left = 0
+    ImageMargin.Top = 0
+    ImageMargin.Right = 0
+    ImageMargin.Bottom = 0
+    ImageSize.Height = 21
+    ImageSize.Width = 21
+    ItemPainter = JvXPMenuItemPainter3
+    Left = 1041
+    Top = 197
+    object N27: TMenuItem
+      Caption = 'New'
+      object dBaseForm2: TMenuItem
+        Caption = 'dBase Form'
+      end
+      object dBaseTestModule1: TMenuItem
+        Caption = 'dBase Test-Module'
+      end
+      object dBaseSQL2: TMenuItem
+        Caption = 'dBase SQL'
+      end
+    end
+    object N28: TMenuItem
+      Caption = '-'
+    end
+    object Open2: TMenuItem
+      Caption = 'Open ...'
+      ShortCut = 16463
+    end
+    object Save2: TMenuItem
+      Caption = 'Save'
+      ShortCut = 16467
+    end
+    object SaveAs2: TMenuItem
+      Caption = 'Save As ...'
+    end
+    object N29: TMenuItem
+      Caption = '-'
+    end
+    object Exit2: TMenuItem
+      Caption = 'Exit'
+      ShortCut = 16499
+    end
+  end
+  object JvXPMenuItemPainter3: TJvXPMenuItemPainter
+    SelectionFrameBrush.Color = 13811126
+    SelectionFramePen.Color = 6956042
+    Left = 1073
+    Top = 197
+  end
+  object HTMLdesignerMenu: TJvPopupMenu
+    Style = msItemPainter
+    ImageMargin.Left = 0
+    ImageMargin.Top = 0
+    ImageMargin.Right = 0
+    ImageMargin.Bottom = 0
+    ImageSize.Height = 21
+    ImageSize.Width = 21
+    ItemPainter = JvXPMenuItemPainter4
+    Left = 977
+    Top = 277
+    object AddmenuItem1: TMenuItem
+      Caption = 'Add menu Item'
+    end
+  end
+  object JvXPMenuItemPainter4: TJvXPMenuItemPainter
+    SelectionFrameBrush.Color = 13811126
+    SelectionFramePen.Color = 6956042
+    Left = 1009
+    Top = 277
   end
 end
