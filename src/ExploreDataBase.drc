@@ -8,232 +8,294 @@
   resources were bound to the produced executable.
 */
 
-#define ExploreDataBase_test_string 64592
-#define ExploreDataBase_initial_lang 64593
-#define XMLConst_SDOMNotSupported 64608
-#define XMLConst_SNodeExpected 64609
-#define XMLConst_SMSDOMNotInstalled 64610
-#define XMLConst_SNotActive 64611
-#define XMLConst_SNodeNotFound 64612
-#define XMLConst_SMissingNode 64613
-#define XMLConst_SNoAttributes 64614
-#define XMLConst_SInvalidNodeType 64615
-#define XMLConst_SMismatchedRegItems 64616
-#define XMLConst_SNotSingleTextNode 64617
-#define XMLConst_SNoDOMParseOptions 64618
-#define XMLConst_SNodeReadOnly 64619
-#define XMLConst_SNoRefresh 64620
-#define XMLConst_SMissingFileName 64621
-#define XMLConst_SLine 64622
-#define CtlConsts_sInvalidClassReference 64623
-#define TeeConst_TeeMsg_FunctionDivide 64624
-#define TeeConst_TeeMsg_FunctionHigh 64625
-#define TeeConst_TeeMsg_FunctionLow 64626
-#define TeeConst_TeeMsg_FunctionAverage 64627
-#define TeeConst_TeeMsg_DefaultFontName 64628
-#define TeeConst_TeeMsg_FunctionPeriod 64629
-#define TeeConst_TeeMsg_ValuesX 64630
-#define TeeConst_TeeMsg_ValuesY 64631
-#define OleConst_SCannotActivate 64632
-#define OleConst_SNoWindowHandle 64633
-#define OleConst_SInvalidLicense 64634
-#define OleConst_SNotLicensed 64635
-#define OleConst_sNoRunningObject 64636
-#define XMLConst_SDuplicateRegistration 64637
-#define XMLConst_SNoMatchingDOMVendor 64638
-#define XMLConst_SNoDOMNodeEx 64639
-#define TeeConst_TeeMsg_AxisMinMax 64640
-#define TeeConst_TeeMsg_AxisMaxMin 64641
-#define TeeConst_TeeMsg_AxisLogBase 64642
-#define TeeConst_TeeMsg_MaxPointsPerPage 64643
-#define TeeConst_TeeMsg_3dPercent 64644
-#define TeeConst_TeeMsg_CircularSeries 64645
-#define TeeConst_TeeMsg_DefaultPercentOf 64646
-#define TeeConst_TeeMsg_DefPercentFormat 64647
-#define TeeConst_TeeMsg_DefValueFormat 64648
-#define TeeConst_TeeMsg_AxisTitle 64649
-#define TeeConst_TeeMsg_AxisLabels 64650
-#define TeeConst_TeeMsg_GalleryFunctions 64651
-#define TeeConst_TeeMsg_DefaultFontSize 64652
-#define TeeConst_TeeMsg_FunctionAdd 64653
-#define TeeConst_TeeMsg_FunctionSubtract 64654
-#define TeeConst_TeeMsg_FunctionMultiply 64655
-#define SynEditStrConst_SYNS_FilterHTML 64656
-#define SynEditStrConst_SYNS_FriendlyLangHTML 64657
-#define SynEditStrConst_SYNS_FriendlyLangUnknown 64658
-#define SynEditTextBuffer_SListIndexOutOfBounds 64659
-#define SynEditTextBuffer_SInvalidCapacity 64660
-#define TeeConst_TeeMsg_LegendTopPos 64661
-#define TeeConst_TeeMsg_LegendFirstValue 64662
-#define TeeConst_TeeMsg_LegendColorWidth 64663
-#define TeeConst_TeeMsg_SeriesSetDataSource 64664
-#define TeeConst_TeeMsg_SeriesInvDataSource 64665
-#define TeeConst_TeeMsg_FillSample 64666
-#define TeeConst_TeeMsg_Angle 64667
-#define TeeConst_TeeMsg_AxisLogDateTime 64668
-#define TeeConst_TeeMsg_AxisLogNotPositive 64669
-#define TeeConst_TeeMsg_AxisLabelSep 64670
-#define TeeConst_TeeMsg_AxisIncrementNeg 64671
-#define JvResources_RsDestroyingArrangeSettingsNotAllowed 64672
-#define JConsts_sChangeJPGSize 64673
-#define JConsts_sJPEGError 64674
-#define JConsts_sJPEGImageFile 64675
-#define SynEditStrConst_SYNS_FriendlyAttrComment 64676
-#define SynEditStrConst_SYNS_FriendlyAttrEscapeAmpersand 64677
-#define SynEditStrConst_SYNS_FriendlyAttrIdentifier 64678
-#define SynEditStrConst_SYNS_FriendlyAttrReservedWord 64679
-#define SynEditStrConst_SYNS_FriendlyAttrSpace 64680
-#define SynEditStrConst_SYNS_FriendlyAttrSymbol 64681
-#define SynEditStrConst_SYNS_FriendlyAttrText 64682
-#define SynEditStrConst_SYNS_FriendlyAttrUnknownWord 64683
-#define SynEditStrConst_SYNS_FriendlyAttrValue 64684
-#define SynEditStrConst_SYNS_ScrollInfoFmt 64685
-#define SynEditStrConst_SYNS_ScrollInfoFmtTop 64686
-#define SynEditStrConst_SYNS_EDuplicateShortcut 64687
-#define JvResources_RsClHighlightText 64688
-#define JvResources_RsClBtnFace 64689
-#define JvResources_RsClBtnShadow 64690
-#define JvResources_RsClGrayText 64691
-#define JvResources_RsClBtnText 64692
-#define JvResources_RsClInactiveCaptionText 64693
-#define JvResources_RsClBtnHighlight 64694
-#define JvResources_RsCl3DDkShadow 64695
-#define JvResources_RsCl3DLight 64696
-#define JvResources_RsClInfoText 64697
-#define JvResources_RsClInfoBk 64698
-#define JvResources_RsGradientActiveCaption 64699
-#define JvResources_RsGradientInactiveCaption 64700
-#define JvResources_RsHotLight 64701
-#define JvResources_RsMenuBar 64702
-#define JvResources_RsMenuHighlight 64703
-#define JvResources_RsClPaleBlue 64704
-#define JvResources_RsClLavender 64705
-#define JvResources_RsClScrollBar 64706
-#define JvResources_RsClBackground 64707
-#define JvResources_RsClActiveCaption 64708
-#define JvResources_RsClInactiveCaption 64709
-#define JvResources_RsClMenu 64710
-#define JvResources_RsClWindow 64711
-#define JvResources_RsClWindowFrame 64712
-#define JvResources_RsClMenuText 64713
-#define JvResources_RsClWindowText 64714
-#define JvResources_RsClCaptionText 64715
-#define JvResources_RsClActiveBorder 64716
-#define JvResources_RsClInactiveBorder 64717
-#define JvResources_RsClAppWorkSpace 64718
-#define JvResources_RsClHighlight 64719
-#define JvResources_RsClLightOrange 64720
-#define JvResources_RsClSeaGreen 64721
-#define JvResources_RsClLightBlue 64722
-#define JvResources_RsClViolet 64723
-#define JvResources_RsClGray40 64724
-#define JvResources_RsClPink 64725
-#define JvResources_RsClGold 64726
-#define JvResources_RsClBrightGreen 64727
-#define JvResources_RsClTurquoise 64728
-#define JvResources_RsClPlum 64729
-#define JvResources_RsClGray25 64730
-#define JvResources_RsClRose 64731
-#define JvResources_RsClTan 64732
-#define JvResources_RsClLightYellow 64733
-#define JvResources_RsClLightGreen 64734
-#define JvResources_RsClLightTurquoise 64735
-#define JvResources_RsClMoneyGreen 64736
-#define JvResources_RsClSkyBlue 64737
-#define JvResources_RsClCream 64738
-#define JvResources_RsClMedGray 64739
-#define JvResources_RsClBrown 64740
-#define JvResources_RsClOliveGreen 64741
-#define JvResources_RsClDarkGreen 64742
-#define JvResources_RsClDarkTeal 64743
-#define JvResources_RsClDarkBlue 64744
-#define JvResources_RsClIndigo 64745
-#define JvResources_RsClGray80 64746
-#define JvResources_RsClDarkRed 64747
-#define JvResources_RsClOrange 64748
-#define JvResources_RsClDarkYellow 64749
-#define JvResources_RsClBlueGray 64750
-#define JvResources_RsClGray50 64751
-#define JvResources_RsClBlack 64752
-#define JvResources_RsClMaroon 64753
-#define JvResources_RsClGreen 64754
-#define JvResources_RsClOlive 64755
-#define JvResources_RsClNavy 64756
-#define JvResources_RsClPurple 64757
-#define JvResources_RsClTeal 64758
-#define JvResources_RsClGray 64759
-#define JvResources_RsClSilver 64760
-#define JvResources_RsClRed 64761
-#define JvResources_RsClLime 64762
-#define JvResources_RsClYellow 64763
-#define JvResources_RsClBlue 64764
-#define JvResources_RsClFuchsia 64765
-#define JvResources_RsClAqua 64766
-#define JvResources_RsClWhite 64767
-#define JvResources_RsEDOrDDRequired 64768
-#define JvResources_RsEMOrMMRequired 64769
-#define JvResources_RsEYYOrYYYYRequired 64770
-#define JvResources_RsEInstanceAlreadyExists 64771
-#define JvResources_RsENameAlreadyExistsForInstance 64772
-#define JvResources_RsEInstanceNonexistent 64773
-#define JvResources_RsEMethodAlreadyExists 64774
-#define JvResources_RsENameAlreadyExistsForMethod 64775
-#define JvResources_RsEJvAssertSetTopIndex 64776
-#define JvResources_RsEJvAssertInspectorPainter 64777
-#define JvResources_RsEJvAssertDataParent 64778
-#define JvResources_RsEJvAssertParent 64779
-#define JvResources_RsEJvAssertPropInfo 64780
-#define JvResources_RsEJvAssertClassInfo 64781
-#define JvResources_RsEOutOfRangeFloat 64782
-#define JvResources_RsUnknown 64783
-#define JvResources_RsEJvInspDataNotAssigned 64784
-#define JvResources_RsEJvInspDataNoValue 64785
-#define JvResources_RsEJvInspDataStrTooLong 64786
-#define JvResources_RsEJvInspNoGenReg 64787
-#define JvResources_RsEJvInspPaintNotActive 64788
-#define JvResources_RsEJvInspPaintOnlyUsedOnce 64789
-#define JvResources_RsEInspectorInternalError 64790
-#define JvResources_RsESpecifierBeforeSeparator 64791
-#define JvResources_RsEDOrDDOnlyOnce 64792
-#define JvResources_RsEMOrMMOnlyOnce 64793
-#define JvResources_RsEYYOrYYYYOnlyOnce 64794
-#define JvResources_RsEOnlyDOrDDAllowed 64795
-#define JvResources_RsEOnlyMOrMMAllowed 64796
-#define JvResources_RsEOnlyYYOrYYYYAllowed 64797
-#define JvResources_RsEOnlyTwoSeparators 64798
-#define JvResources_RsEOnlyDMYSAllowed 64799
-#define JvResources_RsEOldestFmt 64800
-#define JvResources_RsEDesignNilFmt 64801
-#define JvResources_RsJvInspItemValueException 64802
-#define JvResources_RsJvInspItemUnInitialized 64803
-#define JvResources_RsJvInspItemUnassigned 64804
-#define JvResources_RsJvInspItemNoValue 64805
-#define JvResources_RsStringListEditorCaption 64806
-#define JvResources_RsXLinesCaption 64807
-#define JvResources_RsOneLineCaption 64808
-#define JvResources_RsEJvInspItemHasParent 64809
-#define JvResources_RsEJvInspItemNotAChild 64810
-#define JvResources_RsEJvInspItemColNotFound 64811
-#define JvResources_RsEJvInspItemItemIsNotCol 64812
-#define JvResources_RsEJvInspItemInvalidPropValue 64813
-#define JvResources_RsEJvInspDataNoAccessAs 64814
-#define JvResources_RsEJvInspDataNotInit 64815
-#define JvResources_RsEProviderDoesNotSupportContexts 64816
-#define JvResources_RsETheSpecifiedContextIsNotPartOfTheSa 64817
-#define JvResources_RsEYouMustSpecifyAProviderBeforeSettin_ 64818
-#define JvResources_RsEItemNotFoundInTheSelectedContext 64819
-#define JvResources_RsEViewListOutOfSync 64820
-#define JvResources_RsEExtensibleIntObjDuplicateClass 64821
-#define JvResources_RsEExtensibleIntObjCollectionExpected 64822
-#define JvResources_RsEExtensibleIntObjClassNameExpected 64823
-#define JvResources_RsEExtensibleIntObjInvalidClass 64824
-#define JvResources_RsInactiveData 64825
-#define JvResources_RsBrowseData 64826
-#define JvResources_RsEditData 64827
-#define JvResources_RsInsertData 64828
-#define JvResources_RsSetKeyData 64829
-#define JvResources_RsCalcFieldsData 64830
-#define JvResources_RsEDesignCannotSelect 64831
+#define XMLConst_SMSDOMNotInstalled 64544
+#define XMLConst_SNotActive 64545
+#define XMLConst_SNodeNotFound 64546
+#define XMLConst_SMissingNode 64547
+#define XMLConst_SNoAttributes 64548
+#define XMLConst_SInvalidNodeType 64549
+#define XMLConst_SMismatchedRegItems 64550
+#define XMLConst_SNotSingleTextNode 64551
+#define XMLConst_SNoDOMParseOptions 64552
+#define XMLConst_SNodeReadOnly 64553
+#define XMLConst_SNoRefresh 64554
+#define XMLConst_SMissingFileName 64555
+#define XMLConst_SLine 64556
+#define CtlConsts_sInvalidClassReference 64557
+#define ExploreDataBase_test_string 64558
+#define ExploreDataBase_initial_lang 64559
+#define TeeConst_TeeMsg_FunctionAverage 64560
+#define TeeConst_TeeMsg_DefaultFontName 64561
+#define TeeConst_TeeMsg_FunctionPeriod 64562
+#define TeeConst_TeeMsg_ValuesX 64563
+#define TeeConst_TeeMsg_ValuesY 64564
+#define OleConst_SCannotActivate 64565
+#define OleConst_SNoWindowHandle 64566
+#define OleConst_SNoMethod 64567
+#define OleConst_SInvalidLicense 64568
+#define OleConst_SNotLicensed 64569
+#define OleConst_sNoRunningObject 64570
+#define XMLConst_SDuplicateRegistration 64571
+#define XMLConst_SNoMatchingDOMVendor 64572
+#define XMLConst_SNoDOMNodeEx 64573
+#define XMLConst_SDOMNotSupported 64574
+#define XMLConst_SNodeExpected 64575
+#define TeeConst_TeeMsg_MaxPointsPerPage 64576
+#define TeeConst_TeeMsg_3dPercent 64577
+#define TeeConst_TeeMsg_CircularSeries 64578
+#define TeeConst_TeeMsg_DefaultPercentOf 64579
+#define TeeConst_TeeMsg_DefPercentFormat 64580
+#define TeeConst_TeeMsg_DefValueFormat 64581
+#define TeeConst_TeeMsg_AxisTitle 64582
+#define TeeConst_TeeMsg_AxisLabels 64583
+#define TeeConst_TeeMsg_GalleryFunctions 64584
+#define TeeConst_TeeMsg_DefaultFontSize 64585
+#define TeeConst_TeeMsg_FunctionAdd 64586
+#define TeeConst_TeeMsg_FunctionSubtract 64587
+#define TeeConst_TeeMsg_FunctionMultiply 64588
+#define TeeConst_TeeMsg_FunctionDivide 64589
+#define TeeConst_TeeMsg_FunctionHigh 64590
+#define TeeConst_TeeMsg_FunctionLow 64591
+#define SynEditTextBuffer_SListIndexOutOfBounds 64592
+#define SynEditTextBuffer_SInvalidCapacity 64593
+#define TeeConst_TeeMsg_LegendTopPos 64594
+#define TeeConst_TeeMsg_LegendFirstValue 64595
+#define TeeConst_TeeMsg_LegendColorWidth 64596
+#define TeeConst_TeeMsg_SeriesSetDataSource 64597
+#define TeeConst_TeeMsg_SeriesInvDataSource 64598
+#define TeeConst_TeeMsg_FillSample 64599
+#define TeeConst_TeeMsg_Angle 64600
+#define TeeConst_TeeMsg_AxisLogDateTime 64601
+#define TeeConst_TeeMsg_AxisLogNotPositive 64602
+#define TeeConst_TeeMsg_AxisLabelSep 64603
+#define TeeConst_TeeMsg_AxisIncrementNeg 64604
+#define TeeConst_TeeMsg_AxisMinMax 64605
+#define TeeConst_TeeMsg_AxisMaxMin 64606
+#define TeeConst_TeeMsg_AxisLogBase 64607
+#define JConsts_sJPEGImageFile 64608
+#define SynEditStrConst_SYNS_FriendlyAttrComment 64609
+#define SynEditStrConst_SYNS_FriendlyAttrEscapeAmpersand 64610
+#define SynEditStrConst_SYNS_FriendlyAttrIdentifier 64611
+#define SynEditStrConst_SYNS_FriendlyAttrReservedWord 64612
+#define SynEditStrConst_SYNS_FriendlyAttrSpace 64613
+#define SynEditStrConst_SYNS_FriendlyAttrSymbol 64614
+#define SynEditStrConst_SYNS_FriendlyAttrText 64615
+#define SynEditStrConst_SYNS_FriendlyAttrUnknownWord 64616
+#define SynEditStrConst_SYNS_FriendlyAttrValue 64617
+#define SynEditStrConst_SYNS_ScrollInfoFmt 64618
+#define SynEditStrConst_SYNS_ScrollInfoFmtTop 64619
+#define SynEditStrConst_SYNS_EDuplicateShortcut 64620
+#define SynEditStrConst_SYNS_FilterHTML 64621
+#define SynEditStrConst_SYNS_FriendlyLangHTML 64622
+#define SynEditStrConst_SYNS_FriendlyLangUnknown 64623
+#define JvResources_RsClInactiveCaptionText 64624
+#define JvResources_RsClBtnHighlight 64625
+#define JvResources_RsCl3DDkShadow 64626
+#define JvResources_RsCl3DLight 64627
+#define JvResources_RsClInfoText 64628
+#define JvResources_RsClInfoBk 64629
+#define JvResources_RsGradientActiveCaption 64630
+#define JvResources_RsGradientInactiveCaption 64631
+#define JvResources_RsHotLight 64632
+#define JvResources_RsMenuBar 64633
+#define JvResources_RsMenuHighlight 64634
+#define JvResources_RsDestroyingArrangeSettingsNotAllowed 64635
+#define JvJCLUtils_RsEPropertyNotExists 64636
+#define JvJCLUtils_RsEInvalidPropertyType 64637
+#define JConsts_sChangeJPGSize 64638
+#define JConsts_sJPEGError 64639
+#define JvResources_RsClInactiveCaption 64640
+#define JvResources_RsClMenu 64641
+#define JvResources_RsClWindow 64642
+#define JvResources_RsClWindowFrame 64643
+#define JvResources_RsClMenuText 64644
+#define JvResources_RsClWindowText 64645
+#define JvResources_RsClCaptionText 64646
+#define JvResources_RsClActiveBorder 64647
+#define JvResources_RsClInactiveBorder 64648
+#define JvResources_RsClAppWorkSpace 64649
+#define JvResources_RsClHighlight 64650
+#define JvResources_RsClHighlightText 64651
+#define JvResources_RsClBtnFace 64652
+#define JvResources_RsClBtnShadow 64653
+#define JvResources_RsClGrayText 64654
+#define JvResources_RsClBtnText 64655
+#define JvResources_RsClPink 64656
+#define JvResources_RsClGold 64657
+#define JvResources_RsClBrightGreen 64658
+#define JvResources_RsClTurquoise 64659
+#define JvResources_RsClPlum 64660
+#define JvResources_RsClGray25 64661
+#define JvResources_RsClRose 64662
+#define JvResources_RsClTan 64663
+#define JvResources_RsClLightYellow 64664
+#define JvResources_RsClLightGreen 64665
+#define JvResources_RsClLightTurquoise 64666
+#define JvResources_RsClPaleBlue 64667
+#define JvResources_RsClLavender 64668
+#define JvResources_RsClScrollBar 64669
+#define JvResources_RsClBackground 64670
+#define JvResources_RsClActiveCaption 64671
+#define JvResources_RsClOliveGreen 64672
+#define JvResources_RsClDarkGreen 64673
+#define JvResources_RsClDarkTeal 64674
+#define JvResources_RsClDarkBlue 64675
+#define JvResources_RsClIndigo 64676
+#define JvResources_RsClGray80 64677
+#define JvResources_RsClDarkRed 64678
+#define JvResources_RsClOrange 64679
+#define JvResources_RsClDarkYellow 64680
+#define JvResources_RsClBlueGray 64681
+#define JvResources_RsClGray50 64682
+#define JvResources_RsClLightOrange 64683
+#define JvResources_RsClSeaGreen 64684
+#define JvResources_RsClLightBlue 64685
+#define JvResources_RsClViolet 64686
+#define JvResources_RsClGray40 64687
+#define JvResources_RsClPurple 64688
+#define JvResources_RsClTeal 64689
+#define JvResources_RsClGray 64690
+#define JvResources_RsClSilver 64691
+#define JvResources_RsClRed 64692
+#define JvResources_RsClLime 64693
+#define JvResources_RsClYellow 64694
+#define JvResources_RsClBlue 64695
+#define JvResources_RsClFuchsia 64696
+#define JvResources_RsClAqua 64697
+#define JvResources_RsClWhite 64698
+#define JvResources_RsClMoneyGreen 64699
+#define JvResources_RsClSkyBlue 64700
+#define JvResources_RsClCream 64701
+#define JvResources_RsClMedGray 64702
+#define JvResources_RsClBrown 64703
+#define JvResources_RsEInterpreter304 64704
+#define JvResources_RsEInterpreter305 64705
+#define JvResources_RsEInterpreter306 64706
+#define JvResources_RsEInterpreter307 64707
+#define JvResources_RsEInterpreter308 64708
+#define JvResources_RsEInterpreter309 64709
+#define JvResources_RsEInterpreter401 64710
+#define JvResources_RsEInterpreter402 64711
+#define JvResources_RsEXOrX 64712
+#define JvResources_RsEOutOfRangeFloat 64713
+#define JvResources_RsUnknown 64714
+#define JvResources_RsClBlack 64715
+#define JvResources_RsClMaroon 64716
+#define JvResources_RsClGreen 64717
+#define JvResources_RsClOlive 64718
+#define JvResources_RsClNavy 64719
+#define JvResources_RsEInterpreter175 64720
+#define JvResources_RsEInterpreter176 64721
+#define JvResources_RsEInterpreter181 64722
+#define JvResources_RsEInterpreter182 64723
+#define JvResources_RsEInterpreter183 64724
+#define JvResources_RsEInterpreter184 64725
+#define JvResources_RsEInterpreter185 64726
+#define JvResources_RsEInterpreter186 64727
+#define JvResources_RsEInterpreter187 64728
+#define JvResources_RsEInterpreter188 64729
+#define JvResources_RsEInterpreter189 64730
+#define JvResources_RsEInterpreter190 64731
+#define JvResources_RsEInterpreter201 64732
+#define JvResources_RsEInterpreter301 64733
+#define JvResources_RsEInterpreter302 64734
+#define JvResources_RsEInterpreter303 64735
+#define JvResources_RsEInterpreter57 64736
+#define JvResources_RsEInterpreter58 64737
+#define JvResources_RsEInterpreter101 64738
+#define JvResources_RsEInterpreter103 64739
+#define JvResources_RsEInterpreter104 64740
+#define JvResources_RsEInterpreter105 64741
+#define JvResources_RsEInterpreter106 64742
+#define JvResources_RsEInterpreter107 64743
+#define JvResources_RsEInterpreter108 64744
+#define JvResources_RsEInterpreter109 64745
+#define JvResources_RsEInterpreter110 64746
+#define JvResources_RsEInterpreter111 64747
+#define JvResources_RsEInterpreter171 64748
+#define JvResources_RsEInterpreter172 64749
+#define JvResources_RsEInterpreter173 64750
+#define JvResources_RsEInterpreter174 64751
+#define JvResources_RsERangeCheckError 64752
+#define JvResources_RsArrayToArrayAssignment 64753
+#define JvResources_RsEInterpreter0 64754
+#define JvResources_RsEInterpreter1 64755
+#define JvResources_RsEInterpreter2 64756
+#define JvResources_RsEInterpreter3 64757
+#define JvResources_RsEInterpreter4 64758
+#define JvResources_RsEInterpreter5 64759
+#define JvResources_RsEInterpreter6 64760
+#define JvResources_RsEInterpreter7 64761
+#define JvResources_RsEInterpreter8 64762
+#define JvResources_RsEInterpreter31 64763
+#define JvResources_RsEInterpreter52 64764
+#define JvResources_RsEInterpreter53 64765
+#define JvResources_RsEInterpreter55 64766
+#define JvResources_RsEInterpreter56 64767
+#define JvResources_RsEOnlyDMYSAllowed 64768
+#define JvResources_RsEDOrDDRequired 64769
+#define JvResources_RsEMOrMMRequired 64770
+#define JvResources_RsEYYOrYYYYRequired 64771
+#define JvResources_RsEInstanceAlreadyExists 64772
+#define JvResources_RsENameAlreadyExistsForInstance 64773
+#define JvResources_RsEInstanceNonexistent 64774
+#define JvResources_RsEMethodAlreadyExists 64775
+#define JvResources_RsENameAlreadyExistsForMethod 64776
+#define JvResources_RsEJvAssertSetTopIndex 64777
+#define JvResources_RsEJvAssertInspectorPainter 64778
+#define JvResources_RsEJvAssertDataParent 64779
+#define JvResources_RsEJvAssertParent 64780
+#define JvResources_RsEJvAssertPropInfo 64781
+#define JvResources_RsEJvAssertClassInfo 64782
+#define JvResources_RsEUnknownRecordType 64783
+#define JvResources_RsEJvInspDataNotInit 64784
+#define JvResources_RsEJvInspDataNotAssigned 64785
+#define JvResources_RsEJvInspDataNoValue 64786
+#define JvResources_RsEJvInspDataStrTooLong 64787
+#define JvResources_RsEJvInspNoGenReg 64788
+#define JvResources_RsEJvInspPaintNotActive 64789
+#define JvResources_RsEJvInspPaintOnlyUsedOnce 64790
+#define JvResources_RsEInspectorInternalError 64791
+#define JvResources_RsESpecifierBeforeSeparator 64792
+#define JvResources_RsEDOrDDOnlyOnce 64793
+#define JvResources_RsEMOrMMOnlyOnce 64794
+#define JvResources_RsEYYOrYYYYOnlyOnce 64795
+#define JvResources_RsEOnlyDOrDDAllowed 64796
+#define JvResources_RsEOnlyMOrMMAllowed 64797
+#define JvResources_RsEOnlyYYOrYYYYAllowed 64798
+#define JvResources_RsEOnlyTwoSeparators 64799
+#define JvResources_RsEDesignCannotSelect 64800
+#define JvResources_RsEOldestFmt 64801
+#define JvResources_RsEDesignNilFmt 64802
+#define JvResources_RsJvInspItemValueException 64803
+#define JvResources_RsJvInspItemUnInitialized 64804
+#define JvResources_RsJvInspItemUnassigned 64805
+#define JvResources_RsJvInspItemNoValue 64806
+#define JvResources_RsStringListEditorCaption 64807
+#define JvResources_RsXLinesCaption 64808
+#define JvResources_RsOneLineCaption 64809
+#define JvResources_RsEJvInspItemHasParent 64810
+#define JvResources_RsEJvInspItemNotAChild 64811
+#define JvResources_RsEJvInspItemColNotFound 64812
+#define JvResources_RsEJvInspItemItemIsNotCol 64813
+#define JvResources_RsEJvInspItemInvalidPropValue 64814
+#define JvResources_RsEJvInspDataNoAccessAs 64815
+#define JvResources_RsEProviderHasNoContextNameds 64816
+#define JvResources_RsEProviderDoesNotSupportContexts 64817
+#define JvResources_RsETheSpecifiedContextIsNotPartOfTheSa 64818
+#define JvResources_RsEYouMustSpecifyAProviderBeforeSettin_ 64819
+#define JvResources_RsEItemNotFoundInTheSelectedContext 64820
+#define JvResources_RsEViewListOutOfSync 64821
+#define JvResources_RsEExtensibleIntObjDuplicateClass 64822
+#define JvResources_RsEExtensibleIntObjCollectionExpected 64823
+#define JvResources_RsEExtensibleIntObjClassNameExpected 64824
+#define JvResources_RsEExtensibleIntObjInvalidClass 64825
+#define JvResources_RsInactiveData 64826
+#define JvResources_RsBrowseData 64827
+#define JvResources_RsEditData 64828
+#define JvResources_RsInsertData 64829
+#define JvResources_RsSetKeyData 64830
+#define JvResources_RsCalcFieldsData 64831
 #define JclResources_RsOSVersionWinServer2012 64832
 #define JclResources_RsOSVersionWin81 64833
 #define JclResources_RsOSVersionWinServer2012R2 64834
@@ -241,15 +303,15 @@
 #define JvResources_RsButtonCancelCaption 64836
 #define JvResources_RsDataItemRenderHasNoText 64837
 #define JvResources_RsEInternalError 64838
-#define JvResources_RsELocalDatabase 64839
-#define JvResources_RsCapSelAll 64840
-#define JvResources_RsCapDeselAll 64841
-#define JvResources_RsCapInvertAll 64842
-#define JvResources_RsEItemCanNotBeDeleted 64843
-#define JvResources_RsEAContextWithThatNameAlreadyExists 64844
-#define JvResources_RsECannotCreateAContextWithoutAContext 64845
-#define JvResources_RsEYouMustSpecifyAProviderBeforeSettin 64846
-#define JvResources_RsEProviderHasNoContextNameds 64847
+#define JvResources_RsENotImplemented 64839
+#define JvResources_RsELocalDatabase 64840
+#define JvResources_RsCapSelAll 64841
+#define JvResources_RsCapDeselAll 64842
+#define JvResources_RsCapInvertAll 64843
+#define JvResources_RsEItemCanNotBeDeleted 64844
+#define JvResources_RsEAContextWithThatNameAlreadyExists 64845
+#define JvResources_RsECannotCreateAContextWithoutAContext 64846
+#define JvResources_RsEYouMustSpecifyAProviderBeforeSettin 64847
 #define JclResources_RsIntelCacheDescrD7 64848
 #define JclResources_RsIntelCacheDescrD8 64849
 #define JclResources_RsIntelCacheDescrDC 64850
@@ -940,10 +1002,6 @@
 #define SysConst_SDiskFull 65535
 STRINGTABLE
 BEGIN
-	ExploreDataBase_test_string,	"testung"
-	ExploreDataBase_initial_lang,	"The default .ini file could not be found !\r\nAs such, you have the option to choose between:\r\n\r\n- default Language (English), or\r\n- your operating system Language, or\r\n- a customized language (see ListBox below)."
-	XMLConst_SDOMNotSupported,	"Property or Method \"%s\" is not supported by DOM Vendor \"%s\""
-	XMLConst_SNodeExpected,	"Node cannot be null"
 	XMLConst_SMSDOMNotInstalled,	"Microsoft MSXML is not installed"
 	XMLConst_SNotActive,	"No active document"
 	XMLConst_SNodeNotFound,	"Node \"%s\" not found"
@@ -958,9 +1016,8 @@ BEGIN
 	XMLConst_SMissingFileName,	"FileName cannot be blank"
 	XMLConst_SLine,	"Line"
 	CtlConsts_sInvalidClassReference,	"Invalid class reference for TAppletApplication"
-	TeeConst_TeeMsg_FunctionDivide,	"Divide"
-	TeeConst_TeeMsg_FunctionHigh,	"High"
-	TeeConst_TeeMsg_FunctionLow,	"Low"
+	ExploreDataBase_test_string,	"testung"
+	ExploreDataBase_initial_lang,	"The default .ini file could not be found !\r\nAs such, you have the option to choose between:\r\n\r\n- default Language (English), or\r\n- your operating system Language, or\r\n- a customized language (see ListBox below)."
 	TeeConst_TeeMsg_FunctionAverage,	"Average"
 	TeeConst_TeeMsg_DefaultFontName,	"Arial"
 	TeeConst_TeeMsg_FunctionPeriod,	"Function Period should be >= 0"
@@ -968,15 +1025,15 @@ BEGIN
 	TeeConst_TeeMsg_ValuesY,	"Y"
 	OleConst_SCannotActivate,	"OLE control activation failed"
 	OleConst_SNoWindowHandle,	"Could not obtain OLE control window handle"
+	OleConst_SNoMethod,	"Method '%s' not supported by OLE object"
 	OleConst_SInvalidLicense,	"License information for %s is invalid"
 	OleConst_SNotLicensed,	"License information for %s not found. You cannot use this control in design mode"
 	OleConst_sNoRunningObject,	"Unable to retrieve a pointer to a running object registered with OLE for %s/%s"
 	XMLConst_SDuplicateRegistration,	"\"%s\" DOMImplementation already registered"
 	XMLConst_SNoMatchingDOMVendor,	"No matching DOM Vendor: \"%s\""
 	XMLConst_SNoDOMNodeEx,	"Selected DOM Vendor does not support this property or method"
-	TeeConst_TeeMsg_AxisMinMax,	"Axis Minimum Value must be <= Maximum"
-	TeeConst_TeeMsg_AxisMaxMin,	"Axis Maximum Value must be >= Minimum"
-	TeeConst_TeeMsg_AxisLogBase,	"Axis Logarithmic Base should be >= 2"
+	XMLConst_SDOMNotSupported,	"Property or Method \"%s\" is not supported by DOM Vendor \"%s\""
+	XMLConst_SNodeExpected,	"Node cannot be null"
 	TeeConst_TeeMsg_MaxPointsPerPage,	"MaxPointsPerPage must be >= 0"
 	TeeConst_TeeMsg_3dPercent,	"3D effect percent must be between %d and %d"
 	TeeConst_TeeMsg_CircularSeries,	"Circular Series dependences are not allowed"
@@ -990,9 +1047,9 @@ BEGIN
 	TeeConst_TeeMsg_FunctionAdd,	"Add"
 	TeeConst_TeeMsg_FunctionSubtract,	"Subtract"
 	TeeConst_TeeMsg_FunctionMultiply,	"Multiply"
-	SynEditStrConst_SYNS_FilterHTML,	"HTML Documents (*.htm;*.html)|*.htm;*.html"
-	SynEditStrConst_SYNS_FriendlyLangHTML,	"HTML"
-	SynEditStrConst_SYNS_FriendlyLangUnknown,	"<Unknown>"
+	TeeConst_TeeMsg_FunctionDivide,	"Divide"
+	TeeConst_TeeMsg_FunctionHigh,	"High"
+	TeeConst_TeeMsg_FunctionLow,	"Low"
 	SynEditTextBuffer_SListIndexOutOfBounds,	"Invalid stringlist index %d"
 	SynEditTextBuffer_SInvalidCapacity,	"Stringlist capacity cannot be smaller than count"
 	TeeConst_TeeMsg_LegendTopPos,	"Top Legend Position must be between 0 and 100 %"
@@ -1006,9 +1063,9 @@ BEGIN
 	TeeConst_TeeMsg_AxisLogNotPositive,	"Logarithmic Axis Min and Max values should be >= 0"
 	TeeConst_TeeMsg_AxisLabelSep,	"Labels Separation % must be greater than 0"
 	TeeConst_TeeMsg_AxisIncrementNeg,	"Axis increment must be >= 0"
-	JvResources_RsDestroyingArrangeSettingsNotAllowed,	"Your code tried to destroy the TJvPanel.ArrangeSettings objects leaving the panel in a broken state. Please fix your code by adding\r\n\r\n    if not ((Components[I] is TJvArrangeSettings) or\r\n            (Components[I] is TJvPanelHotTrackOptions)) then\r\n\r\nor by using the Controls[] array property if possible."
-	JConsts_sChangeJPGSize,	"Cannot change the size of a JPEG image"
-	JConsts_sJPEGError,	"JPEG error #%d"
+	TeeConst_TeeMsg_AxisMinMax,	"Axis Minimum Value must be <= Maximum"
+	TeeConst_TeeMsg_AxisMaxMin,	"Axis Maximum Value must be >= Minimum"
+	TeeConst_TeeMsg_AxisLogBase,	"Axis Logarithmic Base should be >= 2"
 	JConsts_sJPEGImageFile,	"JPEG Image File"
 	SynEditStrConst_SYNS_FriendlyAttrComment,	"Comment"
 	SynEditStrConst_SYNS_FriendlyAttrEscapeAmpersand,	"Escape Ampersand"
@@ -1022,11 +1079,9 @@ BEGIN
 	SynEditStrConst_SYNS_ScrollInfoFmt,	"%d - %d"
 	SynEditStrConst_SYNS_ScrollInfoFmtTop,	"Top Line: %d"
 	SynEditStrConst_SYNS_EDuplicateShortcut,	"Shortcut already exists"
-	JvResources_RsClHighlightText,	"Selection text"
-	JvResources_RsClBtnFace,	"Button face"
-	JvResources_RsClBtnShadow,	"Button shadow"
-	JvResources_RsClGrayText,	"Dimmed text"
-	JvResources_RsClBtnText,	"Button text"
+	SynEditStrConst_SYNS_FilterHTML,	"HTML Documents (*.htm;*.html)|*.htm;*.html"
+	SynEditStrConst_SYNS_FriendlyLangHTML,	"HTML"
+	SynEditStrConst_SYNS_FriendlyLangUnknown,	"<Unknown>"
 	JvResources_RsClInactiveCaptionText,	"Inactive window title bar text"
 	JvResources_RsClBtnHighlight,	"Button highlight"
 	JvResources_RsCl3DDkShadow,	"Dark shadow 3D elements"
@@ -1038,11 +1093,11 @@ BEGIN
 	JvResources_RsHotLight,	"Hot Light"
 	JvResources_RsMenuBar,	"Menu Bar"
 	JvResources_RsMenuHighlight,	"Menu Highlight"
-	JvResources_RsClPaleBlue,	"Pale Blue"
-	JvResources_RsClLavender,	"Lavender"
-	JvResources_RsClScrollBar,	"Scrollbar"
-	JvResources_RsClBackground,	"Desktop background"
-	JvResources_RsClActiveCaption,	"Active window title bar"
+	JvResources_RsDestroyingArrangeSettingsNotAllowed,	"Your code tried to destroy the TJvPanel.ArrangeSettings objects leaving the panel in a broken state. Please fix your code by adding\r\n\r\n    if not ((Components[I] is TJvArrangeSettings) or\r\n            (Components[I] is TJvPanelHotTrackOptions)) then\r\n\r\nor by using the Controls[] array property if possible."
+	JvJCLUtils_RsEPropertyNotExists,	"Property \"%s\" does not exist"
+	JvJCLUtils_RsEInvalidPropertyType,	"Property \"%s\" has invalid type"
+	JConsts_sChangeJPGSize,	"Cannot change the size of a JPEG image"
+	JConsts_sJPEGError,	"JPEG error #%d"
 	JvResources_RsClInactiveCaption,	"Inactive window title bar"
 	JvResources_RsClMenu,	"Menu background"
 	JvResources_RsClWindow,	"Window background"
@@ -1054,11 +1109,11 @@ BEGIN
 	JvResources_RsClInactiveBorder,	"Inactive window border"
 	JvResources_RsClAppWorkSpace,	"Application workspace"
 	JvResources_RsClHighlight,	"Selection background"
-	JvResources_RsClLightOrange,	"Light Orange"
-	JvResources_RsClSeaGreen,	"Sea Green"
-	JvResources_RsClLightBlue,	"Light Blue"
-	JvResources_RsClViolet,	"Violet"
-	JvResources_RsClGray40,	"Gray 40%"
+	JvResources_RsClHighlightText,	"Selection text"
+	JvResources_RsClBtnFace,	"Button face"
+	JvResources_RsClBtnShadow,	"Button shadow"
+	JvResources_RsClGrayText,	"Dimmed text"
+	JvResources_RsClBtnText,	"Button text"
 	JvResources_RsClPink,	"Pink"
 	JvResources_RsClGold,	"Gold"
 	JvResources_RsClBrightGreen,	"Bright Green"
@@ -1070,11 +1125,11 @@ BEGIN
 	JvResources_RsClLightYellow,	"Light Yellow"
 	JvResources_RsClLightGreen,	"Light Green"
 	JvResources_RsClLightTurquoise,	"Light Turquoise"
-	JvResources_RsClMoneyGreen,	"Money green"
-	JvResources_RsClSkyBlue,	"Sky blue"
-	JvResources_RsClCream,	"Cream"
-	JvResources_RsClMedGray,	"Medium gray"
-	JvResources_RsClBrown,	"Brown"
+	JvResources_RsClPaleBlue,	"Pale Blue"
+	JvResources_RsClLavender,	"Lavender"
+	JvResources_RsClScrollBar,	"Scrollbar"
+	JvResources_RsClBackground,	"Desktop background"
+	JvResources_RsClActiveCaption,	"Active window title bar"
 	JvResources_RsClOliveGreen,	"Olive Green"
 	JvResources_RsClDarkGreen,	"Dark Green"
 	JvResources_RsClDarkTeal,	"Dark Teal"
@@ -1086,11 +1141,11 @@ BEGIN
 	JvResources_RsClDarkYellow,	"Dark Yellow"
 	JvResources_RsClBlueGray,	"Blue Gray"
 	JvResources_RsClGray50,	"Gray 50%"
-	JvResources_RsClBlack,	"Black"
-	JvResources_RsClMaroon,	"Maroon"
-	JvResources_RsClGreen,	"Green"
-	JvResources_RsClOlive,	"Olive green"
-	JvResources_RsClNavy,	"Navy blue"
+	JvResources_RsClLightOrange,	"Light Orange"
+	JvResources_RsClSeaGreen,	"Sea Green"
+	JvResources_RsClLightBlue,	"Light Blue"
+	JvResources_RsClViolet,	"Violet"
+	JvResources_RsClGray40,	"Gray 40%"
 	JvResources_RsClPurple,	"Purple"
 	JvResources_RsClTeal,	"Teal"
 	JvResources_RsClGray,	"Gray"
@@ -1102,6 +1157,76 @@ BEGIN
 	JvResources_RsClFuchsia,	"Fuchsia"
 	JvResources_RsClAqua,	"Aqua"
 	JvResources_RsClWhite,	"White"
+	JvResources_RsClMoneyGreen,	"Money green"
+	JvResources_RsClSkyBlue,	"Sky blue"
+	JvResources_RsClCream,	"Cream"
+	JvResources_RsClMedGray,	"Medium gray"
+	JvResources_RsClBrown,	"Brown"
+	JvResources_RsEInterpreter304,	"End of File"
+	JvResources_RsEInterpreter305,	"Class Declaration"
+	JvResources_RsEInterpreter306,	"Integer Constant'"
+	JvResources_RsEInterpreter307,	"Integer Value"
+	JvResources_RsEInterpreter308,	"String Constant"
+	JvResources_RsEInterpreter309,	"Statement"
+	JvResources_RsEInterpreter401,	"Implementation of unit not found"
+	JvResources_RsEInterpreter402,	"Array and Record types are not allowed as procedure/function parameter"
+	JvResources_RsEXOrX,	"' or '"
+	JvResources_RsEOutOfRangeFloat,	"Value must be between %0:g and %1:g"
+	JvResources_RsUnknown,	"Unknown"
+	JvResources_RsClBlack,	"Black"
+	JvResources_RsClMaroon,	"Maroon"
+	JvResources_RsClGreen,	"Green"
+	JvResources_RsClOlive,	"Olive green"
+	JvResources_RsClNavy,	"Navy blue"
+	JvResources_RsEInterpreter175,	"Invalid array range"
+	JvResources_RsEInterpreter176,	"Array type required"
+	JvResources_RsEInterpreter181,	"Too many actual parameters"
+	JvResources_RsEInterpreter182,	"Not enough parameters"
+	JvResources_RsEInterpreter183,	"Incompatible types: '%0:s' and '%1:s'"
+	JvResources_RsEInterpreter184,	"Error loading library '%s'"
+	JvResources_RsEInterpreter185,	"Invalid type of argument in call to function '%s'"
+	JvResources_RsEInterpreter186,	"Invalid type of result in call to function '%s'"
+	JvResources_RsEInterpreter187,	"Can't get proc address for function '%s'"
+	JvResources_RsEInterpreter188,	"Invalid type of argument in call to function '%s'"
+	JvResources_RsEInterpreter189,	"Invalid type of result in call to function '%s'"
+	JvResources_RsEInterpreter190,	"Invalid calling convention for function '%s'"
+	JvResources_RsEInterpreter201,	"Calling '%0:s' failed: '%1:s'"
+	JvResources_RsEInterpreter301,	"Expression"
+	JvResources_RsEInterpreter302,	"Identifier"
+	JvResources_RsEInterpreter303,	"Declaration"
+	JvResources_RsEInterpreter57,	"Event '%s' not registered"
+	JvResources_RsEInterpreter58,	"DFM '%s' not found"
+	JvResources_RsEInterpreter101,	"Error in remark"
+	JvResources_RsEInterpreter103,	"%0:s expected but %1:s found"
+	JvResources_RsEInterpreter104,	"Undeclared Identifier '%s'"
+	JvResources_RsEInterpreter105,	"Type of expression must be boolean"
+	JvResources_RsEInterpreter106,	"Class type required"
+	JvResources_RsEInterpreter107,	" not allowed before else"
+	JvResources_RsEInterpreter108,	"Type of expression must be integer"
+	JvResources_RsEInterpreter109,	"Record, object or class type required"
+	JvResources_RsEInterpreter110,	"Missing operator or semicolon"
+	JvResources_RsEInterpreter111,	"Identifier redeclared: '%s'"
+	JvResources_RsEInterpreter171,	"Array index out of bounds"
+	JvResources_RsEInterpreter172,	"Too many array bounds"
+	JvResources_RsEInterpreter173,	"Not enough array bounds"
+	JvResources_RsEInterpreter174,	"Invalid array dimension"
+	JvResources_RsERangeCheckError,	"Range check error"
+	JvResources_RsArrayToArrayAssignment,	"Array to array assignment"
+	JvResources_RsEInterpreter0,	"Ok"
+	JvResources_RsEInterpreter1,	"Unknown error"
+	JvResources_RsEInterpreter2,	"Internal interpreter error: %s"
+	JvResources_RsEInterpreter3,	"User break"
+	JvResources_RsEInterpreter4,	"Re-raising an exception only allowed in exception handler"
+	JvResources_RsEInterpreter5,	"Error in unit '%0:s' on line %1:d : %2:s"
+	JvResources_RsEInterpreter6,	"External error in unit '%0:s' on line %1:d : %2:s"
+	JvResources_RsEInterpreter7,	"Access denied to '%s'"
+	JvResources_RsEInterpreter8,	"Expression is too complex - overflow"
+	JvResources_RsEInterpreter31,	"Record '%s' not defined"
+	JvResources_RsEInterpreter52,	"Stack overflow"
+	JvResources_RsEInterpreter53,	"Type mismatch"
+	JvResources_RsEInterpreter55,	"Function 'main' undefined"
+	JvResources_RsEInterpreter56,	"Unit '%s' not found"
+	JvResources_RsEOnlyDMYSAllowed,	"Only 'd', 'm', 'y' and '%s' are allowed"
 	JvResources_RsEDOrDDRequired,	"'d' or 'dd' are required"
 	JvResources_RsEMOrMMRequired,	"'m' or 'mm' are required"
 	JvResources_RsEYYOrYYYYRequired,	"'yy' or 'yyyy' are required"
@@ -1116,8 +1241,8 @@ BEGIN
 	JvResources_RsEJvAssertParent,	"TJvInspectorSetMemberData.New: unexpected AParent = nil"
 	JvResources_RsEJvAssertPropInfo,	"TJvInspectorPropData.New: unexpected PropInfo = nil"
 	JvResources_RsEJvAssertClassInfo,	"TJvInspectorPropData.New: unexpected ClassInfo = nil"
-	JvResources_RsEOutOfRangeFloat,	"Value must be between %0:g and %1:g"
-	JvResources_RsUnknown,	"Unknown"
+	JvResources_RsEUnknownRecordType,	"Unknown RecordType"
+	JvResources_RsEJvInspDataNotInit,	"Data not initialized"
 	JvResources_RsEJvInspDataNotAssigned,	"Data not assigned"
 	JvResources_RsEJvInspDataNoValue,	"Data has no value"
 	JvResources_RsEJvInspDataStrTooLong,	"String too long"
@@ -1133,7 +1258,7 @@ BEGIN
 	JvResources_RsEOnlyMOrMMAllowed,	"Only 'm' or 'mm' are allowed"
 	JvResources_RsEOnlyYYOrYYYYAllowed,	"Only 'yy' or 'yyyy' are allowed"
 	JvResources_RsEOnlyTwoSeparators,	"Only two separators are allowed"
-	JvResources_RsEOnlyDMYSAllowed,	"Only 'd', 'm', 'y' and '%s' are allowed"
+	JvResources_RsEDesignCannotSelect,	"Cannot add a nil selection."
 	JvResources_RsEOldestFmt,	"%0:s: Oldest ancestor of Container must be a form."
 	JvResources_RsEDesignNilFmt,	"%0:s: %1:s is nil"
 	JvResources_RsJvInspItemValueException,	"Exception "
@@ -1149,7 +1274,7 @@ BEGIN
 	JvResources_RsEJvInspItemItemIsNotCol,	"Specified item is not a column of this compound item"
 	JvResources_RsEJvInspItemInvalidPropValue,	"Invalid property value %s"
 	JvResources_RsEJvInspDataNoAccessAs,	"Data cannot be accessed as %s"
-	JvResources_RsEJvInspDataNotInit,	"Data not initialized"
+	JvResources_RsEProviderHasNoContextNameds,	"Provider has no context named \"%s\""
 	JvResources_RsEProviderDoesNotSupportContexts,	"Provider does not support contexts"
 	JvResources_RsETheSpecifiedContextIsNotPartOfTheSa,	"The specified context is not part of the same provider"
 	JvResources_RsEYouMustSpecifyAProviderBeforeSettin_,	"You must specify a provider before setting the item"
@@ -1165,7 +1290,6 @@ BEGIN
 	JvResources_RsInsertData,	"Insert"
 	JvResources_RsSetKeyData,	"Search"
 	JvResources_RsCalcFieldsData,	"Calculate"
-	JvResources_RsEDesignCannotSelect,	"Cannot add a nil selection."
 	JclResources_RsOSVersionWinServer2012,	"Windows Server 2012"
 	JclResources_RsOSVersionWin81,	"Windows 8.1"
 	JclResources_RsOSVersionWinServer2012R2,	"Windows Server 2012 R2"
@@ -1173,6 +1297,7 @@ BEGIN
 	JvResources_RsButtonCancelCaption,	"Cancel"
 	JvResources_RsDataItemRenderHasNoText,	"(item does not support the IJvDataItemText interface)"
 	JvResources_RsEInternalError,	"internal error"
+	JvResources_RsENotImplemented,	"not implemented"
 	JvResources_RsELocalDatabase,	"Cannot perform this operation on a local database"
 	JvResources_RsCapSelAll,	"&Select all"
 	JvResources_RsCapDeselAll,	"&Deselect all"
@@ -1181,7 +1306,6 @@ BEGIN
 	JvResources_RsEAContextWithThatNameAlreadyExists,	"A context with that name already exists"
 	JvResources_RsECannotCreateAContextWithoutAContext,	"Cannot create a context without a context list owner"
 	JvResources_RsEYouMustSpecifyAProviderBeforeSettin,	"You must specify a provider before setting the context"
-	JvResources_RsEProviderHasNoContextNameds,	"Provider has no context named \"%s\""
 	JclResources_RsIntelCacheDescrD7,	"3rd-level cache: 2 MByte, 8-way set associative, 64 byte line size"
 	JclResources_RsIntelCacheDescrD8,	"3rd-level cache: 4 MByte, 8-way set associative, 64 byte line size"
 	JclResources_RsIntelCacheDescrDC,	"3rd-level cache: 1.5 MByte, 12-way set associative, 64 byte line size"

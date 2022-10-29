@@ -23,7 +23,8 @@ uses
   JvStringHolder, JvNavigationPane, JvEditorCommon, JvEditor, JvHLEditor,
   JvHLEditorPropertyForm, SHDocVw, mshtml, ActiveX, JvEdit, JvSpin,
   JvDBControls, JvToolBar, SynEditHighlighter, SynHighlighterHtml, xmldom,
-  MyHintWindow, xmlMainMenu, XMLIntf, msxmldom, XMLDoc;
+  MyHintWindow, xmlMainMenu, XMLIntf, msxmldom, XMLDoc, JvInterpreter,
+  Console;
 
 (*var
   CppModule: HMODULE = 0;
@@ -1222,7 +1223,7 @@ type
     JvModernTabBarPainter2: TJvModernTabBarPainter;
     JvSpeedButton7: TJvSpeedButton;
     JvSpeedButton8: TJvSpeedButton;
-    JvArrowButton5: TJvArrowButton;
+    modusButton: TJvArrowButton;
     JvPopupMenu1: TJvPopupMenu;
     dBASE1: TMenuItem;
     Pascal1: TMenuItem;
@@ -1438,6 +1439,9 @@ type
     HTMLdesignerMenu: TJvPopupMenu;
     JvXPMenuItemPainter4: TJvXPMenuItemPainter;
     AddmenuItem1: TMenuItem;
+    JvInterpreterProgram1: TJvInterpreterProgram;
+    Console1: TConsole;
+    Panel49: TPanel;
     procedure FormCreate(Sender: TObject);
 
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1671,9 +1675,21 @@ type
     procedure MenuFileMouseMove(Sender: TObject; Shift: TShiftState;
       X, Y: Integer);
     procedure HtmlDesignPanelSelectionChange(Sender: TObject);
+    procedure JvInterpreterProgram1GetValue(Sender: TObject;
+      Identifier: String; var Value: Variant; Args: TJvInterpreterArgs;
+      var Done: Boolean);
+    procedure Console1GetPrompt(Sender: TCustomConsole; var APrompt,
+      ADefaultText: String; var ADefaultCaretPos: Integer);
+    procedure Console1PromptKeyPress(Sender: TCustomConsole;
+      var AKey: Char);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
+    FBooting: Boolean;
+    FPrompt: String;
+    FCustomCommand: Boolean;
+    FLastCommand: String;
+
     iniFile: TIniFile;
     strList: TStringList;
     locListRect: TRect;
@@ -1695,6 +1711,7 @@ type
     SourceFileNAme : String;
 
     function  getSelectedHTMLdesignerComponent: TComponent;
+    procedure setLastCommand(const AValue: String);
 
     procedure DatabaseButtonPopupMenuOnClick(Sender: TObject);
 
@@ -1724,6 +1741,8 @@ type
 
     DesignClass: string;
     in_insp: Boolean;
+
+  property LastCommand: string read FLastCommand write SetLastCommand;
   end;
 
 var
@@ -1763,6 +1782,11 @@ var
 
   Comp_ColorBox   : String;
 
+procedure TForm2.setLastCommand(const AValue: String);
+begin
+  FLastCommand := AValue;
+end;
+
 function TUseHTMLHelp.ApplicationHelp(Command: Word; Data: Longint; var CallHelp: Boolean): Boolean;
 var
   helpWindow: THandle;
@@ -2123,6 +2147,13 @@ begin
       // init some stuff
       NewControlOnDesigner := false;
       BoolsAsChecks := false;
+
+
+      FCustomCommand := false;
+      FPrompt := 'C:\';
+
+      Console1.Boot;
+      FBooting := true;
 
       DataPageGrid1ActiveRow  := 1;
       DevPageList.ActivePage := EditorPage;
@@ -2928,7 +2959,6 @@ begin
   begin
     BackgroundViewButton.Color := $0080FF80;
     BackgroundViewPanel.Height := 20;
-    showmessage('xxxx');
   end else
   begin
     BackgroundViewButton.Color := $008080FF;
@@ -3211,7 +3241,18 @@ begin
   
   if Key = VK_F2 then
   begin
-    ShowMessage('compile');
+    if modusButton.Caption = 'Pascal Mode' then
+    begin
+      BackGroundViewPanel.Height := 280;
+      with JvInterpreterProgram1 do
+      begin
+        Pas.Clear;
+        Pas.Add(SourceTextEditor.Text);
+        Run;
+        if VResult = 0 then
+        ShowMessage('no error.');
+      end;
+    end;
     exit;
   end;
 
@@ -3576,7 +3617,7 @@ end;
 
 procedure TForm2.dBASE1Click(Sender: TObject);
 begin
-  JvArrowButton5.Caption := 'dBASE Mode 1';
+  modusButton.Caption := 'dBASE Mode 1';
   SourceTextEditor.Lines.Clear;
   SourceTextEditor.Lines.Text :=
   '** END HEADER -- do not remove this line' + #13#10 +
@@ -3600,9 +3641,22 @@ end;
 
 procedure TForm2.Pascal1Click(Sender: TObject);
 begin
-  JvArrowButton5.Caption := 'Pascal Mode';
-  SourceTextEditor.Lines.Clear;
-  SourceTextEditor.Lines.Text := '// Pascal/Delphi' + #13#10;
+  modusButton.Caption := 'Pascal Mode';
+  with SourceTextEditor.Lines do
+  begin
+    Clear;
+    Text :=
+    '// Pascal/Delphi'           + #13#10#13#10  +
+    'unit test1;'                + #13#10        +
+    'interface'                  + #13#10        +
+    '  procedure main;'          + #13#10        +
+    'implementation'             + #13#10#13#10  +
+    '  procedure main;'          + #13#10        +
+    '  begin'                    + #13#10        +
+    '    WriteLn(''ddddd'',42);' + #13#10        +
+    '  end;'                     + #13#10#13#10  +
+    'end.'                       + #13#10        ;
+  end;
 end;
 
 procedure TForm2.FormKeyDown(Sender: TObject; var Key: Word;
@@ -3652,14 +3706,14 @@ end;
 
 procedure TForm2.dBase4DOS1Click(Sender: TObject);
 begin
-  JvArrowButton5.Caption := 'dBASE Mode 2';
+  modusButton.Caption := 'dBASE Mode 2';
   SourceTextEditor.Lines.Clear;
   SourceTextEditor.Lines.Text := '// dBase 4 DOS' + #13#10;
 end;
 
 procedure TForm2.ISOLISP1Click(Sender: TObject);
 begin
-  JvArrowButton5.Caption := 'LISP Mode';
+  modusButton.Caption := 'LISP Mode';
   SourceTextEditor.Lines.Clear;
   SourceTextEditor.Lines.Text := ';; LISP mode' + #13#10;
 end;
@@ -4704,6 +4758,46 @@ begin
         end;
       end;
     end;
+  end;
+end;
+
+procedure TForm2.JvInterpreterProgram1GetValue(
+  Sender     : TObject;
+  Identifier : String;
+  var Value  : Variant;
+  Args       : TJvInterpreterArgs;
+  var Done   : Boolean);
+  var
+  idx: Integer;
+begin
+  if LowerCase(identifier) = 'writeln' then
+  begin
+  Console1.Writeln('xxxx');
+    for idx := 0 to Args.Count - 1 do
+    begin
+      Console1.Writeln(Args.Values[idx]);
+    end;
+    Done := true;
+  end;
+end;
+
+procedure TForm2.Console1GetPrompt(
+  Sender: TCustomConsole;
+  var APrompt, ADefaultText: String;
+  var ADefaultCaretPos: Integer);
+begin
+  APrompt := 'C:\';
+end;
+
+procedure TForm2.Console1PromptKeyPress(
+  Sender: TCustomConsole;
+  var AKey: Char);
+begin
+  if (AKey = Chr(VK_UP)) then
+  begin
+    Sender.CurrLine.Text := FLastCommand;
+    Sender.CaretX := Length(FLastCommand);
+    Sender.Invalidate;
   end;
 end;
 
