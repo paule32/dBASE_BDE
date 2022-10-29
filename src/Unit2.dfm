@@ -1,7 +1,7 @@
 object Form2: TForm2
   Left = 99
   Top = 119
-  Width = 1162
+  Width = 1153
   Height = 661
   Caption = 'DataBase Explorer (c) 2022 Jens Kallup 1.0.0'
   Color = clBtnFace
@@ -21,7 +21,7 @@ object Form2: TForm2
   object StatusBar1: TStatusBar
     Left = 0
     Top = 599
-    Width = 1146
+    Width = 1137
     Height = 23
     Panels = <
       item
@@ -44,29 +44,29 @@ object Form2: TForm2
   object ScrollBox2: TScrollBox
     Left = 0
     Top = 0
-    Width = 1146
+    Width = 1137
     Height = 599
     Align = alClient
     TabOrder = 1
     object ScrollView: TScrollBox
       Left = 0
       Top = 0
-      Width = 1142
+      Width = 1133
       Height = 595
       Align = alClient
       TabOrder = 0
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 1138
+        Width = 1129
         Height = 591
         Align = alClient
         Caption = 'Panel2'
         TabOrder = 0
         object JvSplitter1: TJvSplitter
           Left = 1
-          Top = 21
-          Width = 1136
+          Top = 25
+          Width = 1127
           Height = 3
           Cursor = crVSplit
           Align = alTop
@@ -74,21 +74,29 @@ object Form2: TForm2
         object BackgroundViewPanel: TJvPanel
           Left = 1
           Top = 1
-          Width = 1136
-          Height = 20
+          Width = 1127
+          Height = 24
           Align = alTop
           TabOrder = 3
+          object Label16: TLabel
+            Left = 8
+            Top = 8
+            Width = 44
+            Height = 13
+            Caption = 'Console :'
+          end
           object Console1: TConsole
             Left = 8
             Top = 24
             Width = 409
-            Height = 257
+            Height = 248
             AutoUseInsertMode = True
             InsertMode = True
             InsertCaret = ctHorizontalLine
             OverwriteCaret = ctHalfBlock
             BorderSize = 3
             ExtraLineSpacing = 0
+            OnCommandExecute = Console1CommandExecute
             OnGetPrompt = Console1GetPrompt
             OnPromptKeyPress = Console1PromptKeyPress
             Color = clBlack
@@ -101,20 +109,12 @@ object Form2: TForm2
             TabOrder = 0
             TabStop = False
           end
-          object Panel49: TPanel
-            Left = 8
-            Top = 267
-            Width = 409
-            Height = 14
-            BevelOuter = bvNone
-            TabOrder = 1
-          end
         end
         object TasksPageControl: TPageControl
           Left = 1
-          Top = 130
-          Width = 1136
-          Height = 460
+          Top = 134
+          Width = 1127
+          Height = 456
           ActivePage = TaskPageDevelopment
           Align = alClient
           TabOrder = 0
@@ -125,21 +125,21 @@ object Form2: TForm2
             object ScrollBox23: TScrollBox
               Left = 0
               Top = 0
-              Width = 1128
-              Height = 432
+              Width = 1119
+              Height = 428
               Align = alClient
               TabOrder = 0
               object Splitter3: TSplitter
                 Left = 201
                 Top = 0
                 Width = 4
-                Height = 428
+                Height = 424
               end
               object Panel22: TPanel
                 Left = 0
                 Top = 0
                 Width = 201
-                Height = 428
+                Height = 424
                 Align = alLeft
                 Caption = 'Panel3'
                 TabOrder = 0
@@ -147,7 +147,7 @@ object Form2: TForm2
                   Left = 1
                   Top = 1
                   Width = 199
-                  Height = 426
+                  Height = 422
                   ActivePage = TabSheet31
                   Align = alClient
                   TabOrder = 0
@@ -177,7 +177,7 @@ object Form2: TForm2
                       Left = 0
                       Top = 172
                       Width = 191
-                      Height = 226
+                      Height = 222
                       ActivePage = TabSheet30
                       Align = alClient
                       TabOrder = 1
@@ -355,20 +355,20 @@ object Form2: TForm2
               object ScrollBox1: TScrollBox
                 Left = 205
                 Top = 0
-                Width = 919
-                Height = 428
+                Width = 910
+                Height = 424
                 Align = alClient
                 TabOrder = 1
                 object Splitter7: TSplitter
                   Left = 0
                   Top = 231
-                  Width = 915
+                  Width = 906
                   Height = 9
                   Cursor = crVSplit
                   Align = alBottom
                 end
                 object Splitter8: TSplitter
-                  Left = 540
+                  Left = 531
                   Top = 25
                   Height = 206
                   Align = alRight
@@ -376,7 +376,7 @@ object Form2: TForm2
                 object Panel7: TPanel
                   Left = 0
                   Top = 0
-                  Width = 915
+                  Width = 906
                   Height = 25
                   Align = alTop
                   BevelInner = bvSpace
@@ -394,8 +394,8 @@ object Form2: TForm2
                 object Panel8: TPanel
                   Left = 0
                   Top = 240
-                  Width = 915
-                  Height = 184
+                  Width = 906
+                  Height = 180
                   Align = alBottom
                   Anchors = [akLeft, akTop, akRight, akBottom]
                   Caption = 'Panel8'
@@ -403,8 +403,8 @@ object Form2: TForm2
                   object PageControl5: TPageControl
                     Left = 1
                     Top = 1
-                    Width = 913
-                    Height = 182
+                    Width = 904
+                    Height = 178
                     ActivePage = TabSheet3
                     Align = alClient
                     TabOrder = 0
@@ -592,7 +592,7 @@ object Form2: TForm2
                   end
                 end
                 object PageControl4: TPageControl
-                  Left = 543
+                  Left = 534
                   Top = 25
                   Width = 372
                   Height = 206
@@ -721,12 +721,12 @@ object Form2: TForm2
                 object ScrollBox22: TScrollBox
                   Left = 0
                   Top = 25
-                  Width = 540
+                  Width = 531
                   Height = 206
                   Align = alClient
                   TabOrder = 3
                   DesignSize = (
-                    536
+                    527
                     202)
                   object SystemViewGrid: TStringGrid
                     Left = 0
@@ -777,7 +777,7 @@ object Form2: TForm2
                   object PageControl9: TPageControl
                     Left = 280
                     Top = 8
-                    Width = 253
+                    Width = 244
                     Height = 185
                     ActivePage = TabSheet22
                     Anchors = [akLeft, akTop, akRight]
@@ -828,15 +828,15 @@ object Form2: TForm2
             object ScrollBox20: TScrollBox
               Left = 0
               Top = 0
-              Width = 1128
-              Height = 432
+              Width = 1119
+              Height = 428
               Align = alClient
               TabOrder = 0
               object PageControl11: TPageControl
                 Left = 0
                 Top = 0
-                Width = 1124
-                Height = 428
+                Width = 1115
+                Height = 424
                 ActivePage = TabSheet23
                 Align = alClient
                 TabOrder = 0
@@ -860,15 +860,15 @@ object Form2: TForm2
             object ScrollBox25: TScrollBox
               Left = 0
               Top = 0
-              Width = 1128
-              Height = 432
+              Width = 1119
+              Height = 428
               Align = alClient
               TabOrder = 0
               object PageControl1: TPageControl
                 Left = 0
                 Top = 0
-                Width = 1124
-                Height = 428
+                Width = 1115
+                Height = 424
                 ActivePage = TabSheet11
                 Align = alClient
                 TabOrder = 0
@@ -892,15 +892,15 @@ object Form2: TForm2
             object ScrollBox19: TScrollBox
               Left = 0
               Top = 0
-              Width = 1128
-              Height = 432
+              Width = 1119
+              Height = 428
               Align = alClient
               TabOrder = 0
               object PageControl2: TPageControl
                 Left = 0
                 Top = 0
-                Width = 1124
-                Height = 428
+                Width = 1115
+                Height = 424
                 ActivePage = TabSheet21
                 Align = alClient
                 TabOrder = 0
@@ -924,15 +924,15 @@ object Form2: TForm2
             object ScrollBox5: TScrollBox
               Left = 0
               Top = 0
-              Width = 1128
-              Height = 432
+              Width = 1119
+              Height = 428
               Align = alClient
               TabOrder = 0
               object PageControl7: TPageControl
                 Left = 0
                 Top = 0
                 Width = 985
-                Height = 428
+                Height = 424
                 ActivePage = TabSheet8
                 Align = alLeft
                 TabOrder = 0
@@ -965,7 +965,7 @@ object Form2: TForm2
                     Left = 0
                     Top = 0
                     Width = 977
-                    Height = 400
+                    Height = 396
                     Align = alClient
                     TabOrder = 0
                     object Label5: TLabel
@@ -1531,12 +1531,12 @@ object Form2: TForm2
                     Left = 0
                     Top = 0
                     Width = 977
-                    Height = 400
+                    Height = 396
                     Align = alClient
                     TabOrder = 0
                     DesignSize = (
                       973
-                      396)
+                      392)
                     object Panel15: TPanel
                       Left = 8
                       Top = 8
@@ -1609,7 +1609,7 @@ object Form2: TForm2
                       Left = 8
                       Top = 128
                       Width = 753
-                      Height = 284
+                      Height = 280
                       ActivePage = TabSheet39
                       Anchors = [akLeft, akTop, akBottom]
                       TabOrder = 1
@@ -1641,7 +1641,7 @@ object Form2: TForm2
                       Left = 784
                       Top = 149
                       Width = 177
-                      Height = 263
+                      Height = 259
                       Anchors = [akLeft, akTop, akBottom]
                       ItemHeight = 13
                       TabOrder = 2
@@ -1655,12 +1655,12 @@ object Form2: TForm2
                     Left = 0
                     Top = 0
                     Width = 977
-                    Height = 400
+                    Height = 396
                     Align = alClient
                     TabOrder = 0
                     DesignSize = (
                       956
-                      396)
+                      392)
                     object Panel19: TPanel
                       Left = 8
                       Top = 8
@@ -1794,21 +1794,21 @@ object Form2: TForm2
                     Left = 0
                     Top = 0
                     Width = 977
-                    Height = 400
+                    Height = 396
                     Align = alClient
                     TabOrder = 0
                     DesignSize = (
                       973
-                      396)
+                      392)
                     object Panel20: TPanel
                       Left = 8
                       Top = 8
-                      Width = 573
+                      Width = 569
                       Height = 145
                       Anchors = [akLeft, akTop, akRight]
                       TabOrder = 0
                       DesignSize = (
-                        573
+                        569
                         145)
                       object Button18: TButton
                         Left = 8
@@ -1861,7 +1861,7 @@ object Form2: TForm2
                       object ListBox3: TListBox
                         Left = 240
                         Top = 8
-                        Width = 317
+                        Width = 313
                         Height = 121
                         Anchors = [akLeft, akTop, akRight]
                         ItemHeight = 13
@@ -1893,7 +1893,7 @@ object Form2: TForm2
                     Left = 0
                     Top = 0
                     Width = 977
-                    Height = 400
+                    Height = 396
                     Align = alClient
                     TabOrder = 0
                     object Label11: TLabel
@@ -2143,20 +2143,20 @@ object Form2: TForm2
             object ScrollBox6: TScrollBox
               Left = 0
               Top = 0
-              Width = 1128
-              Height = 432
+              Width = 1119
+              Height = 428
               Align = alClient
               TabOrder = 0
               object Splitter14: TSplitter
                 Left = 185
                 Top = 0
-                Height = 428
+                Height = 424
               end
               object Panel14: TPanel
                 Left = 0
                 Top = 0
                 Width = 185
-                Height = 428
+                Height = 424
                 Align = alLeft
                 TabOrder = 0
                 object Splitter19: TSplitter
@@ -2188,12 +2188,12 @@ object Form2: TForm2
                   TabOrder = 1
                   OnClick = SetupPageTreeViewClick
                   Items.Data = {
-                    02000000220000000000000000000000FFFFFFFFFFFFFFFF0100000002000000
+                    02000000220000000100000001000000FFFFFFFFFFFFFFFF0100000002000000
                     094C616E67756167657320000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
                     00000000000007456E676C6973681F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                    FFFF0000000000000000064765726D616E210000000000000000000000FFFFFF
-                    FFFFFFFFFF0100000002000000084D616E696665737424000000020000000200
-                    0000FFFFFFFFFFFFFFFF01000000000000000B4170706C69636174696F6E2200
+                    FFFF0000000000000000064765726D616E210000000100000001000000FFFFFF
+                    FFFFFFFFFF0100000002000000084D616E696665737424000000FFFFFFFFFFFF
+                    FFFFFFFFFFFFFFFFFFFF01000000000000000B4170706C69636174696F6E2200
                     0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000009526573736F
                     75726365}
                   Items.Links = {06000000010000000000000000000000010000000100000000000000}
@@ -2202,15 +2202,15 @@ object Form2: TForm2
               object Panel29: TPanel
                 Left = 188
                 Top = 0
-                Width = 936
-                Height = 428
+                Width = 927
+                Height = 424
                 Align = alClient
                 Caption = 'Panel29'
                 TabOrder = 1
                 object Splitter16: TSplitter
                   Left = 1
-                  Top = 305
-                  Width = 934
+                  Top = 301
+                  Width = 925
                   Height = 3
                   Cursor = crVSplit
                   Align = alBottom
@@ -2218,21 +2218,21 @@ object Form2: TForm2
                 object Splitter17: TSplitter
                   Left = 1
                   Top = 42
-                  Width = 934
+                  Width = 925
                   Height = 3
                   Cursor = crVSplit
                   Align = alTop
                 end
                 object Splitter18: TSplitter
-                  Left = 722
+                  Left = 713
                   Top = 45
-                  Height = 260
+                  Height = 256
                   Align = alRight
                 end
                 object Panel31: TPanel
                   Left = 1
-                  Top = 308
-                  Width = 934
+                  Top = 304
+                  Width = 925
                   Height = 119
                   Align = alBottom
                   Caption = 'Panel31'
@@ -2241,17 +2241,17 @@ object Form2: TForm2
                 object Panel32: TPanel
                   Left = 1
                   Top = 1
-                  Width = 934
+                  Width = 925
                   Height = 41
                   Align = alTop
                   Caption = 'Panel32'
                   TabOrder = 1
                 end
                 object Panel33: TPanel
-                  Left = 725
+                  Left = 716
                   Top = 45
                   Width = 210
-                  Height = 260
+                  Height = 256
                   Align = alRight
                   Caption = 'Panel33'
                   TabOrder = 2
@@ -2259,32 +2259,32 @@ object Form2: TForm2
                 object SetupPageList: TJvPageList
                   Left = 1
                   Top = 45
-                  Width = 721
-                  Height = 260
+                  Width = 712
+                  Height = 256
                   ActivePage = SetupPageLanguage
                   PropagateEnable = False
                   Align = alClient
                   object SetupPageLanguage: TJvStandardPage
                     Left = 0
                     Top = 0
-                    Width = 721
-                    Height = 260
+                    Width = 712
+                    Height = 256
                     Caption = 'JvStandardPage1'
                     object ScrollBox38: TScrollBox
                       Left = 0
                       Top = 0
-                      Width = 721
-                      Height = 260
+                      Width = 712
+                      Height = 256
                       Align = alClient
                       TabOrder = 0
                       DesignSize = (
-                        717
-                        256)
+                        708
+                        252)
                       object SetupLangPageControl: TPageControl
                         Left = 0
                         Top = 0
-                        Width = 713
-                        Height = 249
+                        Width = 704
+                        Height = 245
                         ActivePage = SetupPageLangDEU
                         Anchors = [akLeft, akTop, akRight, akBottom]
                         TabOrder = 0
@@ -2297,8 +2297,8 @@ object Form2: TForm2
                           object ScrollBox40: TScrollBox
                             Left = 0
                             Top = 0
-                            Width = 705
-                            Height = 243
+                            Width = 696
+                            Height = 217
                             Align = alClient
                             TabOrder = 0
                           end
@@ -2309,8 +2309,8 @@ object Form2: TForm2
                   object LangPage0: TJvStandardPage
                     Left = 0
                     Top = 0
-                    Width = 721
-                    Height = 260
+                    Width = 712
+                    Height = 256
                     object SetupLangInfoLabel: TLabel
                       Left = 8
                       Top = 8
@@ -2331,8 +2331,8 @@ object Form2: TForm2
             ImageIndex = 7
             object DevPanelBar: TJvTabBar
               Left = 0
-              Top = 408
-              Width = 1128
+              Top = 404
+              Width = 1119
               Height = 24
               Align = alClient
               CloseButton = False
@@ -2347,6 +2347,9 @@ object Form2: TForm2
                   Caption = 'Editor'
                 end
                 item
+                  Caption = 'SQL-Builder'
+                end
+                item
                   Caption = 'Tables'
                 end
                 item
@@ -2357,36 +2360,36 @@ object Form2: TForm2
             object DevPageList: TJvPageList
               Left = 0
               Top = 0
-              Width = 1128
-              Height = 408
-              ActivePage = EditorPage
+              Width = 1119
+              Height = 404
+              ActivePage = SQLPage
               PropagateEnable = False
               Align = alTop
               Anchors = [akLeft, akTop, akRight, akBottom]
               object DesignerPage: TJvStandardPage
                 Left = 0
                 Top = 0
-                Width = 1128
-                Height = 408
+                Width = 1119
+                Height = 404
                 Caption = 'DesignerPage'
                 OnShow = DesignerPageShow
                 object ScrollBox31: TScrollBox
                   Left = 0
                   Top = 0
-                  Width = 1128
-                  Height = 408
+                  Width = 1119
+                  Height = 404
                   Align = alClient
                   TabOrder = 0
                   object Splitter4: TSplitter
                     Left = 193
                     Top = 0
-                    Height = 404
+                    Height = 400
                   end
                   object Panel16: TPanel
                     Left = 0
                     Top = 0
                     Width = 193
-                    Height = 404
+                    Height = 400
                     Align = alLeft
                     TabOrder = 0
                     object Splitter5: TSplitter
@@ -2473,7 +2476,7 @@ object Form2: TForm2
                       Left = 1
                       Top = 386
                       Width = 191
-                      Height = 17
+                      Height = 13
                       Align = alClient
                       Columns = <>
                       TabOrder = 3
@@ -2482,20 +2485,20 @@ object Form2: TForm2
                   object Panel18: TPanel
                     Left = 196
                     Top = 0
-                    Width = 928
-                    Height = 404
+                    Width = 919
+                    Height = 400
                     Align = alClient
                     Caption = 'Panel18'
                     TabOrder = 1
                     object Splitter6: TSplitter
-                      Left = 640
+                      Left = 631
                       Top = 33
-                      Height = 414
+                      Height = 366
                     end
                     object Panel21: TPanel
                       Left = 1
                       Top = 1
-                      Width = 926
+                      Width = 917
                       Height = 32
                       Align = alTop
                       Caption = 'Panel17'
@@ -2515,8 +2518,8 @@ object Form2: TForm2
                     object Panel25: TPanel
                       Left = 1
                       Top = 33
-                      Width = 639
-                      Height = 414
+                      Width = 630
+                      Height = 366
                       Align = alLeft
                       Anchors = [akLeft, akTop, akRight, akBottom]
                       Caption = 'Panel25'
@@ -2524,8 +2527,8 @@ object Form2: TForm2
                       object JvDesignScrollBox1: TJvDesignScrollBox
                         Left = 1
                         Top = 1
-                        Width = 637
-                        Height = 412
+                        Width = 628
+                        Height = 364
                         Align = alLeft
                         Anchors = [akLeft, akTop, akRight, akBottom]
                         TabOrder = 0
@@ -2541,10 +2544,10 @@ object Form2: TForm2
                       end
                     end
                     object ScrollBox32: TScrollBox
-                      Left = 643
+                      Left = 634
                       Top = 33
                       Width = 284
-                      Height = 414
+                      Height = 366
                       Align = alClient
                       Anchors = [akTop, akRight, akBottom]
                       TabOrder = 2
@@ -2569,40 +2572,40 @@ object Form2: TForm2
               object EditorPage: TJvStandardPage
                 Left = 0
                 Top = 0
-                Width = 1128
-                Height = 408
+                Width = 1119
+                Height = 404
                 Caption = 'EditorPage'
                 OnShow = EditorPageShow
                 object ScrollBox30: TScrollBox
                   Left = 0
                   Top = 0
-                  Width = 1128
-                  Height = 408
+                  Width = 1119
+                  Height = 404
                   Align = alClient
                   TabOrder = 0
                   object Panel4: TPanel
                     Left = 0
                     Top = 0
-                    Width = 1124
-                    Height = 404
+                    Width = 1115
+                    Height = 400
                     Align = alClient
                     TabOrder = 0
                     object Splitter10: TSplitter
                       Left = 161
                       Top = 1
-                      Height = 402
+                      Height = 398
                     end
                     object Splitter11: TSplitter
-                      Left = 907
+                      Left = 898
                       Top = 1
-                      Height = 402
+                      Height = 398
                       Align = alRight
                     end
                     object PageControl12: TPageControl
-                      Left = 910
+                      Left = 901
                       Top = 1
                       Width = 213
-                      Height = 402
+                      Height = 398
                       ActivePage = TabSheet38
                       Align = alRight
                       TabOrder = 0
@@ -2612,7 +2615,7 @@ object Form2: TForm2
                           Left = 0
                           Top = 0
                           Width = 205
-                          Height = 374
+                          Height = 370
                           Align = alClient
                           TabOrder = 0
                           object Splitter12: TSplitter
@@ -2654,14 +2657,14 @@ object Form2: TForm2
                                 TabOrder = 0
                                 Items.Data = {
                                   040000001D000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000000000000
-                                  047A7A7A7A220000000100000001000000FFFFFFFFFFFFFFFF01000000020000
+                                  047A7A7A7A220000000000000000000000FFFFFFFFFFFFFFFF01000000020000
                                   00097A7A7A7A7A676767671E000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01
                                   0000000000000005687A6868681D000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                                  FF000000000000000004363736371C0000000100000001000000FFFFFFFFFFFF
+                                  FF000000000000000004363736371C0000000000000000000000FFFFFFFFFFFF
                                   FFFF01000000010000000367676723000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                                  FFFF01000000000000000A393938393839383938391F00000001000000010000
-                                  00FFFFFFFFFFFFFFFF0000000001000000066868686868681F000000FFFFFFFF
-                                  FFFFFFFFFFFFFFFFFFFFFFFF000000000000000006303030303939}
+                                  FFFF01000000000000000A393938393839383938391F00000000000000000000
+                                  00FFFFFFFFFFFFFFFF0000000001000000066868686868681F00000002000000
+                                  02000000FFFFFFFFFFFFFFFF000000000000000006303030303939}
                                 Items.Links = {
                                   0800000001000000010000000100000000000000010000000100000000000000
                                   00000000}
@@ -2728,13 +2731,13 @@ object Form2: TForm2
                             Left = 0
                             Top = 237
                             Width = 201
-                            Height = 133
+                            Height = 129
                             Align = alClient
                             TabOrder = 2
                             object SynEdit2: TSynEdit
                               Left = 0
                               Top = 0
-                              Width = 197
+                              Width = 180
                               Height = 129
                               Align = alTop
                               Font.Charset = DEFAULT_CHARSET
@@ -2759,7 +2762,7 @@ object Form2: TForm2
                       Left = 1
                       Top = 1
                       Width = 160
-                      Height = 402
+                      Height = 398
                       Align = alLeft
                       TabOrder = 1
                       object Splitter1: TSplitter
@@ -2821,7 +2824,7 @@ object Form2: TForm2
                         Left = 1
                         Top = 257
                         Width = 158
-                        Height = 144
+                        Height = 140
                         Align = alClient
                         Columns = 1
                         ItemHeight = 13
@@ -2835,14 +2838,14 @@ object Form2: TForm2
                     object Panel6: TPanel
                       Left = 164
                       Top = 1
-                      Width = 743
-                      Height = 402
+                      Width = 734
+                      Height = 398
                       Align = alClient
                       TabOrder = 2
                       object Splitter2: TSplitter
                         Left = 1
                         Top = 392
-                        Width = 741
+                        Width = 732
                         Height = 3
                         Cursor = crVSplit
                         Align = alTop
@@ -2850,19 +2853,19 @@ object Form2: TForm2
                       object EditorScrollBox: TScrollBox
                         Left = 1
                         Top = 80
-                        Width = 741
+                        Width = 732
                         Height = 312
                         Align = alTop
                         TabOrder = 0
                         object Splitter21: TSplitter
-                          Left = 407
+                          Left = 398
                           Top = 0
                           Height = 308
                         end
                         object Panel48: TPanel
                           Left = 0
                           Top = 0
-                          Width = 407
+                          Width = 398
                           Height = 308
                           Align = alLeft
                           Anchors = [akLeft, akTop, akRight]
@@ -2871,7 +2874,7 @@ object Form2: TForm2
                           object SourceTextEditor: TSynEdit
                             Left = 1
                             Top = 1
-                            Width = 405
+                            Width = 396
                             Height = 306
                             Align = alClient
                             Font.Charset = DEFAULT_CHARSET
@@ -2903,7 +2906,7 @@ object Form2: TForm2
                           end
                         end
                         object ScrollBox39: TScrollBox
-                          Left = 410
+                          Left = 401
                           Top = 0
                           Width = 327
                           Height = 308
@@ -3079,16 +3082,16 @@ object Form2: TForm2
                       object Panel26: TPanel
                         Left = 1
                         Top = 395
-                        Width = 741
-                        Height = 6
+                        Width = 732
+                        Height = 2
                         Align = alClient
                         TabOrder = 1
                         DesignSize = (
-                          741
-                          6)
+                          732
+                          2)
                         object JvImgBtn4: TJvImgBtn
                           Tag = 1
-                          Left = 646
+                          Left = 637
                           Top = 9
                           Width = 75
                           Height = 25
@@ -3100,7 +3103,7 @@ object Form2: TForm2
                         end
                         object JvImgBtn5: TJvImgBtn
                           Tag = 1
-                          Left = 646
+                          Left = 637
                           Top = 41
                           Width = 75
                           Height = 25
@@ -3113,8 +3116,8 @@ object Form2: TForm2
                         object SourceCodeGrid: TStringGrid
                           Left = 1
                           Top = 1
-                          Width = 630
-                          Height = 4
+                          Width = 621
+                          Height = 0
                           Anchors = [akLeft, akTop, akRight, akBottom]
                           Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSizing, goColSizing, goRowSelect]
                           TabOrder = 2
@@ -3123,7 +3126,7 @@ object Form2: TForm2
                       object Panel43: TPanel
                         Left = 1
                         Top = 53
-                        Width = 741
+                        Width = 732
                         Height = 27
                         Align = alTop
                         Caption = 'Panel43'
@@ -3131,7 +3134,7 @@ object Form2: TForm2
                         object JvTabBar1: TJvTabBar
                           Left = 1
                           Top = 1
-                          Width = 739
+                          Width = 730
                           Painter = JvModernTabBarPainter2
                           Tabs = <
                             item
@@ -3143,7 +3146,7 @@ object Form2: TForm2
                       object Panel47: TPanel
                         Left = 1
                         Top = 1
-                        Width = 741
+                        Width = 732
                         Height = 52
                         Align = alTop
                         TabOrder = 3
@@ -3888,25 +3891,79 @@ object Form2: TForm2
                   end
                 end
               end
+              object SQLPage: TJvStandardPage
+                Left = 0
+                Top = 0
+                Width = 1119
+                Height = 404
+                Caption = 'SQL-Builder'
+                object ScrollBox49: TScrollBox
+                  Left = 0
+                  Top = 0
+                  Width = 1119
+                  Height = 404
+                  Align = alClient
+                  TabOrder = 0
+                  DesignSize = (
+                    1115
+                    400)
+                  object StringGrid1: TStringGrid
+                    Left = 0
+                    Top = 280
+                    Width = 1115
+                    Height = 120
+                    Align = alBottom
+                    TabOrder = 0
+                  end
+                  object JvScrollBox1: TJvScrollBox
+                    Left = 16
+                    Top = 0
+                    Width = 1097
+                    Height = 259
+                    Anchors = [akLeft, akTop, akRight, akBottom]
+                    PopupMenu = SQLBuilderMenu
+                    TabOrder = 1
+                  end
+                  object JvScrollBar1: TJvScrollBar
+                    Left = 0
+                    Top = 263
+                    Width = 1115
+                    Height = 17
+                    Align = alBottom
+                    PageSize = 0
+                    TabOrder = 2
+                  end
+                  object JvScrollBar2: TJvScrollBar
+                    Left = 0
+                    Top = 0
+                    Width = 17
+                    Height = 263
+                    Align = alLeft
+                    Kind = sbVertical
+                    PageSize = 0
+                    TabOrder = 3
+                  end
+                end
+              end
               object TableDataPage: TJvStandardPage
                 Left = 0
                 Top = 0
-                Width = 1128
-                Height = 408
+                Width = 1119
+                Height = 404
                 Caption = 'TableDataPage'
                 OnShow = TableDataPageShow
                 object ScrollBox42: TScrollBox
                   Left = 0
                   Top = 0
-                  Width = 1128
-                  Height = 408
+                  Width = 1119
+                  Height = 404
                   Align = alClient
                   TabOrder = 0
                   object DataTablePageControl: TPageControl
                     Left = 0
                     Top = 0
-                    Width = 1124
-                    Height = 404
+                    Width = 1115
+                    Height = 400
                     ActivePage = DataPage
                     Align = alClient
                     Font.Charset = ANSI_CHARSET
@@ -3920,12 +3977,12 @@ object Form2: TForm2
                     object DataPage: TTabSheet
                       Caption = 'Data'
                       DesignSize = (
-                        1116
-                        374)
+                        1107
+                        370)
                       object ToolBar1: TToolBar
                         Left = 0
                         Top = 0
-                        Width = 1116
+                        Width = 1107
                         Height = 29
                         ButtonHeight = 23
                         Caption = 'ToolBar1'
@@ -4072,8 +4129,8 @@ object Form2: TForm2
                       object DataPageGrid1: TDBGrid
                         Left = 0
                         Top = 32
-                        Width = 1104
-                        Height = 341
+                        Width = 1095
+                        Height = 337
                         Anchors = [akLeft, akTop, akRight, akBottom]
                         DataSource = DataSource1
                         Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete]
@@ -4130,7 +4187,7 @@ object Form2: TForm2
                       object ToolBar2: TToolBar
                         Left = 0
                         Top = 0
-                        Width = 1116
+                        Width = 1107
                         Height = 29
                         ButtonHeight = 23
                         Caption = 'ToolBar1'
@@ -4277,8 +4334,8 @@ object Form2: TForm2
                       object DataPageGrid2: TJvStringGrid
                         Left = 0
                         Top = 29
-                        Width = 1116
-                        Height = 345
+                        Width = 1107
+                        Height = 341
                         Align = alClient
                         ColCount = 1
                         FixedCols = 0
@@ -4309,14 +4366,14 @@ object Form2: TForm2
               object DebugPage: TJvStandardPage
                 Left = 0
                 Top = 0
-                Width = 1128
-                Height = 408
+                Width = 1119
+                Height = 404
                 Caption = 'DebugPage'
                 object ScrollBox29: TScrollBox
                   Left = 0
                   Top = 0
-                  Width = 1128
-                  Height = 452
+                  Width = 1119
+                  Height = 404
                   Align = alClient
                   TabOrder = 0
                 end
@@ -4329,8 +4386,8 @@ object Form2: TForm2
             object ScrollBox43: TScrollBox
               Left = 0
               Top = 0
-              Width = 1128
-              Height = 436
+              Width = 1119
+              Height = 428
               Align = alClient
               TabOrder = 0
             end
@@ -4341,25 +4398,25 @@ object Form2: TForm2
             object ScrollBox44: TScrollBox
               Left = 0
               Top = 0
-              Width = 1128
-              Height = 432
+              Width = 1119
+              Height = 428
               Align = alClient
               TabOrder = 0
               object JvSplitter4: TJvSplitter
-                Left = 927
+                Left = 918
                 Top = 0
-                Height = 396
+                Height = 392
                 Align = alRight
               end
               object Splitter22: TSplitter
                 Left = 169
                 Top = 0
-                Height = 396
+                Height = 392
               end
               object JvPanel3: TJvPanel
                 Left = 0
-                Top = 396
-                Width = 1124
+                Top = 392
+                Width = 1115
                 Height = 32
                 Align = alBottom
                 TabOrder = 0
@@ -4368,7 +4425,7 @@ object Form2: TForm2
                 Left = 0
                 Top = 0
                 Width = 169
-                Height = 396
+                Height = 392
                 Align = alLeft
                 TabOrder = 1
                 object Splitter23: TSplitter
@@ -4453,19 +4510,19 @@ object Form2: TForm2
                   Left = 1
                   Top = 292
                   Width = 167
-                  Height = 103
+                  Height = 99
                   Align = alClient
                   TabOrder = 1
                   object ScrollBox45: TScrollBox
                     Left = 1
                     Top = 1
                     Width = 165
-                    Height = 101
+                    Height = 97
                     Align = alClient
                     TabOrder = 0
                     DesignSize = (
                       144
-                      97)
+                      93)
                     object Label13: TLabel
                       Left = 8
                       Top = 8
@@ -4553,14 +4610,14 @@ object Form2: TForm2
               object Panel53: TPanel
                 Left = 172
                 Top = 0
-                Width = 755
-                Height = 396
+                Width = 746
+                Height = 392
                 Align = alClient
                 TabOrder = 2
                 object Panel54: TPanel
                   Left = 1
                   Top = 1
-                  Width = 753
+                  Width = 744
                   Height = 70
                   Align = alTop
                   TabOrder = 0
@@ -5050,8 +5107,8 @@ object Form2: TForm2
                 object HTMLEditorView: TPageControl
                   Left = 1
                   Top = 71
-                  Width = 753
-                  Height = 324
+                  Width = 744
+                  Height = 320
                   ActivePage = TabSheet46
                   Align = alClient
                   TabOrder = 1
@@ -5141,10 +5198,10 @@ object Form2: TForm2
                 end
               end
               object Panel55: TPanel
-                Left = 930
+                Left = 921
                 Top = 0
                 Width = 194
-                Height = 396
+                Height = 392
                 Align = alRight
                 TabOrder = 3
                 object Splitter24: TSplitter
@@ -5199,8 +5256,8 @@ object Form2: TForm2
         end
         object JvPanel1: TJvPanel
           Left = 1
-          Top = 24
-          Width = 1136
+          Top = 28
+          Width = 1127
           Height = 25
           Align = alTop
           Font.Charset = DEFAULT_CHARSET
@@ -5261,8 +5318,8 @@ object Form2: TForm2
         end
         object JvPanel2: TJvPanel
           Left = 1
-          Top = 49
-          Width = 1136
+          Top = 53
+          Width = 1127
           Height = 81
           Align = alTop
           TabOrder = 2
@@ -10764,6 +10821,9 @@ object Form2: TForm2
       Caption = 'Pascal / Delphi'
       OnClick = Pascal1Click
     end
+    object N15: TMenuItem
+      Caption = '-'
+    end
     object ISOLISP1: TMenuItem
       Caption = 'Standard LISP'
       OnClick = ISOLISP1Click
@@ -11130,5 +11190,34 @@ object Form2: TForm2
     OnGetValue = JvInterpreterProgram1GetValue
     Left = 474
     Top = 303
+  end
+  object SQLBuilderMenu: TJvPopupMenu
+    Style = msItemPainter
+    ImageMargin.Left = 0
+    ImageMargin.Top = 0
+    ImageMargin.Right = 0
+    ImageMargin.Bottom = 0
+    ImageSize.Height = 21
+    ImageSize.Width = 21
+    ItemPainter = JvXPMenuItemPainter5
+    Left = 977
+    Top = 309
+    object AddTable1: TMenuItem
+      Caption = 'Add Table'
+      OnClick = AddTable1Click
+    end
+  end
+  object JvXPMenuItemPainter5: TJvXPMenuItemPainter
+    SelectionFrameBrush.Color = 13811126
+    SelectionFramePen.Color = 6956042
+    Left = 1009
+    Top = 309
+  end
+  object SynPasSyn1: TSynPasSyn
+    Options.AutoDetectEnabled = False
+    Options.AutoDetectLineLimit = 0
+    Options.Visible = False
+    Left = 437
+    Top = 222
   end
 end

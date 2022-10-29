@@ -24,7 +24,7 @@ uses
   JvHLEditorPropertyForm, SHDocVw, mshtml, ActiveX, JvEdit, JvSpin,
   JvDBControls, JvToolBar, SynEditHighlighter, SynHighlighterHtml, xmldom,
   MyHintWindow, xmlMainMenu, XMLIntf, msxmldom, XMLDoc, JvInterpreter,
-  Console;
+  Console, SynHighlighterPas, JvScrollBar, JvExForms, JvScrollBox;
 
 (*var
   CppModule: HMODULE = 0;
@@ -1441,7 +1441,18 @@ type
     AddmenuItem1: TMenuItem;
     JvInterpreterProgram1: TJvInterpreterProgram;
     Console1: TConsole;
-    Panel49: TPanel;
+    N15: TMenuItem;
+    Label16: TLabel;
+    SQLPage: TJvStandardPage;
+    ScrollBox49: TScrollBox;
+    StringGrid1: TStringGrid;
+    SQLBuilderMenu: TJvPopupMenu;
+    JvXPMenuItemPainter5: TJvXPMenuItemPainter;
+    AddTable1: TMenuItem;
+    SynPasSyn1: TSynPasSyn;
+    JvScrollBox1: TJvScrollBox;
+    JvScrollBar1: TJvScrollBar;
+    JvScrollBar2: TJvScrollBar;
     procedure FormCreate(Sender: TObject);
 
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1682,6 +1693,9 @@ type
       ADefaultText: String; var ADefaultCaretPos: Integer);
     procedure Console1PromptKeyPress(Sender: TCustomConsole;
       var AKey: Char);
+    procedure Console1CommandExecute(Sender: TCustomConsole;
+      ACommand: String; var ACommandFinished: Boolean);
+    procedure AddTable1Click(Sender: TObject);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -2923,34 +2937,6 @@ begin
     HelpAuthoringPageControl.Enabled := true;
     HelpAuthoringPageControl.Visible := true;
   end;
-
-  (*
-  if (TasksPageControl.TabIndex = 7)
-  or (TasksPageControl.TabIndex = 8) then
-  begin
-    ComponentPageControl.Enabled := false;
-    ComponentPageControl.Visible := false;
-
-    HelpAuthoringPageControl.Enabled := false;
-    HelpAuthoringPageControl.Visible := false;
-
-    NavigatorPageControl.Enabled := false;
-    NavigatorPageControl.Visible := false;
-  end else
-  begin
-    HelpAuthoringPageControl.Enabled := false;
-    HelpAuthoringPageControl.Visible := false;
-
-    ComponentPageControl.Visible := true;
-    ComponentPageControl.Enabled := false;
-  end;
-
-  if (TasksPageControl.TabIndex = 8) then
-  begin
-    HelpAuthoringPageControl.Visible := true;
-    HelpAuthoringPageControl.Enabled := true;
-    HelpAuthoringPageControl.Align   := alClient;
-  end;*)
 end;
 
 procedure TForm2.BackgroundViewButtonClick(Sender: TObject);
@@ -2962,7 +2948,7 @@ begin
   end else
   begin
     BackgroundViewButton.Color := $008080FF;
-    BackgroundViewPanel.Height := 200;
+    BackgroundViewPanel.Height := 280;
   end;
 end;
 
@@ -3238,7 +3224,7 @@ begin
   'Col: ' + IntToStr(rc.X)  ;
 
   SelectionTimer.Enabled := true;
-  
+
   if Key = VK_F2 then
   begin
     if modusButton.Caption = 'Pascal Mode' then
@@ -3251,6 +3237,7 @@ begin
         Run;
         if VResult = 0 then
         ShowMessage('no error.');
+        BackgroundViewButtonClick(Sender);
       end;
     end;
     exit;
@@ -3642,11 +3629,12 @@ end;
 procedure TForm2.Pascal1Click(Sender: TObject);
 begin
   modusButton.Caption := 'Pascal Mode';
+  SourceTextEditor.Highlighter := SynPasSyn1;
   with SourceTextEditor.Lines do
   begin
     Clear;
     Text :=
-    '// Pascal/Delphi'           + #13#10#13#10  +
+    '// Pascal/Delphi: PRESS F2 to execute'      + #13#10#13#10  +
     'unit test1;'                + #13#10        +
     'interface'                  + #13#10        +
     '  procedure main;'          + #13#10        +
@@ -4772,10 +4760,10 @@ procedure TForm2.JvInterpreterProgram1GetValue(
 begin
   if LowerCase(identifier) = 'writeln' then
   begin
-  Console1.Writeln('xxxx');
     for idx := 0 to Args.Count - 1 do
     begin
-      Console1.Writeln(Args.Values[idx]);
+      Console1.
+      Writeln(Args.Values[idx]);
     end;
     Done := true;
   end;
@@ -4799,6 +4787,43 @@ begin
     Sender.CaretX := Length(FLastCommand);
     Sender.Invalidate;
   end;
+end;
+
+procedure TForm2.Console1CommandExecute(Sender: TCustomConsole;
+  ACommand: String; var ACommandFinished: Boolean);
+var
+  i: Integer;
+begin
+  with TCommandParser.Create(ACommand) do
+  begin
+    if (Command = 'writeln') then
+    begin
+      for i := 1 to ParamCount do
+      Sender.Writeln(Parameters[i]);
+    end;
+
+    // Free Command Paraser
+    Free;
+  end;
+end;
+
+procedure TForm2.AddTable1Click(Sender: TObject);
+var
+  winform: TForm;
+begin
+  if not JvOpenDialog1.Execute then
+  begin
+    ShowMessage('could not open table file.');
+    exit;
+  end;
+
+  Application.CreateForm(TForm,winForm);
+  winForm.Parent  := JvScrollBox1;
+  winForm.Top     := 20;
+  winForm.Left    := 20;
+  winForm.Width   := 200;
+  winForm.Height  := 123;
+  winForm.Visible := true;
 end;
 
 initialization
