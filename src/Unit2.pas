@@ -24,7 +24,7 @@ uses
   JvHLEditorPropertyForm, SHDocVw, mshtml, ActiveX, JvEdit, JvSpin,
   JvDBControls, JvToolBar, SynEditHighlighter, SynHighlighterHtml, xmldom,
   MyHintWindow, xmlMainMenu, XMLIntf, msxmldom, XMLDoc, JvInterpreter,
-  Console, SynHighlighterPas, JvScrollBar, JvExForms, JvScrollBox;
+  Console, SynHighlighterPas, JvScrollBar, JvExForms, JvScrollBox, CheckLst;
 
 (*var
   CppModule: HMODULE = 0;
@@ -1453,6 +1453,7 @@ type
     JvScrollBox1: TJvScrollBox;
     JvScrollBar1: TJvScrollBar;
     JvScrollBar2: TJvScrollBar;
+    SQLBuilderPainter: TPaintBox;
     procedure FormCreate(Sender: TObject);
 
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1696,6 +1697,17 @@ type
     procedure Console1CommandExecute(Sender: TCustomConsole;
       ACommand: String; var ACommandFinished: Boolean);
     procedure AddTable1Click(Sender: TObject);
+    procedure CheckListBox1EndDrag(Sender, Target: TObject; X, Y: Integer);
+    procedure CheckListBox1DragDrop(Sender, Source: TObject; X,
+      Y: Integer);
+    procedure CheckListBox1MouseDown(
+      Sender: TObject;
+      Button: TMouseButton;
+      Shift : TShiftState;
+      X, Y  : Integer);
+    procedure CheckListBox1DragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
+    procedure SQLBuilderPainterPaint(Sender: TObject);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -4807,9 +4819,18 @@ begin
   end;
 end;
 
+var
+  relationLines: Array of TRect;
+  relDragPosX  : Integer;
+  relDragPosY  : Integer;
+
 procedure TForm2.AddTable1Click(Sender: TObject);
 var
-  winform: TForm;
+  winform : TForm;
+  CheckBox: TCheckListBox;
+
+  idx: Integer;
+  l: DWORD;
 begin
   if not JvOpenDialog1.Execute then
   begin
@@ -4817,13 +4838,164 @@ begin
     exit;
   end;
 
-  Application.CreateForm(TForm,winForm);
-  winForm.Parent  := JvScrollBox1;
-  winForm.Top     := 20;
-  winForm.Left    := 20;
-  winForm.Width   := 200;
-  winForm.Height  := 123;
-  winForm.Visible := true;
+  try
+    with Table1 do
+    begin
+      Close;
+      DatabaseName := '';
+      TableName := JvOpenDialog1.FileName;
+      Open;
+
+      Application.CreateForm(TForm,winForm);
+      with winForm do
+      begin
+        Parent  := JvScrollBox1;
+        Caption := ExtractFileName(Table1.TableName);
+        Top     := 10;
+        Left    := 20;
+        Width   := 184;
+        Height  := 232;
+        Visible := true;
+      end;
+
+      // hide max/min button's
+      l := GetWindowLong(winForm.Handle, GWL_STYLE);
+      l := l and not (WS_MINIMIZEBOX);
+      l := l and not (WS_MAXIMIZEBOX);
+      l := SetWindowLong(winForm.Handle, GWL_STYLE, l);
+
+      CheckBox  := TCheckListBox.Create(winForm);
+      with CheckBox do
+      begin
+        Parent  := winForm;
+        Align   := alNone;
+
+        Font.Size := 11;
+        Font.Name := 'Consolas';
+
+        Left    := 4;
+        Top     := 4;
+        Width   := winForm.Width  - winForm.Left - 16;
+        Height  := winForm.Height - winForm.Top  - 32;
+        Visible := true;
+        Anchors := [akLeft,akTop,akRight,akBottom];
+
+        OnDragDrop  := CheckListBox1DragDrop;
+        OnDragOver  := CheckListBox1DragOver;
+        OnEndDrag   := CheckListBox1EndDrag;
+        OnMouseDown := CheckListBox1MouseDown;
+      end;
+
+      CheckBox.AddItem('Select All',nil);
+      for idx := 0 to Table1.FieldDefs.Count - 1 do
+      begin
+        CheckBox.AddItem(Table1.Fields.Fields[idx].FieldName,nil);
+      end;
+    end;
+  except
+    on E: Exception do
+    begin
+      ShowMessage('Exception: ' + E.Message);
+      exit;
+    end;
+  end;
+end;
+
+procedure TForm2.CheckListBox1EndDrag(
+  Sender, Target : TObject ;
+  X, Y           : Integer);
+begin
+  if target = nil then
+  MessageBeep(0);
+end;
+
+procedure TForm2.CheckListBox1DragDrop(
+  Sender, Source : TObject;
+  X, Y           : Integer);
+var
+  srcTable, dstTable: String;
+  srcField, dstField: String;
+
+  srcPoint, dstPoint: TPoint;
+  srcItem , dstItem : Integer;
+begin
+  if (Sender is TCheckListBox) then
+  begin
+    srcTable := TForm((Source as TCheckListBox).Parent).Caption;
+    dstTable := TForm((Sender as TCheckListBox).Parent).Caption;
+
+    if srcTable = dstTable then
+    begin
+      MessageBeep(0);
+      ShowMessage('"source = target" not allowed.');
+      exit;
+    end;
+
+    dstPoint.X := X;
+    dstPoint.Y := Y;
+
+    dstItem := (Sender as TCheckListBox).ItemAtPos(dstPoint,true);
+//    dstItem := (Sender as TCheckListBox).ItemAtPos(srcPoint,true);
+
+    if (dstItem > 0) then
+    begin
+      dstField := (Sender as TCheckListBox).Items[dstItem];
+//    dstField := (Source as TCheckListBox).Items[dstItem];
+
+
+      if High(relationLines) < 1 then
+      SetLength(relationLines, 1) else
+      SetLength(relationLines,High(relationLines)+1);
+
+      relationLines[ High(relationLines) ].Left   := X;
+      relationLines[ High(relationLines) ].Top    := Y + 15;
+      relationLines[ High(relationLines) ].Right  := X + 150;
+      relationLines[ High(relationLines) ].Bottom := Y + 50;
+
+//      ShowMessage('dst: ' + dstField);
+      SQLBuilderPainter.Invalidate;
+    end;
+  end;
+end;
+
+procedure TForm2.CheckListBox1MouseDown(
+  Sender: TObject;
+  Button: TMouseButton;
+  Shift : TShiftState;
+  X, Y  : Integer);
+begin
+  if Button = TMouseButton(mbLeft) then
+  begin
+    (Sender as TCheckListBox).BeginDrag(true);
+    relDragPosX := X;
+    relDragPosY := Y;
+  end;
+end;
+
+procedure TForm2.CheckListBox1DragOver(Sender, Source: TObject; X,
+  Y: Integer; State: TDragState; var Accept: Boolean);
+begin
+  Accept := true;
+end;
+
+procedure TForm2.SQLBuilderPainterPaint(Sender: TObject);
+var
+  idx: Integer;
+begin
+  with SQLBuilderPainter.Canvas do
+  begin
+    for idx := Low(relationLines) to High(relationLines) do
+    begin
+      TextOut(20,idx+20,
+      'left:   ' + inttostr(relationLines[ idx ].Left  ) + '  ' +
+      'top:    ' + inttostr(relationLines[ idx ].Top   ) + '  ' +
+      'right:  ' + inttostr(relationLines[ idx ].Right ) + '  ' +
+      'bottom: ' + inttostr(relationLines[ idx ].Bottom));
+
+      MoveTo( relationLines[ idx ].Right              , relationLines[ idx ].Bottom);
+      LineTo( relationLines[ idx ].Right + relDragPosX, relationLines[ idx ].Bottom + relDragPosY - 30);
+    end;
+  end;
 end;
 
 initialization

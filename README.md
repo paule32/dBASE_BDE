@@ -65,6 +65,9 @@ Development Area: The source code Editor (new):
 Development Area: The Help-Authoring Tool (new):
 ![DesignerEditorProview](src/screen9.png)
 
+Development Area: The SQL-Builder Tool (new):
+![DatabaseSQLBuilder](src/screen10.png)
+
 The Database Server Monitor:
 ![Monitor](src/screen5.png)
 

@@ -1803,12 +1803,12 @@ object Form2: TForm2
                     object Panel20: TPanel
                       Left = 8
                       Top = 8
-                      Width = 569
+                      Width = 565
                       Height = 145
                       Anchors = [akLeft, akTop, akRight]
                       TabOrder = 0
                       DesignSize = (
-                        569
+                        565
                         145)
                       object Button18: TButton
                         Left = 8
@@ -1861,7 +1861,7 @@ object Form2: TForm2
                       object ListBox3: TListBox
                         Left = 240
                         Top = 8
-                        Width = 313
+                        Width = 309
                         Height = 121
                         Anchors = [akLeft, akTop, akRight]
                         ItemHeight = 13
@@ -2188,12 +2188,12 @@ object Form2: TForm2
                   TabOrder = 1
                   OnClick = SetupPageTreeViewClick
                   Items.Data = {
-                    02000000220000000100000001000000FFFFFFFFFFFFFFFF0100000002000000
+                    02000000220000000000000000000000FFFFFFFFFFFFFFFF0100000002000000
                     094C616E67756167657320000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
                     00000000000007456E676C6973681F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                    FFFF0000000000000000064765726D616E210000000100000001000000FFFFFF
-                    FFFFFFFFFF0100000002000000084D616E696665737424000000FFFFFFFFFFFF
-                    FFFFFFFFFFFFFFFFFFFF01000000000000000B4170706C69636174696F6E2200
+                    FFFF0000000000000000064765726D616E210000000000000000000000FFFFFF
+                    FFFFFFFFFF0100000002000000084D616E696665737424000000020000000200
+                    0000FFFFFFFFFFFFFFFF01000000000000000B4170706C69636174696F6E2200
                     0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000009526573736F
                     75726365}
                   Items.Links = {06000000010000000000000000000000010000000100000000000000}
@@ -3923,6 +3923,14 @@ object Form2: TForm2
                     Anchors = [akLeft, akTop, akRight, akBottom]
                     PopupMenu = SQLBuilderMenu
                     TabOrder = 1
+                    object SQLBuilderPainter: TPaintBox
+                      Left = 0
+                      Top = 0
+                      Width = 1093
+                      Height = 255
+                      Align = alClient
+                      OnPaint = SQLBuilderPainterPaint
+                    end
                   end
                   object JvScrollBar1: TJvScrollBar
                     Left = 0
