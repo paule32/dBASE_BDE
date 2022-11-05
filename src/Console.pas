@@ -873,7 +873,8 @@ end;
 
 procedure TCustomConsole.Writeln(ALine: string);
 begin
-  if not Prompt then Begin
+  //if not Prompt then
+  Begin
     fLines.Writeln(ALine);
     fCaretX := length(ALine) + 1;
     Invalidate;

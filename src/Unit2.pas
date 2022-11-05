@@ -1,3 +1,11 @@
+// ----------------------------------------------------------------
+// This file is part of Pascal-Engine RTL.
+//
+// (c) Copyright 2022 Jens Kallup - <paule32.jk@gmail.com>
+// all rights reserved.
+//
+// only for non-profit, and/or education usage !!!
+// ----------------------------------------------------------------
 unit Unit2;
 
 interface
@@ -24,7 +32,8 @@ uses
   JvHLEditorPropertyForm, SHDocVw, mshtml, ActiveX, JvEdit, JvSpin,
   JvDBControls, JvToolBar, SynEditHighlighter, SynHighlighterHtml, xmldom,
   MyHintWindow, xmlMainMenu, XMLIntf, msxmldom, XMLDoc, JvInterpreter,
-  Console, SynHighlighterPas, JvScrollBar, JvExForms, JvScrollBox, CheckLst;
+  Console, SynHighlighterPas, JvScrollBar, JvExForms, JvScrollBox, CheckLst,
+  JvZlibMultiple, JvDataEmbedded, JvCreateProcess, JvGradientCaption;
 
 (*var
   CppModule: HMODULE = 0;
@@ -1215,7 +1224,7 @@ type
     TabSheet47: TTabSheet;
     TabSheet48: TTabSheet;
     JvModernTabBarPainter1: TJvModernTabBarPainter;
-    ProgressBar1: TJvWaitingGradient;
+    ProgressBar1: TProgressBar;
     ScrollBox29: TScrollBox;
     Panel43: TPanel;
     Panel47: TPanel;
@@ -1440,9 +1449,7 @@ type
     JvXPMenuItemPainter4: TJvXPMenuItemPainter;
     AddmenuItem1: TMenuItem;
     JvInterpreterProgram1: TJvInterpreterProgram;
-    Console1: TConsole;
     N15: TMenuItem;
-    Label16: TLabel;
     SQLPage: TJvStandardPage;
     ScrollBox49: TScrollBox;
     StringGrid1: TStringGrid;
@@ -1454,6 +1461,31 @@ type
     JvScrollBar1: TJvScrollBar;
     JvScrollBar2: TJvScrollBar;
     SQLBuilderPainter: TPaintBox;
+    JvDataEmbedded1: TJvDataEmbedded;
+    zlibFile: TJvZlibMultiple;
+    JvCreateProcess1: TJvCreateProcess;
+    ConsoleTabSheet: TTabSheet;
+    ScrollBox50: TScrollBox;
+    ConsolePageControl: TPageControl;
+    ClientConsole: TTabSheet;
+    ServerConsole: TTabSheet;
+    ScrollBox51: TScrollBox;
+    ScrollBox52: TScrollBox;
+    Console1: TConsole;
+    Panel49: TPanel;
+    Console2: TConsole;
+    Panel59: TPanel;
+    IPAddressEditServer: TEdit;
+    IPAddressServerLabel: TLabel;
+    NICPortLabelClient: TLabel;
+    NICPortEditServer: TEdit;
+    FakeServerConnectButton: TJvImgBtn;
+    FakeClientConnectButton: TJvImgBtn;
+    IPPortEditClient: TEdit;
+    IPAddressEditClient: TEdit;
+    Label16: TLabel;
+    IPAddressClientLabel: TLabel;
+    JvGradientCaption1: TJvGradientCaption;
     procedure FormCreate(Sender: TObject);
 
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1708,13 +1740,34 @@ type
     procedure CheckListBox1DragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);
     procedure SQLBuilderPainterPaint(Sender: TObject);
+    procedure zlibFileProgress(Sender: TObject; Position,
+      Total: Integer);
+    procedure zlibFileCompressedFile(Sender: TObject;
+      const FileName: String);
+    procedure zlibFileCompletedAction(Sender: TObject);
+    procedure JvImgBtn6Click(Sender: TObject);
+    procedure ConsolePageControlChange(Sender: TObject);
+    procedure Console2GetPrompt(Sender: TCustomConsole; var APrompt,
+      ADefaultText: String; var ADefaultCaretPos: Integer);
+    procedure Console2PromptKeyPress(Sender: TCustomConsole;
+      var AKey: Char);
+    procedure Console2CommandExecute(Sender: TCustomConsole;
+      ACommand: String; var ACommandFinished: Boolean);
+    procedure FakeServerConnectButtonClick(Sender: TObject);
+    procedure IPAddressEditServerChange(Sender: TObject);
+    procedure FakeClientConnectButtonClickClick(Sender: TObject);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
     FBooting: Boolean;
-    FPrompt: String;
+
+    FClientPrompt: String;
+    FServerPrompt: String;
+
     FCustomCommand: Boolean;
-    FLastCommand: String;
+
+    FClientLastCommand: String;
+    FServerLastCommand: String;
 
     iniFile: TIniFile;
     strList: TStringList;
@@ -1737,7 +1790,9 @@ type
     SourceFileNAme : String;
 
     function  getSelectedHTMLdesignerComponent: TComponent;
-    procedure setLastCommand(const AValue: String);
+
+    procedure SetClientLastCommand(const AValue: String);
+    procedure SetServerLastCommand(const AValue: String);
 
     procedure DatabaseButtonPopupMenuOnClick(Sender: TObject);
 
@@ -1768,7 +1823,8 @@ type
     DesignClass: string;
     in_insp: Boolean;
 
-  property LastCommand: string read FLastCommand write SetLastCommand;
+    property ClientLastCommand: string read FClientLastCommand write SetClientLastCommand;
+    property ServerLastCommand: string read FServerLastCommand write SetServerLastCommand;
   end;
 
 var
@@ -1786,6 +1842,8 @@ implementation
 {$R *.dfm}
 
 uses
+  JvInitTStrings,
+
   NewTableDialog, parseDBASE;
 
 var
@@ -1808,10 +1866,8 @@ var
 
   Comp_ColorBox   : String;
 
-procedure TForm2.setLastCommand(const AValue: String);
-begin
-  FLastCommand := AValue;
-end;
+procedure TForm2.setClientLastCommand(const AValue: String); begin FClientLastCommand := AValue; end;
+procedure TForm2.setServerLastCommand(const AValue: String); begin FServerLastCommand := AValue; end;
 
 function TUseHTMLHelp.ApplicationHelp(Command: Word; Data: Longint; var CallHelp: Boolean): Boolean;
 var
@@ -2176,9 +2232,12 @@ begin
 
 
       FCustomCommand := false;
-      FPrompt := 'C:\';
+      FClientPrompt := 'C:\';
+      FServerPrompt := 'paule32# ';
 
       Console1.Boot;
+      Console2.Boot;
+      
       FBooting := true;
 
       DataPageGrid1ActiveRow  := 1;
@@ -2204,7 +2263,8 @@ begin
       // statusbar
       StatusBar1.Panels[1].Style := psOwnerDraw;
       ProgressBar1.Parent := StatusBar1;
-      ProgressBar1.Active := false;
+      ProgressBar1.Position := 0;
+      ProgressBar1.Enabled := false;
       ProgressBarStyle := GetWindowLong(ProgressBar1.Parent.Handle, GWL_EXSTYLE);
       ProgressBarStyle := ProgressBarStyle - WS_EX_STATICEDGE;
       SetWindowLong(ProgressBar1.Parent.Handle, GWL_EXSTYLE, ProgressBarStyle);
@@ -2215,6 +2275,12 @@ begin
       // database/files
       AliasListFlag := false;
       DataPageGrid1Modified := 0;
+
+
+
+      // Jv Pascal Interpreter Classes:
+      RegisterJvInterpreterAdapter_Classes(GlobalJvInterpreterAdapter);
+
 
 
 
@@ -2927,6 +2993,8 @@ begin
   NavigatorPageControl.Enabled := false;
   NavigatorPageControl.Visible := false;
 
+  JvPanel2.Height := 81;
+
   if TasksPageControl.ActivePage = TaskPageDevelopment then
   begin
     if (DevPanelBar.SelectedTab.Caption = 'Tables') then
@@ -2948,6 +3016,10 @@ begin
   begin
     HelpAuthoringPageControl.Enabled := true;
     HelpAuthoringPageControl.Visible := true;
+  end else
+  if (TasksPageControl.ActivePage = ConsoleTabSheet) then
+  begin
+    JvPanel2.Height := 21;
   end;
 end;
 
@@ -3247,9 +3319,10 @@ begin
         Pas.Clear;
         Pas.Add(SourceTextEditor.Text);
         Run;
+        TasksPageControl.ActivePage := ConsoleTabSheet;
         if VResult = 0 then
         ShowMessage('no error.');
-        BackgroundViewButtonClick(Sender);
+//        BackgroundViewButtonClick(Sender);
       end;
     end;
     exit;
@@ -3678,6 +3751,12 @@ begin
     callHelp := true;
     Timer1.Enabled := true;
     HTMLHelpUser.ApplicationHelp(HELP_CONTEXT, 1, callHelp);
+    exit;
+  end;
+
+  if key = VK_TAB then
+  begin
+    ShowMessage('tabser');
   end;
 end;
 
@@ -4374,8 +4453,8 @@ var
 begin
   if DataTablePageControl.ActivePage = DataPage then
   begin
-    ProgressBar1.Active := true;
-    ProgressBar1.Active := false;
+    ProgressBar1.Enabled := true;
+    ProgressBar1.Enabled := false;
   end;
 end;
 
@@ -4786,7 +4865,7 @@ procedure TForm2.Console1GetPrompt(
   var APrompt, ADefaultText: String;
   var ADefaultCaretPos: Integer);
 begin
-  APrompt := 'C:\';
+  APrompt := FClientPrompt;
 end;
 
 procedure TForm2.Console1PromptKeyPress(
@@ -4795,8 +4874,8 @@ procedure TForm2.Console1PromptKeyPress(
 begin
   if (AKey = Chr(VK_UP)) then
   begin
-    Sender.CurrLine.Text := FLastCommand;
-    Sender.CaretX := Length(FLastCommand);
+    Sender.CurrLine.Text := FServerLastCommand;
+    Sender.CaretX := Length(FServerLastCommand);
     Sender.Invalidate;
   end;
 end;
@@ -4811,7 +4890,7 @@ begin
     if (Command = 'writeln') then
     begin
       for i := 1 to ParamCount do
-      Sender.Writeln(Parameters[i]);
+      Sender.Write(Parameters[i]);
     end;
 
     // Free Command Paraser
@@ -4994,6 +5073,148 @@ begin
 
       MoveTo( relationLines[ idx ].Right              , relationLines[ idx ].Bottom);
       LineTo( relationLines[ idx ].Right + relDragPosX, relationLines[ idx ].Bottom + relDragPosY - 30);
+    end;
+  end;
+end;
+
+procedure TForm2.zlibFileProgress(
+  Sender: TObject;
+  Position, Total: Integer);
+begin
+  ProgressBar1.Max      := Total;
+  ProgressBar1.Position := Position;
+  ProgressBar1.Enabled  := true;
+end;
+
+procedure TForm2.zlibFileCompressedFile(Sender: TObject;
+  const FileName: String);
+begin
+  if FileExists(FileName) then
+  begin
+    DeleteFile(FileName);
+  end;
+end;
+
+procedure TForm2.zlibFileCompletedAction(Sender: TObject);
+begin
+  ProgressBar1.Position := 0;
+  ProgressBar1.Enabled  := false;
+end;
+
+procedure TForm2.JvImgBtn6Click(Sender: TObject);
+var
+  fileList: TStrings;
+  path : String;
+begin
+  try
+    fileList := TStringList.Create;
+    fileList.Add('test.html');
+    zlibFile.CompressionLevel := 9;
+    zlibFile.CompressFiles(fileList,'temp.$$$');
+
+    path := ExtractFilePath(Application.ExeName);
+
+    with JvCreateProcess1 do
+    begin
+      ApplicationName  := 'C:\windows\system32\cmd.exe';
+      CurrentDirectory :=   path;
+      CommandLine      := '/c ' +
+      path + 'build.bat ' + path;
+      ShowMessage(ApplicationName + #13#10 + CommandLine);
+      Run;
+    end;
+  finally
+    fileList.Free;
+  end;
+end;
+
+procedure TForm2.ConsolePageControlChange(Sender: TObject);
+begin
+  if ConsolePageControl.ActivePage = ClientConsole then
+  begin
+    Console1.SetFocus;
+  end else
+  begin
+    Console2.SetFocus;
+  end;
+end;
+
+procedure TForm2.Console2GetPrompt(Sender: TCustomConsole; var APrompt,
+  ADefaultText: String; var ADefaultCaretPos: Integer);
+begin
+  APrompt := FServerPrompt;
+end;
+
+procedure TForm2.Console2PromptKeyPress(Sender: TCustomConsole;
+  var AKey: Char);
+begin
+  if (AKey = Chr(VK_UP)) then
+  begin
+    Sender.CurrLine.Text := FServerLastCommand;
+    Sender.CaretX := Length(FServerLastCommand);
+    Sender.Invalidate;
+  end;
+end;
+
+procedure TForm2.Console2CommandExecute(Sender: TCustomConsole;
+  ACommand: String; var ACommandFinished: Boolean);
+var
+  i: Integer;
+begin
+  with TCommandParser.Create(ACommand) do
+  begin
+    if (Command = 'writeln') then
+    begin
+      for i := 1 to ParamCount do
+      Sender.Write(Parameters[i]);
+    end;
+
+    // Free Command Paraser
+    Free;
+  end;
+end;
+
+procedure TForm2.FakeServerConnectButtonClick(Sender: TObject);
+begin
+  with FakeServerConnectButton do
+  begin
+    if Tag = 0 then
+    begin
+      Caption := 'Hang-Up';
+      Color := clGreen;
+      Font.Color := clWhite;
+      Tag   := 1;
+    end else
+    begin
+      Caption := 'Listen';
+      Color := clRed;
+      Font.Color := clYellow;
+      Tag   := 0;
+    end;
+  end;
+end;
+
+procedure TForm2.IPAddressEditServerChange(Sender: TObject);
+begin
+  ServerConsole.Caption := 'Server: ' + IPAddressEditServer.Text;
+end;
+
+procedure TForm2.FakeClientConnectButtonClickClick(Sender: TObject);
+begin
+  with FakeClientConnectButton do
+  begin
+    if Tag = 0 then
+    begin
+      Caption := 'Hang-Up';
+      Color := clGreen;
+      Font.Color := clWhite;
+      Tag   := 1;
+    end else
+    begin
+      Caption := 'Connect';
+      Color := clRed;
+      Font.Color := clYellow;
+      Tag   := 0;
     end;
   end;
 end;

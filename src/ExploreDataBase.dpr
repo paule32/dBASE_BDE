@@ -9,6 +9,7 @@ program ExploreDataBase;
 uses
   Windows,
   SysUtils,
+  StrUtils,
   Forms,
   Dialogs,
   IniFiles,
@@ -22,7 +23,8 @@ uses
   parseDBASE in 'parseDBASE.pas',
   NewTableDialog in 'NewTableDialog.pas' {OKRightDlg},
   MyHintWindow in 'MyHintWindow.pas',
-  XMLmainMenu in 'XMLmainMenu.pas';
+  XMLmainMenu in 'XMLmainMenu.pas',
+  JvInitTStrings in 'JvInitTStrings.pas';
 
 {$R *.res}
 
@@ -72,6 +74,14 @@ var
   iniFile    : TIniFile  = nil;
   initDialog : TForm = nil;
   initButton : TdummyButtonClass = nil;
+
+  imageStream1 : TFileStream;
+  imageStream2 : TFileStream;
+  imageArray   : Array of Char;
+  imageBuffer  : Char;
+  imagePos     : Integer;
+  imageArrPos  : Integer;
+  imageSize    : String;
 
 function GetUserDefaultUILanguage: LANGID; stdcall; external 'kernel32';
 function GetUsersWindowsLanguage: string;
@@ -253,6 +263,8 @@ end;
 // entry point of out application:
 // ----------------------------------------------------------------------------
 begin
+  imageStream1 := nil;
+//  imageStream2 := nil;
   try
     try
       s1 := ExtractFilePath(ParamStr(0));
@@ -332,8 +344,108 @@ begin
 
         Application.Initialize;
         Application.CreateForm(TForm2, Form2);
+
+        if ParamCount > 0 then
+        begin
+          // run attached image
+          if UpperCase(ParamStr(1)) = '/R' then
+          begin
+            try
+              try
+                imageStream1 := TFileStream.Create(ParamStr(0), fmOpenRead or fmShareDenyNone);
+                imagePos     := 1;
+                imageSize    := '';
+
+                imageStream1.Seek(imageStream1.Size-imagePos,soFromBeginning);
+                imageStream1.Read(imageBuffer, 1);
+
+                if (imageBuffer = #10) then
+                begin
+                  inc(imagePos,1);
+                  imageStream1.Seek(imageStream1.Size-imagePos,soFromBeginning);
+                  imageStream1.Read(imageBuffer, 1);
+
+                if (imageBuffer = #13) then
+                begin
+                  inc(imagePos,1);
+                  imageStream1.Seek(imageStream1.Size-imagePos,soFromBeginning);
+                  imageStream1.Read(imageBuffer, 1);
+
+                if (imageBuffer = '@') then
+                begin
+
+                end else raise Exception.Create('invalid image');
+                end else raise Exception.Create('invalid image');
+                end else raise Exception.Create('invalid image');
+
+                while true do
+                begin
+                  if imagePos >= imageStream1.Size then
+                  break;
+
+                  inc(imagePos,1);
+                  imageStream1.Seek(imageStream1.Size-imagePos,soFromBeginning);
+                  imageStream1.Read(imageBuffer, 1);
+
+                  if imageBuffer = '@' then
+                  break else
+
+                  if ((imageBuffer >= '0')
+                  and (imageBuffer <= '9')) then
+                  begin
+                    imageSize := imageSize + imageBuffer;
+                    continue;
+                  end else
+                  raise Exception.Create('invalid image.');
+                end;
+
+                imageArrPos := 0;
+                imageSize   := ReverseString(imageSize);
+                SetLength(imageArray, StrToInt(imageSize));
+
+                while true do
+                begin
+                  if imageArrPos >= StrToInt(imageSize) then
+                  break;
+
+                  inc(imagePos,1);
+                  imageStream1.Seek(imageStream1.Size-imagePos,soFromBeginning);
+                  imageStream1.Read(imageBuffer, 1);
+
+                  imageArray[ imageArrPos ] := imageBuffer;
+                  inc(imageArrPos, 1);
+                end;
+
+                //---
+                imageStream2 := TFileStream.Create('temp.$$$', fmCreate);
+                for imagePos := imageArrPos-1 downto 0 do
+                begin
+                  imageStream2.Write(imageArray[ imagePos ],1);
+                end;
+                imageStream2.Free;
+                if FileExists('test.html') then
+                DeleteFile('test.html');
+
+                Form2.zlibFile.DecompressFile('temp.$$$',
+                ExtractFilePath(ParamStr(0)) ,true);
+                //---
+
+                ShowMessage('TODO: image');
+              except
+                on E: Exception do
+                begin
+                  ShowMessage('could not run image:' + #13#10 + E.Message);
+                end;
+              end;
+            finally
+              imageStream1.Free;
+            end;
+          end;
+        end;
+
         Application.CreateForm(TDataBaseExplorer, DataBaseExplorer);
         Application.Run;
+
       end;
     except
       on E: Exception do
