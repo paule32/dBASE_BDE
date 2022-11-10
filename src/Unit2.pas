@@ -1182,10 +1182,6 @@ type
     JvCheckedComboBox1: TJvCheckedComboBox;
     Panel13: TPanel;
     ListBox19: TListBox;
-    Panel6: TPanel;
-    Splitter2: TSplitter;
-    EditorScrollBox: TScrollBox;
-    Panel26: TPanel;
     ScrollBox42: TScrollBox;
     DataTablePageControl: TPageControl;
     DataPage: TTabSheet;
@@ -1226,30 +1222,15 @@ type
     JvModernTabBarPainter1: TJvModernTabBarPainter;
     ProgressBar1: TProgressBar;
     ScrollBox29: TScrollBox;
-    Panel43: TPanel;
-    Panel47: TPanel;
-    JvTabBar1: TJvTabBar;
     JvModernTabBarPainter2: TJvModernTabBarPainter;
-    JvSpeedButton7: TJvSpeedButton;
-    JvSpeedButton8: TJvSpeedButton;
-    modusButton: TJvArrowButton;
     JvPopupMenu1: TJvPopupMenu;
     dBASE1: TMenuItem;
     Pascal1: TMenuItem;
     JvXPMenuItemPainter1: TJvXPMenuItemPainter;
-    JvSpeedButton9: TJvSpeedButton;
     ISOLISP1: TMenuItem;
     dBase4DOS1: TMenuItem;
     N17: TMenuItem;
     Timer1: TTimer;
-    JvImgBtn4: TJvImgBtn;
-    JvImgBtn5: TJvImgBtn;
-    SourceCodeGrid: TStringGrid;
-    Panel48: TPanel;
-    Splitter21: TSplitter;
-    SourceTextEditor: TSynEdit;
-    JvSpeedButton10: TJvSpeedButton;
-    JvSpeedButton11: TJvSpeedButton;
     SelectionTimer: TTimer;
     SourceTextEditorStringHolder: TJvStrHolder;
     TabSheet6: TTabSheet;
@@ -1387,24 +1368,6 @@ type
     DataPageGrid1: TDBGrid;
     JvCheckBox1: TCheckBox;
     DBComboBox1: TComboBox;
-    ScrollBox39: TScrollBox;
-    SourceTextEditorRedo: TJvImgBtn;
-    SourceTextEditorUndo: TJvImgBtn;
-    SourceTextEditorSelectAll: TJvImgBtn;
-    SourceTextEditorDelete: TJvImgBtn;
-    SourceTextEditorPaste: TJvImgBtn;
-    SourceTextEditorCopy: TJvImgBtn;
-    SourceTextEditorCut: TJvImgBtn;
-    SpeedButton1: TSpeedButton;
-    TranspileOutputEdit: TEdit;
-    Label12: TLabel;
-    RadioGroup1: TRadioGroup;
-    RadioButton2: TRadioButton;
-    RadioButton3: TRadioButton;
-    RadioButton1: TRadioButton;
-    JvImgBtn6: TJvImgBtn;
-    JvImgBtn1: TJvImgBtn;
-    CompileButton: TJvImgBtn;
     ScrollBox45: TScrollBox;
     Label13: TLabel;
     Edit16: TEdit;
@@ -1486,6 +1449,44 @@ type
     Label16: TLabel;
     IPAddressClientLabel: TLabel;
     JvGradientCaption1: TJvGradientCaption;
+    ScrollBox39: TScrollBox;
+    Panel6: TPanel;
+    Splitter2: TSplitter;
+    EditorScrollBox: TScrollBox;
+    SourceEditorSplitter: TSplitter;
+    Panel48: TPanel;
+    SourceTextEditor: TSynEdit;
+    ScrollBox53: TScrollBox;
+    SpeedButton1: TSpeedButton;
+    Label12: TLabel;
+    SourceTextEditorRedo: TJvImgBtn;
+    SourceTextEditorUndo: TJvImgBtn;
+    SourceTextEditorSelectAll: TJvImgBtn;
+    SourceTextEditorDelete: TJvImgBtn;
+    SourceTextEditorPaste: TJvImgBtn;
+    SourceTextEditorCopy: TJvImgBtn;
+    SourceTextEditorCut: TJvImgBtn;
+    TranspileOutputEdit: TEdit;
+    RadioGroup1: TRadioGroup;
+    RadioButton2: TRadioButton;
+    RadioButton3: TRadioButton;
+    RadioButton1: TRadioButton;
+    JvImgBtn6: TJvImgBtn;
+    JvImgBtn1: TJvImgBtn;
+    CompileButton: TJvImgBtn;
+    Panel26: TPanel;
+    JvImgBtn4: TJvImgBtn;
+    JvImgBtn5: TJvImgBtn;
+    SourceCodeGrid: TStringGrid;
+    Panel43: TPanel;
+    JvTabBar1: TJvTabBar;
+    Panel47: TPanel;
+    JvSpeedButton7: TJvSpeedButton;
+    JvSpeedButton8: TJvSpeedButton;
+    modusButton: TJvArrowButton;
+    JvSpeedButton9: TJvSpeedButton;
+    JvSpeedButton10: TJvSpeedButton;
+    JvSpeedButton11: TJvSpeedButton;
     procedure FormCreate(Sender: TObject);
 
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1756,6 +1757,8 @@ type
     procedure FakeServerConnectButtonClick(Sender: TObject);
     procedure IPAddressEditServerChange(Sender: TObject);
     procedure FakeClientConnectButtonClickClick(Sender: TObject);
+    procedure SourceEditorSplitterCanResize(Sender: TObject;
+      var NewSize: Integer; var Accept: Boolean);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -3684,6 +3687,9 @@ end;
 
 procedure TForm2.FormResize(Sender: TObject);
 begin
+  if (ScrollBox39.Width  - 20) > Panel6.Width  then Panel6.Width  := ScrollBox39.Width  - 5;
+  if (ScrollBox39.Height - 20) > Panel6.Height then Panel6.Height := ScrollBox39.Height - 5;
+
   resize__MyCppFrame(ScrollBox29.Handle);
 end;
 
@@ -5216,6 +5222,29 @@ begin
       Font.Color := clYellow;
       Tag   := 0;
     end;
+  end;
+end;
+
+procedure TForm2.SourceEditorSplitterCanResize(Sender: TObject;
+  var NewSize: Integer; var Accept: Boolean);
+begin
+  if (NewSize >= 180) then
+  begin
+    if (WindowState = wsMinimized)
+    or (WindowState = wsNormal) then
+    begin
+      if (NewSize <= 400) then
+      Accept := true else
+      Accept := false;
+    end else
+    begin
+      if (NewSize <= Panel6.Width - 380) then
+      Accept := true else
+      Accept := false;
+    end;
+  end else
+  begin
+    Accept := false;
   end;
 end;
 

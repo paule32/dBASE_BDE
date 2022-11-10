@@ -1,0 +1,9 @@
+; ---------------------------------------------------------------
+; (c) 2022 by Jens Kallup - paule32
+; all rights reserved.
+; ---------------------------------------------------------------
+LIBRARY "BORLANDDOS.DLL"
+EXPORTS
+BorlandDOS_Init@0	; Init (void);
+BorlandDOS_Run@0	; Run  (void);
+BorlandDOS_Done@0	; Done (void);

@@ -11,8 +11,10 @@
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) hexClientViewer.dfm"/>
     <LIBFILES value=""/>
-    <LIBRARIES value="bcbsmp.lib vclie.lib vclx.lib ATViewerC6.lib rtl.lib vcl.lib"/>
-    <SPARELIBS value="vcl.lib rtl.lib ATViewerC6.lib vclx.lib vclie.lib bcbsmp.lib"/>
+    <LIBRARIES value="vcldb.lib dbrtl.lib SynEdit_BCB6.lib bcbsmp.lib vclie.lib vclx.lib 
+      ATViewerC6.lib rtl.lib vcl.lib"/>
+    <SPARELIBS value="vcl.lib rtl.lib ATViewerC6.lib vclx.lib vclie.lib bcbsmp.lib 
+      SynEdit_BCB6.lib dbrtl.lib vcldb.lib"/>
     <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
       vcldbx.bpi ibxpress.bpi dsnap.bpi cds.bpi bdecds.bpi qrpt.bpi teeui.bpi 
       teedb.bpi tee.bpi dss.bpi teeqr.bpi visualclx.bpi visualdbclx.bpi 
@@ -30,14 +32,15 @@
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT;_RTLDLL"/>
     <MAINSOURCE value="dbgFrame.bpf"/>
-    <INCLUDEPATH value="$(BCB)\include;$(BCB)\include\vcl;E:\Projekte\hexview\Source;E:\Projekte\hexview\Resources"/>
-    <LIBPATH value="$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <INCLUDEPATH value="..\..\..\SynEdit\Source;$(BCB)\include;$(BCB)\include\vcl;E:\Projekte\hexview\Source;E:\Projekte\hexview\Resources"/>
+    <LIBPATH value="..\..\..\SynEdit\Source;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
     <OTHERFILES value=""/>
   </MACROS>
   <OPTIONS>
-    <IDLCFLAGS value="-I$(BCB)\include -I$(BCB)\include\vcl -IE:\Projekte\hexview\Source 
-      -IE:\Projekte\hexview\Resources -src_suffix cpp -D_DEBUG -boa"/>
+    <IDLCFLAGS value="-I..\..\..\SynEdit\Source -I$(BCB)\include -I$(BCB)\include\vcl 
+      -IE:\Projekte\hexview\Source -IE:\Projekte\hexview\Resources -src_suffix 
+      cpp -D_DEBUG -boa"/>
     <CFLAG1 value="-WD -Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- 
       -tWD -tWM -c"/>
     <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>

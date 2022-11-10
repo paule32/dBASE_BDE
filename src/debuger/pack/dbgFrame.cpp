@@ -39,6 +39,36 @@ int WINAPI DllEntryPoint(HINSTANCE hinst, unsigned long reason, void*)
         return 1;
 }
 //---------------------------------------------------------------------------
+VOID CALLBACK FileIOcomplete(
+  DWORD dwErrorCode,
+  DWORD dwNumberOfBytesTransfered,
+  LPOVERLAPPED lpOverlapped
+);
+
+DWORD g_BytesTransferred = 0;
+
+VOID CALLBACK FileIOcomplete(
+  DWORD dwErrorCode,
+  DWORD dwNumberOfBytesTransfered,
+  LPOVERLAPPED lpOverlapped )
+{
+  char* buffer = new char[126];
+
+  if (dwErrorCode > 0) {
+    sprintf(buffer,"Error code: 0x%x", dwErrorCode);
+    AnsiString s1 = buffer;
+
+    sprintf(buffer,"Number of bytes: 0x%x",dwNumberOfBytesTransfered);
+    AnsiString s2 = buffer;
+
+    AnsiString s3 = s1 + "\n" + s2;
+    ShowMessage(s3);
+    return;
+  }
+
+  g_BytesTransferred = dwNumberOfBytesTransfered;
+}
+
 static TForm        * myParentForm    = NULL;
 static TPanel       * myPanel_1       = NULL;
 static TPanel       * myPanel_2       = NULL;
@@ -50,12 +80,15 @@ static TSplitter    * mySplitter      = NULL;
 
 static TPageControl * myPageControl   = NULL;
 static TTabSheet    * myTabSheet_1    = NULL;
+
 static TTabSheet    * myTabSheet_2    = NULL;
 static TScrollBox   * myTabSheet_2_SB = NULL;
+static TTabSheet    * myTabSheet_3    = NULL;
+static TScrollBox   * myTabSheet_3_SB = NULL;
+
 static TScrollBox   * myTabSheetBox_1 = NULL;
 
 static BOOL           isFlaged        = FALSE;
-
 
 class MyEntryField: public TObject
 {
@@ -76,8 +109,9 @@ public:
     WORD           _field_int)
   {
     EditLabel  = _label;
+    field_int  = _field_int;
 
-    buffer     = new char[512];
+    buffer     = new char[128];
     Edit_label = new TLabel(AOwner);
 
     Edit_label->Parent  = AOwner;
@@ -154,10 +188,8 @@ public:
       case VK_BACK:       // Backspace
       case VK_LEFT:       // Cursor left
       case VK_RIGHT:      // Cursor right
-      {
-        char buffer2[] = "";
 
-        if ((key == 13) || (key == 10)) {
+      { if ((key == 13) || (key == 10)) {
           if (Edit_next != NULL) {
             Edit_next->Edit_current->SetFocus();
             return;
@@ -169,7 +201,6 @@ public:
 
         Edit_current->Font->Style = TFontStyles() << fsBold;
         Edit_current->Font->Color = clWhite;
-
         Edit_current->Color = clRed;
 
         if ((key == 8) || (key == 'X') || (key == 'x')) {
@@ -177,18 +208,12 @@ public:
           return;
         }
 
-        sprintf(buffer ,"%s",Edit_current->Text.c_str());
-        sprintf(buffer2,"%c",key);
-
-        strcat(buffer,buffer2);
+        sprintf(buffer,"%s%c",Edit_current->Text.c_str(),key);
         if (strlen(buffer) > 10) {
           Beep();
+          sprintf(buffer,"0x");
           return;
         }
-
-        sprintf(buffer2,"0x");
-        if (Edit_current->Text.Pos(buffer2) < 1) {
-        Edit_current->Text = "0x"; }
 
         Edit_current->Text = buffer;
       }
@@ -226,6 +251,8 @@ private:
   IMAGE_IMPORT_DESCRIPTOR* importDescriptor;
   PIMAGE_THUNK_DATA thunkData;
 
+  LPVOID fileData;
+
   MyEntryField * eMagicEdit;
   MyEntryField * eLastPageEdit;
   MyEntryField * ePagesEdit;
@@ -244,6 +271,9 @@ private:
   MyEntryField * eOEMinfoEdit;
   MyEntryField * eNewExeEdit;
 
+  MyEntryField * NThdrSignatureEdit;
+
+  TButton * NewExeButton;
   TMemoryStream  * MS;
 
   char  * buffer;
@@ -257,177 +287,41 @@ public:
   {
     if (isFlaged == TRUE)
     {
-      free(buffer);
+      delete [] buffer;
+
       delete eMagicEdit;
+      delete eLastPageEdit;
+      delete ePagesEdit;
+      delete eRelocEdit;
+      delete eSizeHdrEdit;
+      delete eMinNeedEdit;
+      delete eMaxNeedEdit;
+      delete eStackSegEdit;
+      delete eStackPtrEdit;
+      delete eCheckSumEdit;
+      delete eInitIPEdit;
+      delete eInitCSEdit;
+      delete eRelocAddrEdit;
+      delete eOverlayEdit;
+      delete eOEMidentEdit;
+      delete eOEMinfoEdit;
+      delete eNewExeEdit;
+      delete NewExeButton;
+
+      delete NThdrSignatureEdit;
+
+      delete BCB6_hexForm;
     }
   }
-  void __fastcall TreeViewOnChange(System::TObject* Sender, TTreeNode* Node) {
-    if (Node->Text == "DOS Header") {
-      if (isFlaged == FALSE) {
-        eMagicEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Magic number",
-          TRect(    10, 10,100,20),
-          TRect(100+10, 10,100,20),
-          WORD(dosHeader->e_magic));
-        //---
-        eLastPageEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Last Page of File:",
-          TRect(    10, eMagicEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eMagicEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_cblp));
-        //---
-        ePagesEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Pages in File:",
-          TRect(    10, eLastPageEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eLastPageEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_cblp));
-        //---
-        eRelocEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Relocations:",
-          TRect(    10, ePagesEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, ePagesEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_crlc));
-        //---
-        eSizeHdrEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Size Of Heder:",
-          TRect(    10, eRelocEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eRelocEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_cparhdr));
-        //---
-        eMinNeedEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Minimum alloc:",
-          TRect(    10, eSizeHdrEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eSizeHdrEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_minalloc));
-        //---
-        eMaxNeedEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Maximum alloc:",
-          TRect(    10, eMinNeedEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eMinNeedEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_maxalloc));
-        //---
-        eStackSegEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Initial SS value:",
-          TRect(    10, eMaxNeedEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eMaxNeedEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_ss));
-        //---
-        eStackPtrEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Initial SP value:",
-          TRect(    10, eStackSegEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eStackSegEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_sp));
-        //---
-        eCheckSumEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Check-Sum:",
-          TRect(    10, eStackPtrEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eStackPtrEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_csum));
-        //---
-        eInitIPEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Initial IP value:",
-          TRect(    10, eCheckSumEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eCheckSumEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_ip));
-        //---
-        eInitCSEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Initial CS value:",
-          TRect(    10, eInitIPEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eInitIPEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_cs));
-        //---
-        eRelocAddrEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Relocation Table:",
-          TRect(    10, eInitCSEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eInitCSEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_lfarlc));
-        //---
-        eOverlayEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "Overlay number:",
-          TRect(    10, eRelocAddrEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eRelocAddrEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_ovno));
-        //---
-        eOEMidentEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "OEM ident:",
-          TRect(    10, eOverlayEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eOverlayEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_oemid));
-        //---
-        eOEMinfoEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "OEM info:",
-          TRect(    10, eOEMidentEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eOEMidentEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_oeminfo));
-        //---
-        eNewExeEdit = new MyEntryField(
-          myTabSheet_2_SB,
-          "New EXE header:",
-          TRect(    10, eOEMinfoEdit->Edit_current->Top + 24,100,20),
-          TRect(100+10, eOEMinfoEdit->Edit_current->Top + 24,100,20),
-          WORD(dosHeader->e_lfanew));
-        //---
+  void __fastcall NewExeButton_OnClick(System::TObject* Sender) {
+    myPageControl->ActivePage = myTabSheet_3;
+  }
+  void __fastcall TreeViewOnChange(System::TObject* Sender, TTreeNode* Node)
+  {
+    if (Node->Text == "DOS Header") myPageControl->ActivePage = myTabSheet_2; else
+    if (Node->Text == "NT Header" ) myPageControl->ActivePage = myTabSheet_3; else
+                                    myPageControl->ActivePage = myTabSheet_1;
 
-        eMagicEdit     -> Edit_next = eLastPageEdit;
-        eLastPageEdit  -> Edit_next = ePagesEdit;
-        ePagesEdit     -> Edit_next = eRelocEdit;
-        eRelocEdit     -> Edit_next = eSizeHdrEdit;
-        eSizeHdrEdit   -> Edit_next = eMinNeedEdit;
-        eMinNeedEdit   -> Edit_next = eMaxNeedEdit;
-        eMaxNeedEdit   -> Edit_next = eStackSegEdit;
-        eStackSegEdit  -> Edit_next = eStackPtrEdit;
-        eStackPtrEdit  -> Edit_next = eCheckSumEdit;
-        eCheckSumEdit  -> Edit_next = eInitIPEdit;
-        eInitIPEdit    -> Edit_next = eInitCSEdit;
-        eInitCSEdit    -> Edit_next = eRelocAddrEdit;
-        eRelocAddrEdit -> Edit_next = eOverlayEdit;
-        eOverlayEdit   -> Edit_next = eOEMidentEdit;
-        eOEMidentEdit  -> Edit_next = eOEMinfoEdit;
-        eOEMinfoEdit   -> Edit_next = eNewExeEdit;
-        eNewExeEdit    -> Edit_next = eMagicEdit;
-
-
-        if (BCB6_hexForm == NULL)
-        BCB6_hexForm = new TBCB6_hexForm(myTabSheet_2_SB);
-
-        BCB6_hexForm->Parent  = myTabSheet_2_SB;
-        BCB6_hexForm->BorderStyle = bsNone;
-        BCB6_hexForm->Top     =   10;
-        BCB6_hexForm->Left    =  230;
-        BCB6_hexForm->Width   =  650;
-        BCB6_hexForm->Height  =  320;
-        BCB6_hexForm->Visible = true;
-
-        sprintf(buffer,"hallo ullla %c%c",0x13,0x10);
-        MS = new TMemoryStream();
-        MS->SetSize((int)StrLen(buffer));
-        MS->Position = 0;
-        MS->WriteBuffer(buffer, StrLen(buffer));
-
-        BCB6_hexForm->ATBinHex1->Mode = vbmodeHex;
-        BCB6_hexForm->ATBinHex1->OpenStream(MS);
-
-        isFlaged = TRUE;
-      }
-    }
-    if (Node->Text == "NT Header") {
-    }
     if (Node->Text == "File Header") {
     }
     if (Node->Text == "Optional Header") {
@@ -440,6 +334,7 @@ public:
     }
     if (Node->Text == "Resouce Directory") {
     }
+    isFlaged = TRUE;
   }
 
   void __fastcall SpeedButtonClick(System::TObject* Sender) {
@@ -453,26 +348,70 @@ public:
     HANDLE file = NULL;
     DWORD fileSize = NULL;
     DWORD bytesRead = NULL;
-    LPVOID fileData = NULL;
 
     DWORD thunk = NULL;
     DWORD rawOffset = NULL;
 
     try
     {
-      buffer = (char*) malloc(255);
-      file   = CreateFile(
-        fileName.c_str(),       // name of file
-        GENERIC_READ,           // open for reading
-        FILE_SHARE_READ,        // shared for reading
-        NULL,                   // default security
-        OPEN_EXISTING,          // open if exists
-        FILE_ATTRIBUTE_NORMAL |  FILE_FLAG_OVERLAPPED,  // normal file
-        NULL);                  // no attr. template
+      OVERLAPPED ol = {0};
+      buffer        = new char[255];
 
-      if (file == INVALID_HANDLE_VALUE) {
-        ShowMessage("Could not read file");
+      // check file
+      if (!FileExists(fileName)) {
+        AnsiString s = "file: " + fileName + "\n does not exists !";
+        ShowMessage(s);
         return;
+      }
+      // open file
+      file = CreateFile(
+          fileName.c_str(),
+          GENERIC_READ,
+          FILE_SHARE_READ,
+          NULL,
+          OPEN_EXISTING,
+          FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED,
+          NULL);
+      if (file == INVALID_HANDLE_VALUE) {
+          ShowMessage("Could not read file");
+          return;
+      }
+
+      // get file size
+      if ((fileSize = GetFileSize(file, NULL)) == 0xffffffff) {
+          CloseHandle(file);
+          sprintf(buffer,
+          "GetFileSize fail: 0x%08x", GetLastError());
+          ShowMessage(buffer);
+          delete [] buffer;
+          return;
+      }
+      // allocate heap
+      fileData = HeapAlloc(GetProcessHeap(), 0, fileSize);
+
+      // read bytes to memory
+      if (ReadFileEx(
+          file,
+          fileData,
+          fileSize, &ol,
+          FileIOcomplete) == FALSE)
+      {
+          CloseHandle(file);
+          sprintf(buffer,
+          "Terminal failure: Unable to read file from.\n"
+          "GetLastError: 0x%08x.",
+          GetLastError());
+          ShowMessage(buffer);
+          delete [] buffer;
+          return;
+      }
+      SleepEx(2750, TRUE);
+      bytesRead = g_BytesTransferred;
+
+      if (bytesRead == 0) {
+          CloseHandle(file);
+          ShowMessage("No data read from file");
+          return;
       }
 
       // display page
@@ -481,6 +420,13 @@ public:
       myTabSheet_1->Caption = ExtractFileName(fileName);
       myTabSheet_1->TabStop = true;
       myTabSheet_1->Visible = true;
+
+      myTabSheetBox_1 = new TScrollBox(myTabSheet_1);
+      myTabSheetBox_1->Parent  = myTabSheet_1;
+      myTabSheetBox_1->Align   = alClient;
+      myTabSheetBox_1->TabStop = true;
+      myTabSheetBox_1->Visible = true;
+
 
       // DOS header
       myTabSheet_2 = new TTabSheet(myPageControl);
@@ -495,11 +441,19 @@ public:
       myTabSheet_2_SB->TabStop = true;
       myTabSheet_2_SB->Visible = true;
 
-      myTabSheetBox_1 = new TScrollBox(myTabSheet_1);
-      myTabSheetBox_1->Parent  = myTabSheet_1;
-      myTabSheetBox_1->Align   = alClient;
-      myTabSheetBox_1->TabStop = true;
-      myTabSheetBox_1->Visible = true;
+      // NT header
+      myTabSheet_3 = new TTabSheet(myPageControl);
+      myTabSheet_3->PageControl = myPageControl;
+      myTabSheet_3->Caption = "NT Header";
+      myTabSheet_3->TabStop = true;
+      myTabSheet_3->Visible = true;
+
+      myTabSheet_3_SB = new TScrollBox(myTabSheet_3);
+      myTabSheet_3_SB->Parent  = myTabSheet_3;
+      myTabSheet_3_SB->Align   = alClient;
+      myTabSheet_3_SB->TabStop = true;
+      myTabSheet_3_SB->Visible = true;
+
 
       myTreeView_1->Items->Clear();
       myTreeView_1->TabStop  = true;
@@ -544,16 +498,213 @@ public:
       //===
 
 
-      fileSize = GetFileSize(file, NULL);
-      fileData = HeapAlloc(GetProcessHeap(), 0, fileSize);
-
-      ReadFile(file, fileData, fileSize, &bytesRead, NULL);
-
-      // dos header
+      // DOS header
       dosHeader = (PIMAGE_DOS_HEADER)fileData;
+      if (eMagicEdit == NULL) {
+          eMagicEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Magic number",
+          TRect(    10, 10,100,20),
+          TRect(100+10, 10,100,20),
+          dosHeader->e_magic);
+          //---
+          eLastPageEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Last Page of File:",
+          TRect(    10, eMagicEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eMagicEdit->Edit_current->Top + 24,100,20),
+          dosHeader->e_cblp);
+          //---
+          ePagesEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Pages in File:",
+          TRect(    10, eLastPageEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eLastPageEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_cblp));
+          //---
+          eRelocEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Relocations:",
+          TRect(    10, ePagesEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, ePagesEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_crlc));
+          //---
+          eSizeHdrEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Size Of Heder:",
+          TRect(    10, eRelocEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eRelocEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_cparhdr * 0xf));
+          //---
+          eMinNeedEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Minimum alloc:",
+          TRect(    10, eSizeHdrEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eSizeHdrEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_minalloc ));
+          //---
+          eMaxNeedEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Maximum alloc:",
+          TRect(    10, eMinNeedEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eMinNeedEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_maxalloc));
+          //---
+          eStackSegEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Initial SS value:",
+          TRect(    10, eMaxNeedEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eMaxNeedEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_ss));
+          //---
+          eStackPtrEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Initial SP value:",
+          TRect(    10, eStackSegEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eStackSegEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_sp));
+          //---
+          eCheckSumEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Check-Sum:",
+          TRect(    10, eStackPtrEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eStackPtrEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_csum));
+          //---
+          eInitIPEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Initial IP value:",
+          TRect(    10, eCheckSumEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eCheckSumEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_ip));
+          //---
+          eInitCSEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Initial CS value:",
+          TRect(    10, eInitIPEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eInitIPEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_cs));
+          //---
+          eRelocAddrEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Relocation Table:",
+          TRect(    10, eInitCSEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eInitCSEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_lfarlc));
+          //---
+          eOverlayEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "Overlay number:",
+          TRect(    10, eRelocAddrEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eRelocAddrEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_ovno));
+          //---
+          eOEMidentEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "OEM ident:",
+          TRect(    10, eOverlayEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eOverlayEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_oemid));
+          //---
+          eOEMinfoEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "OEM info:",
+          TRect(    10, eOEMidentEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eOEMidentEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_oeminfo));
+          //---
+          eNewExeEdit = new MyEntryField(
+          myTabSheet_2_SB,
+          "New EXE header:",
+          TRect(    10, eOEMinfoEdit->Edit_current->Top + 24,100,20),
+          TRect(100+10, eOEMinfoEdit->Edit_current->Top + 24,100,20),
+          WORD(dosHeader->e_lfanew));
 
-      // nt headers
+          NewExeButton = new TButton(myTabSheet_2_SB);
+          NewExeButton->Parent = myTabSheet_2_SB;
+          NewExeButton->OnClick = NewExeButton_OnClick;
+          NewExeButton->Caption = "Visit";
+          NewExeButton->Top = eOEMinfoEdit->Edit_current->Top + 24;
+          NewExeButton->Left = 240;
+          NewExeButton->Width = 64;
+          NewExeButton->Height = 20;
+          //---
+
+          eMagicEdit     -> Edit_next = eLastPageEdit;
+          eLastPageEdit  -> Edit_next = ePagesEdit;
+          ePagesEdit     -> Edit_next = eRelocEdit;
+          eRelocEdit     -> Edit_next = eSizeHdrEdit;
+          eSizeHdrEdit   -> Edit_next = eMinNeedEdit;
+          eMinNeedEdit   -> Edit_next = eMaxNeedEdit;
+          eMaxNeedEdit   -> Edit_next = eStackSegEdit;
+          eStackSegEdit  -> Edit_next = eStackPtrEdit;
+          eStackPtrEdit  -> Edit_next = eCheckSumEdit;
+          eCheckSumEdit  -> Edit_next = eInitIPEdit;
+          eInitIPEdit    -> Edit_next = eInitCSEdit;
+          eInitCSEdit    -> Edit_next = eRelocAddrEdit;
+          eRelocAddrEdit -> Edit_next = eOverlayEdit;
+          eOverlayEdit   -> Edit_next = eOEMidentEdit;
+          eOEMidentEdit  -> Edit_next = eOEMinfoEdit;
+          eOEMinfoEdit   -> Edit_next = eNewExeEdit;
+          eNewExeEdit    -> Edit_next = eMagicEdit;
+
+
+          //if (BCB6_hexForm == NULL)
+          BCB6_hexForm = new TBCB6_hexForm(myTabSheet_2_SB);
+
+          BCB6_hexForm->Parent  = myTabSheet_2_SB;
+          BCB6_hexForm->BorderStyle = bsNone;
+          BCB6_hexForm->Top     =   10;
+          BCB6_hexForm->Left    =  230;
+          BCB6_hexForm->Width   =  670;
+          BCB6_hexForm->Height  =  320;
+          BCB6_hexForm->Visible = true;
+
+          MS = new TMemoryStream();
+          MS->SetSize(0x100);
+          MS->Position = 0;
+          MS->WriteBuffer(dosHeader, 0x100);
+
+          BCB6_hexForm->ATBinHex1->Mode = vbmodeHex;
+          BCB6_hexForm->ATBinHex1->OpenStream(MS);
+
+          BCB6_hexForm->ATBinHex1->Redraw();
+          BCB6_hexForm->ATBinHex1->Invalidate();
+      }
+
+      // NT header
       imageNTHeaders = (PIMAGE_NT_HEADERS)((DWORD)fileData + dosHeader->e_lfanew);
+      if (NThdrSignatureEdit == NULL) {
+          NThdrSignatureEdit = new MyEntryField(
+          myTabSheet_3_SB,
+          "Signature:",
+          TRect(    10, 10,100,20),
+          TRect(100+10, 10,100,20),
+          imageNTHeaders->Signature);
+          //---
+
+
+          BCB6_hexForm = new TBCB6_hexForm(myTabSheet_3_SB);
+
+          BCB6_hexForm->Parent  = myTabSheet_3_SB;
+          BCB6_hexForm->BorderStyle = bsNone;
+          BCB6_hexForm->Top     =   10;
+          BCB6_hexForm->Left    =  230;
+          BCB6_hexForm->Width   =  670;
+          BCB6_hexForm->Height  =  320;
+          BCB6_hexForm->Visible = true;
+
+          MS = new TMemoryStream();
+          MS->SetSize(0x100);
+          MS->Position = 0;
+          MS->WriteBuffer(imageNTHeaders, 0x100);
+
+          BCB6_hexForm->ATBinHex1->Mode = vbmodeHex;
+          BCB6_hexForm->ATBinHex1->OpenStream(MS);
+
+          BCB6_hexForm->ATBinHex1->Redraw();
+          BCB6_hexForm->ATBinHex1->Invalidate();
+      }
 
       // file header
 
@@ -574,11 +725,9 @@ public:
       DWORD importDirectoryRVA =
       imageNTHeaders->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_IMPORT].VirtualAddress;
 
-      if (file != NULL)
       CloseHandle(file);
     }
     catch (...) {
-      if (file != NULL)
       CloseHandle(file);
       ShowMessage("Error in External module during read header structures.");
     }

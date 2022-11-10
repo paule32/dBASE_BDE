@@ -1,0 +1,9 @@
+; ---------------------------------------------------------------
+; (c) 2022 by Jens Kallup - paule32
+; all rights reserved.
+; ---------------------------------------------------------------
+LIBRARY "BorlandVCL.dll"
+EXPORTS
+BorlandVCL_Init@0	; procedure Init;
+BorlandVCL_Run@0	; procedure Run;
+BorlandVCL_Done@0	; procedure Done;
