@@ -33,7 +33,30 @@ uses
   JvDBControls, JvToolBar, SynEditHighlighter, SynHighlighterHtml, xmldom,
   MyHintWindow, xmlMainMenu, XMLIntf, msxmldom, XMLDoc, JvInterpreter,
   Console, SynHighlighterPas, JvScrollBar, JvExForms, JvScrollBox, CheckLst,
-  JvZlibMultiple, JvDataEmbedded, JvCreateProcess, JvGradientCaption;
+  JvZlibMultiple, JvDataEmbedded, JvCreateProcess, JvGradientCaption,
+  JvInterpreter_System,
+  JvInterpreter_SysUtils,
+  JvInterpreter_Classes,
+  JvInterpreter_Graphics,
+  JvInterpreter_Controls,
+  JvInterpreter_Dialogs,
+  JvInterpreter_Windows,
+  JvInterpreter_Buttons,
+  JvInterpreter_StdCtrls,
+  JvInterpreter_ComCtrls,
+  JvInterpreter_ExtCtrls,
+  JvInterpreter_Forms,
+  JvInterpreter_Menus,
+  JvInterpreter_Grids,
+  JvInterpreter_Db,
+  JvInterpreter_DBTables,
+  JvInterpreter_DbCtrls,
+  JvInterpreter_DbGrids,
+  JvInterpreter_Quickrpt,
+  JvInterpreter_JvEditor,
+  JvInterpreterFm,
+
+  parseDBASE;
 
 (*var
   CppModule: HMODULE = 0;
@@ -1759,6 +1782,7 @@ type
     procedure FakeClientConnectButtonClickClick(Sender: TObject);
     procedure SourceEditorSplitterCanResize(Sender: TObject;
       var NewSize: Integer; var Accept: Boolean);
+    procedure Amiga500Assembly1Click(Sender: TObject);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
@@ -1771,6 +1795,8 @@ type
 
     FClientLastCommand: String;
     FServerLastCommand: String;
+
+    dBaseParser : TdBaseParser;
 
     iniFile: TIniFile;
     strList: TStringList;
@@ -1840,14 +1866,19 @@ type
 var
   HTMLHelpUser: TUseHTMLHelp;
 
+type
+  TAppForms = record
+    FormPrivate: TStringList;
+    FormPublic:  TStringList;
+  end;
+
 implementation
 
 {$R *.dfm}
 
 uses
   JvInitTStrings,
-
-  NewTableDialog, parseDBASE;
+  NewTableDialog;
 
 var
   VerInfoStr: string = 'Version 0.1';
@@ -2141,6 +2172,13 @@ var
   ProgressBarStyle: integer;
   ctrl: TPanel;
   edit: TEdit;
+
+  procedure TForm_Create(var Value: Variant; Args: TJvInterpreterArgs);
+  var f: TForm;
+  begin
+    f := TForm.Create(Application);
+//    Value := f;
+  end;
 begin
   try
     try
@@ -2280,12 +2318,33 @@ begin
       DataPageGrid1Modified := 0;
 
 
-
       // Jv Pascal Interpreter Classes:
-      RegisterJvInterpreterAdapter_Classes(GlobalJvInterpreterAdapter);
+      JvInterpreter_System  .RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_SysUtils.RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_Classes .RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
 
+      JvInterpreter_Windows .RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_Graphics.RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_Controls.RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
 
+      JvInterpreter_Buttons .RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_StdCtrls.RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_ComCtrls.RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_ExtCtrls.RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_Forms   .RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_Dialogs .RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_Menus   .RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_Grids   .RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
 
+      JvInterpreter_Db      .RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_DBTables.RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_DbCtrls .RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_DbGrids .RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+
+      JvInterpreter_Quickrpt.RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+      JvInterpreter_JvEditor.RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
+
+      JvInterpreterFm.RegisterJvInterpreterAdapter(GlobalJvInterpreterAdapter);
 
       // frame
 (*
@@ -3290,9 +3349,9 @@ begin
     ShowMessage('No output directory specified.');
     exit;
   end;
-  if RadioButton1.Checked then TranspileBorlandDelphi   (TranspileOutputEdit.Text, SourceTextEditor.Text) else
-  if RadioButton2.Checked then TranspileBorlandCBuilder (TranspileOutputEdit.Text, SourceTextEditor.Text) else
-  if RadioButton3.Checked then TranspileGnuCC           (TranspileOutputEdit.Text, SourceTextEditor.Text) ;
+//  if RadioButton1.Checked then TranspileBorlandDelphi   (TranspileOutputEdit.Text, SourceTextEditor.Text) else
+//  if RadioButton2.Checked then TranspileBorlandCBuilder (TranspileOutputEdit.Text, SourceTextEditor.Text) else
+//  if RadioButton3.Checked then TranspileGnuCC           (TranspileOutputEdit.Text, SourceTextEditor.Text) ;
 end;
 
 procedure TForm2.SourceTextEditorKeyDown(Sender: TObject; var Key: Word;
@@ -3316,7 +3375,16 @@ begin
   begin
     if modusButton.Caption = 'Pascal Mode' then
     begin
-      BackGroundViewPanel.Height := 280;
+    end else
+    if modusButton.Caption = 'dBase Mode 1' then
+    begin
+      dBaseParser := TdBaseParser.Create(SourceTextEditor);
+      if dBaseParser.Parse then begin
+         dBaseParser.Run;
+         dBaseParser.Free;
+      end;
+
+      (*
       with JvInterpreterProgram1 do
       begin
         Pas.Clear;
@@ -3325,8 +3393,7 @@ begin
         TasksPageControl.ActivePage := ConsoleTabSheet;
         if VResult = 0 then
         ShowMessage('no error.');
-//        BackgroundViewButtonClick(Sender);
-      end;
+      end;*)
     end;
     exit;
   end;
@@ -5246,6 +5313,12 @@ begin
   begin
     Accept := false;
   end;
+end;
+
+procedure TForm2.Amiga500Assembly1Click(Sender: TObject);
+begin
+  modusButton.Caption := 'Pascal Mode';
+  SourceTextEditor.Highlighter := SynPasSyn1;
 end;
 
 initialization

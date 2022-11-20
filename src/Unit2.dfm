@@ -1,5 +1,5 @@
 object Form2: TForm2
-  Left = 85
+  Left = 247
   Top = 54
   Width = 1159
   Height = 740
@@ -1772,12 +1772,12 @@ object Form2: TForm2
                     object Panel20: TPanel
                       Left = 8
                       Top = 8
-                      Width = 537
+                      Width = 525
                       Height = 145
                       Anchors = [akLeft, akTop, akRight]
                       TabOrder = 0
                       DesignSize = (
-                        537
+                        525
                         145)
                       object Button18: TButton
                         Left = 8
@@ -1830,7 +1830,7 @@ object Form2: TForm2
                       object ListBox3: TListBox
                         Left = 240
                         Top = 8
-                        Width = 281
+                        Width = 269
                         Height = 121
                         Anchors = [akLeft, akTop, akRight]
                         ItemHeight = 13
@@ -2619,14 +2619,14 @@ object Form2: TForm2
                                 TabOrder = 0
                                 Items.Data = {
                                   040000001D000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0100000000000000
-                                  047A7A7A7A220000000100000001000000FFFFFFFFFFFFFFFF01000000020000
+                                  047A7A7A7A220000000000000000000000FFFFFFFFFFFFFFFF01000000020000
                                   00097A7A7A7A7A676767671E000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF01
                                   0000000000000005687A6868681D000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                                  FF000000000000000004363736371C0000000100000001000000FFFFFFFFFFFF
+                                  FF000000000000000004363736371C0000000000000000000000FFFFFFFFFFFF
                                   FFFF01000000010000000367676723000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-                                  FFFF01000000000000000A393938393839383938391F00000001000000010000
-                                  00FFFFFFFFFFFFFFFF0000000001000000066868686868681F000000FFFFFFFF
-                                  FFFFFFFFFFFFFFFFFFFFFFFF000000000000000006303030303939}
+                                  FFFF01000000000000000A393938393839383938391F00000000000000000000
+                                  00FFFFFFFFFFFFFFFF0000000001000000066868686868681F00000002000000
+                                  02000000FFFFFFFFFFFFFFFF000000000000000006303030303939}
                                 Items.Links = {
                                   0800000001000000010000000100000000000000010000000100000000000000
                                   00000000}
@@ -2870,6 +2870,7 @@ object Form2: TForm2
                                 'bModal)'#13#10'  f.mdi = .f.   // ensure not MDI'#13#10'  f.readModal()'#13#10'els' +
                                 'e'#13#10'  f.open()'#13#10'endif'#13#10#13#10'CLASS AboutForm OF FORM'#13#10#13#10'ENDCLASS'
                               SearchEngine = SynEditSearch1
+                              WantTabs = True
                               OnChange = SourceTextEditorChange
                               FontSmoothing = fsmNone
                             end
@@ -3410,6 +3411,7 @@ object Form2: TForm2
                             Top = 16
                             Width = 153
                             Height = 25
+                            AllowAllUp = True
                             ArrowWidth = 21
                             DropDown = JvPopupMenu1
                             DropOnButtonClick = True
@@ -3888,8 +3890,8 @@ object Form2: TForm2
                   object JvScrollBox1: TJvScrollBox
                     Left = 16
                     Top = 0
-                    Width = 1079
-                    Height = 322
+                    Width = 1067
+                    Height = 310
                     Anchors = [akLeft, akTop, akRight, akBottom]
                     PopupMenu = SQLBuilderMenu
                     TabOrder = 1
