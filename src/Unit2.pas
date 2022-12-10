@@ -56,17 +56,7 @@ uses
   JvInterpreter_JvEditor,
   JvInterpreterFm,
 
-  parseDBASE;
-
-(*var
-  CppModule: HMODULE = 0;
-type
-  TFrameClassFunc =  procedure(frm: TForm; scr: TScrollBox; x,y,w,h:Integer); stdcall;
-  *)
-
-  procedure create__MyCppFrame(frm: Integer; scr: TScrollBox; x,y,w,h:Integer); stdcall; external 'dbgFrame.dll' name 'create__MyCppFrame';
-  procedure destroy_MyCppFrame;               stdcall; external 'dbgFrame.dll'  name 'destroy_MyCppFrame';
-  procedure resize__MyCppFrame(frm: Integer); stdcall; external 'dbgFrame.dll'  name 'resize__MyCppFrame';
+  parseDBASE, ATBinHex, JvListView;
 
 // Commands to pass to HtmlHelp()
 const
@@ -102,193 +92,73 @@ const
   HH_PRETRANSLATEMESSAGE  = $00FD;  // Pumps messages. (NULL, NULL, MSG*).
   HH_SET_GLOBAL_PROPERTY  = $00FC;  // Set a global property. (NULL, NULL, HH_GPROP)
 
+const
+  cWinHeaderOffset = $3C  ; // offset of "pointer" to windows header in file
+  cNEAppTypeOffset = $0D  ; // offset in NE windows header of app type field
+  cDOSMagic        = $5A4D; // magic number for a DOS executable
+  cNEMagic         = $454E; // magic number for a NE executable (Win 16)
+  cPEMagic         = $4550; // magic nunber for a PE executable (Win 32)
+  cLEMagic         = $454C; // magic number for a Virtual Device Driver
+  cNEDLLFlag       = $80  ; // flag in NE app type field indicating a DLL
+
+type
+  TExeFileKind = (
+    fkUnknown,  // unknown file kind: not an executable
+    fkError,    // error file kind: used for files that don't exist
+    fkDOS,      // DOS executable
+    fkDosExe16, // DOS 16 bit
+    fkDosExe32, // DOS 32 bit (djgpp)
+    fkWinExe16, // Windows 16 Bit
+    fkWinExe32, // Windows 32 Bit
+    fkExe32,    // 32 bit executable
+    fkExe16,    // 16 bit executable
+    fkDLL32,    // 32 bit DLL
+    fkDLL16,    // 16 bit DLL
+    fkVXD       // virtual device driver
+  );
+
+const
+  IMAGE_DOS_SIGNATURE    = $5A4D;       { MZ }
+  IMAGE_OS2_SIGNATURE    = $454E;       { NE }
+  IMAGE_OS2_SIGNATURE_LE = $454C;       { LE }
+  IMAGE_VXD_SIGNATURE    = $454C;       { LE }
+  IMAGE_NT_SIGNATURE     = $00004550;   { PE00 }
+
+type
+  PIMAGE_DOS_HEADER = ^IMAGE_DOS_HEADER;
+  IMAGE_DOS_HEADER = packed record      { DOS .EXE header }
+    e_magic         : WORD;             { Magic number }
+    e_cblp          : WORD;             { Bytes on last page of file }
+    e_cp            : WORD;             { Pages in file }
+    e_crlc          : WORD;             { Relocations }
+    e_cparhdr       : WORD;             { Size of header in paragraphs }
+    e_minalloc      : WORD;             { Minimum extra paragraphs needed }
+    e_maxalloc      : WORD;             { Maximum extra paragraphs needed }
+    e_ss            : WORD;             { Initial (relative) SS value }
+    e_sp            : WORD;             { Initial SP value }
+    e_csum          : WORD;             { Checksum }
+    e_ip            : WORD;             { Initial IP value }
+    e_cs            : WORD;             { Initial (relative) CS value }
+    e_lfarlc        : WORD;             { File address of relocation table }
+    e_ovno          : WORD;             { Overlay number }
+    e_res           : packed array [0..3] of WORD; { Reserved words }
+    e_oemid         : WORD;             { OEM identifier (for e_oeminfo) }
+    e_oeminfo       : WORD;             { OEM information; e_oemid specific }
+    e_res2          : packed array [0..9] of WORD; { Reserved words }
+    e_lfanew        : Longint;          { File address of new exe header }
+  end;
+
+
   function HtmlHelp(hwndCaller: THandle; pszFile: PChar; uCommand: cardinal; dwData: longint): THandle; stdcall;
            external 'hhctrl.ocx' name 'HtmlHelpA';
 
 type
   TForm2 = class(TForm)
     StatusBar1: TStatusBar;
-    ScrollBox2: TScrollBox;
-    ScrollView: TScrollBox;
     IdTCPClient1: TIdTCPClient;
     IdAntiFreeze1: TIdAntiFreeze;
     LocationPopupMenu: TPopupMenu;
     LocationListTimer: TTimer;
-    ImageList1: TImageList;
-    Panel2: TPanel;
-    TasksPageControl: TPageControl;
-    TabSheet24: TTabSheet;
-    TabSheet25: TTabSheet;
-    TabSheet26: TTabSheet;
-    TabSheet27: TTabSheet;
-    TabSheet28: TTabSheet;
-    ScrollBox23: TScrollBox;
-    Splitter3: TSplitter;
-    Panel22: TPanel;
-    PageControl13: TPageControl;
-    TabSheet29: TTabSheet;
-    Splitter9: TSplitter;
-    TreeView2: TTreeView;
-    PageControl14: TPageControl;
-    TabSheet30: TTabSheet;
-    DBGrid1: TDBGrid;
-    TabSheet31: TTabSheet;
-    ScrollBox24: TScrollBox;
-    ScrollBox1: TScrollBox;
-    Splitter7: TSplitter;
-    Splitter8: TSplitter;
-    Panel7: TPanel;
-    Label1: TLabel;
-    Panel8: TPanel;
-    PageControl5: TPageControl;
-    TabSheet3: TTabSheet;
-    ScrollBox7: TScrollBox;
-    ConnectionListGrid: TStringGrid;
-    Panel12: TPanel;
-    Button_SendWarning: TJvArrowButton;
-    JvArrowButton1: TJvArrowButton;
-    JvArrowButton2: TJvArrowButton;
-    JvArrowButton4: TJvArrowButton;
-    JvArrowButton3: TJvArrowButton;
-    ConnectionFilterPanel: TPanel;
-    TabSheet4: TTabSheet;
-    Panel11: TPanel;
-    UserLogGrid: TStringGrid;
-    TabSheet5: TTabSheet;
-    Panel10: TPanel;
-    StringGrid2: TStringGrid;
-    PageControl4: TPageControl;
-    TabSheet2: TTabSheet;
-    Panel9: TPanel;
-    CheckBox1: TCheckBox;
-    CheckBox2: TCheckBox;
-    CheckBox3: TCheckBox;
-    TabSheet10: TTabSheet;
-    ScrollBox4: TScrollBox;
-    Label2: TLabel;
-    Label3: TLabel;
-    Button2: TButton;
-    DBEdit5: TDBEdit;
-    Button5: TButton;
-    TreeView3: TTreeView;
-    Edit1: TEdit;
-    Edit2: TEdit;
-    Button22: TButton;
-    ScrollBox22: TScrollBox;
-    SystemViewGrid: TStringGrid;
-    StaticText1: TStaticText;
-    ScrollBox5: TScrollBox;
-    PageControl7: TPageControl;
-    TabSheet7: TTabSheet;
-    TabSheet8: TTabSheet;
-    ScrollBox11: TScrollBox;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
-    Label10: TLabel;
-    TimeTableGrid: TStringGrid;
-    ComboBox1: TComboBox;
-    TimeTableGrid_SelectAllButton: TButton;
-    TimeTableGrid_deSelectButton: TButton;
-    TimeTableGrid_SelectMark: TButton;
-    TimeTableGrid_deSelectMark: TButton;
-    TimeTableGrid_MultipleCheck: TCheckBox;
-    TimeTableGrid_Location_List: TComboBox;
-    TimeTableGrid_WeekList: TComboBox;
-    ListBox4: TListBox;
-    ListBox5: TListBox;
-    TabSheet9: TTabSheet;
-    ScrollBox8: TScrollBox;
-    Panel15: TPanel;
-    Button6: TButton;
-    Edit3: TEdit;
-    Button7: TButton;
-    Edit4: TEdit;
-    Button8: TButton;
-    Edit5: TEdit;
-    ListBox1: TListBox;
-    TabSheet12: TTabSheet;
-    ScrollBox9: TScrollBox;
-    Panel19: TPanel;
-    Button14: TButton;
-    Edit6: TEdit;
-    Button15: TButton;
-    Edit7: TEdit;
-    Button16: TButton;
-    Edit8: TEdit;
-    ListBox2: TListBox;
-    Button17: TButton;
-    Edit9: TEdit;
-    TabSheet13: TTabSheet;
-    ScrollBox10: TScrollBox;
-    Panel20: TPanel;
-    Button18: TButton;
-    Edit10: TEdit;
-    Button19: TButton;
-    Edit11: TEdit;
-    Button20: TButton;
-    Edit12: TEdit;
-    ListBox3: TListBox;
-    Button21: TButton;
-    Edit13: TEdit;
-    TabSheet20: TTabSheet;
-    ScrollBox18: TScrollBox;
-    Label11: TLabel;
-    PageControl8: TPageControl;
-    TabSheet14: TTabSheet;
-    ScrollBox12: TScrollBox;
-    Memo1: TMemo;
-    ListBox16: TListBox;
-    ListBox17: TListBox;
-    TabSheet15: TTabSheet;
-    ScrollBox13: TScrollBox;
-    Memo2: TMemo;
-    ListBox14: TListBox;
-    ListBox15: TListBox;
-    TabSheet16: TTabSheet;
-    ScrollBox14: TScrollBox;
-    Memo3: TMemo;
-    ListBox12: TListBox;
-    ListBox13: TListBox;
-    TabSheet17: TTabSheet;
-    ScrollBox15: TScrollBox;
-    Memo4: TMemo;
-    ListBox10: TListBox;
-    ListBox11: TListBox;
-    TabSheet18: TTabSheet;
-    ScrollBox16: TScrollBox;
-    Memo5: TMemo;
-    ListBox8: TListBox;
-    ListBox9: TListBox;
-    TabSheet19: TTabSheet;
-    ScrollBox17: TScrollBox;
-    Memo6: TMemo;
-    ListBox6: TListBox;
-    ListBox7: TListBox;
-    ScrollBox25: TScrollBox;
-    PageControl1: TPageControl;
-    TabSheet11: TTabSheet;
-    ScrollBox26: TScrollBox;
-    ScrollBox19: TScrollBox;
-    PageControl2: TPageControl;
-    TabSheet21: TTabSheet;
-    ScrollBox27: TScrollBox;
-    ScrollBox20: TScrollBox;
-    PageControl11: TPageControl;
-    TabSheet23: TTabSheet;
-    ScrollBox21: TScrollBox;
-    PageControl9: TPageControl;
-    TabSheet22: TTabSheet;
-    TabSheet32: TTabSheet;
-    ScrollBox28: TScrollBox;
-    StaticText2: TStaticText;
-    JvPanel1: TJvPanel;
-    MenuEdit: TJvArrowButton;
-    BackgroundViewPanel: TJvPanel;
-    JvSplitter1: TJvSplitter;
-    JvPanel2: TJvPanel;
     data1: TMenuItem;
     dududa1: TMenuItem;
     JvDatabaseItems1: TJvDatabaseItems;
@@ -1066,69 +936,9 @@ type
     N12: TMenuItem;
     N13: TMenuItem;
     N14: TMenuItem;
-    TabSheet33: TTabSheet;
-    ScrollBox6: TScrollBox;
     JvDesignSurface1: TJvDesignSurface;
     BorlandPainter: TJvInspectorBorlandPainter;
-    ListBox20: TListBox;
-    RichEdit1: TRichEdit;
-    ChatSendTextButton: TJvImgBtn;
-    PageControl15: TPageControl;
-    TabSheet39: TTabSheet;
-    ScrollBox36: TScrollBox;
-    ListBox21: TListBox;
-    PageControl3: TPageControl;
-    TabSheet1: TTabSheet;
-    Panel5: TPanel;
-    Button3: TButton;
-    Button4: TButton;
-    DBGrid3: TDBGrid;
-    ScrollBox3: TScrollBox;
-    UserNameLabel: TLabel;
-    UserPasswordLabel: TLabel;
-    UserLocationLabel: TLabel;
-    LastActiveLabel: TLabel;
-    Label4: TLabel;
-    Label20: TLabel;
-    Label21: TLabel;
-    Label22: TLabel;
-    Image1: TImage;
-    DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
-    DBEdit3: TDBEdit;
-    DBEdit4: TDBEdit;
-    DBEdit6: TDBEdit;
-    DBCheckBox1: TDBCheckBox;
-    DBEdit7: TDBEdit;
-    DBEdit8: TDBEdit;
-    DBEdit9: TDBEdit;
-    ScrollBox37: TScrollBox;
-    Chart1: TChart;
-    DBNavigator1: TDBNavigator;
-    Panel14: TPanel;
-    Splitter14: TSplitter;
-    Panel29: TPanel;
-    Panel31: TPanel;
-    Splitter16: TSplitter;
-    Panel32: TPanel;
-    Splitter17: TSplitter;
-    Panel33: TPanel;
-    Splitter18: TSplitter;
-    Panel34: TPanel;
-    Splitter19: TSplitter;
-    SetupPageTreeView: TJvSettingsTreeView;
     DotNETPainter: TJvInspectorDotNETPainter;
-    SetupPageList: TJvPageList;
-    SetupPageLanguage: TJvStandardPage;
-    LangPage0: TJvStandardPage;
-    ScrollBox38: TScrollBox;
-    SetupLangPageControl: TPageControl;
-    SetupPageLangENU: TTabSheet;
-    SetupPageLangDEU: TTabSheet;
-    ScrollBox40: TScrollBox;
-    SetupLangInfoLabel: TLabel;
-    TabSheet43: TTabSheet;
-    ScrollBox41: TScrollBox;
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
     FindDialog1: TFindDialog;
@@ -1137,182 +947,26 @@ type
     JvBDEItems1: TJvBDEItems;
     JvDataSource1: TJvDataSource;
     JvQuery1: TJvQuery;
-    Panel23: TPanel;
-    Panel45: TPanel;
-    Splitter15: TSplitter;
-    Panel35: TPanel;
-    Panel46: TPanel;
-    Splitter20: TSplitter;
-    Panel42: TPanel;
-    Panel44: TPanel;
-    JvStringGrid3: TJvStringGrid;
-    JvStringGrid4: TJvStringGrid;
-    JvStringGrid5: TJvStringGrid;
     JvSelectDirectory1: TJvSelectDirectory;
     JvOpenDialog1: TJvOpenDialog;
-    TaskPageDevelopment: TTabSheet;
-    DevPanelBar: TJvTabBar;
-    DevPageList: TJvPageList;
-    DesignerPage: TJvStandardPage;
-    EditorPage: TJvStandardPage;
-    TableDataPage: TJvStandardPage;
-    DebugPage: TJvStandardPage;
-    ScrollBox31: TScrollBox;
-    Splitter4: TSplitter;
-    Panel16: TPanel;
-    Splitter5: TSplitter;
-    Panel17: TPanel;
-    DesignerControlsComboBox: TJvCheckedComboBox;
-    PageControl10: TPageControl;
-    TabSheet36: TTabSheet;
-    JvInspector1: TJvInspector;
-    TabSheet37: TTabSheet;
-    JvInspector2: TJvInspector;
-    Panel24: TPanel;
-    ListView1: TListView;
-    Panel18: TPanel;
-    Splitter6: TSplitter;
-    Panel21: TPanel;
-    AppSwitchButton: TJvImgBtn;
-    Panel25: TPanel;
-    JvDesignScrollBox1: TJvDesignScrollBox;
-    DevelopmentDesignerPanel: TJvDesignPanel;
-    ScrollBox32: TScrollBox;
-    ScrollBox30: TScrollBox;
-    Panel4: TPanel;
-    Splitter10: TSplitter;
-    Splitter11: TSplitter;
-    PageControl12: TPageControl;
-    TabSheet38: TTabSheet;
-    ScrollBox33: TScrollBox;
-    Splitter12: TSplitter;
-    Panel27: TPanel;
-    ScrollBox35: TScrollBox;
-    Splitter13: TSplitter;
-    JvSettingsTreeView1: TJvSettingsTreeView;
-    JvPageList1: TJvPageList;
-    JvStandardPage1: TJvStandardPage;
-    JvStandardPage2: TJvStandardPage;
-    JvImageComboBox1: TJvImageComboBox;
-    Panel28: TPanel;
-    Panel30: TPanel;
-    ScrollBox34: TScrollBox;
-    SynEdit2: TSynEdit;
-    Panel1: TPanel;
-    Splitter1: TSplitter;
-    ListBox18: TJvSettingsTreeView;
-    Panel3: TPanel;
-    JvCheckedComboBox1: TJvCheckedComboBox;
-    Panel13: TPanel;
-    ListBox19: TListBox;
-    ScrollBox42: TScrollBox;
-    DataTablePageControl: TPageControl;
-    DataPage: TTabSheet;
-    ToolBar1: TToolBar;
-    ToolButton1: TToolButton;
-    ToolButton2: TToolButton;
-    ToolButton3: TToolButton;
-    ToolButton4: TToolButton;
-    ToolButton5: TToolButton;
-    ToolButton6: TToolButton;
-    ToolButton7: TToolButton;
-    Panel36: TPanel;
-    JvCheckedComboBox2: TJvCheckedComboBox;
-    ToolButton8: TToolButton;
-    ToolButton9: TToolButton;
-    ToolButton10: TToolButton;
-    Panel37: TPanel;
-    Panel38: TPanel;
-    FieldPage: TTabSheet;
-    ToolBar2: TToolBar;
-    ToolButton11: TToolButton;
-    ToolButton12: TToolButton;
-    ToolButton13: TToolButton;
-    ToolButton14: TToolButton;
-    ToolButton15: TToolButton;
-    ToolButton16: TToolButton;
-    ToolButton17: TToolButton;
-    Panel39: TPanel;
-    JvCheckedComboBox3: TJvCheckedComboBox;
-    ToolButton18: TToolButton;
-    ToolButton19: TToolButton;
-    ToolButton20: TToolButton;
-    Panel40: TPanel;
-    Panel41: TPanel;
-    DataPageGrid2: TJvStringGrid;
-    TabSheet47: TTabSheet;
-    TabSheet48: TTabSheet;
     JvModernTabBarPainter1: TJvModernTabBarPainter;
-    ProgressBar1: TProgressBar;
-    ScrollBox29: TScrollBox;
     JvModernTabBarPainter2: TJvModernTabBarPainter;
     JvPopupMenu1: TJvPopupMenu;
     dBASE1: TMenuItem;
     Pascal1: TMenuItem;
-    JvXPMenuItemPainter1: TJvXPMenuItemPainter;
     ISOLISP1: TMenuItem;
     dBase4DOS1: TMenuItem;
     N17: TMenuItem;
     Timer1: TTimer;
     SelectionTimer: TTimer;
     SourceTextEditorStringHolder: TJvStrHolder;
-    TabSheet6: TTabSheet;
-    TaskPageHelpAuthoring: TTabSheet;
-    ScrollBox43: TScrollBox;
-    ScrollBox44: TScrollBox;
-    ComponentPageControl: TPageControl;
-    TabSheet40: TTabSheet;
-    PageScroller1: TPageScroller;
-    DevelopmentMenuPanel: TPanel;
-    JvSpeedButton1: TJvSpeedButton;
-    JvSpeedButton2: TJvSpeedButton;
-    JvSpeedButton3: TJvSpeedButton;
-    JvSpeedButton4: TJvSpeedButton;
-    JvSpeedButton5: TJvSpeedButton;
-    JvSpeedButton6: TJvSpeedButton;
-    BackgroundViewButton: TJvImgBtn;
-    TabSheet41: TTabSheet;
-    JvImgBtn2: TJvImgBtn;
-    TabSheet42: TTabSheet;
-    JvImgBtn3: TJvImgBtn;
-    HelpAuthoringPageControl: TPageControl;
-    TabSheet35: TTabSheet;
-    TabSheet44: TTabSheet;
-    TabSheet49: TTabSheet;
-    TabSheet51: TTabSheet;
-    SpeedButton2: TSpeedButton;
-    SpeedButton4: TSpeedButton;
-    SpeedButton5: TSpeedButton;
-    SpeedButton6: TSpeedButton;
-    SpeedButton7: TSpeedButton;
-    JvArrowButton6: TJvArrowButton;
     TopicPopupMenu: TJvPopupMenu;
-    TopicPopupMenuPainter: TJvXPMenuItemPainter;
     InsertNewTopic1: TMenuItem;
     InsertAfter1: TMenuItem;
     InsertBefore1: TMenuItem;
     N18: TMenuItem;
     N19: TMenuItem;
     InsertSubTopic1: TMenuItem;
-    JvPanel3: TJvPanel;
-    JvSplitter4: TJvSplitter;
-    Panel50: TPanel;
-    Splitter22: TSplitter;
-    Panel51: TPanel;
-    Panel52: TPanel;
-    Edit14: TEdit;
-    Splitter23: TSplitter;
-    TreeView1: TTreeView;
-    Panel53: TPanel;
-    Panel54: TPanel;
-    Panel55: TPanel;
-    Splitter24: TSplitter;
-    Panel56: TPanel;
-    Panel57: TPanel;
-    Edit15: TEdit;
-    TreeView4: TTreeView;
-    JvSpeedButton12: TJvSpeedButton;
-    TopicSettingButton: TJvArrowButton;
     TopicSettingPopupMenu: TJvPopupMenu;
     TopicSettingMenuItemPainter: TJvXPMenuItemPainter;
     opicSymbol1: TMenuItem;
@@ -1351,12 +1005,8 @@ type
     Hidden1: TMenuItem;
     Hidden2: TMenuItem;
     HiddeninTopicList1: TMenuItem;
-    Panel58: TPanel;
     N22: TMenuItem;
     DatabaseButtonPopupMenu: TJvPopupMenu;
-    DatabaseButtonPopupMenuPainter: TJvXPMenuItemPainter;
-    DatabaseListButton1: TJvArrowButton;
-    DatabaseListButton2: TJvArrowButton;
     JvDatabaseItems1NAME: TStringField;
     JvDatabaseItems1FILENAME: TStringField;
     JvDatabaseItems1EXTENSION: TStringField;
@@ -1367,58 +1017,12 @@ type
     JvDatabaseItems1VIEW: TBooleanField;
     JvDatabaseItems1SYNONYM: TBooleanField;
     TableListMenuPopup: TJvPopupMenu;
-    TableListMenuPopupPainter: TJvXPMenuItemPainter;
-    DatabaseTableListButton1: TJvArrowButton;
     JvPopupMenu2: TJvPopupMenu;
-    JvXPMenuItemPainter2: TJvXPMenuItemPainter;
-    DatabaseTableListButton2: TJvArrowButton;
-    NavigatorPageControl: TPageControl;
-    TabSheet52: TTabSheet;
-    JvToolBar1: TJvToolBar;
-    NavigatorAdd: TToolButton;
-    NavigatorDelete: TToolButton;
-    NavigatorSave: TToolButton;
-    NavigatorCancel: TToolButton;
-    JvToolBar2: TJvToolBar;
-    NavigatorFirst: TToolButton;
-    NavigatorPrev: TToolButton;
-    NavigatorNext: TToolButton;
-    NavigatorLast: TToolButton;
-    JvToolBar3: TJvToolBar;
-    NavigatorRefresh: TToolButton;
     Table1: TTable;
     DataSource1: TDataSource;
-    DataPageGrid1: TDBGrid;
-    JvCheckBox1: TCheckBox;
-    DBComboBox1: TComboBox;
-    ScrollBox45: TScrollBox;
-    Label13: TLabel;
-    Edit16: TEdit;
-    Label14: TLabel;
-    Edit17: TEdit;
-    Label15: TLabel;
-    JvSpinEdit1: TJvSpinEdit;
-    HTMLEditorView: TPageControl;
-    TabSheet34: TTabSheet;
-    TabSheet45: TTabSheet;
-    ScrollBox46: TScrollBox;
-    WebBrowser1: TWebBrowser;
-    ScrollBox47: TScrollBox;
-    SynEdit1: TSynEdit;
     SynHTMLSyn1: TSynHTMLSyn;
-    TabSheet46: TTabSheet;
-    JvSpeedButton13: TJvSpeedButton;
-    PageControl6: TPageControl;
-    TabSheet50: TTabSheet;
-    PageScroller2: TPageScroller;
-    XMLDesignButton: TJvSpeedButton;
-    HtmlMenuSpeedButton: TJvSpeedButton;
-    JvImgBtn7: TJvImgBtn;
-    ScrollBox48: TScrollBox;
-    HtmlDesignPanel: TJvDesignPanel;
     XMLDocument1: TXMLDocument;
     HintTimer: TTimer;
-    JvXPMenuItemPainter3: TJvXPMenuItemPainter;
     N27: TMenuItem;
     N28: TMenuItem;
     N29: TMenuItem;
@@ -1430,48 +1034,313 @@ type
     dBaseTestModule1: TMenuItem;
     dBaseSQL2: TMenuItem;
     MenuFilePopup: TJvPopupMenu;
-    MenuFile: TJvArrowButton;
     HTMLdesignerMenu: TJvPopupMenu;
-    JvXPMenuItemPainter4: TJvXPMenuItemPainter;
     AddmenuItem1: TMenuItem;
     JvInterpreterProgram1: TJvInterpreterProgram;
     N15: TMenuItem;
-    SQLPage: TJvStandardPage;
-    ScrollBox49: TScrollBox;
-    StringGrid1: TStringGrid;
     SQLBuilderMenu: TJvPopupMenu;
-    JvXPMenuItemPainter5: TJvXPMenuItemPainter;
     AddTable1: TMenuItem;
     SynPasSyn1: TSynPasSyn;
-    JvScrollBox1: TJvScrollBox;
-    JvScrollBar1: TJvScrollBar;
-    JvScrollBar2: TJvScrollBar;
-    SQLBuilderPainter: TPaintBox;
     JvDataEmbedded1: TJvDataEmbedded;
     zlibFile: TJvZlibMultiple;
     JvCreateProcess1: TJvCreateProcess;
-    ConsoleTabSheet: TTabSheet;
-    ScrollBox50: TScrollBox;
-    ConsolePageControl: TPageControl;
-    ClientConsole: TTabSheet;
-    ServerConsole: TTabSheet;
-    ScrollBox51: TScrollBox;
-    ScrollBox52: TScrollBox;
-    Console1: TConsole;
-    Panel49: TPanel;
-    Console2: TConsole;
-    Panel59: TPanel;
-    IPAddressEditServer: TEdit;
-    IPAddressServerLabel: TLabel;
-    NICPortLabelClient: TLabel;
-    NICPortEditServer: TEdit;
-    FakeServerConnectButton: TJvImgBtn;
-    FakeClientConnectButton: TJvImgBtn;
-    IPPortEditClient: TEdit;
-    IPAddressEditClient: TEdit;
-    Label16: TLabel;
-    IPAddressClientLabel: TLabel;
     JvGradientCaption1: TJvGradientCaption;
+    Panel2: TPanel;
+    JvSplitter1: TJvSplitter;
+    BackgroundViewPanel: TJvPanel;
+    TasksPageControl: TPageControl;
+    TabSheet28: TTabSheet;
+    ScrollBox23: TScrollBox;
+    Splitter3: TSplitter;
+    Panel22: TPanel;
+    PageControl13: TPageControl;
+    TabSheet29: TTabSheet;
+    Splitter9: TSplitter;
+    TreeView2: TTreeView;
+    PageControl14: TPageControl;
+    TabSheet30: TTabSheet;
+    DBGrid1: TDBGrid;
+    TabSheet31: TTabSheet;
+    ScrollBox24: TScrollBox;
+    Splitter15: TSplitter;
+    Splitter20: TSplitter;
+    Panel23: TPanel;
+    Panel45: TPanel;
+    JvStringGrid3: TJvStringGrid;
+    Panel35: TPanel;
+    Panel46: TPanel;
+    JvStringGrid4: TJvStringGrid;
+    Panel42: TPanel;
+    Panel44: TPanel;
+    JvStringGrid5: TJvStringGrid;
+    ScrollBox1: TScrollBox;
+    Splitter7: TSplitter;
+    Splitter8: TSplitter;
+    Panel7: TPanel;
+    Label1: TLabel;
+    Panel8: TPanel;
+    PageControl5: TPageControl;
+    TabSheet3: TTabSheet;
+    ScrollBox7: TScrollBox;
+    ConnectionListGrid: TStringGrid;
+    Panel12: TPanel;
+    Button_SendWarning: TJvArrowButton;
+    JvArrowButton1: TJvArrowButton;
+    JvArrowButton2: TJvArrowButton;
+    JvArrowButton4: TJvArrowButton;
+    JvArrowButton3: TJvArrowButton;
+    ConnectionFilterPanel: TPanel;
+    TabSheet4: TTabSheet;
+    Panel11: TPanel;
+    UserLogGrid: TStringGrid;
+    TabSheet5: TTabSheet;
+    Panel10: TPanel;
+    StringGrid2: TStringGrid;
+    PageControl4: TPageControl;
+    TabSheet2: TTabSheet;
+    Panel9: TPanel;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    CheckBox3: TCheckBox;
+    TabSheet10: TTabSheet;
+    ScrollBox4: TScrollBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    Button2: TButton;
+    DBEdit5: TDBEdit;
+    Button5: TButton;
+    TreeView3: TTreeView;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Button22: TButton;
+    ScrollBox22: TScrollBox;
+    SystemViewGrid: TStringGrid;
+    StaticText1: TStaticText;
+    PageControl9: TPageControl;
+    TabSheet22: TTabSheet;
+    ScrollBox28: TScrollBox;
+    TabSheet32: TTabSheet;
+    StaticText2: TStaticText;
+    TabSheet24: TTabSheet;
+    ScrollBox20: TScrollBox;
+    PageControl11: TPageControl;
+    TabSheet23: TTabSheet;
+    ScrollBox21: TScrollBox;
+    TabSheet26: TTabSheet;
+    ScrollBox25: TScrollBox;
+    PageControl1: TPageControl;
+    TabSheet11: TTabSheet;
+    ScrollBox26: TScrollBox;
+    TabSheet27: TTabSheet;
+    ScrollBox19: TScrollBox;
+    PageControl2: TPageControl;
+    TabSheet21: TTabSheet;
+    ScrollBox27: TScrollBox;
+    TabSheet25: TTabSheet;
+    ScrollBox5: TScrollBox;
+    PageControl7: TPageControl;
+    TabSheet7: TTabSheet;
+    ScrollBox37: TScrollBox;
+    Chart1: TChart;
+    TabSheet8: TTabSheet;
+    ScrollBox11: TScrollBox;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    TimeTableGrid: TStringGrid;
+    ComboBox1: TComboBox;
+    TimeTableGrid_SelectAllButton: TButton;
+    TimeTableGrid_deSelectButton: TButton;
+    TimeTableGrid_SelectMark: TButton;
+    TimeTableGrid_deSelectMark: TButton;
+    TimeTableGrid_MultipleCheck: TCheckBox;
+    TimeTableGrid_Location_List: TComboBox;
+    TimeTableGrid_WeekList: TComboBox;
+    ListBox4: TListBox;
+    ListBox5: TListBox;
+    PageControl3: TPageControl;
+    TabSheet1: TTabSheet;
+    Panel5: TPanel;
+    Button3: TButton;
+    Button4: TButton;
+    DBGrid3: TDBGrid;
+    ScrollBox3: TScrollBox;
+    UserNameLabel: TLabel;
+    UserPasswordLabel: TLabel;
+    UserLocationLabel: TLabel;
+    LastActiveLabel: TLabel;
+    Label4: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
+    Label22: TLabel;
+    Image1: TImage;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBCheckBox1: TDBCheckBox;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    DBEdit9: TDBEdit;
+    DBNavigator1: TDBNavigator;
+    TabSheet9: TTabSheet;
+    ScrollBox8: TScrollBox;
+    Panel15: TPanel;
+    Button6: TButton;
+    Edit3: TEdit;
+    Button7: TButton;
+    Edit4: TEdit;
+    Button8: TButton;
+    Edit5: TEdit;
+    ListBox1: TListBox;
+    PageControl15: TPageControl;
+    TabSheet39: TTabSheet;
+    ScrollBox36: TScrollBox;
+    TabSheet43: TTabSheet;
+    ScrollBox41: TScrollBox;
+    ListBox21: TListBox;
+    TabSheet12: TTabSheet;
+    ScrollBox9: TScrollBox;
+    Panel19: TPanel;
+    Button14: TButton;
+    Edit6: TEdit;
+    Button15: TButton;
+    Edit7: TEdit;
+    Button16: TButton;
+    Edit8: TEdit;
+    ListBox2: TListBox;
+    Button17: TButton;
+    Edit9: TEdit;
+    ListBox20: TListBox;
+    RichEdit1: TRichEdit;
+    ChatSendTextButton: TJvImgBtn;
+    TabSheet13: TTabSheet;
+    ScrollBox10: TScrollBox;
+    Panel20: TPanel;
+    Button18: TButton;
+    Edit10: TEdit;
+    Button19: TButton;
+    Edit11: TEdit;
+    Button20: TButton;
+    Edit12: TEdit;
+    ListBox3: TListBox;
+    Button21: TButton;
+    Edit13: TEdit;
+    TabSheet20: TTabSheet;
+    ScrollBox18: TScrollBox;
+    Label11: TLabel;
+    PageControl8: TPageControl;
+    TabSheet14: TTabSheet;
+    ScrollBox12: TScrollBox;
+    Memo1: TMemo;
+    ListBox16: TListBox;
+    ListBox17: TListBox;
+    TabSheet15: TTabSheet;
+    ScrollBox13: TScrollBox;
+    Memo2: TMemo;
+    ListBox14: TListBox;
+    ListBox15: TListBox;
+    TabSheet16: TTabSheet;
+    ScrollBox14: TScrollBox;
+    Memo3: TMemo;
+    ListBox12: TListBox;
+    ListBox13: TListBox;
+    TabSheet17: TTabSheet;
+    ScrollBox15: TScrollBox;
+    Memo4: TMemo;
+    ListBox10: TListBox;
+    ListBox11: TListBox;
+    TabSheet18: TTabSheet;
+    ScrollBox16: TScrollBox;
+    Memo5: TMemo;
+    ListBox8: TListBox;
+    ListBox9: TListBox;
+    TabSheet19: TTabSheet;
+    ScrollBox17: TScrollBox;
+    Memo6: TMemo;
+    ListBox6: TListBox;
+    ListBox7: TListBox;
+    TabSheet33: TTabSheet;
+    ScrollBox6: TScrollBox;
+    Splitter14: TSplitter;
+    Panel14: TPanel;
+    Splitter19: TSplitter;
+    Panel34: TPanel;
+    SetupPageTreeView: TJvSettingsTreeView;
+    Panel29: TPanel;
+    Splitter16: TSplitter;
+    Splitter17: TSplitter;
+    Splitter18: TSplitter;
+    Panel31: TPanel;
+    Panel32: TPanel;
+    Panel33: TPanel;
+    SetupPageList: TJvPageList;
+    SetupPageLanguage: TJvStandardPage;
+    ScrollBox38: TScrollBox;
+    SetupLangPageControl: TPageControl;
+    SetupPageLangENU: TTabSheet;
+    SetupPageLangDEU: TTabSheet;
+    ScrollBox40: TScrollBox;
+    LangPage0: TJvStandardPage;
+    SetupLangInfoLabel: TLabel;
+    TaskPageDevelopment: TTabSheet;
+    DevPanelBar: TJvTabBar;
+    DevPageList: TJvPageList;
+    DesignerPage: TJvStandardPage;
+    ScrollBox31: TScrollBox;
+    Splitter4: TSplitter;
+    Panel16: TPanel;
+    Splitter5: TSplitter;
+    Panel17: TPanel;
+    DesignerControlsComboBox: TJvCheckedComboBox;
+    PageControl10: TPageControl;
+    TabSheet36: TTabSheet;
+    JvInspector1: TJvInspector;
+    TabSheet37: TTabSheet;
+    JvInspector2: TJvInspector;
+    Panel24: TPanel;
+    ListView1: TListView;
+    Panel18: TPanel;
+    Splitter6: TSplitter;
+    Panel21: TPanel;
+    AppSwitchButton: TJvImgBtn;
+    Panel25: TPanel;
+    JvDesignScrollBox1: TJvDesignScrollBox;
+    DevelopmentDesignerPanel: TJvDesignPanel;
+    ScrollBox32: TScrollBox;
+    ProgressBar1: TProgressBar;
+    EditorPage: TJvStandardPage;
+    ScrollBox30: TScrollBox;
+    Panel4: TPanel;
+    Splitter10: TSplitter;
+    Splitter11: TSplitter;
+    PageControl12: TPageControl;
+    TabSheet38: TTabSheet;
+    ScrollBox33: TScrollBox;
+    Splitter12: TSplitter;
+    Panel27: TPanel;
+    ScrollBox35: TScrollBox;
+    Splitter13: TSplitter;
+    JvSettingsTreeView1: TJvSettingsTreeView;
+    JvPageList1: TJvPageList;
+    JvStandardPage1: TJvStandardPage;
+    JvStandardPage2: TJvStandardPage;
+    JvImageComboBox1: TJvImageComboBox;
+    Panel28: TPanel;
+    Panel30: TPanel;
+    ScrollBox34: TScrollBox;
+    SynEdit2: TSynEdit;
+    Panel1: TPanel;
+    Splitter1: TSplitter;
+    ListBox18: TJvSettingsTreeView;
+    Panel3: TPanel;
+    JvCheckedComboBox1: TJvCheckedComboBox;
+    Panel13: TPanel;
+    ListBox19: TListBox;
     ScrollBox39: TScrollBox;
     Panel6: TPanel;
     Splitter2: TSplitter;
@@ -1510,6 +1379,231 @@ type
     JvSpeedButton9: TJvSpeedButton;
     JvSpeedButton10: TJvSpeedButton;
     JvSpeedButton11: TJvSpeedButton;
+    SQLPage: TJvStandardPage;
+    ScrollBox49: TScrollBox;
+    StringGrid1: TStringGrid;
+    JvScrollBox1: TJvScrollBox;
+    SQLBuilderPainter: TPaintBox;
+    JvScrollBar1: TJvScrollBar;
+    JvScrollBar2: TJvScrollBar;
+    TableDataPage: TJvStandardPage;
+    ScrollBox42: TScrollBox;
+    DataTablePageControl: TPageControl;
+    DataPage: TTabSheet;
+    ToolBar1: TToolBar;
+    ToolButton1: TToolButton;
+    ToolButton2: TToolButton;
+    ToolButton3: TToolButton;
+    ToolButton4: TToolButton;
+    ToolButton5: TToolButton;
+    ToolButton6: TToolButton;
+    ToolButton7: TToolButton;
+    Panel36: TPanel;
+    JvCheckedComboBox2: TJvCheckedComboBox;
+    ToolButton8: TToolButton;
+    ToolButton9: TToolButton;
+    ToolButton10: TToolButton;
+    Panel37: TPanel;
+    DatabaseTableListButton2: TJvArrowButton;
+    Panel38: TPanel;
+    DatabaseListButton2: TJvArrowButton;
+    DataPageGrid1: TDBGrid;
+    JvCheckBox1: TCheckBox;
+    DBComboBox1: TComboBox;
+    FieldPage: TTabSheet;
+    ToolBar2: TToolBar;
+    ToolButton11: TToolButton;
+    ToolButton12: TToolButton;
+    ToolButton13: TToolButton;
+    ToolButton14: TToolButton;
+    ToolButton15: TToolButton;
+    ToolButton16: TToolButton;
+    ToolButton17: TToolButton;
+    Panel39: TPanel;
+    JvCheckedComboBox3: TJvCheckedComboBox;
+    ToolButton18: TToolButton;
+    ToolButton19: TToolButton;
+    ToolButton20: TToolButton;
+    Panel40: TPanel;
+    DatabaseTableListButton1: TJvArrowButton;
+    Panel41: TPanel;
+    DatabaseListButton1: TJvArrowButton;
+    DataPageGrid2: TJvStringGrid;
+    TabSheet47: TTabSheet;
+    TabSheet48: TTabSheet;
+    DebugPage: TJvStandardPage;
+    ScrollBox29: TScrollBox;
+    TabSheet6: TTabSheet;
+    ScrollBox43: TScrollBox;
+    TaskPageHelpAuthoring: TTabSheet;
+    ScrollBox44: TScrollBox;
+    JvSplitter4: TJvSplitter;
+    Splitter22: TSplitter;
+    JvPanel3: TJvPanel;
+    Panel50: TPanel;
+    Splitter23: TSplitter;
+    Panel51: TPanel;
+    Panel52: TPanel;
+    Edit14: TEdit;
+    JvImgBtn7: TJvImgBtn;
+    TreeView1: TTreeView;
+    Panel58: TPanel;
+    ScrollBox45: TScrollBox;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Edit16: TEdit;
+    Edit17: TEdit;
+    JvSpinEdit1: TJvSpinEdit;
+    Panel53: TPanel;
+    Panel54: TPanel;
+    JvSpeedButton12: TJvSpeedButton;
+    JvSpeedButton13: TJvSpeedButton;
+    PageControl6: TPageControl;
+    TabSheet50: TTabSheet;
+    PageScroller2: TPageScroller;
+    XMLDesignButton: TJvSpeedButton;
+    HtmlMenuSpeedButton: TJvSpeedButton;
+    HTMLEditorView: TPageControl;
+    TabSheet46: TTabSheet;
+    ScrollBox48: TScrollBox;
+    HtmlDesignPanel: TJvDesignPanel;
+    TabSheet34: TTabSheet;
+    ScrollBox47: TScrollBox;
+    SynEdit1: TSynEdit;
+    TabSheet45: TTabSheet;
+    ScrollBox46: TScrollBox;
+    WebBrowser1: TWebBrowser;
+    Panel55: TPanel;
+    Splitter24: TSplitter;
+    Panel56: TPanel;
+    Panel57: TPanel;
+    Edit15: TEdit;
+    TreeView4: TTreeView;
+    ConsoleTabSheet: TTabSheet;
+    ScrollBox50: TScrollBox;
+    ConsolePageControl: TPageControl;
+    ClientConsole: TTabSheet;
+    ScrollBox51: TScrollBox;
+    Label16: TLabel;
+    IPAddressClientLabel: TLabel;
+    Console1: TConsole;
+    Panel49: TPanel;
+    FakeClientConnectButton: TJvImgBtn;
+    IPPortEditClient: TEdit;
+    IPAddressEditClient: TEdit;
+    ServerConsole: TTabSheet;
+    ScrollBox52: TScrollBox;
+    IPAddressServerLabel: TLabel;
+    NICPortLabelClient: TLabel;
+    Console2: TConsole;
+    Panel59: TPanel;
+    IPAddressEditServer: TEdit;
+    NICPortEditServer: TEdit;
+    FakeServerConnectButton: TJvImgBtn;
+    JvPanel1: TJvPanel;
+    MenuEdit: TJvArrowButton;
+    MenuFile: TJvArrowButton;
+    JvPanel2: TJvPanel;
+    ComponentPageControl: TPageControl;
+    TabSheet40: TTabSheet;
+    PageScroller1: TPageScroller;
+    DevelopmentMenuPanel: TPanel;
+    JvSpeedButton1: TJvSpeedButton;
+    JvSpeedButton2: TJvSpeedButton;
+    JvSpeedButton3: TJvSpeedButton;
+    JvSpeedButton4: TJvSpeedButton;
+    JvSpeedButton5: TJvSpeedButton;
+    JvSpeedButton6: TJvSpeedButton;
+    BackgroundViewButton: TJvImgBtn;
+    TabSheet41: TTabSheet;
+    JvImgBtn2: TJvImgBtn;
+    TabSheet42: TTabSheet;
+    JvImgBtn3: TJvImgBtn;
+    HelpAuthoringPageControl: TPageControl;
+    TabSheet35: TTabSheet;
+    SpeedButton2: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
+    SpeedButton6: TSpeedButton;
+    SpeedButton7: TSpeedButton;
+    JvArrowButton6: TJvArrowButton;
+    TopicSettingButton: TJvArrowButton;
+    TabSheet44: TTabSheet;
+    TabSheet49: TTabSheet;
+    TabSheet51: TTabSheet;
+    NavigatorPageControl: TPageControl;
+    TabSheet52: TTabSheet;
+    JvToolBar1: TJvToolBar;
+    NavigatorAdd: TToolButton;
+    NavigatorDelete: TToolButton;
+    NavigatorSave: TToolButton;
+    NavigatorCancel: TToolButton;
+    JvToolBar2: TJvToolBar;
+    NavigatorFirst: TToolButton;
+    NavigatorPrev: TToolButton;
+    NavigatorNext: TToolButton;
+    NavigatorLast: TToolButton;
+    JvToolBar3: TJvToolBar;
+    NavigatorRefresh: TToolButton;
+    Panel60: TPanel;
+    Panel61: TPanel;
+    Splitter21: TSplitter;
+    PageControl16: TPageControl;
+    TabSheet53: TTabSheet;
+    TreeView5: TTreeView;
+    ScrollBox2: TScrollBox;
+    dosEdit1: TEdit;
+    dosEdit2: TEdit;
+    dosEdit3: TEdit;
+    dosEdit4: TEdit;
+    dosEdit5: TEdit;
+    dosEdit6: TEdit;
+    TabSheet54: TTabSheet;
+    dosEdit7: TEdit;
+    dosEdit8: TEdit;
+    dosEdit9: TEdit;
+    dosEdit10: TEdit;
+    dosEdit11: TEdit;
+    dosEdit12: TEdit;
+    dosEdit13: TEdit;
+    dosEdit14: TEdit;
+    dosEdit15: TEdit;
+    dosEdit16: TEdit;
+    dosEdit17: TEdit;
+    PageControl17: TPageControl;
+    TabSheet55: TTabSheet;
+    ATBinHex1: TATBinHex;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label23: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    Label29: TLabel;
+    Label30: TLabel;
+    Label31: TLabel;
+    Label32: TLabel;
+    Label33: TLabel;
+    Label34: TLabel;
+    Label35: TLabel;
+    Label37: TLabel;
+    Panel62: TPanel;
+    SpeedButton3: TSpeedButton;
+    ScrollBox54: TScrollBox;
+    PageControl18: TPageControl;
+    TabSheet56: TTabSheet;
+    DosAssemblySynEdit: TSynEdit;
+    JvArrowButton5: TJvArrowButton;
+    AssemblyJvPopupMenu: TJvPopupMenu;
+    Assemble1: TMenuItem;
+    JvListView1: TJvListView;
+    AssembleDOSStub1: TMenuItem;
+    ImageList1: TImageList;
+    JvSpeedButton14: TJvSpeedButton;
     procedure FormCreate(Sender: TObject);
 
     procedure TimeTableGridDrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -1690,7 +1784,6 @@ type
     procedure SourceTextEditorCopyClick(Sender: TObject);
     procedure SourceTextEditorPasteClick(Sender: TObject);
     procedure SourceTextEditorCutClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
     procedure DatabaseListButton1Click(Sender: TObject);
     procedure DatabaseTableListButton1Click(Sender: TObject);
     procedure DatabaseTableListButton2Click(Sender: TObject);
@@ -1783,10 +1876,16 @@ type
     procedure SourceEditorSplitterCanResize(Sender: TObject;
       var NewSize: Integer; var Accept: Boolean);
     procedure Amiga500Assembly1Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure dosEditExit(Sender: TObject);
+    procedure dosEditEnter(Sender: TObject);
+    procedure JvListView1DblClick(Sender: TObject);
+    procedure Assemble1Click(Sender: TObject);
   protected
 //    procedure ButtonA_Paint(Sender: TObject; Button: TMouseButton;  Shift: TShiftState; X, Y: Integer);
   private
     FBooting: Boolean;
+    FMemStream: TMemoryStream;
 
     FClientPrompt: String;
     FServerPrompt: String;
@@ -1843,7 +1942,10 @@ type
     procedure CreatePopupMenu;
 
     procedure ChangeChkState(const Item: TJvCustomInspectorItem);
+
   public
+    FFileKind: TExeFileKind;
+
     FFrame: TCustomFrame;
     FNewTableName: String;
 
@@ -1878,7 +1980,8 @@ implementation
 
 uses
   JvInitTStrings,
-  NewTableDialog;
+  NewTableDialog,
+  dissAssemble;
 
 var
   VerInfoStr: string = 'Version 0.1';
@@ -2165,11 +2268,15 @@ var
   len : Integer;
   chk : TCheckBox;
   cnf : String;
+  src : string;
   b   : Boolean;
   sl  : TStringList;
   idx : Integer;
+  bmp : TBitmap;
 
-  ProgressBarStyle: integer;
+  LibHandle        : THandle;
+  ProgressBarStyle : integer;
+
   ctrl: TPanel;
   edit: TEdit;
 
@@ -2182,6 +2289,45 @@ var
 begin
   try
     try
+(*
+      // nearly all bitmap are stored in 'datares.dll' ...
+      LibHandle := LoadLibrary(PChar(
+      ExtractFilePath(Application.ExeName) +
+      'datares.dll'));
+      if LibHandle < 1 then
+      begin
+        Form2.Visible := False;
+        Application.MessageBox(
+        PChar('can not load resource: "datares.dll" !'),
+        PChar('Error'),
+        MB_OK);
+        Application.Terminate;
+        Exit;
+      end else
+      begin
+        try
+          bmp := TBitmap.Create;
+          bmp.LoadFromResourceName(LibHandle,'IMG0018_24');
+          ImageList1.AddMasked(bmp,clNone);
+          bmp.LoadFromResourceName(LibHandle,'IMG0002');
+          ImageList1.AddMasked(bmp,clNone);
+
+          JvSpeedButton1.Glyph.LoadFromResourceName(LibHandle,'IMG0027');
+          JvSpeedButton2.Glyph.LoadFromResourceName(LibHandle,'IMG0025');
+          JvSpeedButton3.Glyph.LoadFromResourceName(LibHandle,'IMG0028');
+          JvSpeedButton4.Glyph.LoadFromResourceName(LibHandle,'IMG0024');
+          JvSpeedButton5.Glyph.LoadFromResourceName(LibHandle,'IMG0021');
+          JvSpeedButton6.Glyph.LoadFromResourceName(LibHandle,'IMG0023');
+
+          SpeedButton3.Glyph.LoadFromResourceName(LibHandle,'IMG0014');
+
+          BackgroundViewButton.Images := ImageList1;
+          BackgroundViewButton.ImageIndex := 0;
+        finally
+          bmp.Free;
+        end;
+      end;
+*)
       cnf := ExtractFilePath(Application.ExeName);
       if not DirectoryExists(cnf + 'assets') then
       begin
@@ -2220,6 +2366,8 @@ begin
         TimeTableGrid_Location_List.Items.Add(
         strList.Values[IntToStr(len)]);
       end;
+
+      // load bitmap resource
 
       with SystemViewGrid do
       begin
@@ -2278,7 +2426,7 @@ begin
 
       Console1.Boot;
       Console2.Boot;
-      
+
       FBooting := true;
 
       DataPageGrid1ActiveRow  := 1;
@@ -2316,6 +2464,21 @@ begin
       // database/files
       AliasListFlag := false;
       DataPageGrid1Modified := 0;
+
+      DosAssemblySynEdit.Lines.Clear;
+      DosAssemblySynEdit.Lines.Text :=
+      '  push cs'        + #13#10 +
+      '  pop  ds'        + #13#10 +
+      '  mov  dx, msg'   + #13#10 +
+      '  mov  ah, 9'     + #13#10 +
+      '  int  21h'       + #13#10 +
+                           #13#10 +
+      '  mov  ax, 4c01h' + #13#10 +
+      '  int  21h'       + #13#10 +
+                           #13#10 +
+      'msg:'             + #13#10 +
+      '  db "This program cannot be run in DOS mode.",13,13,10,"$",0' + #13#10
+      ;
 
 
       // Jv Pascal Interpreter Classes:
@@ -2357,51 +2520,6 @@ begin
         Cells[1,0] := 'Translation';
       end;*)
 
-      // debug
-(*      if CppModule = 0 then
-      begin
-        CppModule := LoadPackage('dbgFrame.bpl');
-        if CppModule < 1 then
-        begin
-          ShowMessage('can''t load: dbgFrame.bpl');
-          exit;
-        end;
-      end;
-
-      FrameClassFunc := TFrameClassFunc(
-      GetProcAddress(CppModule, 'getMyCppFrameClass'));
-
-      if not Assigned(FrameClassFunc) then
-      raise Exception.Create(
-      'can not find export symbol:  ' +
-      'getMyCppFrameClass() in:'      + #13#10 +
-      'dbgFrame.bpl');
-*)
-
-      create__MyCppFrame(
-        ScrollBox29.Handle,
-        ScrollBox29, 0,0,
-        ScrollBox29.Width  + 200 ,
-        ScrollBox29.Height + 200); //.CreateParented(ScrollBox29.Handle);
-//      FFrame.Parent := Form2;
-
-(*
-      showmessage('controls: ' + inttostr(FFrame.ComponentCount));
-      for idx := 0 to FFrame.ComponentCount - 1 do
-      begin
-        if FFrame.Components[idx].Name = 'Panel1' then
-        begin
-          ShowMessage('Panel1 <---');
-          ctrl := TPanel(FFrame.Components[idx]);
-          ctrl.Parent := ScrollBox29;
-        end else
-        if FFrame.Components[idx].Name = 'BCB6_Splitter1' then
-        begin
-          ShowMessage('Splitter <===');
-          TSplitter(FFrame.Components[idx]).Parent := ctrl;
-        end;
-      end;
-      *)
     except
       on E: Exception do
       begin
@@ -2465,13 +2583,11 @@ end;
 
 procedure TForm2.FormDestroy(Sender: TObject);
 begin
-//  UnLoadPackage(CppModule);
+  FMemStream.Clear;
+  FMemStream.Free;
 
   ApplicationBalloonHint.Free;
-  destroy_MyCppFrame;
-
   PopupMenu_TimeAccess.Items.Clear;
-//  FFrame.Free;
 
   iniFile.Free;
 end;
@@ -2686,6 +2802,7 @@ begin
     if (ACol = 0) then
     begin
       case ARow of
+
       0: begin drawSymbol(0); end;
       1: begin drawSymbol(4); end;
       2: begin drawSymbol(5); end;
@@ -3756,8 +3873,6 @@ procedure TForm2.FormResize(Sender: TObject);
 begin
   if (ScrollBox39.Width  - 20) > Panel6.Width  then Panel6.Width  := ScrollBox39.Width  - 5;
   if (ScrollBox39.Height - 20) > Panel6.Height then Panel6.Height := ScrollBox39.Height - 5;
-
-  resize__MyCppFrame(ScrollBox29.Handle);
 end;
 
 procedure TForm2.dBASE1Click(Sender: TObject);
@@ -4062,19 +4177,6 @@ procedure TForm2.SourceTextEditorCutClick(Sender: TObject);
 begin
   SourceTextEditorCopyClick   (Sender);
   SourceTextEditorDeleteClick (Sender);
-end;
-
-procedure TForm2.Button1Click(Sender: TObject);
-var
-  all: IHTMLElementCollection;
-  doc: IHTMLDocument2;
-  win: IHTMLWindow2;
-  fc: IHTMLFramesCollection2;
-  u: IUnknown;
-  i: Integer;
-  v: OleVariant;
-  s: String;
-begin
 end;
 
 procedure FileSearch(FileList: TStringList; const dirName: string; ext: String);
@@ -5319,6 +5421,371 @@ procedure TForm2.Amiga500Assembly1Click(Sender: TObject);
 begin
   modusButton.Caption := 'Pascal Mode';
   SourceTextEditor.Highlighter := SynPasSyn1;
+end;
+
+// ----------------------------------------------------------------------------
+// @brief  Debug procedure - collect information's about a Windows file.
+// ----------------------------------------------------------------------------
+procedure TForm2.SpeedButton3Click(Sender: TObject);
+var
+  fs: TFileStream;
+  MS: TMemoryStream;
+  kind: TExeFileKind;
+
+  WinMagic: Word;                 // word containing PE or NE magic numbers
+  DOSFileSize: Integer;           // size of DOS file
+  HdrOffset: LongInt;             // offset of windows header in exec file
+
+  signature  : DWORD;
+  dos_header : IMAGE_DOS_HEADER;
+  pe_header  : IMAGE_FILE_HEADER; // PE file header record
+  AppFlagsNE : Byte;              // byte defining DLLs in NE format
+
+  tmp : array [0..$100] of Byte;
+
+  procedure dumpDOS_Header;
+  begin
+    dosEdit1 .Text := '0x' + IntToHex(dos_header.e_magic   , SizeOf(Word));
+    dosEdit2 .Text := '0x' + IntToHex(dos_header.e_cblp    , SizeOf(Word));
+    dosEdit3 .Text := '0x' + IntToHex(dos_header.e_cp      , SizeOf(Word));
+    dosEdit4 .Text := '0x' + IntToHex(dos_header.e_crlc    , SizeOf(Word));
+    dosEdit5 .Text := '0x' + IntToHex(dos_header.e_cparhdr , SizeOf(Word));
+    dosEdit6 .Text := '0x' + IntToHex(dos_header.e_minalloc, SizeOf(Word));
+    dosEdit7 .Text := '0x' + IntToHex(dos_header.e_maxalloc, SizeOf(Word));
+    dosEdit8 .Text := '0x' + IntToHex(dos_header.e_ss      , SizeOf(Word));
+    dosEdit9 .Text := '0x' + IntToHex(dos_header.e_sp      , SizeOf(Word));
+    dosEdit10.Text := '0x' + IntToHex(dos_header.e_csum    , SizeOf(Word));
+    dosEdit11.Text := '0x' + IntToHex(dos_header.e_ip      , SizeOf(Word));
+    dosEdit12.Text := '0x' + IntToHex(dos_header.e_cs      , SizeOf(Word));
+    dosEdit13.Text := '0x' + IntToHex(dos_header.e_lfarlc  , SizeOf(Word));
+    dosEdit14.Text := '0x' + IntToHex(dos_header.e_ovno    , SizeOf(Word));
+    dosEdit15.Text := '0x' + IntToHex(dos_header.e_oemid   , SizeOf(Word));
+    dosEdit16.Text := '0x' + IntToHex(dos_header.e_oeminfo , SizeOf(Word));
+    dosEdit17.Text := '0x' + IntToHex(dos_header.e_lfanew  , SizeOf(LongInt));
+  end;
+  procedure dumpNT__Header;
+  begin
+
+  end;
+
+  // -------------------------------------------------------------------
+  // Examines given file and returns a code that indicates the type of
+  // executable file it is (or if it isn't an executable)
+  // -------------------------------------------------------------------
+  function ExeType(const FileName: string): TExeFileKind;
+  begin
+    try
+      try
+        fs := TFileStream.Create(FileName, fmOpenRead or fmShareDenyWrite);
+        fs.Seek(0,soFromBeginning);
+        if fs.Size < SizeOf(dos_header) then
+        raise Exception.Create('not a dos file.');
+
+        // check for DOS magic number at start of file
+        fs.Read(dos_header, SizeOf(dos_header));
+        if dos_header.e_magic <> IMAGE_DOS_SIGNATURE then
+        raise Exception.Create('invalid DOS file header.');
+
+        // DOS files have length >= size indicated by DOS header's
+        // e_cblp and e_cp fields. e_cblp stores the number of 512 bytes
+        // pages in the file. e_cp stores the number of bytes used in the
+        // last page of the file.
+        if (dos_header.e_cblp = 0) then
+        DosFileSize := (dos_header.e_cp      * 512) else
+        DosFileSize := (dos_header.e_cp - 1) * 512  + dos_header.e_cblp;
+
+        if fs.Size < DosFileSize then
+        raise Exception.Create('file size mismatch.');
+
+        // DOS file relocation offset must be within DOS file size.
+        if dos_header.e_lfarlc > DosFileSize then
+        raise Exception.Create('relocation mismatch.');
+
+        // we assume we have an executable file: assume its a DOS program
+        result := fkDOS;
+
+        // try to find offset of Windows program header
+        if fs.Size <= cWinHeaderOffset + SizeOf(LongInt) then
+           // Windows header is to big for the file:
+           // it's a DOS file
+           raise Exception.Create('Windows header is to big.');
+
+        // read the offset of the Window header
+        fs.Seek(cWinHeaderOffset, soFromBeginning);
+        fs.ReadBuffer(HdrOffset, SizeOf(LongInt));
+
+        // now try to read first word of Windows program header
+        if fs.Size <= HdrOffset * SizeOf(Word) then
+        raise Exception.Create('can not read program header.');
+
+        fs.Seek(HdrOffset, soFromBeginning);
+        fs.ReadBuffer(WinMagic, SizeOf(Word));
+        case WinMagic of
+          cPEMagic:
+          begin
+            // 32 bit Windows application: now check whether app or DLL.
+            // Windows Image Header starts 4 bytes from the start of the
+            // Windows header offset.
+            if fs.Size < HdrOffset + SizeOf(LongWord) + SizeOf(pe_header) then
+            begin
+               // file not large enough for image: assume DOS
+               result := fkDOS;
+               Exit;
+            end;
+
+            // read windows image header
+            fs.Seek(HdrOffset + SizeOf(LongWord),soFromBeginning);
+            fs.ReadBuffer(pe_header, SizeOf(pe_header));
+
+            if (pe_header.Characteristics and IMAGE_FILE_DLL) = IMAGE_FILE_DLL then
+            Result := fkDLL32 else
+            Result := fkExe32 ;
+          end;
+          cNEMagic:
+          begin
+            // we have 16 bit Windows executable: check whether app or DLL
+            if fs.Size <= HdrOffset + cNEAppTypeOffset + SizeOf(AppFlagsNE) then
+            begin
+              result := fkDOS;
+              Exit;
+            end;
+
+            // read app flags byte
+            fs.Seek(HdrOffset + cNEAppTypeOffset, soFromBeginning);
+            fs.ReadBuffer(AppFlagsNE, SizeOf(AppFlagsNE));
+
+            if (AppFlagsNE and cNEDLLFlag) = cNEDllFlag then
+            result := fkDLL16 else
+            result := fkExe16 ;
+          end;
+          cLEMagic:
+          begin
+            // we have a virtual device driver
+            result := fkVXD;
+          end else
+          begin
+            // DOS application
+            result := fkDOS;
+          end;
+        end;
+      except
+        on E: Exception do
+        begin
+          ShowMessage(E.Message);
+          fs.Free;
+          result := fkError;
+          Exit;
+        end;
+      end
+    finally
+      fs.Free;
+    end
+  end;
+
+  // -------------------------------
+  // binary dump of DOS image header
+  // -------------------------------
+  procedure dos_info;
+  begin
+    try
+      try
+        FMemStream := TMemoryStream.Create;
+        FMemStream.LoadFromFile(OpenDialog1.FileName);
+        FMemStream.SetSize($100);
+        FMemStream.Position := 0;
+
+        ATBinHex1.Mode := vbmodeHex;
+        ATBinHex1.OpenStream(FMemStream);
+
+        ATBinHex1.Font.Size := 9;
+        ATBinHex1.Redraw;
+        ATBinHex1.Invalidate;
+      except
+        on E: Exception do
+        begin
+          ShowMessage(E.Message);
+        end;
+      end;
+    finally
+//      FMemStream.Clear;
+//      FMemStream.Free;
+    end;
+  end;
+
+  // binary dump of PE image header
+  procedure pe__info(FileName: string);
+  begin
+    try
+      fs := TFileStream.Create(FileName, fmOpenRead or fmShareDenyWrite);
+      fs.Seek(dos_header.e_lfanew, soFromBeginning);
+      fs.Read(signature, SizeOf(signature));
+
+      if signature <> IMAGE_NT_SIGNATURE then
+      raise Exception.Create('Invalid PE header');
+    finally
+      fs.Free;
+    end;
+  end;
+begin
+  try
+    try
+      // ----------------------------
+      // try to open file on desktop
+      // ----------------------------
+      if Length(Trim(OpenDialog1.Filter)) < 1 then
+      OpenDialog1.Filter :=
+      'Windows 32-Bit exe (*.EXE)|*.exe|' +
+      'Windows 32-Bit dll (*.DLL)|*.dll|' + 'All Files (*.*)|*.*';
+
+      if not OpenDialog1.Execute then
+      raise Exception.Create('error on open file.');
+
+      // ----------------------------
+      // handle file on it's type ...
+      // ----------------------------
+      case ExeType(OpenDialog1.FileName) of
+        fkError:
+        begin
+          FFileKind := fkError;
+          raise Exception.Create('file error.');
+        end;
+        fkDOS:
+        begin
+          FFileKind := fkDOS;
+          ShowMessage('DOS File');
+        end;
+        fkExe16:
+        begin
+          FFileKind := fkDosEXE16;
+          ShowMessage('EXE-16 bit File');
+        end;
+        fkExe32:
+        begin
+          FFileKind := fkWinEXE32;
+          ShowMessage('EXE-32 bit File');
+
+          PageControl17.Visible := true;
+          PageControl18.Visible := true;
+
+          ATBinHex1.Visible := true;
+          ATBinHex1.Enabled := true;
+
+          DosAssemblySynEdit.Visible := true;
+          DosAssemblySynEdit.Enabled := True;
+
+          dumpDOS_Header;
+          dos_info;
+          pe__info(OpenDialog1.FileName);
+        end;
+        fkVXD:
+        begin
+          ShowMessage('VXD device File.');
+        end;
+      end;
+    except
+      on E: Exception do
+      begin
+        dosEdit1 .Text := '';
+        dosEdit2 .Text := '';
+        dosEdit3 .Text := '';
+        dosEdit4 .Text := '';
+        dosEdit5 .Text := '';
+        dosEdit6 .Text := '';
+        dosEdit7 .Text := '';
+        dosEdit8 .Text := '';
+        dosEdit9 .Text := '';
+        dosEdit10.Text := '';
+        dosEdit11.Text := '';
+        dosEdit12.Text := '';
+        dosEdit13.Text := '';
+        dosEdit14.Text := '';
+        dosEdit15.Text := '';
+        dosEdit16.Text := '';
+        dosEdit17.Text := '';
+
+        ATBinHex1.Enabled := False;
+        ATBinHex1.Visible := False;
+
+        DosAssemblySynEdit.Enabled := False;
+        DosAssemblySynEdit.Visible := False;
+
+        PageControl17.Visible := false;
+        PageControl18.Visible := false;
+
+        ShowMessage(E.Message);
+        Exit;
+      end;
+    end;
+  finally
+  end;
+end;
+
+procedure TForm2.dosEditExit (Sender: TObject); begin (Sender as TEdit).Color := clWhite ; end;
+procedure TForm2.dosEditEnter(Sender: TObject); begin (Sender as TEdit).Color := clYellow; end;
+
+procedure TForm2.JvListView1DblClick(Sender: TObject);
+var
+  s: string;
+begin
+  if JvListView1.Selected = nil then
+  Exit;
+
+  s := JvListView1.Selected.Caption;
+  if s = 'DOS16' then
+  begin
+    OpenDialog1.Filter :=
+    'MS-DOS 16-Bit com (*.COM)|*.com|' +
+    'MS-DOS 16-Bit exe (*.EXE)|*.exe|' + 'All Files (*.*)|*.*';
+  end else
+  if s = 'Win16' then
+  begin
+    OpenDialog1.Filter :=
+    'Windows 16-Bit exe (*.EXE)|*.exe|' +
+    'Windows 16-Bit dll (*.DLL)|*.dll|' + 'All Files (*.*)|*.*';
+  end else
+  if s = 'Win32' then
+  begin
+    OpenDialog1.Filter :=
+    'Windows 32-Bit exe (*.EXE)|*.exe|' +
+    'Windows 32-Bit dll (*.DLL)|*.dll|' + 'All Files (*.*)|*.*';
+  end else
+  if s = 'Linux32' then
+  begin
+    OpenDialog1.Filter :=
+    'Linux 32-Bit elf (*.ELF)|*.elf|' + 'All Files (*.*)|*.*';
+  end;
+  SpeedButton3Click(Sender);
+end;
+
+procedure TForm2.Assemble1Click(Sender: TObject);
+var
+  s: string;
+  d: TDissAssemble;
+begin
+  if FMemStream = nil then
+  begin
+    ShowMessage('no input informations available.');
+    Exit;
+  end;
+  if FFileKind = fkWinExe32 then
+  begin
+    try
+      try
+        FMemStream.Seek(64,soFromBeginning);
+        d := TDissAssemble.Create(FMemStream);
+        d.Start;
+      except
+        on E: Exception do
+        begin
+          ShowMessage('DissAssembler-Error:' + #13#10 +
+          E.Message);
+          Exit;
+        end;
+      end;
+    finally
+      d.Free;
+    end;
+  end;
 end;
 
 initialization

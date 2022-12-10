@@ -8,436 +8,437 @@
   resources were bound to the produced executable.
 */
 
-#define QR3Const_SqrExpWrongArguments 64352
-#define QR3Const_SqrExpUnknownType 64353
-#define QR3Const_SqrTrue 64354
-#define QR3Const_SqrFalse 64355
-#define QR3Const_SqrEvalNotPrepared 64356
-#define QR3Const_SqrMissingArgument 64357
-#define QR3Const_SqrConversionError 64358
-#define QR3Const_SqrDivisionByZero 64359
-#define QR3Const_SqrInvalidFormatnumeric 64360
-#define QR3Const_SqrSQRTInvalid 64361
-#define QR3Const_SqrInvalidNot 64362
-#define CtlConsts_sInvalidClassReference 64363
-#define ExploreDataBase_test_string 64364
-#define ExploreDataBase_initial_lang 64365
-#define QR3Const_SqrExpAdd 64368
-#define QR3Const_SqrExpSubtract 64369
-#define QR3Const_SqrExpMultiply 64370
-#define QR3Const_SqrExpDivide 64371
-#define QR3Const_SqrExpBoolean 64372
-#define QR3Const_SqrExpString 64373
-#define QR3Const_SqrExpNumeric 64374
-#define QR3Const_SqrExpDivideByZero 64375
-#define QR3Const_SqrExpOperatorNotCompatible 64376
-#define QR3Const_SqrExpUnknownFieldType 64377
-#define QR3Const_SqrExpIllegalCharInNumeric 64378
-#define QR3Const_SqrExpMissing 64379
-#define QR3Const_SqrExpUnknownFunction 64380
-#define QR3Const_SqrExpError 64381
-#define QR3Const_SqrExpRecursive 64382
-#define QR3Const_SqrExpTooManyArgs 64383
-#define QR3Const_SqrDivDesc 64384
-#define QR3Const_SqrCountDesc 64385
-#define QR3Const_SqrMaxDesc 64386
-#define QR3Const_SqrMinDesc 64387
-#define QR3Const_SqrAverageDesc 64388
-#define QR3Const_SqrBoolDesc 64389
-#define QR3Const_SqrIntDesc 64390
-#define QR3Const_SqrFracDesc 64391
-#define QR3Const_SqrSqrtDesc 64392
-#define QR3Const_SqrTypeofDesc 64393
-#define QR3Const_SqrNoCircular 64394
-#define QR3Const_SqrUpperDesc 64395
-#define QR3Const_SqrLowerDesc 64396
-#define QR3Const_SqrPrettyDesc 64397
-#define QR3Const_SqrFormatNumericDesc 64398
-#define QR3Const_SqrExpCannotOperator 64399
-#define QR3Const_SqrDateTime 64400
-#define QR3Const_SqrPageNum 64401
-#define QR3Const_SqrReportTitle 64402
-#define QR3Const_SqrDetailCount 64403
-#define QR3Const_SqrDetailNo 64404
-#define QR3Const_SqrQuSoft 64405
-#define QR3Const_SqrNone 64406
-#define QR3Const_SqrFileNotExist 64407
-#define QR3Const_SqrCompleted 64408
-#define QR3Const_SqrQRFile 64409
-#define QR3Const_SqrIfDesc 64410
-#define QR3Const_SqrStrDesc 64411
-#define QR3Const_SqrTimeDesc 64412
-#define QR3Const_SqrDateDesc 64413
-#define QR3Const_SqrSumDesc 64414
-#define QR3Const_SqrCopyDesc 64415
-#define QR3Const_SqrPageFooterBandName 64416
-#define QR3Const_SqrSummaryBandName 64417
-#define QR3Const_SqrGroupHeaderBandName 64418
-#define QR3Const_SqrGroupFooterBandName 64419
-#define QR3Const_SqrSubDetailBandName 64420
-#define QR3Const_SqrColumnHeaderBandName 64421
-#define QR3Const_SqrOverlayBandName 64422
-#define QR3Const_SqrChildBandName 64423
-#define QR3Const_SqrSaveReport 64424
-#define QR3Const_SqrLoadReport 64425
-#define QR3Const_SqrPage 64426
-#define QR3Const_SqrOf 64427
-#define QR3Const_SqrIllegalNewPage 64428
-#define QR3Const_SqrQRPrinterNotReady 64429
-#define QR3Const_SqrTime 64430
-#define QR3Const_SqrDate 64431
-#define QR3Const_SqrPaperSize26 64432
-#define QR3Const_SqrPaperSize27 64433
-#define QR3Const_SqrTitle 64434
-#define QR3Const_SqrPageHeader 64435
-#define QR3Const_SqrDetail 64436
-#define QR3Const_SqrPageFooter 64437
-#define QR3Const_SqrSummary 64438
-#define QR3Const_SqrGroupHeader 64439
-#define QR3Const_SqrGroupFooter 64440
-#define QR3Const_SqrSubDetail 64441
-#define QR3Const_SqrColumnHeader 64442
-#define QR3Const_SqrOverlay 64443
-#define QR3Const_SqrChild 64444
-#define QR3Const_SqrTitleBandName 64445
-#define QR3Const_SqrPageHeaderBandName 64446
-#define QR3Const_SqrDetailBandName 64447
-#define QR3Const_SqrPaperSize10 64448
-#define QR3Const_SqrPaperSize11 64449
-#define QR3Const_SqrPaperSize12 64450
-#define QR3Const_SqrPaperSize13 64451
-#define QR3Const_SqrPaperSize14 64452
-#define QR3Const_SqrPaperSize15 64453
-#define QR3Const_SqrPaperSize16 64454
-#define QR3Const_SqrPaperSize17 64455
-#define QR3Const_SqrPaperSize18 64456
-#define QR3Const_SqrPaperSize19 64457
-#define QR3Const_SqrPaperSize20 64458
-#define QR3Const_SqrPaperSize21 64459
-#define QR3Const_SqrPaperSize22 64460
-#define QR3Const_SqrPaperSize23 64461
-#define QR3Const_SqrPaperSize24 64462
-#define QR3Const_SqrPaperSize25 64463
-#define XMLConst_SNotSingleTextNode 64464
-#define XMLConst_SNoDOMParseOptions 64465
-#define XMLConst_SNodeReadOnly 64466
-#define XMLConst_SNoRefresh 64467
-#define XMLConst_SMissingFileName 64468
-#define XMLConst_SLine 64469
-#define QR3Const_SqrPaperSize0 64470
-#define QR3Const_SqrPaperSize1 64471
-#define QR3Const_SqrPaperSize2 64472
-#define QR3Const_SqrPaperSize3 64473
-#define QR3Const_SqrPaperSize4 64474
-#define QR3Const_SqrPaperSize5 64475
-#define QR3Const_SqrPaperSize6 64476
-#define QR3Const_SqrPaperSize7 64477
-#define QR3Const_SqrPaperSize8 64478
-#define QR3Const_SqrPaperSize9 64479
-#define OleConst_SNoMethod 64480
-#define OleConst_SInvalidLicense 64481
-#define OleConst_SNotLicensed 64482
-#define OleConst_sNoRunningObject 64483
-#define XMLConst_SDuplicateRegistration 64484
-#define XMLConst_SNoMatchingDOMVendor 64485
-#define XMLConst_SNoDOMNodeEx 64486
-#define XMLConst_SDOMNotSupported 64487
-#define XMLConst_SNodeExpected 64488
-#define XMLConst_SMSDOMNotInstalled 64489
-#define XMLConst_SNotActive 64490
-#define XMLConst_SNodeNotFound 64491
-#define XMLConst_SMissingNode 64492
-#define XMLConst_SNoAttributes 64493
-#define XMLConst_SInvalidNodeType 64494
-#define XMLConst_SMismatchedRegItems 64495
-#define TeeConst_TeeMsg_AxisLabels 64496
-#define TeeConst_TeeMsg_GalleryFunctions 64497
-#define TeeConst_TeeMsg_DefaultFontSize 64498
-#define TeeConst_TeeMsg_FunctionAdd 64499
-#define TeeConst_TeeMsg_FunctionSubtract 64500
-#define TeeConst_TeeMsg_FunctionMultiply 64501
-#define TeeConst_TeeMsg_FunctionDivide 64502
-#define TeeConst_TeeMsg_FunctionHigh 64503
-#define TeeConst_TeeMsg_FunctionLow 64504
-#define TeeConst_TeeMsg_FunctionAverage 64505
-#define TeeConst_TeeMsg_DefaultFontName 64506
-#define TeeConst_TeeMsg_FunctionPeriod 64507
-#define TeeConst_TeeMsg_ValuesX 64508
-#define TeeConst_TeeMsg_ValuesY 64509
-#define OleConst_SCannotActivate 64510
-#define OleConst_SNoWindowHandle 64511
-#define TeeConst_TeeMsg_FillSample 64512
-#define TeeConst_TeeMsg_Angle 64513
-#define TeeConst_TeeMsg_AxisLogDateTime 64514
-#define TeeConst_TeeMsg_AxisLogNotPositive 64515
-#define TeeConst_TeeMsg_AxisLabelSep 64516
-#define TeeConst_TeeMsg_AxisIncrementNeg 64517
-#define TeeConst_TeeMsg_AxisMinMax 64518
-#define TeeConst_TeeMsg_AxisMaxMin 64519
-#define TeeConst_TeeMsg_AxisLogBase 64520
-#define TeeConst_TeeMsg_MaxPointsPerPage 64521
-#define TeeConst_TeeMsg_3dPercent 64522
-#define TeeConst_TeeMsg_CircularSeries 64523
-#define TeeConst_TeeMsg_DefaultPercentOf 64524
-#define TeeConst_TeeMsg_DefPercentFormat 64525
-#define TeeConst_TeeMsg_DefValueFormat 64526
-#define TeeConst_TeeMsg_AxisTitle 64527
-#define SynEditStrConst_SYNS_FriendlyAttrValue 64528
-#define SynEditStrConst_SYNS_ScrollInfoFmt 64529
-#define SynEditStrConst_SYNS_ScrollInfoFmtTop 64530
-#define SynEditStrConst_SYNS_EDuplicateShortcut 64531
-#define SynEditStrConst_SYNS_FilterHTML 64532
-#define SynEditStrConst_SYNS_FilterPascal 64533
-#define SynEditStrConst_SYNS_FriendlyLangHTML 64534
-#define SynEditStrConst_SYNS_FriendlyLangPascal 64535
-#define SynEditStrConst_SYNS_FriendlyLangUnknown 64536
-#define SynEditTextBuffer_SListIndexOutOfBounds 64537
-#define SynEditTextBuffer_SInvalidCapacity 64538
-#define TeeConst_TeeMsg_LegendTopPos 64539
-#define TeeConst_TeeMsg_LegendFirstValue 64540
-#define TeeConst_TeeMsg_LegendColorWidth 64541
-#define TeeConst_TeeMsg_SeriesSetDataSource 64542
-#define TeeConst_TeeMsg_SeriesInvDataSource 64543
-#define JConsts_sJPEGImageFile 64544
-#define SynEditStrConst_SYNS_FriendlyAttrAssembler 64545
-#define SynEditStrConst_SYNS_FriendlyAttrCharacter 64546
-#define SynEditStrConst_SYNS_FriendlyAttrComment 64547
-#define SynEditStrConst_SYNS_FriendlyAttrEscapeAmpersand 64548
-#define SynEditStrConst_SYNS_FriendlyAttrFloat 64549
-#define SynEditStrConst_SYNS_FriendlyAttrHexadecimal 64550
-#define SynEditStrConst_SYNS_FriendlyAttrIdentifier 64551
-#define SynEditStrConst_SYNS_FriendlyAttrNumber 64552
-#define SynEditStrConst_SYNS_FriendlyAttrPreprocessor 64553
-#define SynEditStrConst_SYNS_FriendlyAttrReservedWord 64554
-#define SynEditStrConst_SYNS_FriendlyAttrSpace 64555
-#define SynEditStrConst_SYNS_FriendlyAttrString 64556
-#define SynEditStrConst_SYNS_FriendlyAttrSymbol 64557
-#define SynEditStrConst_SYNS_FriendlyAttrText 64558
-#define SynEditStrConst_SYNS_FriendlyAttrUnknownWord 64559
-#define JvResources_RsClInactiveCaptionText 64560
-#define JvResources_RsClBtnHighlight 64561
-#define JvResources_RsCl3DDkShadow 64562
-#define JvResources_RsCl3DLight 64563
-#define JvResources_RsClInfoText 64564
-#define JvResources_RsClInfoBk 64565
-#define JvResources_RsGradientActiveCaption 64566
-#define JvResources_RsGradientInactiveCaption 64567
-#define JvResources_RsHotLight 64568
-#define JvResources_RsMenuBar 64569
-#define JvResources_RsMenuHighlight 64570
-#define JvResources_RsDestroyingArrangeSettingsNotAllowed 64571
-#define JvJCLUtils_RsEPropertyNotExists 64572
-#define JvJCLUtils_RsEInvalidPropertyType 64573
-#define JConsts_sChangeJPGSize 64574
-#define JConsts_sJPEGError 64575
-#define JvResources_RsClInactiveCaption 64576
-#define JvResources_RsClMenu 64577
-#define JvResources_RsClWindow 64578
-#define JvResources_RsClWindowFrame 64579
-#define JvResources_RsClMenuText 64580
-#define JvResources_RsClWindowText 64581
-#define JvResources_RsClCaptionText 64582
-#define JvResources_RsClActiveBorder 64583
-#define JvResources_RsClInactiveBorder 64584
-#define JvResources_RsClAppWorkSpace 64585
-#define JvResources_RsClHighlight 64586
-#define JvResources_RsClHighlightText 64587
-#define JvResources_RsClBtnFace 64588
-#define JvResources_RsClBtnShadow 64589
-#define JvResources_RsClGrayText 64590
-#define JvResources_RsClBtnText 64591
-#define JvResources_RsClPink 64592
-#define JvResources_RsClGold 64593
-#define JvResources_RsClBrightGreen 64594
-#define JvResources_RsClTurquoise 64595
-#define JvResources_RsClPlum 64596
-#define JvResources_RsClGray25 64597
-#define JvResources_RsClRose 64598
-#define JvResources_RsClTan 64599
-#define JvResources_RsClLightYellow 64600
-#define JvResources_RsClLightGreen 64601
-#define JvResources_RsClLightTurquoise 64602
-#define JvResources_RsClPaleBlue 64603
-#define JvResources_RsClLavender 64604
-#define JvResources_RsClScrollBar 64605
-#define JvResources_RsClBackground 64606
-#define JvResources_RsClActiveCaption 64607
-#define JvResources_RsClOliveGreen 64608
-#define JvResources_RsClDarkGreen 64609
-#define JvResources_RsClDarkTeal 64610
-#define JvResources_RsClDarkBlue 64611
-#define JvResources_RsClIndigo 64612
-#define JvResources_RsClGray80 64613
-#define JvResources_RsClDarkRed 64614
-#define JvResources_RsClOrange 64615
-#define JvResources_RsClDarkYellow 64616
-#define JvResources_RsClBlueGray 64617
-#define JvResources_RsClGray50 64618
-#define JvResources_RsClLightOrange 64619
-#define JvResources_RsClSeaGreen 64620
-#define JvResources_RsClLightBlue 64621
-#define JvResources_RsClViolet 64622
-#define JvResources_RsClGray40 64623
-#define JvResources_RsClPurple 64624
-#define JvResources_RsClTeal 64625
-#define JvResources_RsClGray 64626
-#define JvResources_RsClSilver 64627
-#define JvResources_RsClRed 64628
-#define JvResources_RsClLime 64629
-#define JvResources_RsClYellow 64630
-#define JvResources_RsClBlue 64631
-#define JvResources_RsClFuchsia 64632
-#define JvResources_RsClAqua 64633
-#define JvResources_RsClWhite 64634
-#define JvResources_RsClMoneyGreen 64635
-#define JvResources_RsClSkyBlue 64636
-#define JvResources_RsClCream 64637
-#define JvResources_RsClMedGray 64638
-#define JvResources_RsClBrown 64639
-#define JvResources_RsEInterpreter304 64640
-#define JvResources_RsEInterpreter305 64641
-#define JvResources_RsEInterpreter306 64642
-#define JvResources_RsEInterpreter307 64643
-#define JvResources_RsEInterpreter308 64644
-#define JvResources_RsEInterpreter309 64645
-#define JvResources_RsEInterpreter401 64646
-#define JvResources_RsEInterpreter402 64647
-#define JvResources_RsEXOrX 64648
-#define JvResources_RsEOutOfRangeFloat 64649
-#define JvResources_RsUnknown 64650
-#define JvResources_RsClBlack 64651
-#define JvResources_RsClMaroon 64652
-#define JvResources_RsClGreen 64653
-#define JvResources_RsClOlive 64654
-#define JvResources_RsClNavy 64655
-#define JvResources_RsEInterpreter175 64656
-#define JvResources_RsEInterpreter176 64657
-#define JvResources_RsEInterpreter181 64658
-#define JvResources_RsEInterpreter182 64659
-#define JvResources_RsEInterpreter183 64660
-#define JvResources_RsEInterpreter184 64661
-#define JvResources_RsEInterpreter185 64662
-#define JvResources_RsEInterpreter186 64663
-#define JvResources_RsEInterpreter187 64664
-#define JvResources_RsEInterpreter188 64665
-#define JvResources_RsEInterpreter189 64666
-#define JvResources_RsEInterpreter190 64667
-#define JvResources_RsEInterpreter201 64668
-#define JvResources_RsEInterpreter301 64669
-#define JvResources_RsEInterpreter302 64670
-#define JvResources_RsEInterpreter303 64671
-#define JvResources_RsEInterpreter57 64672
-#define JvResources_RsEInterpreter58 64673
-#define JvResources_RsEInterpreter101 64674
-#define JvResources_RsEInterpreter103 64675
-#define JvResources_RsEInterpreter104 64676
-#define JvResources_RsEInterpreter105 64677
-#define JvResources_RsEInterpreter106 64678
-#define JvResources_RsEInterpreter107 64679
-#define JvResources_RsEInterpreter108 64680
-#define JvResources_RsEInterpreter109 64681
-#define JvResources_RsEInterpreter110 64682
-#define JvResources_RsEInterpreter111 64683
-#define JvResources_RsEInterpreter171 64684
-#define JvResources_RsEInterpreter172 64685
-#define JvResources_RsEInterpreter173 64686
-#define JvResources_RsEInterpreter174 64687
-#define JvResources_RsENoQuickReportFound 64688
-#define JvResources_RsESizeMustBeEven 64689
-#define JvResources_RsEInterpreter0 64690
-#define JvResources_RsEInterpreter1 64691
-#define JvResources_RsEInterpreter2 64692
-#define JvResources_RsEInterpreter3 64693
-#define JvResources_RsEInterpreter4 64694
-#define JvResources_RsEInterpreter5 64695
-#define JvResources_RsEInterpreter6 64696
-#define JvResources_RsEInterpreter7 64697
-#define JvResources_RsEInterpreter8 64698
-#define JvResources_RsEInterpreter31 64699
-#define JvResources_RsEInterpreter52 64700
-#define JvResources_RsEInterpreter53 64701
-#define JvResources_RsEInterpreter55 64702
-#define JvResources_RsEInterpreter56 64703
-#define JvResources_RsEYYOrYYYYRequired 64704
-#define JvResources_RsEInstanceAlreadyExists 64705
-#define JvResources_RsENameAlreadyExistsForInstance 64706
-#define JvResources_RsEInstanceNonexistent 64707
-#define JvResources_RsEMethodAlreadyExists 64708
-#define JvResources_RsENameAlreadyExistsForMethod 64709
-#define JvResources_RsEJvAssertSetTopIndex 64710
-#define JvResources_RsEJvAssertInspectorPainter 64711
-#define JvResources_RsEJvAssertDataParent 64712
-#define JvResources_RsEJvAssertParent 64713
-#define JvResources_RsEJvAssertPropInfo 64714
-#define JvResources_RsEJvAssertClassInfo 64715
-#define JvResources_RsESorryDynamicArraysSupportIsMadeForO 64716
-#define JvResources_RsEUnknownRecordType 64717
-#define JvResources_RsERangeCheckError 64718
-#define JvResources_RsArrayToArrayAssignment 64719
-#define JvResources_RsEJvInspDataStrTooLong 64720
-#define JvResources_RsEJvInspNoGenReg 64721
-#define JvResources_RsEJvInspPaintNotActive 64722
-#define JvResources_RsEJvInspPaintOnlyUsedOnce 64723
-#define JvResources_RsEInspectorInternalError 64724
-#define JvResources_RsESpecifierBeforeSeparator 64725
-#define JvResources_RsEDOrDDOnlyOnce 64726
-#define JvResources_RsEMOrMMOnlyOnce 64727
-#define JvResources_RsEYYOrYYYYOnlyOnce 64728
-#define JvResources_RsEOnlyDOrDDAllowed 64729
-#define JvResources_RsEOnlyMOrMMAllowed 64730
-#define JvResources_RsEOnlyYYOrYYYYAllowed 64731
-#define JvResources_RsEOnlyTwoSeparators 64732
-#define JvResources_RsEOnlyDMYSAllowed 64733
-#define JvResources_RsEDOrDDRequired 64734
-#define JvResources_RsEMOrMMRequired 64735
-#define JvResources_RsJvInspItemValueException 64736
-#define JvResources_RsJvInspItemUnInitialized 64737
-#define JvResources_RsJvInspItemUnassigned 64738
-#define JvResources_RsJvInspItemNoValue 64739
-#define JvResources_RsStringListEditorCaption 64740
-#define JvResources_RsXLinesCaption 64741
-#define JvResources_RsOneLineCaption 64742
-#define JvResources_RsEJvInspItemHasParent 64743
-#define JvResources_RsEJvInspItemNotAChild 64744
-#define JvResources_RsEJvInspItemColNotFound 64745
-#define JvResources_RsEJvInspItemItemIsNotCol 64746
-#define JvResources_RsEJvInspItemInvalidPropValue 64747
-#define JvResources_RsEJvInspDataNoAccessAs 64748
-#define JvResources_RsEJvInspDataNotInit 64749
-#define JvResources_RsEJvInspDataNotAssigned 64750
-#define JvResources_RsEJvInspDataNoValue 64751
-#define JvResources_RsEViewListOutOfSync 64752
-#define JvResources_RsEExtensibleIntObjDuplicateClass 64753
-#define JvResources_RsEExtensibleIntObjCollectionExpected 64754
-#define JvResources_RsEExtensibleIntObjClassNameExpected 64755
-#define JvResources_RsEExtensibleIntObjInvalidClass 64756
-#define JvResources_RsInactiveData 64757
-#define JvResources_RsBrowseData 64758
-#define JvResources_RsEditData 64759
-#define JvResources_RsInsertData 64760
-#define JvResources_RsSetKeyData 64761
-#define JvResources_RsCalcFieldsData 64762
-#define JvResources_RsEDesignCannotSelect 64763
-#define JvResources_RsEOldestFmt 64764
-#define JvResources_RsEDesignNilFmt 64765
-#define JvResources_RsERedoNotYetImplemented 64766
-#define JvResources_RsEInvalidCompletionMode 64767
+#define QR3Const_SqrExpTooManyArgs 64352
+#define QR3Const_SqrExpWrongArguments 64353
+#define QR3Const_SqrExpUnknownType 64354
+#define QR3Const_SqrTrue 64355
+#define QR3Const_SqrFalse 64356
+#define QR3Const_SqrEvalNotPrepared 64357
+#define QR3Const_SqrMissingArgument 64358
+#define QR3Const_SqrConversionError 64359
+#define QR3Const_SqrDivisionByZero 64360
+#define QR3Const_SqrInvalidFormatnumeric 64361
+#define QR3Const_SqrSQRTInvalid 64362
+#define QR3Const_SqrInvalidNot 64363
+#define CtlConsts_sInvalidClassReference 64364
+#define ExploreDataBase_test_string 64365
+#define ExploreDataBase_initial_lang 64366
+#define QR3Const_SqrExpCannotOperator 64368
+#define QR3Const_SqrExpAdd 64369
+#define QR3Const_SqrExpSubtract 64370
+#define QR3Const_SqrExpMultiply 64371
+#define QR3Const_SqrExpDivide 64372
+#define QR3Const_SqrExpBoolean 64373
+#define QR3Const_SqrExpString 64374
+#define QR3Const_SqrExpNumeric 64375
+#define QR3Const_SqrExpDivideByZero 64376
+#define QR3Const_SqrExpOperatorNotCompatible 64377
+#define QR3Const_SqrExpUnknownFieldType 64378
+#define QR3Const_SqrExpIllegalCharInNumeric 64379
+#define QR3Const_SqrExpMissing 64380
+#define QR3Const_SqrExpUnknownFunction 64381
+#define QR3Const_SqrExpError 64382
+#define QR3Const_SqrExpRecursive 64383
+#define QR3Const_SqrCopyDesc 64384
+#define QR3Const_SqrDivDesc 64385
+#define QR3Const_SqrCountDesc 64386
+#define QR3Const_SqrMaxDesc 64387
+#define QR3Const_SqrMinDesc 64388
+#define QR3Const_SqrAverageDesc 64389
+#define QR3Const_SqrBoolDesc 64390
+#define QR3Const_SqrIntDesc 64391
+#define QR3Const_SqrFracDesc 64392
+#define QR3Const_SqrSqrtDesc 64393
+#define QR3Const_SqrTypeofDesc 64394
+#define QR3Const_SqrNoCircular 64395
+#define QR3Const_SqrUpperDesc 64396
+#define QR3Const_SqrLowerDesc 64397
+#define QR3Const_SqrPrettyDesc 64398
+#define QR3Const_SqrFormatNumericDesc 64399
+#define QR3Const_SqrDate 64400
+#define QR3Const_SqrDateTime 64401
+#define QR3Const_SqrPageNum 64402
+#define QR3Const_SqrReportTitle 64403
+#define QR3Const_SqrDetailCount 64404
+#define QR3Const_SqrDetailNo 64405
+#define QR3Const_SqrQuSoft 64406
+#define QR3Const_SqrNone 64407
+#define QR3Const_SqrFileNotExist 64408
+#define QR3Const_SqrCompleted 64409
+#define QR3Const_SqrQRFile 64410
+#define QR3Const_SqrIfDesc 64411
+#define QR3Const_SqrStrDesc 64412
+#define QR3Const_SqrTimeDesc 64413
+#define QR3Const_SqrDateDesc 64414
+#define QR3Const_SqrSumDesc 64415
+#define QR3Const_SqrDetailBandName 64416
+#define QR3Const_SqrPageFooterBandName 64417
+#define QR3Const_SqrSummaryBandName 64418
+#define QR3Const_SqrGroupHeaderBandName 64419
+#define QR3Const_SqrGroupFooterBandName 64420
+#define QR3Const_SqrSubDetailBandName 64421
+#define QR3Const_SqrColumnHeaderBandName 64422
+#define QR3Const_SqrOverlayBandName 64423
+#define QR3Const_SqrChildBandName 64424
+#define QR3Const_SqrSaveReport 64425
+#define QR3Const_SqrLoadReport 64426
+#define QR3Const_SqrPage 64427
+#define QR3Const_SqrOf 64428
+#define QR3Const_SqrIllegalNewPage 64429
+#define QR3Const_SqrQRPrinterNotReady 64430
+#define QR3Const_SqrTime 64431
+#define QR3Const_SqrPaperSize25 64432
+#define QR3Const_SqrPaperSize26 64433
+#define QR3Const_SqrPaperSize27 64434
+#define QR3Const_SqrTitle 64435
+#define QR3Const_SqrPageHeader 64436
+#define QR3Const_SqrDetail 64437
+#define QR3Const_SqrPageFooter 64438
+#define QR3Const_SqrSummary 64439
+#define QR3Const_SqrGroupHeader 64440
+#define QR3Const_SqrGroupFooter 64441
+#define QR3Const_SqrSubDetail 64442
+#define QR3Const_SqrColumnHeader 64443
+#define QR3Const_SqrOverlay 64444
+#define QR3Const_SqrChild 64445
+#define QR3Const_SqrTitleBandName 64446
+#define QR3Const_SqrPageHeaderBandName 64447
+#define QR3Const_SqrPaperSize9 64448
+#define QR3Const_SqrPaperSize10 64449
+#define QR3Const_SqrPaperSize11 64450
+#define QR3Const_SqrPaperSize12 64451
+#define QR3Const_SqrPaperSize13 64452
+#define QR3Const_SqrPaperSize14 64453
+#define QR3Const_SqrPaperSize15 64454
+#define QR3Const_SqrPaperSize16 64455
+#define QR3Const_SqrPaperSize17 64456
+#define QR3Const_SqrPaperSize18 64457
+#define QR3Const_SqrPaperSize19 64458
+#define QR3Const_SqrPaperSize20 64459
+#define QR3Const_SqrPaperSize21 64460
+#define QR3Const_SqrPaperSize22 64461
+#define QR3Const_SqrPaperSize23 64462
+#define QR3Const_SqrPaperSize24 64463
+#define XMLConst_SMismatchedRegItems 64464
+#define XMLConst_SNotSingleTextNode 64465
+#define XMLConst_SNoDOMParseOptions 64466
+#define XMLConst_SNodeReadOnly 64467
+#define XMLConst_SNoRefresh 64468
+#define XMLConst_SMissingFileName 64469
+#define XMLConst_SLine 64470
+#define QR3Const_SqrPaperSize0 64471
+#define QR3Const_SqrPaperSize1 64472
+#define QR3Const_SqrPaperSize2 64473
+#define QR3Const_SqrPaperSize3 64474
+#define QR3Const_SqrPaperSize4 64475
+#define QR3Const_SqrPaperSize5 64476
+#define QR3Const_SqrPaperSize6 64477
+#define QR3Const_SqrPaperSize7 64478
+#define QR3Const_SqrPaperSize8 64479
+#define OleConst_SNoWindowHandle 64480
+#define OleConst_SNoMethod 64481
+#define OleConst_SInvalidLicense 64482
+#define OleConst_SNotLicensed 64483
+#define OleConst_sNoRunningObject 64484
+#define XMLConst_SDuplicateRegistration 64485
+#define XMLConst_SNoMatchingDOMVendor 64486
+#define XMLConst_SNoDOMNodeEx 64487
+#define XMLConst_SDOMNotSupported 64488
+#define XMLConst_SNodeExpected 64489
+#define XMLConst_SMSDOMNotInstalled 64490
+#define XMLConst_SNotActive 64491
+#define XMLConst_SNodeNotFound 64492
+#define XMLConst_SMissingNode 64493
+#define XMLConst_SNoAttributes 64494
+#define XMLConst_SInvalidNodeType 64495
+#define TeeConst_TeeMsg_AxisTitle 64496
+#define TeeConst_TeeMsg_AxisLabels 64497
+#define TeeConst_TeeMsg_GalleryFunctions 64498
+#define TeeConst_TeeMsg_DefaultFontSize 64499
+#define TeeConst_TeeMsg_FunctionAdd 64500
+#define TeeConst_TeeMsg_FunctionSubtract 64501
+#define TeeConst_TeeMsg_FunctionMultiply 64502
+#define TeeConst_TeeMsg_FunctionDivide 64503
+#define TeeConst_TeeMsg_FunctionHigh 64504
+#define TeeConst_TeeMsg_FunctionLow 64505
+#define TeeConst_TeeMsg_FunctionAverage 64506
+#define TeeConst_TeeMsg_DefaultFontName 64507
+#define TeeConst_TeeMsg_FunctionPeriod 64508
+#define TeeConst_TeeMsg_ValuesX 64509
+#define TeeConst_TeeMsg_ValuesY 64510
+#define OleConst_SCannotActivate 64511
+#define TeeConst_TeeMsg_SeriesInvDataSource 64512
+#define TeeConst_TeeMsg_FillSample 64513
+#define TeeConst_TeeMsg_Angle 64514
+#define TeeConst_TeeMsg_AxisLogDateTime 64515
+#define TeeConst_TeeMsg_AxisLogNotPositive 64516
+#define TeeConst_TeeMsg_AxisLabelSep 64517
+#define TeeConst_TeeMsg_AxisIncrementNeg 64518
+#define TeeConst_TeeMsg_AxisMinMax 64519
+#define TeeConst_TeeMsg_AxisMaxMin 64520
+#define TeeConst_TeeMsg_AxisLogBase 64521
+#define TeeConst_TeeMsg_MaxPointsPerPage 64522
+#define TeeConst_TeeMsg_3dPercent 64523
+#define TeeConst_TeeMsg_CircularSeries 64524
+#define TeeConst_TeeMsg_DefaultPercentOf 64525
+#define TeeConst_TeeMsg_DefPercentFormat 64526
+#define TeeConst_TeeMsg_DefValueFormat 64527
+#define SynEditStrConst_SYNS_FriendlyAttrUnknownWord 64528
+#define SynEditStrConst_SYNS_FriendlyAttrValue 64529
+#define SynEditStrConst_SYNS_ScrollInfoFmt 64530
+#define SynEditStrConst_SYNS_ScrollInfoFmtTop 64531
+#define SynEditStrConst_SYNS_EDuplicateShortcut 64532
+#define SynEditStrConst_SYNS_FilterHTML 64533
+#define SynEditStrConst_SYNS_FilterPascal 64534
+#define SynEditStrConst_SYNS_FriendlyLangHTML 64535
+#define SynEditStrConst_SYNS_FriendlyLangPascal 64536
+#define SynEditStrConst_SYNS_FriendlyLangUnknown 64537
+#define SynEditTextBuffer_SListIndexOutOfBounds 64538
+#define SynEditTextBuffer_SInvalidCapacity 64539
+#define TeeConst_TeeMsg_LegendTopPos 64540
+#define TeeConst_TeeMsg_LegendFirstValue 64541
+#define TeeConst_TeeMsg_LegendColorWidth 64542
+#define TeeConst_TeeMsg_SeriesSetDataSource 64543
+#define JConsts_sJPEGError 64544
+#define JConsts_sJPEGImageFile 64545
+#define SynEditStrConst_SYNS_FriendlyAttrAssembler 64546
+#define SynEditStrConst_SYNS_FriendlyAttrCharacter 64547
+#define SynEditStrConst_SYNS_FriendlyAttrComment 64548
+#define SynEditStrConst_SYNS_FriendlyAttrEscapeAmpersand 64549
+#define SynEditStrConst_SYNS_FriendlyAttrFloat 64550
+#define SynEditStrConst_SYNS_FriendlyAttrHexadecimal 64551
+#define SynEditStrConst_SYNS_FriendlyAttrIdentifier 64552
+#define SynEditStrConst_SYNS_FriendlyAttrNumber 64553
+#define SynEditStrConst_SYNS_FriendlyAttrPreprocessor 64554
+#define SynEditStrConst_SYNS_FriendlyAttrReservedWord 64555
+#define SynEditStrConst_SYNS_FriendlyAttrSpace 64556
+#define SynEditStrConst_SYNS_FriendlyAttrString 64557
+#define SynEditStrConst_SYNS_FriendlyAttrSymbol 64558
+#define SynEditStrConst_SYNS_FriendlyAttrText 64559
+#define JvResources_RsClBtnText 64560
+#define JvResources_RsClInactiveCaptionText 64561
+#define JvResources_RsClBtnHighlight 64562
+#define JvResources_RsCl3DDkShadow 64563
+#define JvResources_RsCl3DLight 64564
+#define JvResources_RsClInfoText 64565
+#define JvResources_RsClInfoBk 64566
+#define JvResources_RsGradientActiveCaption 64567
+#define JvResources_RsGradientInactiveCaption 64568
+#define JvResources_RsHotLight 64569
+#define JvResources_RsMenuBar 64570
+#define JvResources_RsMenuHighlight 64571
+#define JvResources_RsDestroyingArrangeSettingsNotAllowed 64572
+#define JvJCLUtils_RsEPropertyNotExists 64573
+#define JvJCLUtils_RsEInvalidPropertyType 64574
+#define JConsts_sChangeJPGSize 64575
+#define JvResources_RsClActiveCaption 64576
+#define JvResources_RsClInactiveCaption 64577
+#define JvResources_RsClMenu 64578
+#define JvResources_RsClWindow 64579
+#define JvResources_RsClWindowFrame 64580
+#define JvResources_RsClMenuText 64581
+#define JvResources_RsClWindowText 64582
+#define JvResources_RsClCaptionText 64583
+#define JvResources_RsClActiveBorder 64584
+#define JvResources_RsClInactiveBorder 64585
+#define JvResources_RsClAppWorkSpace 64586
+#define JvResources_RsClHighlight 64587
+#define JvResources_RsClHighlightText 64588
+#define JvResources_RsClBtnFace 64589
+#define JvResources_RsClBtnShadow 64590
+#define JvResources_RsClGrayText 64591
+#define JvResources_RsClGray40 64592
+#define JvResources_RsClPink 64593
+#define JvResources_RsClGold 64594
+#define JvResources_RsClBrightGreen 64595
+#define JvResources_RsClTurquoise 64596
+#define JvResources_RsClPlum 64597
+#define JvResources_RsClGray25 64598
+#define JvResources_RsClRose 64599
+#define JvResources_RsClTan 64600
+#define JvResources_RsClLightYellow 64601
+#define JvResources_RsClLightGreen 64602
+#define JvResources_RsClLightTurquoise 64603
+#define JvResources_RsClPaleBlue 64604
+#define JvResources_RsClLavender 64605
+#define JvResources_RsClScrollBar 64606
+#define JvResources_RsClBackground 64607
+#define JvResources_RsClBrown 64608
+#define JvResources_RsClOliveGreen 64609
+#define JvResources_RsClDarkGreen 64610
+#define JvResources_RsClDarkTeal 64611
+#define JvResources_RsClDarkBlue 64612
+#define JvResources_RsClIndigo 64613
+#define JvResources_RsClGray80 64614
+#define JvResources_RsClDarkRed 64615
+#define JvResources_RsClOrange 64616
+#define JvResources_RsClDarkYellow 64617
+#define JvResources_RsClBlueGray 64618
+#define JvResources_RsClGray50 64619
+#define JvResources_RsClLightOrange 64620
+#define JvResources_RsClSeaGreen 64621
+#define JvResources_RsClLightBlue 64622
+#define JvResources_RsClViolet 64623
+#define JvResources_RsClNavy 64624
+#define JvResources_RsClPurple 64625
+#define JvResources_RsClTeal 64626
+#define JvResources_RsClGray 64627
+#define JvResources_RsClSilver 64628
+#define JvResources_RsClRed 64629
+#define JvResources_RsClLime 64630
+#define JvResources_RsClYellow 64631
+#define JvResources_RsClBlue 64632
+#define JvResources_RsClFuchsia 64633
+#define JvResources_RsClAqua 64634
+#define JvResources_RsClWhite 64635
+#define JvResources_RsClMoneyGreen 64636
+#define JvResources_RsClSkyBlue 64637
+#define JvResources_RsClCream 64638
+#define JvResources_RsClMedGray 64639
+#define JvResources_RsEInterpreter303 64640
+#define JvResources_RsEInterpreter304 64641
+#define JvResources_RsEInterpreter305 64642
+#define JvResources_RsEInterpreter306 64643
+#define JvResources_RsEInterpreter307 64644
+#define JvResources_RsEInterpreter308 64645
+#define JvResources_RsEInterpreter309 64646
+#define JvResources_RsEInterpreter401 64647
+#define JvResources_RsEInterpreter402 64648
+#define JvResources_RsEXOrX 64649
+#define JvResources_RsEOutOfRangeFloat 64650
+#define JvResources_RsUnknown 64651
+#define JvResources_RsClBlack 64652
+#define JvResources_RsClMaroon 64653
+#define JvResources_RsClGreen 64654
+#define JvResources_RsClOlive 64655
+#define JvResources_RsEInterpreter174 64656
+#define JvResources_RsEInterpreter175 64657
+#define JvResources_RsEInterpreter176 64658
+#define JvResources_RsEInterpreter181 64659
+#define JvResources_RsEInterpreter182 64660
+#define JvResources_RsEInterpreter183 64661
+#define JvResources_RsEInterpreter184 64662
+#define JvResources_RsEInterpreter185 64663
+#define JvResources_RsEInterpreter186 64664
+#define JvResources_RsEInterpreter187 64665
+#define JvResources_RsEInterpreter188 64666
+#define JvResources_RsEInterpreter189 64667
+#define JvResources_RsEInterpreter190 64668
+#define JvResources_RsEInterpreter201 64669
+#define JvResources_RsEInterpreter301 64670
+#define JvResources_RsEInterpreter302 64671
+#define JvResources_RsEInterpreter56 64672
+#define JvResources_RsEInterpreter57 64673
+#define JvResources_RsEInterpreter58 64674
+#define JvResources_RsEInterpreter101 64675
+#define JvResources_RsEInterpreter103 64676
+#define JvResources_RsEInterpreter104 64677
+#define JvResources_RsEInterpreter105 64678
+#define JvResources_RsEInterpreter106 64679
+#define JvResources_RsEInterpreter107 64680
+#define JvResources_RsEInterpreter108 64681
+#define JvResources_RsEInterpreter109 64682
+#define JvResources_RsEInterpreter110 64683
+#define JvResources_RsEInterpreter111 64684
+#define JvResources_RsEInterpreter171 64685
+#define JvResources_RsEInterpreter172 64686
+#define JvResources_RsEInterpreter173 64687
+#define JvResources_RsArrayToArrayAssignment 64688
+#define JvResources_RsENoQuickReportFound 64689
+#define JvResources_RsESizeMustBeEven 64690
+#define JvResources_RsEInterpreter0 64691
+#define JvResources_RsEInterpreter1 64692
+#define JvResources_RsEInterpreter2 64693
+#define JvResources_RsEInterpreter3 64694
+#define JvResources_RsEInterpreter4 64695
+#define JvResources_RsEInterpreter5 64696
+#define JvResources_RsEInterpreter6 64697
+#define JvResources_RsEInterpreter7 64698
+#define JvResources_RsEInterpreter8 64699
+#define JvResources_RsEInterpreter31 64700
+#define JvResources_RsEInterpreter52 64701
+#define JvResources_RsEInterpreter53 64702
+#define JvResources_RsEInterpreter55 64703
+#define JvResources_RsEMOrMMRequired 64704
+#define JvResources_RsEYYOrYYYYRequired 64705
+#define JvResources_RsEInstanceAlreadyExists 64706
+#define JvResources_RsENameAlreadyExistsForInstance 64707
+#define JvResources_RsEInstanceNonexistent 64708
+#define JvResources_RsEMethodAlreadyExists 64709
+#define JvResources_RsENameAlreadyExistsForMethod 64710
+#define JvResources_RsEJvAssertSetTopIndex 64711
+#define JvResources_RsEJvAssertInspectorPainter 64712
+#define JvResources_RsEJvAssertDataParent 64713
+#define JvResources_RsEJvAssertParent 64714
+#define JvResources_RsEJvAssertPropInfo 64715
+#define JvResources_RsEJvAssertClassInfo 64716
+#define JvResources_RsESorryDynamicArraysSupportIsMadeForO 64717
+#define JvResources_RsEUnknownRecordType 64718
+#define JvResources_RsERangeCheckError 64719
+#define JvResources_RsEJvInspDataNoValue 64720
+#define JvResources_RsEJvInspDataStrTooLong 64721
+#define JvResources_RsEJvInspNoGenReg 64722
+#define JvResources_RsEJvInspPaintNotActive 64723
+#define JvResources_RsEJvInspPaintOnlyUsedOnce 64724
+#define JvResources_RsEInspectorInternalError 64725
+#define JvResources_RsESpecifierBeforeSeparator 64726
+#define JvResources_RsEDOrDDOnlyOnce 64727
+#define JvResources_RsEMOrMMOnlyOnce 64728
+#define JvResources_RsEYYOrYYYYOnlyOnce 64729
+#define JvResources_RsEOnlyDOrDDAllowed 64730
+#define JvResources_RsEOnlyMOrMMAllowed 64731
+#define JvResources_RsEOnlyYYOrYYYYAllowed 64732
+#define JvResources_RsEOnlyTwoSeparators 64733
+#define JvResources_RsEOnlyDMYSAllowed 64734
+#define JvResources_RsEDOrDDRequired 64735
+#define JvResources_RsEInvalidCompletionMode 64736
+#define JvResources_RsJvInspItemValueException 64737
+#define JvResources_RsJvInspItemUnInitialized 64738
+#define JvResources_RsJvInspItemUnassigned 64739
+#define JvResources_RsJvInspItemNoValue 64740
+#define JvResources_RsStringListEditorCaption 64741
+#define JvResources_RsXLinesCaption 64742
+#define JvResources_RsOneLineCaption 64743
+#define JvResources_RsEJvInspItemHasParent 64744
+#define JvResources_RsEJvInspItemNotAChild 64745
+#define JvResources_RsEJvInspItemColNotFound 64746
+#define JvResources_RsEJvInspItemItemIsNotCol 64747
+#define JvResources_RsEJvInspItemInvalidPropValue 64748
+#define JvResources_RsEJvInspDataNoAccessAs 64749
+#define JvResources_RsEJvInspDataNotInit 64750
+#define JvResources_RsEJvInspDataNotAssigned 64751
+#define JvResources_RsEItemNotFoundInTheSelectedContext 64752
+#define JvResources_RsEViewListOutOfSync 64753
+#define JvResources_RsEExtensibleIntObjDuplicateClass 64754
+#define JvResources_RsEExtensibleIntObjCollectionExpected 64755
+#define JvResources_RsEExtensibleIntObjClassNameExpected 64756
+#define JvResources_RsEExtensibleIntObjInvalidClass 64757
+#define JvResources_RsInactiveData 64758
+#define JvResources_RsBrowseData 64759
+#define JvResources_RsEditData 64760
+#define JvResources_RsInsertData 64761
+#define JvResources_RsSetKeyData 64762
+#define JvResources_RsCalcFieldsData 64763
+#define JvResources_RsEDesignCannotSelect 64764
+#define JvResources_RsEOldestFmt 64765
+#define JvResources_RsEDesignNilFmt 64766
+#define JvResources_RsERedoNotYetImplemented 64767
 #define JvResources_RsESorryForOneDimensionalArraysOnly 64768
 #define JvResources_RsELocalDatabase 64769
-#define JvResources_RsEOwnerMustBeTCustomForm 64770
-#define JvResources_RsCapSelAll 64771
-#define JvResources_RsCapDeselAll 64772
-#define JvResources_RsCapInvertAll 64773
-#define JvResources_RsEProcessIsRunning 64774
-#define JvResources_RsEItemCanNotBeDeleted 64775
-#define JvResources_RsEAContextWithThatNameAlreadyExists 64776
-#define JvResources_RsECannotCreateAContextWithoutAContext 64777
-#define JvResources_RsEYouMustSpecifyAProviderBeforeSettin 64778
-#define JvResources_RsEProviderHasNoContextNameds 64779
-#define JvResources_RsEProviderDoesNotSupportContexts 64780
-#define JvResources_RsETheSpecifiedContextIsNotPartOfTheSa 64781
-#define JvResources_RsEYouMustSpecifyAProviderBeforeSettin_ 64782
-#define JvResources_RsEItemNotFoundInTheSelectedContext 64783
+#define JvResources_RsEInvalidPath 64770
+#define JvResources_RsEOwnerMustBeTCustomForm 64771
+#define JvResources_RsCapSelAll 64772
+#define JvResources_RsCapDeselAll 64773
+#define JvResources_RsCapInvertAll 64774
+#define JvResources_RsEProcessIsRunning 64775
+#define JvResources_RsEItemCanNotBeDeleted 64776
+#define JvResources_RsEAContextWithThatNameAlreadyExists 64777
+#define JvResources_RsECannotCreateAContextWithoutAContext 64778
+#define JvResources_RsEYouMustSpecifyAProviderBeforeSettin 64779
+#define JvResources_RsEProviderHasNoContextNameds 64780
+#define JvResources_RsEProviderDoesNotSupportContexts 64781
+#define JvResources_RsETheSpecifiedContextIsNotPartOfTheSa 64782
+#define JvResources_RsEYouMustSpecifyAProviderBeforeSettin_ 64783
 #define JclResources_RsUnknownAMDModel 64784
 #define JclResources_RsOSVersionWin8 64785
 #define JclResources_RsOSVersionWinServer2012 64786
@@ -1192,6 +1193,7 @@
 #define SysConst_SDiskFull 65535
 STRINGTABLE
 BEGIN
+	QR3Const_SqrExpTooManyArgs,	"Too many arguments"
 	QR3Const_SqrExpWrongArguments,	"Wrong arguments for %s"
 	QR3Const_SqrExpUnknownType,	"Unknown type"
 	QR3Const_SqrTrue,	"True"
@@ -1206,6 +1208,7 @@ BEGIN
 	CtlConsts_sInvalidClassReference,	"Invalid class reference for TAppletApplication"
 	ExploreDataBase_test_string,	"testung"
 	ExploreDataBase_initial_lang,	"The default .ini file could not be found !\r\nAs such, you have the option to choose between:\r\n\r\n- default Language (English), or\r\n- your operating system Language, or\r\n- a customized language (see ListBox below)."
+	QR3Const_SqrExpCannotOperator,	"Cannot %s %s expressions"
 	QR3Const_SqrExpAdd,	"add"
 	QR3Const_SqrExpSubtract,	"subtract"
 	QR3Const_SqrExpMultiply,	"multiply"
@@ -1221,7 +1224,7 @@ BEGIN
 	QR3Const_SqrExpUnknownFunction,	"Unknown function : %s"
 	QR3Const_SqrExpError,	"Error in expression : %s"
 	QR3Const_SqrExpRecursive,	"Recursive calls not allowed"
-	QR3Const_SqrExpTooManyArgs,	"Too many arguments"
+	QR3Const_SqrCopyDesc,	"Returns a substring of string X"
 	QR3Const_SqrDivDesc,	"Integer division of <X> by <Y>"
 	QR3Const_SqrCountDesc,	"Increments for each iteration"
 	QR3Const_SqrMaxDesc,	"Returns the highest <X>"
@@ -1237,7 +1240,7 @@ BEGIN
 	QR3Const_SqrLowerDesc,	"Converts a string to lower case letters"
 	QR3Const_SqrPrettyDesc,	"Makes the first character upper case and the rest lower case"
 	QR3Const_SqrFormatNumericDesc,	"Formats numeric <N> using the mask in <F>"
-	QR3Const_SqrExpCannotOperator,	"Cannot %s %s expressions"
+	QR3Const_SqrDate,	"Date"
 	QR3Const_SqrDateTime,	"Date/Time"
 	QR3Const_SqrPageNum,	"Page#"
 	QR3Const_SqrReportTitle,	"Report title"
@@ -1253,7 +1256,7 @@ BEGIN
 	QR3Const_SqrTimeDesc,	"Return current time as a string"
 	QR3Const_SqrDateDesc,	"Return current date as a string"
 	QR3Const_SqrSumDesc,	"Sums the numeric <X>"
-	QR3Const_SqrCopyDesc,	"Returns a substring of string X"
+	QR3Const_SqrDetailBandName,	"DetailBand"
 	QR3Const_SqrPageFooterBandName,	"PageFooterBand"
 	QR3Const_SqrSummaryBandName,	"SummaryBand"
 	QR3Const_SqrGroupHeaderBandName,	"GroupHeaderBand"
@@ -1269,7 +1272,7 @@ BEGIN
 	QR3Const_SqrIllegalNewPage,	"Illegal call to NewPage"
 	QR3Const_SqrQRPrinterNotReady,	"QRPrinter not ready"
 	QR3Const_SqrTime,	"Time"
-	QR3Const_SqrDate,	"Date"
+	QR3Const_SqrPaperSize25,	"D size sheet"
 	QR3Const_SqrPaperSize26,	"E size sheet"
 	QR3Const_SqrPaperSize27,	"Custom Size"
 	QR3Const_SqrTitle,	"Title"
@@ -1285,7 +1288,7 @@ BEGIN
 	QR3Const_SqrChild,	"Child"
 	QR3Const_SqrTitleBandName,	"TitleBand"
 	QR3Const_SqrPageHeaderBandName,	"PageHeaderBand"
-	QR3Const_SqrDetailBandName,	"DetailBand"
+	QR3Const_SqrPaperSize9,	"A4 210 x 297 mm"
 	QR3Const_SqrPaperSize10,	"A4 Small 210 x 297 mm"
 	QR3Const_SqrPaperSize11,	"A5 148 x 210 mm"
 	QR3Const_SqrPaperSize12,	"B4 250 x 354 mm"
@@ -1301,7 +1304,7 @@ BEGIN
 	QR3Const_SqrPaperSize22,	"Envelope #12 4 \\276 x 11"
 	QR3Const_SqrPaperSize23,	"Envelope #14 4 \\276 x 11"
 	QR3Const_SqrPaperSize24,	"C size sheet"
-	QR3Const_SqrPaperSize25,	"D size sheet"
+	XMLConst_SMismatchedRegItems,	"Mismatched paramaters to RegisterChildNodes"
 	XMLConst_SNotSingleTextNode,	"Element does not contain a single text node"
 	XMLConst_SNoDOMParseOptions,	"DOM Implementation does not support IDOMParseOptions"
 	XMLConst_SNodeReadOnly,	"Node is readonly"
@@ -1317,7 +1320,7 @@ BEGIN
 	QR3Const_SqrPaperSize6,	"Statement 5 1/2 x 8 1/2 in"
 	QR3Const_SqrPaperSize7,	"Executive7 1/2 x 10 in"
 	QR3Const_SqrPaperSize8,	"A3 297 x 420 mm"
-	QR3Const_SqrPaperSize9,	"A4 210 x 297 mm"
+	OleConst_SNoWindowHandle,	"Could not obtain OLE control window handle"
 	OleConst_SNoMethod,	"Method '%s' not supported by OLE object"
 	OleConst_SInvalidLicense,	"License information for %s is invalid"
 	OleConst_SNotLicensed,	"License information for %s not found. You cannot use this control in design mode"
@@ -1333,7 +1336,7 @@ BEGIN
 	XMLConst_SMissingNode,	"IDOMNode required"
 	XMLConst_SNoAttributes,	"Attributes are not supported on this node type"
 	XMLConst_SInvalidNodeType,	"Invalid node type"
-	XMLConst_SMismatchedRegItems,	"Mismatched paramaters to RegisterChildNodes"
+	TeeConst_TeeMsg_AxisTitle,	"Axis Title"
 	TeeConst_TeeMsg_AxisLabels,	"Axis Labels"
 	TeeConst_TeeMsg_GalleryFunctions,	"Functions"
 	TeeConst_TeeMsg_DefaultFontSize,	"8"
@@ -1349,7 +1352,7 @@ BEGIN
 	TeeConst_TeeMsg_ValuesX,	"X"
 	TeeConst_TeeMsg_ValuesY,	"Y"
 	OleConst_SCannotActivate,	"OLE control activation failed"
-	OleConst_SNoWindowHandle,	"Could not obtain OLE control window handle"
+	TeeConst_TeeMsg_SeriesInvDataSource,	"No valid DataSource: %s"
 	TeeConst_TeeMsg_FillSample,	"FillSampleValues NumValues must be > 0"
 	TeeConst_TeeMsg_Angle,	"%s Angle must be between 0 and 359 degrees"
 	TeeConst_TeeMsg_AxisLogDateTime,	"DateTime Axis cannot be Logarithmic"
@@ -1365,7 +1368,7 @@ BEGIN
 	TeeConst_TeeMsg_DefaultPercentOf,	"%s of %s"
 	TeeConst_TeeMsg_DefPercentFormat,	"##0.## %"
 	TeeConst_TeeMsg_DefValueFormat,	"#,##0.###"
-	TeeConst_TeeMsg_AxisTitle,	"Axis Title"
+	SynEditStrConst_SYNS_FriendlyAttrUnknownWord,	"Unknown Word"
 	SynEditStrConst_SYNS_FriendlyAttrValue,	"Value"
 	SynEditStrConst_SYNS_ScrollInfoFmt,	"%d - %d"
 	SynEditStrConst_SYNS_ScrollInfoFmtTop,	"Top Line: %d"
@@ -1381,7 +1384,7 @@ BEGIN
 	TeeConst_TeeMsg_LegendFirstValue,	"First Legend Value must be > 0"
 	TeeConst_TeeMsg_LegendColorWidth,	"Legend Color Width must be between 0 and 100 %"
 	TeeConst_TeeMsg_SeriesSetDataSource,	"No ParentChart to validate DataSource"
-	TeeConst_TeeMsg_SeriesInvDataSource,	"No valid DataSource: %s"
+	JConsts_sJPEGError,	"JPEG error #%d"
 	JConsts_sJPEGImageFile,	"JPEG Image File"
 	SynEditStrConst_SYNS_FriendlyAttrAssembler,	"Assembler"
 	SynEditStrConst_SYNS_FriendlyAttrCharacter,	"Character"
@@ -1397,7 +1400,7 @@ BEGIN
 	SynEditStrConst_SYNS_FriendlyAttrString,	"String"
 	SynEditStrConst_SYNS_FriendlyAttrSymbol,	"Symbol"
 	SynEditStrConst_SYNS_FriendlyAttrText,	"Text"
-	SynEditStrConst_SYNS_FriendlyAttrUnknownWord,	"Unknown Word"
+	JvResources_RsClBtnText,	"Button text"
 	JvResources_RsClInactiveCaptionText,	"Inactive window title bar text"
 	JvResources_RsClBtnHighlight,	"Button highlight"
 	JvResources_RsCl3DDkShadow,	"Dark shadow 3D elements"
@@ -1413,7 +1416,7 @@ BEGIN
 	JvJCLUtils_RsEPropertyNotExists,	"Property \"%s\" does not exist"
 	JvJCLUtils_RsEInvalidPropertyType,	"Property \"%s\" has invalid type"
 	JConsts_sChangeJPGSize,	"Cannot change the size of a JPEG image"
-	JConsts_sJPEGError,	"JPEG error #%d"
+	JvResources_RsClActiveCaption,	"Active window title bar"
 	JvResources_RsClInactiveCaption,	"Inactive window title bar"
 	JvResources_RsClMenu,	"Menu background"
 	JvResources_RsClWindow,	"Window background"
@@ -1429,7 +1432,7 @@ BEGIN
 	JvResources_RsClBtnFace,	"Button face"
 	JvResources_RsClBtnShadow,	"Button shadow"
 	JvResources_RsClGrayText,	"Dimmed text"
-	JvResources_RsClBtnText,	"Button text"
+	JvResources_RsClGray40,	"Gray 40%"
 	JvResources_RsClPink,	"Pink"
 	JvResources_RsClGold,	"Gold"
 	JvResources_RsClBrightGreen,	"Bright Green"
@@ -1445,7 +1448,7 @@ BEGIN
 	JvResources_RsClLavender,	"Lavender"
 	JvResources_RsClScrollBar,	"Scrollbar"
 	JvResources_RsClBackground,	"Desktop background"
-	JvResources_RsClActiveCaption,	"Active window title bar"
+	JvResources_RsClBrown,	"Brown"
 	JvResources_RsClOliveGreen,	"Olive Green"
 	JvResources_RsClDarkGreen,	"Dark Green"
 	JvResources_RsClDarkTeal,	"Dark Teal"
@@ -1461,7 +1464,7 @@ BEGIN
 	JvResources_RsClSeaGreen,	"Sea Green"
 	JvResources_RsClLightBlue,	"Light Blue"
 	JvResources_RsClViolet,	"Violet"
-	JvResources_RsClGray40,	"Gray 40%"
+	JvResources_RsClNavy,	"Navy blue"
 	JvResources_RsClPurple,	"Purple"
 	JvResources_RsClTeal,	"Teal"
 	JvResources_RsClGray,	"Gray"
@@ -1477,7 +1480,7 @@ BEGIN
 	JvResources_RsClSkyBlue,	"Sky blue"
 	JvResources_RsClCream,	"Cream"
 	JvResources_RsClMedGray,	"Medium gray"
-	JvResources_RsClBrown,	"Brown"
+	JvResources_RsEInterpreter303,	"Declaration"
 	JvResources_RsEInterpreter304,	"End of File"
 	JvResources_RsEInterpreter305,	"Class Declaration"
 	JvResources_RsEInterpreter306,	"Integer Constant'"
@@ -1493,7 +1496,7 @@ BEGIN
 	JvResources_RsClMaroon,	"Maroon"
 	JvResources_RsClGreen,	"Green"
 	JvResources_RsClOlive,	"Olive green"
-	JvResources_RsClNavy,	"Navy blue"
+	JvResources_RsEInterpreter174,	"Invalid array dimension"
 	JvResources_RsEInterpreter175,	"Invalid array range"
 	JvResources_RsEInterpreter176,	"Array type required"
 	JvResources_RsEInterpreter181,	"Too many actual parameters"
@@ -1509,7 +1512,7 @@ BEGIN
 	JvResources_RsEInterpreter201,	"Calling '%0:s' failed: '%1:s'"
 	JvResources_RsEInterpreter301,	"Expression"
 	JvResources_RsEInterpreter302,	"Identifier"
-	JvResources_RsEInterpreter303,	"Declaration"
+	JvResources_RsEInterpreter56,	"Unit '%s' not found"
 	JvResources_RsEInterpreter57,	"Event '%s' not registered"
 	JvResources_RsEInterpreter58,	"DFM '%s' not found"
 	JvResources_RsEInterpreter101,	"Error in remark"
@@ -1525,7 +1528,7 @@ BEGIN
 	JvResources_RsEInterpreter171,	"Array index out of bounds"
 	JvResources_RsEInterpreter172,	"Too many array bounds"
 	JvResources_RsEInterpreter173,	"Not enough array bounds"
-	JvResources_RsEInterpreter174,	"Invalid array dimension"
+	JvResources_RsArrayToArrayAssignment,	"Array to array assignment"
 	JvResources_RsENoQuickReportFound,	"TQuickRep component not found on the form"
 	JvResources_RsESizeMustBeEven,	"The size of bounds array must be even!"
 	JvResources_RsEInterpreter0,	"Ok"
@@ -1541,7 +1544,7 @@ BEGIN
 	JvResources_RsEInterpreter52,	"Stack overflow"
 	JvResources_RsEInterpreter53,	"Type mismatch"
 	JvResources_RsEInterpreter55,	"Function 'main' undefined"
-	JvResources_RsEInterpreter56,	"Unit '%s' not found"
+	JvResources_RsEMOrMMRequired,	"'m' or 'mm' are required"
 	JvResources_RsEYYOrYYYYRequired,	"'yy' or 'yyyy' are required"
 	JvResources_RsEInstanceAlreadyExists,	"Instance already exists with another name"
 	JvResources_RsENameAlreadyExistsForInstance,	"Name already exists for another instance"
@@ -1557,7 +1560,7 @@ BEGIN
 	JvResources_RsESorryDynamicArraysSupportIsMadeForO,	"Sorry. Dynamic arrays support is made for one-dimensional arrays only"
 	JvResources_RsEUnknownRecordType,	"Unknown RecordType"
 	JvResources_RsERangeCheckError,	"Range check error"
-	JvResources_RsArrayToArrayAssignment,	"Array to array assignment"
+	JvResources_RsEJvInspDataNoValue,	"Data has no value"
 	JvResources_RsEJvInspDataStrTooLong,	"String too long"
 	JvResources_RsEJvInspNoGenReg,	"Unable to create generic item registration list"
 	JvResources_RsEJvInspPaintNotActive,	"Painter is not the active painter of the specified inspector"
@@ -1573,7 +1576,7 @@ BEGIN
 	JvResources_RsEOnlyTwoSeparators,	"Only two separators are allowed"
 	JvResources_RsEOnlyDMYSAllowed,	"Only 'd', 'm', 'y' and '%s' are allowed"
 	JvResources_RsEDOrDDRequired,	"'d' or 'dd' are required"
-	JvResources_RsEMOrMMRequired,	"'m' or 'mm' are required"
+	JvResources_RsEInvalidCompletionMode,	"Invalid JvEditor Completion Mode"
 	JvResources_RsJvInspItemValueException,	"Exception "
 	JvResources_RsJvInspItemUnInitialized,	"(uninitialized)"
 	JvResources_RsJvInspItemUnassigned,	"(unassigned)"
@@ -1589,7 +1592,7 @@ BEGIN
 	JvResources_RsEJvInspDataNoAccessAs,	"Data cannot be accessed as %s"
 	JvResources_RsEJvInspDataNotInit,	"Data not initialized"
 	JvResources_RsEJvInspDataNotAssigned,	"Data not assigned"
-	JvResources_RsEJvInspDataNoValue,	"Data has no value"
+	JvResources_RsEItemNotFoundInTheSelectedContext,	"Item not found in the selected context"
 	JvResources_RsEViewListOutOfSync,	"ViewList out of sync"
 	JvResources_RsEExtensibleIntObjDuplicateClass,	"Implementation of that class already exists"
 	JvResources_RsEExtensibleIntObjCollectionExpected,	"Expected collection"
@@ -1605,9 +1608,9 @@ BEGIN
 	JvResources_RsEOldestFmt,	"%0:s: Oldest ancestor of Container must be a form."
 	JvResources_RsEDesignNilFmt,	"%0:s: %1:s is nil"
 	JvResources_RsERedoNotYetImplemented,	"Redo not yet implemented"
-	JvResources_RsEInvalidCompletionMode,	"Invalid JvEditor Completion Mode"
 	JvResources_RsESorryForOneDimensionalArraysOnly,	"Sorry, for one-dimensional arrays only"
 	JvResources_RsELocalDatabase,	"Cannot perform this operation on a local database"
+	JvResources_RsEInvalidPath,	"Invalid path"
 	JvResources_RsEOwnerMustBeTCustomForm,	"TJvCaptionButton owner must be a TCustomForm"
 	JvResources_RsCapSelAll,	"&Select all"
 	JvResources_RsCapDeselAll,	"&Deselect all"
@@ -1621,7 +1624,6 @@ BEGIN
 	JvResources_RsEProviderDoesNotSupportContexts,	"Provider does not support contexts"
 	JvResources_RsETheSpecifiedContextIsNotPartOfTheSa,	"The specified context is not part of the same provider"
 	JvResources_RsEYouMustSpecifyAProviderBeforeSettin_,	"You must specify a provider before setting the item"
-	JvResources_RsEItemNotFoundInTheSelectedContext,	"Item not found in the selected context"
 	JclResources_RsUnknownAMDModel,	"Unknown AMD (Model %d)"
 	JclResources_RsOSVersionWin8,	"Windows 8"
 	JclResources_RsOSVersionWinServer2012,	"Windows Server 2012"

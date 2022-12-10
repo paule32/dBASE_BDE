@@ -24,7 +24,8 @@ uses
   NewTableDialog in 'NewTableDialog.pas' {OKRightDlg},
   MyHintWindow in 'MyHintWindow.pas',
   XMLmainMenu in 'XMLmainMenu.pas',
-  JvInitTStrings in 'JvInitTStrings.pas';
+  JvInitTStrings in 'JvInitTStrings.pas',
+  dissAssemble in 'dissAssemble.pas';
 
 {$R *.res}
 
@@ -253,7 +254,6 @@ begin
     Application.Initialize;
     Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TDataBaseExplorer, DataBaseExplorer);
-  Application.CreateForm(TOKRightDlg, OKRightDlg);
   Application.Run;
 
   end;

@@ -1,0 +1,38 @@
+// -------------------------------------------------------------------------------
+// datares.rc: resource file for datares.dll
+// (c) 2022 by Jens Kallup - paule32
+// all rights reserved.
+// -------------------------------------------------------------------------------
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+
+IMG0001    BITMAP "assets\images\auge.bmp"
+IMG0002    BITMAP "assets\images\back.bmp"
+IMG0003    BITMAP "assets\images\data.bmp"
+IMG0004    BITMAP "assets\images\delphi.bmp"
+IMG0005    BITMAP "assets\images\dict.bmp"
+IMG0006    BITMAP "assets\images\down.bmp"
+IMG0007    BITMAP "assets\images\empathy-available.bmp"
+IMG0008    BITMAP "assets\images\forth.bmp"
+IMG0009    BITMAP "assets\images\help.bmp"
+IMG0010    BITMAP "assets\images\important.bmp"
+IMG0011    BITMAP "assets\images\left.bmp"
+IMG0012    BITMAP "assets\images\msdos.bmp"
+IMG0013    BITMAP "assets\images\network.bmp"
+IMG0014    BITMAP "assets\images\open.bmp"
+IMG0015    BITMAP "assets\images\pic1.bmp"
+IMG0016    BITMAP "assets\images\right.bmp"
+IMG0017    BITMAP "assets\images\run.bmp"
+IMG0018    BITMAP "assets\images\screen.bmp"                    // 52 x 52
+IMG001824  BITMAP "assets\images\screen_24.bmp"                 // 24 x 22
+IMG0019    BITMAP "assets\images\send.bmp"
+IMG0020    BITMAP "assets\images\tables.bmp"
+IMG0021    BITMAP "assets\images\tbutton_150.bmp"
+IMG0022    BITMAP "assets\images\tdbedit_150.bmp"
+IMG0023    BITMAP "assets\images\tedit_150.bmp"
+IMG0024    BITMAP "assets\images\tlabel_150.bmp"
+IMG0025    BITMAP "assets\images\tmainmenu_150.bmp"
+IMG0026    BITMAP "assets\images\tmemo_150.bmp"
+IMG0027    BITMAP "assets\images\tmouse_150.bmp"
+IMG0028    BITMAP "assets\images\tpopupmenu_150.bmp"
+IMG0029    BITMAP "assets\images\up.bmp"
+IMG0030    BITMAP "assets\images\user-offline-panel.bmp"
