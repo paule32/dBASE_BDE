@@ -56,7 +56,10 @@ uses
   JvInterpreter_JvEditor,
   JvInterpreterFm,
 
-  parseDBASE, ATBinHex, JvListView;
+  parseDBASE,
+  parsePascal,
+
+  ATBinHex, JvListView;
 
 // Commands to pass to HtmlHelp()
 const
@@ -1895,7 +1898,8 @@ type
     FClientLastCommand: String;
     FServerLastCommand: String;
 
-    dBaseParser : TdBaseParser;
+    dBaseParser  : TdBaseParser;
+    pascalParser : TpascalParser;
 
     iniFile: TIniFile;
     strList: TStringList;
@@ -2583,8 +2587,11 @@ end;
 
 procedure TForm2.FormDestroy(Sender: TObject);
 begin
-  FMemStream.Clear;
-  FMemStream.Free;
+  if Assigned(FMemStream) then
+  begin
+    FMemStream.Clear;
+    FMemStream.Free;
+  end;
 
   ApplicationBalloonHint.Free;
   PopupMenu_TimeAccess.Items.Clear;
@@ -3492,6 +3499,9 @@ begin
   begin
     if modusButton.Caption = 'Pascal Mode' then
     begin
+      pascalParser := TpascalParser.Create(SourceTextEditor);
+      pascalParser.Parse;
+      pascalParser.Free;
     end else
     if modusButton.Caption = 'dBase Mode 1' then
     begin
@@ -3908,6 +3918,11 @@ begin
     Clear;
     Text :=
     '// Pascal/Delphi: PRESS F2 to execute'      + #13#10#13#10  +
+    'program zuzu;' + #13#10 +
+    'begin' + #13#10+
+    'end.'  + #13#10;
+
+    (*
     'unit test1;'                + #13#10        +
     'interface'                  + #13#10        +
     '  procedure main;'          + #13#10        +
@@ -3916,7 +3931,7 @@ begin
     '  begin'                    + #13#10        +
     '    WriteLn(''ddddd'',42);' + #13#10        +
     '  end;'                     + #13#10#13#10  +
-    'end.'                       + #13#10        ;
+    'end.'                       + #13#10        ;*)
   end;
 end;
 
@@ -5760,7 +5775,7 @@ end;
 procedure TForm2.Assemble1Click(Sender: TObject);
 var
   s: string;
-  d: TDissAssemble;
+//  d: TDissAssemble;
 begin
   if FMemStream = nil then
   begin
@@ -5772,8 +5787,8 @@ begin
     try
       try
         FMemStream.Seek(64,soFromBeginning);
-        d := TDissAssemble.Create(FMemStream);
-        d.Start;
+//        d := TDissAssemble.Create(FMemStream);
+//        d.Start;
       except
         on E: Exception do
         begin
@@ -5783,7 +5798,7 @@ begin
         end;
       end;
     finally
-      d.Free;
+//      d.Free;
     end;
   end;
 end;

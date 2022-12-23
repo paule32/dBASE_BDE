@@ -151,8 +151,8 @@ Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlSearchPath]
 Count=12
-Item0=E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg
-Item1=E:\Projekte\jedi\jcl\jcl\source\common;E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run;E:\Projekte\jedi\jvcl\jvcl\resources;E:\Projekte\SynEdit\Source;E:\Projekte\SynEdit\SynGen;E:\Projekte\hexview\Source;E:\Projekte\hexview\Resources;E:\Projekte\jedi\jcl\jcl\source\vcl;E:\Projekte\jedi\jcl\jcl\source\windows;E:\Projekte\jedi\jcl\jcl\source\windows\obj\zlib;E:\Projekte\jedi\jcl\jcl\source\windows\obj\zlib\win32;E:\Projekte\jedi\jcl\jcl\source\windows\obj\pcre;E:\Projekte\jedi\jcl\jcl\source\windows\obj\pcre\win32;E:\Projekte\jedi\jcl\jcl\source\windows\obj\bzip2;E:\Projekte\jedi\jcl\jcl\source\windows\obj\bzip2\win32;E:\Projekte\jedi\jcl\jcl\source\windows\obj
+Item0=E:\Projekte\jedi\jcl\jcl\source\common;E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run;E:\Projekte\jedi\jvcl\jvcl\resources;E:\Projekte\SynEdit\Source;E:\Projekte\SynEdit\SynGen;E:\Projekte\hexview\Source;E:\Projekte\hexview\Resources;E:\Projekte\jedi\jcl\jcl\source\vcl;E:\Projekte\jedi\jcl\jcl\source\windows;E:\Projekte\jedi\jcl\jcl\source\windows\obj\zlib;E:\Projekte\jedi\jcl\jcl\source\windows\obj\zlib\win32;E:\Projekte\jedi\jcl\jcl\source\windows\obj\pcre;E:\Projekte\jedi\jcl\jcl\source\windows\obj\pcre\win32;E:\Projekte\jedi\jcl\jcl\source\windows\obj\bzip2;E:\Projekte\jedi\jcl\jcl\source\windows\obj\bzip2\win32;E:\Projekte\jedi\jcl\jcl\source\windows\obj
+Item1=E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg
 Item2=E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run;E:\Projekte\jedi\jvcl\jvcl\resources;E:\Projekte\SynEdit\Source;E:\Projekte\SynEdit\SynGen;E:\Projekte\hexview\Source;E:\Projekte\hexview\Resources;E:\Projekte\jedi\jcl\jcl\source\vcl;E:\Projekte\jedi\jcl\jcl\source\windows;E:\Projekte\jedi\jcl\jcl\source\windows\obj\zlib;E:\Projekte\jedi\jcl\jcl\source\windows\obj\zlib\win32;E:\Projekte\jedi\jcl\jcl\source\windows\obj\pcre;E:\Projekte\jedi\jcl\jcl\source\windows\obj\pcre\win32;E:\Projekte\jedi\jcl\jcl\source\windows\obj\bzip2;E:\Projekte\jedi\jcl\jcl\source\windows\obj\bzip2\win32;E:\Projekte\jedi\jcl\jcl\source\windows\obj
 Item3=E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run;E:\Projekte\jedi\jvcl\jvcl\resources;E:\Projekte\SynEdit\Source;E:\Projekte\SynEdit\SynGen;E:\Projekte\hexview\Source;E:\Projekte\hexview\Resources;E:\Projekte\jedi\jcl\jcl\source\vcl
 Item4=E:\Program Files (x86)\Borland\Delphi7\Source\ToolsAPI;E:\DELPHI\PEimg;E:\Projekte\jedi\jvcl\jvcl\packages\d7;E:\Projekte\jedi\jvcl\jvcl\lib\d7;E:\Projekte\jedi\jvcl\jvcl\common;E:\Projekte\jedi\jvcl\jvcl\dcu;E:\Projekte\jedi\jvcl\jvcl\run;E:\Projekte\jedi\jvcl\jvcl\resources;E:\Projekte\SynEdit\Source;E:\Projekte\SynEdit\SynGen;E:\Projekte\hexview\Source;E:\Projekte\hexview\Resources
@@ -168,8 +168,8 @@ Count=1
 Item0=.\dcu
 [HistoryLists\hlOutputDirectorry]
 Count=2
-Item0=E:\Projekte\DataBase\exe\ENG
-Item1=.\exe\ENG
+Item0=.\exe\ENG
+Item1=E:\Projekte\DataBase\exe\ENG
 [HistoryLists\hlDCPOutput]
 Count=1
 Item0=.\dcp
