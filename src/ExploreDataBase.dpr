@@ -25,7 +25,9 @@ uses
   MyHintWindow in 'MyHintWindow.pas',
   XMLmainMenu in 'XMLmainMenu.pas',
   JvInitTStrings in 'JvInitTStrings.pas',
-  dissAssemble in 'dissAssemble.pas';
+  remoteAssembly in 'remoteAssembly.pas',
+  parsePascal in 'parsePascal.pas',
+  parseExceptions in 'parseExceptions.pas';
 
 {$R *.res}
 

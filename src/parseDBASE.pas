@@ -8,12 +8,11 @@ unit parseDBASE;
 
 interface
 uses
-  Classes, Contnrs, SysUtils, Forms, SynEdit, Dialogs;
+  Classes, Contnrs, SysUtils, Forms, SynEdit, Dialogs,
+  parseExceptions;
 
 type
-  ENoError = class(Exception);
-
-  tokenContext = (
+  dBaseTokenContext = (
       tokenUnknown,
       tokenWHITESPACE,
       tokenCOMMA,
@@ -21,7 +20,7 @@ type
       tokenPARAMETER
   );
 
-  parameterType = (
+  dBaseParameterType = (
       paramBoolean,
       paramInteger,
       paramString
@@ -34,7 +33,7 @@ type
      pInteger : Integer;
      pString  : String;
 
-     pType    : parameterType;
+     pType    : dBaseParameterType;
   end;
 
 type
@@ -272,7 +271,7 @@ var
      result := false;
   end;
 
-  function expect(tc: tokenContext): Boolean;
+  function expect(tc: dBaseTokenContext): Boolean;
   begin
      result := false;
      if (tc = tokenIDENT) then
@@ -592,6 +591,9 @@ end;
 // try to free allocated memory
 destructor TdBaseParser.Destroy;
 begin
+  dBaseAST.Clear;
+  dBaseAST.Free;
+  
   FStream.Clear;
   FStream.Free;
 
